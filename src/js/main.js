@@ -1,10 +1,10 @@
-import Modal from "./functions/modals";
-import Tab from "./functions/tabs";
-import { burger } from "./functions/burger";
+// import Modal from "./functions/modals";
+// import Tab from "./functions/tabs";
+// import { burger } from "./functions/burger";
 import Splide from "@splidejs/splide";
-import DynamicAdapt from "./functions/dynamicAdapt";
+// import DynamicAdapt from "./functions/dynamicAdapt";
 import Chart from "chart.js/auto";
-import { mapToStyles } from "@popperjs/core/lib/modifiers/computestyles";
+// import { mapToStyles } from "@popperjs/core/lib/modifiers/computestyles";
 
 const moreBtn = document.querySelector(".dashboard__btn-more");
 const dashboardHead = document.querySelector(".dashboard__head");
