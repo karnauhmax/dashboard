@@ -1,2 +1,17407 @@
-/*! For license information please see main.js.LICENSE.txt */
-(()=>{"use strict";function t(t,e){for(var i=0;i<e.length;i++){var n=e[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}var e="(prefers-reduced-motion: reduce)";function i(t){t.length=0}function n(t,e,i){return Array.prototype.slice.call(t,e,i)}function s(t){return t.bind.apply(t,[null].concat(n(arguments,1)))}var o=setTimeout,r=function(){};function a(t){return requestAnimationFrame(t)}function l(t,e){return typeof e===t}function h(t){return!g(t)&&l("object",t)}var c=Array.isArray,d=s(l,"function"),u=s(l,"string"),f=s(l,"undefined");function g(t){return null===t}function p(t){return t instanceof HTMLElement}function m(t){return c(t)?t:[t]}function b(t,e){m(t).forEach(e)}function x(t,e){return t.indexOf(e)>-1}function _(t,e){return t.push.apply(t,m(e)),t}function y(t,e,i){t&&b(e,(function(e){e&&t.classList[i?"add":"remove"](e)}))}function v(t,e){y(t,u(e)?e.split(" "):e,!0)}function w(t,e){b(e,t.appendChild.bind(t))}function M(t,e){b(t,(function(t){var i=(e||t).parentNode;i&&i.insertBefore(t,e)}))}function k(t,e){return p(t)&&(t.msMatchesSelector||t.matches).call(t,e)}function S(t,e){var i=t?n(t.children):[];return e?i.filter((function(t){return k(t,e)})):i}function P(t,e){return e?S(t,e)[0]:t.firstElementChild}var D=Object.keys;function C(t,e,i){if(t){var n=D(t);n=i?n.reverse():n;for(var s=0;s<n.length;s++){var o=n[s];if("__proto__"!==o&&!1===e(t[o],o))break}}return t}function A(t){return n(arguments,1).forEach((function(e){C(e,(function(i,n){t[n]=e[n]}))})),t}function O(t){return n(arguments,1).forEach((function(e){C(e,(function(e,i){c(e)?t[i]=e.slice():h(e)?t[i]=O({},h(t[i])?t[i]:{},e):t[i]=e}))})),t}function E(t,e){m(e||D(t)).forEach((function(e){delete t[e]}))}function L(t,e){b(t,(function(t){b(e,(function(e){t&&t.removeAttribute(e)}))}))}function T(t,e,i){h(e)?C(e,(function(e,i){T(t,i,e)})):b(t,(function(t){g(i)||""===i?L(t,e):t.setAttribute(e,String(i))}))}function R(t,e,i){var n=document.createElement(t);return e&&(u(e)?v(n,e):T(n,e)),i&&w(i,n),n}function I(t,e,i){if(f(i))return getComputedStyle(t)[e];g(i)||(t.style[e]=""+i)}function z(t,e){I(t,"display",e)}function F(t){t.setActive&&t.setActive()||t.focus({preventScroll:!0})}function B(t,e){return t.getAttribute(e)}function V(t,e){return t&&t.classList.contains(e)}function N(t){return t.getBoundingClientRect()}function W(t){b(t,(function(t){t&&t.parentNode&&t.parentNode.removeChild(t)}))}function j(t){return P((new DOMParser).parseFromString(t,"text/html").body)}function H(t,e){t.preventDefault(),e&&(t.stopPropagation(),t.stopImmediatePropagation())}function $(t,e){return t&&t.querySelector(e)}function Y(t,e){return e?n(t.querySelectorAll(e)):[]}function U(t,e){y(t,e,!1)}function X(t){return t.timeStamp}function q(t){return u(t)?t:t?t+"px":""}var G="splide";function K(t,e){if(!t)throw new Error("[splide] "+(e||""))}var J=Math.min,Z=Math.max,Q=Math.floor,tt=Math.ceil,et=Math.abs;function it(t,e,i){return et(t-e)<i}function nt(t,e,i,n){var s=J(e,i),o=Z(e,i);return n?s<t&&t<o:s<=t&&t<=o}function st(t,e,i){var n=J(e,i),s=Z(e,i);return J(Z(n,t),s)}function ot(t){return+(t>0)-+(t<0)}function rt(t,e){return b(e,(function(e){t=t.replace("%s",""+e)})),t}function at(t){return t<10?"0"+t:""+t}var lt={};function ht(){var t=[];function e(t,e,i){b(t,(function(t){t&&b(e,(function(e){e.split(" ").forEach((function(e){var n=e.split(".");i(t,n[0],n[1])}))}))}))}return{bind:function(i,n,s,o){e(i,n,(function(e,i,n){var r="addEventListener"in e,a=r?e.removeEventListener.bind(e,i,s,o):e.removeListener.bind(e,s);r?e.addEventListener(i,s,o):e.addListener(s),t.push([e,i,n,s,a])}))},unbind:function(i,n,s){e(i,n,(function(e,i,n){t=t.filter((function(t){return!!(t[0]!==e||t[1]!==i||t[2]!==n||s&&t[3]!==s)||(t[4](),!1)}))}))},dispatch:function(t,e,i){var n;return"function"==typeof CustomEvent?n=new CustomEvent(e,{bubbles:!0,detail:i}):(n=document.createEvent("CustomEvent")).initCustomEvent(e,!0,!1,i),t.dispatchEvent(n),n},destroy:function(){t.forEach((function(t){t[4]()})),i(t)}}}var ct="mounted",dt="ready",ut="move",ft="moved",gt="shifted",pt="click",mt="slide:keydown",bt="refresh",xt="updated",_t="resize",yt="resized",vt="scroll",wt="scrolled",Mt="destroy",kt="navigation:mounted",St="autoplay:play",Pt="autoplay:pause",Dt="lazyload:loaded";function Ct(t){var e=t?t.event.bus:document.createDocumentFragment(),i=ht();return t&&t.event.on(Mt,i.destroy),A(i,{bus:e,on:function(t,n){i.bind(e,m(t).join(" "),(function(t){n.apply(n,c(t.detail)?t.detail:[])}))},off:s(i.unbind,e),emit:function(t){i.dispatch(e,t,n(arguments,1))}})}function At(t,e,i,n){var s,o,r=Date.now,l=0,h=!0,c=0;function d(){if(!h){if(l=t?J((r()-s)/t,1):1,i&&i(l),l>=1&&(e(),s=r(),n&&++c>=n))return u();a(d)}}function u(){h=!0}function f(){o&&cancelAnimationFrame(o),l=0,o=0,h=!0}return{start:function(e){!e&&f(),s=r()-(e?l*t:0),h=!1,a(d)},rewind:function(){s=r(),l=0,i&&i(l)},pause:u,cancel:f,set:function(e){t=e},isPaused:function(){return h}}}var Ot="ArrowLeft",Et="ArrowRight",Lt="ArrowUp",Tt="ArrowDown",Rt="ttb",It={width:["height"],left:["top","right"],right:["bottom","left"],x:["y"],X:["Y"],Y:["X"],ArrowLeft:[Lt,Et],ArrowRight:[Tt,Ot]};var zt="role",Ft="tabindex",Bt="aria-controls",Vt="aria-current",Nt="aria-selected",Wt="aria-label",jt="aria-labelledby",Ht="aria-hidden",$t="aria-orientation",Yt="aria-roledescription",Ut="aria-live",Xt="aria-busy",qt="aria-atomic",Gt=[zt,Ft,"disabled",Bt,Vt,Wt,jt,Ht,$t,Yt],Kt=G,Jt="splide__track",Zt="splide__slide",Qt=Zt+"--clone",te="splide__arrows",ee="splide__arrow",ie=ee+"--prev",ne=ee+"--next",se="splide__pagination",oe="is-active",re="is-prev",ae="is-next",le="is-visible",he="is-loading",ce="is-focus-in",de=[oe,le,re,ae,he,ce],ue={slide:Zt,clone:Qt,arrows:te,arrow:ee,prev:ie,next:ne,pagination:se,page:"splide__pagination__page",spinner:"splide__spinner"},fe="touchmove mousemove",ge="touchend touchcancel mouseup click",pe="slide",me="loop",be="fade";var xe={passive:!1,capture:!0},_e={Spacebar:" ",Right:Et,Left:Ot,Up:Lt,Down:Tt};function ye(t){return t=u(t)?t:t.key,_e[t]||t}var ve="keydown",we="data-splide-lazy",Me="data-splide-lazy-srcset",ke=[" ","Enter"],Se=Object.freeze({__proto__:null,Media:function(t,i,n){var s=t.state,o=n.breakpoints||{},r=n.reducedMotion||{},a=ht(),l=[];function h(t){t&&a.destroy()}function c(t,e){var i=matchMedia(e);a.bind(i,"change",d),l.push([t,i])}function d(){var e=s.is(7),i=n.direction,o=l.reduce((function(t,e){return O(t,e[1].matches?e[0]:{})}),{});E(n),u(o),n.destroy?t.destroy("completely"===n.destroy):e?(h(!0),t.mount()):i!==n.direction&&t.refresh()}function u(e,i){O(n,e),i&&O(Object.getPrototypeOf(n),e),s.is(1)||t.emit(xt,n)}return{setup:function(){var t="min"===n.mediaQuery;D(o).sort((function(e,i){return t?+e-+i:+i-+e})).forEach((function(e){c(o[e],"("+(t?"min":"max")+"-width:"+e+"px)")})),c(r,e),d()},destroy:h,reduce:function(t){matchMedia(e).matches&&(t?O(n,r):E(n,D(r)))},set:u}},Direction:function(t,e,i){return{resolve:function(t,e,n){var s="rtl"!==(n=n||i.direction)||e?n===Rt?0:-1:1;return It[t]&&It[t][s]||t.replace(/width|left|right/i,(function(t,e){var i=It[t.toLowerCase()][s]||t;return e>0?i.charAt(0).toUpperCase()+i.slice(1):i}))},orient:function(t){return t*("rtl"===i.direction?1:-1)}}},Elements:function(t,e,n){var s,o,r,a=Ct(t),l=a.on,h=a.bind,c=t.root,u=n.i18n,f={},g=[],p=[],m=[];function b(){var t,e,i;s=M("."+Jt),o=P(s,".splide__list"),K(s&&o,"A track/list element is missing."),_(g,S(o,".splide__slide:not(."+Qt+")")),C({arrows:te,pagination:se,prev:ie,next:ne,bar:"splide__progress__bar",toggle:"splide__toggle"},(function(t,e){f[e]=M("."+t)})),A(f,{root:c,track:s,list:o,slides:g}),e=c.id||""+(t=G)+at(lt[t]=(lt[t]||0)+1),i=n.role,c.id=e,s.id=s.id||e+"-track",o.id=o.id||e+"-list",!B(c,zt)&&"SECTION"!==c.tagName&&i&&T(c,zt,i),T(c,Yt,u.carousel),T(o,zt,"presentation"),w()}function x(t){var e=Gt.concat("style");i(g),U(c,p),U(s,m),L([s,o],e),L(c,t?e:["style",Yt])}function w(){U(c,p),U(s,m),p=D(Kt),m=D(Jt),v(c,p),v(s,m),T(c,Wt,n.label),T(c,jt,n.labelledby)}function M(t){var e=$(c,t);return e&&function(t,e){if(d(t.closest))return t.closest(e);for(var i=t;i&&1===i.nodeType&&!k(i,e);)i=i.parentElement;return i}(e,".splide")===c?e:void 0}function D(t){return[t+"--"+n.type,t+"--"+n.direction,n.drag&&t+"--draggable",n.isNavigation&&t+"--nav",t===Kt&&oe]}return A(f,{setup:b,mount:function(){l(bt,x),l(bt,b),l(xt,w),h(document,"touchstart mousedown keydown",(function(t){r="keydown"===t.type}),{capture:!0}),h(c,"focusin",(function(){y(c,ce,!!r)}))},destroy:x})},Slides:function(t,e,n){var o=Ct(t),r=o.on,a=o.emit,l=o.bind,h=e.Elements,c=h.slides,f=h.list,g=[];function _(){c.forEach((function(t,e){D(t,e,-1)}))}function S(){A((function(t){t.destroy()})),i(g)}function D(e,i,n){var o=function(t,e,i,n){var o,r=Ct(t),a=r.on,l=r.emit,h=r.bind,c=t.Components,d=t.root,u=t.options,f=u.isNavigation,g=u.updateOnMove,p=u.i18n,m=u.pagination,b=u.slideFocus,x=c.Direction.resolve,_=B(n,"style"),v=B(n,Wt),w=i>-1,M=P(n,".splide__slide__container"),k=Y(n,u.focusableNodes||"");function S(){var s=t.splides.map((function(t){var i=t.splide.Components.Slides.getAt(e);return i?i.slide.id:""})).join(" ");T(n,Wt,rt(p.slideX,(w?i:e)+1)),T(n,Bt,s),T(n,zt,b?"button":""),b&&L(n,Yt)}function D(){o||C()}function C(){if(!o){var i=t.index;(s=A())!==V(n,oe)&&(y(n,oe,s),T(n,Vt,f&&s||""),l(s?"active":"inactive",O)),function(){var e=function(){if(t.is(be))return A();var e=N(c.Elements.track),i=N(n),s=x("left",!0),o=x("right",!0);return Q(e[s])<=tt(i[s])&&Q(i[o])<=tt(e[o])}(),i=!e&&(!A()||w);if(t.state.is([4,5])||T(n,Ht,i||""),T(k,Ft,i?-1:""),b&&T(n,Ft,i?-1:0),e!==V(n,le)&&(y(n,le,e),l(e?"visible":"hidden",O)),!e&&document.activeElement===n){var s=c.Slides.getAt(t.index);s&&F(s.slide)}}(),y(n,re,e===i-1),y(n,ae,e===i+1)}var s}function A(){var n=t.index;return n===e||u.cloneStatus&&n===i}var O={index:e,slideIndex:i,slide:n,container:M,isClone:w,mount:function(){w||(n.id=d.id+"-slide"+at(e+1),T(n,zt,m?"tabpanel":"group"),T(n,Yt,p.slide),T(n,Wt,v||rt(p.slideLabel,[e+1,t.length]))),h(n,"click",s(l,pt,O)),h(n,"keydown",s(l,mt,O)),a([ft,gt,wt],C),a(kt,S),g&&a(ut,D)},destroy:function(){o=!0,r.destroy(),U(n,de),L(n,Gt),T(n,"style",_),T(n,Wt,v||"")},update:C,style:function(t,e,i){I(i&&M||n,t,e)},isWithin:function(i,n){var s=et(i-e);return w||!u.rewind&&!t.is(me)||(s=J(s,t.length-s)),s<=n}};return O}(t,i,n,e);o.mount(),g.push(o)}function C(t){return t?O((function(t){return!t.isClone})):g}function A(t,e){C(e).forEach(t)}function O(t){return g.filter(d(t)?t:function(e){return u(t)?k(e.slide,t):x(m(t),e.index)})}return{mount:function(){_(),r(bt,S),r(bt,_),r([ct,bt],(function(){g.sort((function(t,e){return t.index-e.index}))}))},destroy:S,update:function(){A((function(t){t.update()}))},register:D,get:C,getIn:function(t){var i=e.Controller,s=i.toIndex(t),o=i.hasFocus()?1:n.perPage;return O((function(t){return nt(t.index,s,s+o-1)}))},getAt:function(t){return O(t)[0]},add:function(t,e){b(t,(function(t){if(u(t)&&(t=j(t)),p(t)){var i=c[e];i?M(t,i):w(f,t),v(t,n.classes.slide),function(t,e){var i=Y(t,"img"),n=i.length;n?i.forEach((function(t){l(t,"load error",(function(){--n||e()}))})):e()}(t,s(a,_t))}})),a(bt)},remove:function(t){W(O(t).map((function(t){return t.slide}))),a(bt)},forEach:A,filter:O,style:function(t,e,i){A((function(n){n.style(t,e,i)}))},getLength:function(t){return t?c.length:g.length},isEnough:function(){return g.length>n.perPage}}},Layout:function(t,e,i){var n,o,r=Ct(t),a=r.on,l=r.bind,c=r.emit,d=e.Slides,u=e.Direction.resolve,f=e.Elements,g=f.root,p=f.track,m=f.list,b=d.getAt,x=d.style;function _(){o=null,n=i.direction===Rt,I(g,"maxWidth",q(i.width)),I(p,u("paddingLeft"),v(!1)),I(p,u("paddingRight"),v(!0)),y()}function y(){var t,e=N(g);o&&o.width===e.width&&o.height===e.height||(I(p,"height",(t="",n&&(K(t=w(),"height or heightRatio is missing."),t="calc("+t+" - "+v(!1)+" - "+v(!0)+")"),t)),x(u("marginRight"),q(i.gap)),x("width",i.autoWidth?null:q(i.fixedWidth)||(n?"":M())),x("height",q(i.fixedHeight)||(n?i.autoHeight?null:M():w()),!0),o=e,c(yt))}function v(t){var e=i.padding,n=u(t?"right":"left");return e&&q(e[n]||(h(e)?0:e))||"0px"}function w(){return q(i.height||N(m).width*i.heightRatio)}function M(){var t=q(i.gap);return"calc((100%"+(t&&" + "+t)+")/"+(i.perPage||1)+(t&&" - "+t)+")"}function k(t,e){var i=b(t);if(i){var n=N(i.slide)[u("right")],s=N(m)[u("left")];return et(n-s)+(e?0:S())}return 0}function S(){var t=b(0);return t&&parseFloat(I(t.slide,u("marginRight")))||0}return{mount:function(){var t,e;_(),l(window,"resize load",(t=s(c,_t),function(){e||(e=At(0,(function(){t(),e=null}),null,1)).start()})),a([xt,bt],_),a(_t,y)},listSize:function(){return N(m)[u("width")]},slideSize:function(t,e){var i=b(t||0);return i?N(i.slide)[u("width")]+(e?0:S()):0},sliderSize:function(){return k(t.length-1,!0)-k(-1,!0)},totalSize:k,getPadding:function(t){return parseFloat(I(p,u("padding"+(t?"Right":"Left"))))||0}}},Clones:function(t,e,n){var s,o=Ct(t),r=o.on,a=o.emit,l=e.Elements,h=e.Slides,c=e.Direction.resolve,d=[];function u(){(s=p())&&(function(e){var i=h.get().slice(),s=i.length;if(s){for(;i.length<e;)_(i,i);_(i.slice(-e),i.slice(0,e)).forEach((function(o,r){var a=r<e,c=function(e,i){var s=e.cloneNode(!0);return v(s,n.classes.clone),s.id=t.root.id+"-clone"+at(i+1),s}(o.slide,r);a?M(c,i[0].slide):w(l.list,c),_(d,c),h.register(c,r-e+(a?0:s),o.index)}))}}(s),a(_t))}function f(){W(d),i(d)}function g(){s<p()&&a(bt)}function p(){var i=n.clones;if(t.is(me)){if(!i){var s=n[c("fixedWidth")]&&e.Layout.slideSize(0);i=s&&tt(N(l.track)[c("width")]/s)||n[c("autoWidth")]&&t.length||2*n.perPage}}else i=0;return i}return{mount:function(){u(),r(bt,f),r(bt,u),r([xt,_t],g)},destroy:f}},Move:function(t,e,i){var n,s=Ct(t),o=s.on,r=s.emit,a=t.state.set,l=e.Layout,h=l.slideSize,c=l.getPadding,d=l.totalSize,u=l.listSize,g=l.sliderSize,p=e.Direction,m=p.resolve,b=p.orient,x=e.Elements,_=x.list,y=x.track;function v(){e.Controller.isBusy()||(e.Scroll.cancel(),w(t.index),e.Slides.update())}function w(t){M(D(t,!0))}function M(i,n){if(!t.is(be)){var s=n?i:function(i){if(t.is(me)){var n=P(i),s=n>e.Controller.getEnd();(n<0||s)&&(i=k(i,s))}return i}(i);I(_,"transform","translate"+m("X")+"("+s+"px)"),i!==s&&r(gt)}}function k(t,e){var i=t-A(e),n=g();return t-b(n*(tt(et(i)/n)||1))*(e?1:-1)}function S(){M(C()),n.cancel()}function P(t){for(var i=e.Slides.get(),n=0,s=1/0,o=0;o<i.length;o++){var r=i[o].index,a=et(D(r,!0)-t);if(!(a<=s))break;s=a,n=r}return n}function D(e,n){var s=b(d(e-1)-function(t){var e=i.focus;return"center"===e?(u()-h(t,!0))/2:+e*h(t)||0}(e));return n?function(e){return i.trimSpace&&t.is(pe)&&(e=st(e,0,b(g()-u()))),e}(s):s}function C(){var t=m("left");return N(_)[t]-N(y)[t]+b(c(!1))}function A(t){return D(t?e.Controller.getEnd():0,!!i.trimSpace)}return{mount:function(){n=e.Transition,o([ct,yt,xt,bt],v)},move:function(t,e,i,s){var o,l;t!==e&&(o=t>i,l=b(k(C(),o)),o?l>=0:l<=_[m("scrollWidth")]-N(y)[m("width")])&&(S(),M(k(C(),t>i),!0)),a(4),r(ut,e,i,t),n.start(e,(function(){a(3),r(ft,e,i,t),s&&s()}))},jump:w,translate:M,shift:k,cancel:S,toIndex:P,toPosition:D,getPosition:C,getLimit:A,exceededLimit:function(t,e){e=f(e)?C():e;var i=!0!==t&&b(e)<b(A(!1)),n=!1!==t&&b(e)>b(A(!0));return i||n},reposition:v}},Controller:function(t,e,i){var n,o,r,a=Ct(t).on,l=e.Move,h=l.getPosition,c=l.getLimit,d=l.toPosition,g=e.Slides,p=g.isEnough,m=g.getLength,b=t.is(me),x=t.is(pe),_=s(k,!1),y=s(k,!0),v=i.start||0,w=v;function M(){n=m(!0),o=i.perMove,r=i.perPage;var t=st(v,0,n-1);t!==v&&(v=t,l.reposition())}function k(t,e){var i=o||(E()?1:r),n=S(v+i*(t?-1:1),v,!(o||E()));return-1===n&&x&&!it(h(),c(!t),1)?t?0:D():e?n:P(n)}function S(e,s,a){if(p()){var l=D(),c=function(e){if(x&&"move"===i.trimSpace&&e!==v)for(var n=h();n===d(e,!0)&&nt(e,0,t.length-1,!i.rewind);)e<v?--e:++e;return e}(e);c!==e&&(s=e,e=c,a=!1),e<0||e>l?e=o||!nt(0,e,s,!0)&&!nt(l,s,e,!0)?b?a?e<0?-(n%r||r):n:e:i.rewind?e<0?l:0:-1:C(A(e)):a&&e!==s&&(e=C(A(s)+(e<s?-1:1)))}else e=-1;return e}function P(t){return b?(t+n)%n||0:t}function D(){return Z(n-(E()||b&&o?1:r),0)}function C(t){return st(E()?t:r*t,0,D())}function A(t){return E()?t:Q((t>=D()?n-1:t)/r)}function O(t){t!==v&&(w=v,v=t)}function E(){return!f(i.focus)||i.isNavigation}function L(){return t.state.is([4,5])&&!!i.waitForTransition}return{mount:function(){M(),a([xt,bt],M)},go:function(t,e,i){if(!L()){var n=function(t){var e=v;if(u(t)){var i=t.match(/([+\-<>])(\d+)?/)||[],n=i[1],s=i[2];"+"===n||"-"===n?e=S(v+ +(""+n+(+s||1)),v):">"===n?e=s?C(+s):_(!0):"<"===n&&(e=y(!0))}else e=b?t:st(t,0,D());return e}(t),s=P(n);s>-1&&(e||s!==v)&&(O(s),l.move(n,s,w,i))}},scroll:function(t,i,n,s){e.Scroll.scroll(t,i,n,(function(){O(P(l.toIndex(h()))),s&&s()}))},getNext:_,getPrev:y,getAdjacent:k,getEnd:D,setIndex:O,getIndex:function(t){return t?w:v},toIndex:C,toPage:A,toDest:function(t){var e=l.toIndex(t);return x?st(e,0,D()):e},hasFocus:E,isBusy:L}},Arrows:function(t,e,i){var n,o,r=Ct(t),a=r.on,l=r.bind,h=r.emit,c=i.classes,d=i.i18n,u=e.Elements,f=e.Controller,g=u.arrows,p=u.track,m=g,b=u.prev,x=u.next,_={};function y(){var t;!(t=i.arrows)||b&&x||(m=g||R("div",c.arrows),b=D(!0),x=D(!1),n=!0,w(m,[b,x]),!g&&M(m,p)),b&&x&&(A(_,{prev:b,next:x}),z(m,t?"":"none"),v(m,o=te+"--"+i.direction),t&&(a([ft,bt,wt],C),l(x,"click",s(P,">")),l(b,"click",s(P,"<")),C(),T([b,x],Bt,p.id),h("arrows:mounted",b,x))),a(xt,k)}function k(){S(),y()}function S(){r.destroy(),U(m,o),n?(W(g?[b,x]:m),b=x=null):L([b,x],Gt)}function P(t){f.go(t,!0)}function D(t){return j('<button class="'+c.arrow+" "+(t?c.prev:c.next)+'" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false"><path d="'+(i.arrowPath||"m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z")+'" />')}function C(){var e=t.index,i=f.getPrev(),n=f.getNext(),s=i>-1&&e<i?d.last:d.prev,o=n>-1&&e>n?d.first:d.next;b.disabled=i<0,x.disabled=n<0,T(b,Wt,s),T(x,Wt,o),h("arrows:updated",b,x,i,n)}return{arrows:_,mount:y,destroy:S}},Autoplay:function(t,e,i){var n,s,o=Ct(t),r=o.on,a=o.bind,l=o.emit,h=At(i.interval,t.go.bind(t,">"),(function(t){var e=d.bar;e&&I(e,"width",100*t+"%"),l("autoplay:playing",t)})),c=h.isPaused,d=e.Elements,u=e.Elements,f=u.root,g=u.toggle,p=i.autoplay,m="pause"===p;function b(){c()&&e.Slides.isEnough()&&(h.start(!i.resetProgress),s=n=m=!1,v(),l(St))}function x(t){void 0===t&&(t=!0),m=!!t,v(),c()||(h.pause(),l(Pt))}function _(){m||(n||s?x(!1):b())}function v(){g&&(y(g,oe,!m),T(g,Wt,i.i18n[m?"play":"pause"]))}function w(t){var n=e.Slides.getAt(t);h.set(n&&+B(n.slide,"data-splide-interval")||i.interval)}return{mount:function(){p&&(i.pauseOnHover&&a(f,"mouseenter mouseleave",(function(t){n="mouseenter"===t.type,_()})),i.pauseOnFocus&&a(f,"focusin focusout",(function(t){s="focusin"===t.type,_()})),g&&a(g,"click",(function(){m?b():x(!0)})),r([ut,vt,bt],h.rewind),r(ut,w),g&&T(g,Bt,d.track.id),m||b(),v())},destroy:h.cancel,play:b,pause:x,isPaused:c}},Cover:function(t,e,i){var n=Ct(t).on;function o(t){e.Slides.forEach((function(e){var i=P(e.container||e.slide,"img");i&&i.src&&r(t,i,e)}))}function r(t,e,i){i.style("background",t?'center/cover no-repeat url("'+e.src+'")':"",!0),z(e,t?"none":"")}return{mount:function(){i.cover&&(n(Dt,s(r,!0)),n([ct,xt,bt],s(o,!0)))},destroy:s(o,!1)}},Scroll:function(t,e,i){var n,o,r=Ct(t),a=r.on,l=r.emit,h=t.state.set,c=e.Move,d=c.getPosition,u=c.getLimit,f=c.exceededLimit,g=c.translate,p=1;function m(t,i,r,a,u){var f=d();if(_(),r){var g=e.Layout.sliderSize(),m=ot(t)*g*Q(et(t)/g)||0;t=c.toPosition(e.Controller.toDest(t%g))+m}var y=it(f,t,1);p=1,i=y?0:i||Z(et(t-f)/1.5,800),o=a,n=At(i,b,s(x,f,t,u),1),h(5),l(vt),n.start()}function b(){h(3),o&&o(),l(wt)}function x(e,n,s,r){var a,l,h=d(),c=(e+(n-e)*(a=r,(l=i.easingFunc)?l(a):1-Math.pow(1-a,4))-h)*p;g(h+c),t.is(pe)&&!s&&f()&&(p*=.6,et(c)<10&&m(u(f(!0)),600,!1,o,!0))}function _(){n&&n.cancel()}function y(){n&&!n.isPaused()&&(_(),b())}return{mount:function(){a(ut,_),a([xt,bt],y)},destroy:_,scroll:m,cancel:y}},Drag:function(t,e,i){var n,s,o,a,l,c,d,u,f=Ct(t),g=f.on,p=f.emit,m=f.bind,b=f.unbind,x=t.state,_=e.Move,y=e.Scroll,v=e.Controller,w=e.Elements.track,M=e.Media.reduce,S=e.Direction,P=S.resolve,D=S.orient,C=_.getPosition,A=_.exceededLimit,O=!1;function E(){var t=i.drag;j(!t),a="free"===t}function L(t){if(c=!1,!d){var e=W(t);n=t.target,s=i.noDrag,k(n,".splide__pagination__page, ."+ee)||s&&k(n,s)||!e&&t.button||(v.isBusy()?H(t,!0):(u=e?w:window,l=x.is([4,5]),o=null,m(u,fe,T,xe),m(u,ge,R,xe),_.cancel(),y.cancel(),z(t)))}var n,s}function T(e){if(x.is(6)||(x.set(6),p("drag")),e.cancelable)if(l){_.translate(n+F(e)/(O&&t.is(pe)?5:1));var s=B(e)>200,o=O!==(O=A());(s||o)&&z(e),c=!0,p("dragging"),H(e)}else(function(t){return et(F(t))>et(F(t,!0))})(e)&&(l=function(t){var e=i.dragMinThreshold,n=h(e),s=n&&e.mouse||0,o=(n?e.touch:+e)||10;return et(F(t))>(W(t)?o:s)}(e),H(e))}function R(n){x.is(6)&&(x.set(3),p("dragged")),l&&(function(n){var s=function(e){if(t.is(me)||!O){var i=B(e);if(i&&i<200)return F(e)/i}return 0}(n),o=function(t){return C()+ot(t)*J(et(t)*(i.flickPower||600),a?1/0:e.Layout.listSize()*(i.flickMaxPages||1))}(s),r=i.rewind&&i.rewindByDrag;M(!1),a?v.scroll(o,0,i.snap):t.is(be)?v.go(D(ot(s))<0?r?"<":"-":r?">":"+"):t.is(pe)&&O&&r?v.go(A(!0)?">":"<"):v.go(v.toDest(o),!0),M(!0)}(n),H(n)),b(u,fe,T),b(u,ge,R),l=!1}function I(t){!d&&c&&H(t,!0)}function z(t){o=s,s=t,n=C()}function F(t,e){return N(t,e)-N(V(t),e)}function B(t){return X(t)-X(V(t))}function V(t){return s===t&&o||s}function N(t,e){return(W(t)?t.changedTouches[0]:t)["page"+P(e?"Y":"X")]}function W(t){return"undefined"!=typeof TouchEvent&&t instanceof TouchEvent}function j(t){d=t}return{mount:function(){m(w,fe,r,xe),m(w,ge,r,xe),m(w,"touchstart mousedown",L,xe),m(w,"click",I,{capture:!0}),m(w,"dragstart",H),g([ct,xt],E)},disable:j,isDragging:function(){return l}}},Keyboard:function(t,e,i){var n,s,r=Ct(t),a=r.on,l=r.bind,h=r.unbind,c=t.root,d=e.Direction.resolve;function u(){var t=i.keyboard;t&&(n="global"===t?window:c,l(n,ve,p))}function f(){h(n,ve)}function g(){var t=s;s=!0,o((function(){s=t}))}function p(e){if(!s){var i=ye(e);i===d(Ot)?t.go("<"):i===d(Et)&&t.go(">")}}return{mount:function(){u(),a(xt,f),a(xt,u),a(ut,g)},destroy:f,disable:function(t){s=t}}},LazyLoad:function(t,e,n){var o=Ct(t),r=o.on,a=o.off,l=o.bind,h=o.emit,c="sequential"===n.lazyLoad,d=[ct,bt,ft,wt],u=[];function f(){i(u),e.Slides.forEach((function(t){Y(t.slide,"[data-splide-lazy], [data-splide-lazy-srcset]").forEach((function(e){var i=B(e,we),s=B(e,Me);if(i!==e.src||s!==e.srcset){var o=n.classes.spinner,r=e.parentElement,a=P(r,"."+o)||R("span",o,r);u.push([e,t,a]),e.src||z(e,"none")}}))})),c&&b()}function g(){(u=u.filter((function(e){var i=n.perPage*((n.preloadPages||1)+1)-1;return!e[1].isWithin(t.index,i)||p(e)}))).length||a(d)}function p(t){var e=t[0];v(t[1].slide,he),l(e,"load error",s(m,t)),T(e,"src",B(e,we)),T(e,"srcset",B(e,Me)),L(e,we),L(e,Me)}function m(t,e){var i=t[0],n=t[1];U(n.slide,he),"error"!==e.type&&(W(t[2]),z(i,""),h(Dt,i,n),h(_t)),c&&b()}function b(){u.length&&p(u.shift())}return{mount:function(){n.lazyLoad&&(f(),r(bt,f),c||r(d,g))},destroy:s(i,u)}},Pagination:function(t,e,o){var r,a,l=Ct(t),h=l.on,c=l.emit,d=l.bind,u=e.Slides,f=e.Elements,g=e.Controller,p=g.hasFocus,m=g.getIndex,b=g.go,x=e.Direction.resolve,_=[];function y(){r&&(W(f.pagination?n(r.children):r),U(r,a),i(_),r=null),l.destroy()}function w(t){b(">"+t,!0)}function M(t,e){var i=_.length,n=ye(e),s=k(),o=-1;n===x(Et,!1,s)?o=++t%i:n===x(Ot,!1,s)?o=(--t+i)%i:"Home"===n?o=0:"End"===n&&(o=i-1);var r=_[o];r&&(F(r.button),b(">"+o),H(e,!0))}function k(){return o.paginationDirection||o.direction}function S(t){return _[g.toPage(t)]}function P(){var t=S(m(!0)),e=S(m());if(t){var i=t.button;U(i,oe),L(i,Nt),T(i,Ft,-1)}if(e){var n=e.button;v(n,oe),T(n,Nt,!0),T(n,Ft,"")}c("pagination:updated",{list:r,items:_},t,e)}return{items:_,mount:function e(){y(),h([xt,bt],e),o.pagination&&u.isEnough()&&(h([ut,vt,wt],P),function(){var e=t.length,i=o.classes,n=o.i18n,l=o.perPage,h=p()?e:tt(e/l);v(r=f.pagination||R("ul",i.pagination,f.track.parentElement),a=se+"--"+k()),T(r,zt,"tablist"),T(r,Wt,n.select),T(r,$t,k()===Rt?"vertical":"");for(var c=0;c<h;c++){var g=R("li",null,r),m=R("button",{class:i.page,type:"button"},g),b=u.getIn(c).map((function(t){return t.slide.id})),x=!p()&&l>1?n.pageX:n.slideX;d(m,"click",s(w,c)),o.paginationKeyboard&&d(m,"keydown",s(M,c)),T(g,zt,"presentation"),T(m,zt,"tab"),T(m,Bt,b.join(" ")),T(m,Wt,rt(x,c+1)),T(m,Ft,-1),_.push({li:g,button:m,page:c})}}(),P(),c("pagination:mounted",{list:r,items:_},S(t.index)))},destroy:y,getAt:S,update:P}},Sync:function(t,e,n){var s=n.isNavigation,o=n.slideFocus,r=[];function a(){var e,i;t.splides.forEach((function(e){e.isParent||(h(t,e.splide),h(e.splide,t))})),s&&((i=(e=Ct(t)).on)(pt,d),i(mt,u),i([ct,xt],c),r.push(e),e.emit(kt,t.splides))}function l(){r.forEach((function(t){t.destroy()})),i(r)}function h(t,e){var i=Ct(t);i.on(ut,(function(t,i,n){e.go(e.is(me)?n:t)})),r.push(i)}function c(){T(e.Elements.list,$t,n.direction===Rt?"vertical":"")}function d(e){t.go(e.index)}function u(t,e){x(ke,ye(e))&&(d(t),H(e))}return{setup:function(){t.options={slideFocus:f(o)?s:o}},mount:a,destroy:l,remount:function(){l(),a()}}},Wheel:function(t,e,i){var n=Ct(t).bind,s=0;function o(n){if(n.cancelable){var o=n.deltaY,r=o<0,a=X(n),l=i.wheelMinThreshold||0,h=i.wheelSleep||0;et(o)>l&&a-s>h&&(t.go(r?"<":">"),s=a),function(n){return!i.releaseWheel||t.state.is(4)||-1!==e.Controller.getAdjacent(n)}(r)&&H(n)}}return{mount:function(){i.wheel&&n(e.Elements.track,"wheel",o,xe)}}},Live:function(t,e,i){var n=Ct(t).on,o=e.Elements.track,r=i.live&&!i.isNavigation,a=R("span","splide__sr"),l=At(90,s(h,!1));function h(t){T(o,Xt,t),t?(w(o,a),l.start()):W(a)}function c(t){r&&T(o,Ut,t?"off":"polite")}return{mount:function(){r&&(c(!e.Autoplay.isPaused()),T(o,qt,!0),a.textContent="…",n(St,s(c,!0)),n(Pt,s(c,!1)),n([ft,wt],s(h,!0)))},disable:c,destroy:function(){L(o,[Ut,qt,Xt]),W(a)}}}}),Pe={type:"slide",role:"region",speed:400,perPage:1,cloneStatus:!0,arrows:!0,pagination:!0,paginationKeyboard:!0,interval:5e3,pauseOnHover:!0,pauseOnFocus:!0,resetProgress:!0,easing:"cubic-bezier(0.25, 1, 0.5, 1)",drag:!0,direction:"ltr",trimSpace:!0,focusableNodes:"a, button, textarea, input, select, iframe",live:!0,classes:ue,i18n:{prev:"Previous slide",next:"Next slide",first:"Go to first slide",last:"Go to last slide",slideX:"Go to slide %s",pageX:"Go to page %s",play:"Start autoplay",pause:"Pause autoplay",carousel:"carousel",slide:"slide",select:"Select a slide to show",slideLabel:"%s of %s"},reducedMotion:{speed:0,rewindSpeed:0,autoplay:"pause"}};function De(t,e,i){var n=Ct(t).on;return{mount:function(){n([ct,bt],(function(){o((function(){e.Slides.style("transition","opacity "+i.speed+"ms "+i.easing)}))}))},start:function(t,i){var n=e.Elements.track;I(n,"height",q(N(n).height)),o((function(){i(),I(n,"height","")}))},cancel:r}}function Ce(t,e,i){var n,o=Ct(t).bind,r=e.Move,a=e.Controller,l=e.Scroll,h=e.Elements.list,c=s(I,h,"transition");function d(){c(""),l.cancel()}return{mount:function(){o(h,"transitionend",(function(t){t.target===h&&n&&(d(),n())}))},start:function(e,s){var o=r.toPosition(e,!0),h=r.getPosition(),d=function(e){var n=i.rewindSpeed;if(t.is(pe)&&n){var s=a.getIndex(!0),o=a.getEnd();if(0===s&&e>=o||s>=o&&0===e)return n}return i.speed}(e);et(o-h)>=1&&d>=1?i.useScroll?l.scroll(o,d,!1,s):(c("transform "+d+"ms "+i.easing),r.translate(o,!0),n=s):(r.jump(e),s())},cancel:d}}var Ae=function(){function e(t,i){var n;this.event=Ct(),this.Components={},this.state=(n=1,{set:function(t){n=t},is:function(t){return x(m(t),n)}}),this.splides=[],this._o={},this._E={};var s=u(t)?$(document,t):t;K(s,s+" is invalid."),this.root=s,i=O({label:B(s,Wt)||"",labelledby:B(s,jt)||""},Pe,e.defaults,i||{});try{O(i,JSON.parse(B(s,"data-splide")))}catch(t){K(!1,"Invalid JSON")}this._o=Object.create(O({},i))}var s,o,r=e.prototype;return r.mount=function(t,e){var i=this,n=this.state,s=this.Components;return K(n.is([1,7]),"Already mounted!"),n.set(1),this._C=s,this._T=e||this._T||(this.is(be)?De:Ce),this._E=t||this._E,C(A({},Se,this._E,{Transition:this._T}),(function(t,e){var n=t(i,s,i._o);s[e]=n,n.setup&&n.setup()})),C(s,(function(t){t.mount&&t.mount()})),this.emit(ct),v(this.root,"is-initialized"),n.set(3),this.emit(dt),this},r.sync=function(t){return this.splides.push({splide:t}),t.splides.push({splide:this,isParent:!0}),this.state.is(3)&&(this._C.Sync.remount(),t.Components.Sync.remount()),this},r.go=function(t){return this._C.Controller.go(t),this},r.on=function(t,e){return this.event.on(t,e),this},r.off=function(t){return this.event.off(t),this},r.emit=function(t){var e;return(e=this.event).emit.apply(e,[t].concat(n(arguments,1))),this},r.add=function(t,e){return this._C.Slides.add(t,e),this},r.remove=function(t){return this._C.Slides.remove(t),this},r.is=function(t){return this._o.type===t},r.refresh=function(){return this.emit(bt),this},r.destroy=function(t){void 0===t&&(t=!0);var e=this.event,n=this.state;return n.is(1)?Ct(this).on(dt,this.destroy.bind(this,t)):(C(this._C,(function(e){e.destroy&&e.destroy(t)}),!0),e.emit(Mt),e.destroy(),t&&i(this.splides),n.set(7)),this},s=e,(o=[{key:"options",get:function(){return this._o},set:function(t){this._C.Media.set(t,!0)}},{key:"length",get:function(){return this._C.Slides.getLength(!0)}},{key:"index",get:function(){return this._C.Controller.getIndex()}}])&&t(s.prototype,o),Object.defineProperty(s,"prototype",{writable:!1}),e}(),Oe=Ae;Oe.defaults={},Oe.STATES={CREATED:1,MOUNTED:2,IDLE:3,MOVING:4,SCROLLING:5,DRAGGING:6,DESTROYED:7};const Ee="undefined"==typeof window?function(t){return t()}:window.requestAnimationFrame;function Le(t,e,i){const n=i||(t=>Array.prototype.slice.call(t));let s=!1,o=[];return function(...i){o=n(i),s||(s=!0,Ee.call(window,(()=>{s=!1,t.apply(e,o)})))}}const Te=t=>"start"===t?"left":"end"===t?"right":"center",Re=(t,e,i)=>"start"===t?e:"end"===t?i:(e+i)/2;function Ie(){}const ze=function(){let t=0;return function(){return t++}}();function Fe(t){return null==t}function Be(t){if(Array.isArray&&Array.isArray(t))return!0;const e=Object.prototype.toString.call(t);return"[object"===e.slice(0,7)&&"Array]"===e.slice(-6)}function Ve(t){return null!==t&&"[object Object]"===Object.prototype.toString.call(t)}const Ne=t=>("number"==typeof t||t instanceof Number)&&isFinite(+t);function We(t,e){return Ne(t)?t:e}function je(t,e){return void 0===t?e:t}const He=(t,e)=>"string"==typeof t&&t.endsWith("%")?parseFloat(t)/100*e:+t;function $e(t,e,i){if(t&&"function"==typeof t.call)return t.apply(i,e)}function Ye(t,e,i,n){let s,o,r;if(Be(t))if(o=t.length,n)for(s=o-1;s>=0;s--)e.call(i,t[s],s);else for(s=0;s<o;s++)e.call(i,t[s],s);else if(Ve(t))for(r=Object.keys(t),o=r.length,s=0;s<o;s++)e.call(i,t[r[s]],r[s])}function Ue(t,e){let i,n,s,o;if(!t||!e||t.length!==e.length)return!1;for(i=0,n=t.length;i<n;++i)if(s=t[i],o=e[i],s.datasetIndex!==o.datasetIndex||s.index!==o.index)return!1;return!0}function Xe(t){if(Be(t))return t.map(Xe);if(Ve(t)){const e=Object.create(null),i=Object.keys(t),n=i.length;let s=0;for(;s<n;++s)e[i[s]]=Xe(t[i[s]]);return e}return t}function qe(t){return-1===["__proto__","prototype","constructor"].indexOf(t)}function Ge(t,e,i,n){if(!qe(t))return;const s=e[t],o=i[t];Ve(s)&&Ve(o)?Ke(s,o,n):e[t]=Xe(o)}function Ke(t,e,i){const n=Be(e)?e:[e],s=n.length;if(!Ve(t))return t;const o=(i=i||{}).merger||Ge;for(let r=0;r<s;++r){if(!Ve(e=n[r]))continue;const s=Object.keys(e);for(let n=0,r=s.length;n<r;++n)o(s[n],t,e,i)}return t}function Je(t,e){return Ke(t,e,{merger:Ze})}function Ze(t,e,i){if(!qe(t))return;const n=e[t],s=i[t];Ve(n)&&Ve(s)?Je(n,s):Object.prototype.hasOwnProperty.call(e,t)||(e[t]=Xe(s))}function Qe(t,e){const i=t.indexOf(".",e);return-1===i?t.length:i}function ti(t,e){if(""===e)return t;let i=0,n=Qe(e,i);for(;t&&n>i;)t=t[e.slice(i,n)],i=n+1,n=Qe(e,i);return t}function ei(t){return t.charAt(0).toUpperCase()+t.slice(1)}const ii=t=>void 0!==t,ni=t=>"function"==typeof t,si=(t,e)=>{if(t.size!==e.size)return!1;for(const i of t)if(!e.has(i))return!1;return!0},oi=Math.PI,ri=2*oi,ai=ri+oi,li=Number.POSITIVE_INFINITY,hi=oi/180,ci=oi/2,di=oi/4,ui=2*oi/3,fi=Math.log10,gi=Math.sign;function pi(t){const e=Math.round(t);t=bi(t,e,t/1e3)?e:t;const i=Math.pow(10,Math.floor(fi(t))),n=t/i;return(n<=1?1:n<=2?2:n<=5?5:10)*i}function mi(t){return!isNaN(parseFloat(t))&&isFinite(t)}function bi(t,e,i){return Math.abs(t-e)<i}function xi(t,e,i){let n,s,o;for(n=0,s=t.length;n<s;n++)o=t[n][i],isNaN(o)||(e.min=Math.min(e.min,o),e.max=Math.max(e.max,o))}function _i(t){return t*(oi/180)}function yi(t){return t*(180/oi)}function vi(t){if(!Ne(t))return;let e=1,i=0;for(;Math.round(t*e)/e!==t;)e*=10,i++;return i}function wi(t,e){const i=e.x-t.x,n=e.y-t.y,s=Math.sqrt(i*i+n*n);let o=Math.atan2(n,i);return o<-.5*oi&&(o+=ri),{angle:o,distance:s}}function Mi(t,e){return Math.sqrt(Math.pow(e.x-t.x,2)+Math.pow(e.y-t.y,2))}function ki(t,e){return(t-e+ai)%ri-oi}function Si(t){return(t%ri+ri)%ri}function Pi(t,e,i,n){const s=Si(t),o=Si(e),r=Si(i),a=Si(o-s),l=Si(r-s),h=Si(s-o),c=Si(s-r);return s===o||s===r||n&&o===r||a>l&&h<c}function Di(t,e,i){return Math.max(e,Math.min(i,t))}function Ci(t,e,i,n=1e-6){return t>=Math.min(e,i)-n&&t<=Math.max(e,i)+n}const Ai=t=>0===t||1===t,Oi=(t,e,i)=>-Math.pow(2,10*(t-=1))*Math.sin((t-e)*ri/i),Ei=(t,e,i)=>Math.pow(2,-10*t)*Math.sin((t-e)*ri/i)+1,Li={linear:t=>t,easeInQuad:t=>t*t,easeOutQuad:t=>-t*(t-2),easeInOutQuad:t=>(t/=.5)<1?.5*t*t:-.5*(--t*(t-2)-1),easeInCubic:t=>t*t*t,easeOutCubic:t=>(t-=1)*t*t+1,easeInOutCubic:t=>(t/=.5)<1?.5*t*t*t:.5*((t-=2)*t*t+2),easeInQuart:t=>t*t*t*t,easeOutQuart:t=>-((t-=1)*t*t*t-1),easeInOutQuart:t=>(t/=.5)<1?.5*t*t*t*t:-.5*((t-=2)*t*t*t-2),easeInQuint:t=>t*t*t*t*t,easeOutQuint:t=>(t-=1)*t*t*t*t+1,easeInOutQuint:t=>(t/=.5)<1?.5*t*t*t*t*t:.5*((t-=2)*t*t*t*t+2),easeInSine:t=>1-Math.cos(t*ci),easeOutSine:t=>Math.sin(t*ci),easeInOutSine:t=>-.5*(Math.cos(oi*t)-1),easeInExpo:t=>0===t?0:Math.pow(2,10*(t-1)),easeOutExpo:t=>1===t?1:1-Math.pow(2,-10*t),easeInOutExpo:t=>Ai(t)?t:t<.5?.5*Math.pow(2,10*(2*t-1)):.5*(2-Math.pow(2,-10*(2*t-1))),easeInCirc:t=>t>=1?t:-(Math.sqrt(1-t*t)-1),easeOutCirc:t=>Math.sqrt(1-(t-=1)*t),easeInOutCirc:t=>(t/=.5)<1?-.5*(Math.sqrt(1-t*t)-1):.5*(Math.sqrt(1-(t-=2)*t)+1),easeInElastic:t=>Ai(t)?t:Oi(t,.075,.3),easeOutElastic:t=>Ai(t)?t:Ei(t,.075,.3),easeInOutElastic(t){const e=.1125;return Ai(t)?t:t<.5?.5*Oi(2*t,e,.45):.5+.5*Ei(2*t-1,e,.45)},easeInBack(t){const e=1.70158;return t*t*((e+1)*t-e)},easeOutBack(t){const e=1.70158;return(t-=1)*t*((e+1)*t+e)+1},easeInOutBack(t){let e=1.70158;return(t/=.5)<1?t*t*((1+(e*=1.525))*t-e)*.5:.5*((t-=2)*t*((1+(e*=1.525))*t+e)+2)},easeInBounce:t=>1-Li.easeOutBounce(1-t),easeOutBounce(t){const e=7.5625,i=2.75;return t<1/i?e*t*t:t<2/i?e*(t-=1.5/i)*t+.75:t<2.5/i?e*(t-=2.25/i)*t+.9375:e*(t-=2.625/i)*t+.984375},easeInOutBounce:t=>t<.5?.5*Li.easeInBounce(2*t):.5*Li.easeOutBounce(2*t-1)+.5};function Ti(t){return t+.5|0}const Ri=(t,e,i)=>Math.max(Math.min(t,i),e);function Ii(t){return Ri(Ti(2.55*t),0,255)}function zi(t){return Ri(Ti(255*t),0,255)}function Fi(t){return Ri(Ti(t/2.55)/100,0,1)}function Bi(t){return Ri(Ti(100*t),0,100)}const Vi={0:0,1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9,A:10,B:11,C:12,D:13,E:14,F:15,a:10,b:11,c:12,d:13,e:14,f:15},Ni=[..."0123456789ABCDEF"],Wi=t=>Ni[15&t],ji=t=>Ni[(240&t)>>4]+Ni[15&t],Hi=t=>(240&t)>>4==(15&t);const $i=/^(hsla?|hwb|hsv)\(\s*([-+.e\d]+)(?:deg)?[\s,]+([-+.e\d]+)%[\s,]+([-+.e\d]+)%(?:[\s,]+([-+.e\d]+)(%)?)?\s*\)$/;function Yi(t,e,i){const n=e*Math.min(i,1-i),s=(e,s=(e+t/30)%12)=>i-n*Math.max(Math.min(s-3,9-s,1),-1);return[s(0),s(8),s(4)]}function Ui(t,e,i){const n=(n,s=(n+t/60)%6)=>i-i*e*Math.max(Math.min(s,4-s,1),0);return[n(5),n(3),n(1)]}function Xi(t,e,i){const n=Yi(t,1,.5);let s;for(e+i>1&&(s=1/(e+i),e*=s,i*=s),s=0;s<3;s++)n[s]*=1-e-i,n[s]+=e;return n}function qi(t){const e=t.r/255,i=t.g/255,n=t.b/255,s=Math.max(e,i,n),o=Math.min(e,i,n),r=(s+o)/2;let a,l,h;return s!==o&&(h=s-o,l=r>.5?h/(2-s-o):h/(s+o),a=function(t,e,i,n,s){return t===s?(e-i)/n+(e<i?6:0):e===s?(i-t)/n+2:(t-e)/n+4}(e,i,n,h,s),a=60*a+.5),[0|a,l||0,r]}function Gi(t,e,i,n){return(Array.isArray(e)?t(e[0],e[1],e[2]):t(e,i,n)).map(zi)}function Ki(t,e,i){return Gi(Yi,t,e,i)}function Ji(t){return(t%360+360)%360}const Zi={x:"dark",Z:"light",Y:"re",X:"blu",W:"gr",V:"medium",U:"slate",A:"ee",T:"ol",S:"or",B:"ra",C:"lateg",D:"ights",R:"in",Q:"turquois",E:"hi",P:"ro",O:"al",N:"le",M:"de",L:"yello",F:"en",K:"ch",G:"arks",H:"ea",I:"ightg",J:"wh"},Qi={OiceXe:"f0f8ff",antiquewEte:"faebd7",aqua:"ffff",aquamarRe:"7fffd4",azuY:"f0ffff",beige:"f5f5dc",bisque:"ffe4c4",black:"0",blanKedOmond:"ffebcd",Xe:"ff",XeviTet:"8a2be2",bPwn:"a52a2a",burlywood:"deb887",caMtXe:"5f9ea0",KartYuse:"7fff00",KocTate:"d2691e",cSO:"ff7f50",cSnflowerXe:"6495ed",cSnsilk:"fff8dc",crimson:"dc143c",cyan:"ffff",xXe:"8b",xcyan:"8b8b",xgTMnPd:"b8860b",xWay:"a9a9a9",xgYF:"6400",xgYy:"a9a9a9",xkhaki:"bdb76b",xmagFta:"8b008b",xTivegYF:"556b2f",xSange:"ff8c00",xScEd:"9932cc",xYd:"8b0000",xsOmon:"e9967a",xsHgYF:"8fbc8f",xUXe:"483d8b",xUWay:"2f4f4f",xUgYy:"2f4f4f",xQe:"ced1",xviTet:"9400d3",dAppRk:"ff1493",dApskyXe:"bfff",dimWay:"696969",dimgYy:"696969",dodgerXe:"1e90ff",fiYbrick:"b22222",flSOwEte:"fffaf0",foYstWAn:"228b22",fuKsia:"ff00ff",gaRsbSo:"dcdcdc",ghostwEte:"f8f8ff",gTd:"ffd700",gTMnPd:"daa520",Way:"808080",gYF:"8000",gYFLw:"adff2f",gYy:"808080",honeyMw:"f0fff0",hotpRk:"ff69b4",RdianYd:"cd5c5c",Rdigo:"4b0082",ivSy:"fffff0",khaki:"f0e68c",lavFMr:"e6e6fa",lavFMrXsh:"fff0f5",lawngYF:"7cfc00",NmoncEffon:"fffacd",ZXe:"add8e6",ZcSO:"f08080",Zcyan:"e0ffff",ZgTMnPdLw:"fafad2",ZWay:"d3d3d3",ZgYF:"90ee90",ZgYy:"d3d3d3",ZpRk:"ffb6c1",ZsOmon:"ffa07a",ZsHgYF:"20b2aa",ZskyXe:"87cefa",ZUWay:"778899",ZUgYy:"778899",ZstAlXe:"b0c4de",ZLw:"ffffe0",lime:"ff00",limegYF:"32cd32",lRF:"faf0e6",magFta:"ff00ff",maPon:"800000",VaquamarRe:"66cdaa",VXe:"cd",VScEd:"ba55d3",VpurpN:"9370db",VsHgYF:"3cb371",VUXe:"7b68ee",VsprRggYF:"fa9a",VQe:"48d1cc",VviTetYd:"c71585",midnightXe:"191970",mRtcYam:"f5fffa",mistyPse:"ffe4e1",moccasR:"ffe4b5",navajowEte:"ffdead",navy:"80",Tdlace:"fdf5e6",Tive:"808000",TivedBb:"6b8e23",Sange:"ffa500",SangeYd:"ff4500",ScEd:"da70d6",pOegTMnPd:"eee8aa",pOegYF:"98fb98",pOeQe:"afeeee",pOeviTetYd:"db7093",papayawEp:"ffefd5",pHKpuff:"ffdab9",peru:"cd853f",pRk:"ffc0cb",plum:"dda0dd",powMrXe:"b0e0e6",purpN:"800080",YbeccapurpN:"663399",Yd:"ff0000",Psybrown:"bc8f8f",PyOXe:"4169e1",saddNbPwn:"8b4513",sOmon:"fa8072",sandybPwn:"f4a460",sHgYF:"2e8b57",sHshell:"fff5ee",siFna:"a0522d",silver:"c0c0c0",skyXe:"87ceeb",UXe:"6a5acd",UWay:"708090",UgYy:"708090",snow:"fffafa",sprRggYF:"ff7f",stAlXe:"4682b4",tan:"d2b48c",teO:"8080",tEstN:"d8bfd8",tomato:"ff6347",Qe:"40e0d0",viTet:"ee82ee",JHt:"f5deb3",wEte:"ffffff",wEtesmoke:"f5f5f5",Lw:"ffff00",LwgYF:"9acd32"};let tn;const en=/^rgba?\(\s*([-+.\d]+)(%)?[\s,]+([-+.e\d]+)(%)?[\s,]+([-+.e\d]+)(%)?(?:[\s,/]+([-+.e\d]+)(%)?)?\s*\)$/,nn=t=>t<=.0031308?12.92*t:1.055*Math.pow(t,1/2.4)-.055,sn=t=>t<=.04045?t/12.92:Math.pow((t+.055)/1.055,2.4);function on(t,e,i){if(t){let n=qi(t);n[e]=Math.max(0,Math.min(n[e]+n[e]*i,0===e?360:1)),n=Ki(n),t.r=n[0],t.g=n[1],t.b=n[2]}}function rn(t,e){return t?Object.assign(e||{},t):t}function an(t){var e={r:0,g:0,b:0,a:255};return Array.isArray(t)?t.length>=3&&(e={r:t[0],g:t[1],b:t[2],a:255},t.length>3&&(e.a=zi(t[3]))):(e=rn(t,{r:0,g:0,b:0,a:1})).a=zi(e.a),e}function ln(t){return"r"===t.charAt(0)?function(t){const e=en.exec(t);let i,n,s,o=255;if(e){if(e[7]!==i){const t=+e[7];o=e[8]?Ii(t):Ri(255*t,0,255)}return i=+e[1],n=+e[3],s=+e[5],i=255&(e[2]?Ii(i):Ri(i,0,255)),n=255&(e[4]?Ii(n):Ri(n,0,255)),s=255&(e[6]?Ii(s):Ri(s,0,255)),{r:i,g:n,b:s,a:o}}}(t):function(t){const e=$i.exec(t);let i,n=255;if(!e)return;e[5]!==i&&(n=e[6]?Ii(+e[5]):zi(+e[5]));const s=Ji(+e[2]),o=+e[3]/100,r=+e[4]/100;return i="hwb"===e[1]?function(t,e,i){return Gi(Xi,t,e,i)}(s,o,r):"hsv"===e[1]?function(t,e,i){return Gi(Ui,t,e,i)}(s,o,r):Ki(s,o,r),{r:i[0],g:i[1],b:i[2],a:n}}(t)}class hn{constructor(t){if(t instanceof hn)return t;const e=typeof t;let i;var n,s,o;"object"===e?i=an(t):"string"===e&&(o=(n=t).length,"#"===n[0]&&(4===o||5===o?s={r:255&17*Vi[n[1]],g:255&17*Vi[n[2]],b:255&17*Vi[n[3]],a:5===o?17*Vi[n[4]]:255}:7!==o&&9!==o||(s={r:Vi[n[1]]<<4|Vi[n[2]],g:Vi[n[3]]<<4|Vi[n[4]],b:Vi[n[5]]<<4|Vi[n[6]],a:9===o?Vi[n[7]]<<4|Vi[n[8]]:255})),i=s||function(t){tn||(tn=function(){const t={},e=Object.keys(Qi),i=Object.keys(Zi);let n,s,o,r,a;for(n=0;n<e.length;n++){for(r=a=e[n],s=0;s<i.length;s++)o=i[s],a=a.replace(o,Zi[o]);o=parseInt(Qi[r],16),t[a]=[o>>16&255,o>>8&255,255&o]}return t}(),tn.transparent=[0,0,0,0]);const e=tn[t.toLowerCase()];return e&&{r:e[0],g:e[1],b:e[2],a:4===e.length?e[3]:255}}(t)||ln(t)),this._rgb=i,this._valid=!!i}get valid(){return this._valid}get rgb(){var t=rn(this._rgb);return t&&(t.a=Fi(t.a)),t}set rgb(t){this._rgb=an(t)}rgbString(){return this._valid?(t=this._rgb)&&(t.a<255?`rgba(${t.r}, ${t.g}, ${t.b}, ${Fi(t.a)})`:`rgb(${t.r}, ${t.g}, ${t.b})`):void 0;var t}hexString(){return this._valid?(t=this._rgb,e=(t=>Hi(t.r)&&Hi(t.g)&&Hi(t.b)&&Hi(t.a))(t)?Wi:ji,t?"#"+e(t.r)+e(t.g)+e(t.b)+((t,e)=>t<255?e(t):"")(t.a,e):void 0):void 0;var t,e}hslString(){return this._valid?function(t){if(!t)return;const e=qi(t),i=e[0],n=Bi(e[1]),s=Bi(e[2]);return t.a<255?`hsla(${i}, ${n}%, ${s}%, ${Fi(t.a)})`:`hsl(${i}, ${n}%, ${s}%)`}(this._rgb):void 0}mix(t,e){if(t){const i=this.rgb,n=t.rgb;let s;const o=e===s?.5:e,r=2*o-1,a=i.a-n.a,l=((r*a==-1?r:(r+a)/(1+r*a))+1)/2;s=1-l,i.r=255&l*i.r+s*n.r+.5,i.g=255&l*i.g+s*n.g+.5,i.b=255&l*i.b+s*n.b+.5,i.a=o*i.a+(1-o)*n.a,this.rgb=i}return this}interpolate(t,e){return t&&(this._rgb=function(t,e,i){const n=sn(Fi(t.r)),s=sn(Fi(t.g)),o=sn(Fi(t.b));return{r:zi(nn(n+i*(sn(Fi(e.r))-n))),g:zi(nn(s+i*(sn(Fi(e.g))-s))),b:zi(nn(o+i*(sn(Fi(e.b))-o))),a:t.a+i*(e.a-t.a)}}(this._rgb,t._rgb,e)),this}clone(){return new hn(this.rgb)}alpha(t){return this._rgb.a=zi(t),this}clearer(t){return this._rgb.a*=1-t,this}greyscale(){const t=this._rgb,e=Ti(.3*t.r+.59*t.g+.11*t.b);return t.r=t.g=t.b=e,this}opaquer(t){return this._rgb.a*=1+t,this}negate(){const t=this._rgb;return t.r=255-t.r,t.g=255-t.g,t.b=255-t.b,this}lighten(t){return on(this._rgb,2,t),this}darken(t){return on(this._rgb,2,-t),this}saturate(t){return on(this._rgb,1,t),this}desaturate(t){return on(this._rgb,1,-t),this}rotate(t){return function(t,e){var i=qi(t);i[0]=Ji(i[0]+e),i=Ki(i),t.r=i[0],t.g=i[1],t.b=i[2]}(this._rgb,t),this}}function cn(t){return new hn(t)}function dn(t){if(t&&"object"==typeof t){const e=t.toString();return"[object CanvasPattern]"===e||"[object CanvasGradient]"===e}return!1}function un(t){return dn(t)?t:cn(t)}function fn(t){return dn(t)?t:cn(t).saturate(.5).darken(.1).hexString()}const gn=Object.create(null),pn=Object.create(null);function mn(t,e){if(!e)return t;const i=e.split(".");for(let e=0,n=i.length;e<n;++e){const n=i[e];t=t[n]||(t[n]=Object.create(null))}return t}function bn(t,e,i){return"string"==typeof e?Ke(mn(t,e),i):Ke(mn(t,""),e)}var xn=new class{constructor(t){this.animation=void 0,this.backgroundColor="rgba(0,0,0,0.1)",this.borderColor="rgba(0,0,0,0.1)",this.color="#666",this.datasets={},this.devicePixelRatio=t=>t.chart.platform.getDevicePixelRatio(),this.elements={},this.events=["mousemove","mouseout","click","touchstart","touchmove"],this.font={family:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",size:12,style:"normal",lineHeight:1.2,weight:null},this.hover={},this.hoverBackgroundColor=(t,e)=>fn(e.backgroundColor),this.hoverBorderColor=(t,e)=>fn(e.borderColor),this.hoverColor=(t,e)=>fn(e.color),this.indexAxis="x",this.interaction={mode:"nearest",intersect:!0,includeInvisible:!1},this.maintainAspectRatio=!0,this.onHover=null,this.onClick=null,this.parsing=!0,this.plugins={},this.responsive=!0,this.scale=void 0,this.scales={},this.showLine=!0,this.drawActiveElementsOnTop=!0,this.describe(t)}set(t,e){return bn(this,t,e)}get(t){return mn(this,t)}describe(t,e){return bn(pn,t,e)}override(t,e){return bn(gn,t,e)}route(t,e,i,n){const s=mn(this,t),o=mn(this,i),r="_"+e;Object.defineProperties(s,{[r]:{value:s[e],writable:!0},[e]:{enumerable:!0,get(){const t=this[r],e=o[n];return Ve(t)?Object.assign({},e,t):je(t,e)},set(t){this[r]=t}}})}}({_scriptable:t=>!t.startsWith("on"),_indexable:t=>"events"!==t,hover:{_fallback:"interaction"},interaction:{_scriptable:!1,_indexable:!1}});function _n(t,e,i,n,s){let o=e[s];return o||(o=e[s]=t.measureText(s).width,i.push(s)),o>n&&(n=o),n}function yn(t,e,i,n){let s=(n=n||{}).data=n.data||{},o=n.garbageCollect=n.garbageCollect||[];n.font!==e&&(s=n.data={},o=n.garbageCollect=[],n.font=e),t.save(),t.font=e;let r=0;const a=i.length;let l,h,c,d,u;for(l=0;l<a;l++)if(d=i[l],null!=d&&!0!==Be(d))r=_n(t,s,o,r,d);else if(Be(d))for(h=0,c=d.length;h<c;h++)u=d[h],null==u||Be(u)||(r=_n(t,s,o,r,u));t.restore();const f=o.length/2;if(f>i.length){for(l=0;l<f;l++)delete s[o[l]];o.splice(0,f)}return r}function vn(t,e,i){const n=t.currentDevicePixelRatio,s=0!==i?Math.max(i/2,.5):0;return Math.round((e-s)*n)/n+s}function wn(t,e){(e=e||t.getContext("2d")).save(),e.resetTransform(),e.clearRect(0,0,t.width,t.height),e.restore()}function Mn(t,e,i,n){let s,o,r,a,l;const h=e.pointStyle,c=e.rotation,d=e.radius;let u=(c||0)*hi;if(h&&"object"==typeof h&&(s=h.toString(),"[object HTMLImageElement]"===s||"[object HTMLCanvasElement]"===s))return t.save(),t.translate(i,n),t.rotate(u),t.drawImage(h,-h.width/2,-h.height/2,h.width,h.height),void t.restore();if(!(isNaN(d)||d<=0)){switch(t.beginPath(),h){default:t.arc(i,n,d,0,ri),t.closePath();break;case"triangle":t.moveTo(i+Math.sin(u)*d,n-Math.cos(u)*d),u+=ui,t.lineTo(i+Math.sin(u)*d,n-Math.cos(u)*d),u+=ui,t.lineTo(i+Math.sin(u)*d,n-Math.cos(u)*d),t.closePath();break;case"rectRounded":l=.516*d,a=d-l,o=Math.cos(u+di)*a,r=Math.sin(u+di)*a,t.arc(i-o,n-r,l,u-oi,u-ci),t.arc(i+r,n-o,l,u-ci,u),t.arc(i+o,n+r,l,u,u+ci),t.arc(i-r,n+o,l,u+ci,u+oi),t.closePath();break;case"rect":if(!c){a=Math.SQRT1_2*d,t.rect(i-a,n-a,2*a,2*a);break}u+=di;case"rectRot":o=Math.cos(u)*d,r=Math.sin(u)*d,t.moveTo(i-o,n-r),t.lineTo(i+r,n-o),t.lineTo(i+o,n+r),t.lineTo(i-r,n+o),t.closePath();break;case"crossRot":u+=di;case"cross":o=Math.cos(u)*d,r=Math.sin(u)*d,t.moveTo(i-o,n-r),t.lineTo(i+o,n+r),t.moveTo(i+r,n-o),t.lineTo(i-r,n+o);break;case"star":o=Math.cos(u)*d,r=Math.sin(u)*d,t.moveTo(i-o,n-r),t.lineTo(i+o,n+r),t.moveTo(i+r,n-o),t.lineTo(i-r,n+o),u+=di,o=Math.cos(u)*d,r=Math.sin(u)*d,t.moveTo(i-o,n-r),t.lineTo(i+o,n+r),t.moveTo(i+r,n-o),t.lineTo(i-r,n+o);break;case"line":o=Math.cos(u)*d,r=Math.sin(u)*d,t.moveTo(i-o,n-r),t.lineTo(i+o,n+r);break;case"dash":t.moveTo(i,n),t.lineTo(i+Math.cos(u)*d,n+Math.sin(u)*d)}t.fill(),e.borderWidth>0&&t.stroke()}}function kn(t,e,i){return i=i||.5,!e||t&&t.x>e.left-i&&t.x<e.right+i&&t.y>e.top-i&&t.y<e.bottom+i}function Sn(t,e){t.save(),t.beginPath(),t.rect(e.left,e.top,e.right-e.left,e.bottom-e.top),t.clip()}function Pn(t){t.restore()}function Dn(t,e,i,n,s){if(!e)return t.lineTo(i.x,i.y);if("middle"===s){const n=(e.x+i.x)/2;t.lineTo(n,e.y),t.lineTo(n,i.y)}else"after"===s!=!!n?t.lineTo(e.x,i.y):t.lineTo(i.x,e.y);t.lineTo(i.x,i.y)}function Cn(t,e,i,n){if(!e)return t.lineTo(i.x,i.y);t.bezierCurveTo(n?e.cp1x:e.cp2x,n?e.cp1y:e.cp2y,n?i.cp2x:i.cp1x,n?i.cp2y:i.cp1y,i.x,i.y)}function An(t,e,i,n,s,o={}){const r=Be(e)?e:[e],a=o.strokeWidth>0&&""!==o.strokeColor;let l,h;for(t.save(),t.font=s.string,function(t,e){e.translation&&t.translate(e.translation[0],e.translation[1]),Fe(e.rotation)||t.rotate(e.rotation),e.color&&(t.fillStyle=e.color),e.textAlign&&(t.textAlign=e.textAlign),e.textBaseline&&(t.textBaseline=e.textBaseline)}(t,o),l=0;l<r.length;++l)h=r[l],a&&(o.strokeColor&&(t.strokeStyle=o.strokeColor),Fe(o.strokeWidth)||(t.lineWidth=o.strokeWidth),t.strokeText(h,i,n,o.maxWidth)),t.fillText(h,i,n,o.maxWidth),On(t,i,n,h,o),n+=s.lineHeight;t.restore()}function On(t,e,i,n,s){if(s.strikethrough||s.underline){const o=t.measureText(n),r=e-o.actualBoundingBoxLeft,a=e+o.actualBoundingBoxRight,l=i-o.actualBoundingBoxAscent,h=i+o.actualBoundingBoxDescent,c=s.strikethrough?(l+h)/2:h;t.strokeStyle=t.fillStyle,t.beginPath(),t.lineWidth=s.decorationWidth||2,t.moveTo(r,c),t.lineTo(a,c),t.stroke()}}function En(t,e){const{x:i,y:n,w:s,h:o,radius:r}=e;t.arc(i+r.topLeft,n+r.topLeft,r.topLeft,-ci,oi,!0),t.lineTo(i,n+o-r.bottomLeft),t.arc(i+r.bottomLeft,n+o-r.bottomLeft,r.bottomLeft,oi,ci,!0),t.lineTo(i+s-r.bottomRight,n+o),t.arc(i+s-r.bottomRight,n+o-r.bottomRight,r.bottomRight,ci,0,!0),t.lineTo(i+s,n+r.topRight),t.arc(i+s-r.topRight,n+r.topRight,r.topRight,0,-ci,!0),t.lineTo(i+r.topLeft,n)}const Ln=new RegExp(/^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/),Tn=new RegExp(/^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/);function Rn(t,e){const i=(""+t).match(Ln);if(!i||"normal"===i[1])return 1.2*e;switch(t=+i[2],i[3]){case"px":return t;case"%":t/=100}return e*t}function In(t,e){const i={},n=Ve(e),s=n?Object.keys(e):e,o=Ve(t)?n?i=>je(t[i],t[e[i]]):e=>t[e]:()=>t;for(const t of s)i[t]=+o(t)||0;return i}function zn(t){return In(t,{top:"y",right:"x",bottom:"y",left:"x"})}function Fn(t){return In(t,["topLeft","topRight","bottomLeft","bottomRight"])}function Bn(t){const e=zn(t);return e.width=e.left+e.right,e.height=e.top+e.bottom,e}function Vn(t,e){t=t||{},e=e||xn.font;let i=je(t.size,e.size);"string"==typeof i&&(i=parseInt(i,10));let n=je(t.style,e.style);n&&!(""+n).match(Tn)&&(console.warn('Invalid font style specified: "'+n+'"'),n="");const s={family:je(t.family,e.family),lineHeight:Rn(je(t.lineHeight,e.lineHeight),i),size:i,style:n,weight:je(t.weight,e.weight),string:""};return s.string=function(t){return!t||Fe(t.size)||Fe(t.family)?null:(t.style?t.style+" ":"")+(t.weight?t.weight+" ":"")+t.size+"px "+t.family}(s),s}function Nn(t,e,i,n){let s,o,r,a=!0;for(s=0,o=t.length;s<o;++s)if(r=t[s],void 0!==r&&(void 0!==e&&"function"==typeof r&&(r=r(e),a=!1),void 0!==i&&Be(r)&&(r=r[i%r.length],a=!1),void 0!==r))return n&&!a&&(n.cacheable=!1),r}function Wn(t,e){return Object.assign(Object.create(t),e)}function jn(t,e,i){i=i||(i=>t[i]<e);let n,s=t.length-1,o=0;for(;s-o>1;)n=o+s>>1,i(n)?o=n:s=n;return{lo:o,hi:s}}const Hn=(t,e,i)=>jn(t,i,(n=>t[n][e]<i)),$n=(t,e,i)=>jn(t,i,(n=>t[n][e]>=i)),Yn=["push","pop","shift","splice","unshift"];function Un(t,e){const i=t._chartjs;if(!i)return;const n=i.listeners,s=n.indexOf(e);-1!==s&&n.splice(s,1),n.length>0||(Yn.forEach((e=>{delete t[e]})),delete t._chartjs)}function Xn(t){const e=new Set;let i,n;for(i=0,n=t.length;i<n;++i)e.add(t[i]);return e.size===n?t:Array.from(e)}function qn(t,e=[""],i=t,n,s=(()=>t[0])){ii(n)||(n=os("_fallback",t));const o={[Symbol.toStringTag]:"Object",_cacheable:!0,_scopes:t,_rootScopes:i,_fallback:n,_getTarget:s,override:s=>qn([s,...t],e,i,n)};return new Proxy(o,{deleteProperty:(e,i)=>(delete e[i],delete e._keys,delete t[0][i],!0),get:(i,n)=>Qn(i,n,(()=>function(t,e,i,n){let s;for(const o of e)if(s=os(Jn(o,t),i),ii(s))return Zn(t,s)?ns(i,n,t,s):s}(n,e,t,i))),getOwnPropertyDescriptor:(t,e)=>Reflect.getOwnPropertyDescriptor(t._scopes[0],e),getPrototypeOf:()=>Reflect.getPrototypeOf(t[0]),has:(t,e)=>rs(t).includes(e),ownKeys:t=>rs(t),set(t,e,i){const n=t._storage||(t._storage=s());return t[e]=n[e]=i,delete t._keys,!0}})}function Gn(t,e,i,n){const s={_cacheable:!1,_proxy:t,_context:e,_subProxy:i,_stack:new Set,_descriptors:Kn(t,n),setContext:e=>Gn(t,e,i,n),override:s=>Gn(t.override(s),e,i,n)};return new Proxy(s,{deleteProperty:(e,i)=>(delete e[i],delete t[i],!0),get:(t,e,i)=>Qn(t,e,(()=>function(t,e,i){const{_proxy:n,_context:s,_subProxy:o,_descriptors:r}=t;let a=n[e];return ni(a)&&r.isScriptable(e)&&(a=function(t,e,i,n){const{_proxy:s,_context:o,_subProxy:r,_stack:a}=i;if(a.has(t))throw new Error("Recursion detected: "+Array.from(a).join("->")+"->"+t);return a.add(t),e=e(o,r||n),a.delete(t),Zn(t,e)&&(e=ns(s._scopes,s,t,e)),e}(e,a,t,i)),Be(a)&&a.length&&(a=function(t,e,i,n){const{_proxy:s,_context:o,_subProxy:r,_descriptors:a}=i;if(ii(o.index)&&n(t))e=e[o.index%e.length];else if(Ve(e[0])){const i=e,n=s._scopes.filter((t=>t!==i));e=[];for(const l of i){const i=ns(n,s,t,l);e.push(Gn(i,o,r&&r[t],a))}}return e}(e,a,t,r.isIndexable)),Zn(e,a)&&(a=Gn(a,s,o&&o[e],r)),a}(t,e,i))),getOwnPropertyDescriptor:(e,i)=>e._descriptors.allKeys?Reflect.has(t,i)?{enumerable:!0,configurable:!0}:void 0:Reflect.getOwnPropertyDescriptor(t,i),getPrototypeOf:()=>Reflect.getPrototypeOf(t),has:(e,i)=>Reflect.has(t,i),ownKeys:()=>Reflect.ownKeys(t),set:(e,i,n)=>(t[i]=n,delete e[i],!0)})}function Kn(t,e={scriptable:!0,indexable:!0}){const{_scriptable:i=e.scriptable,_indexable:n=e.indexable,_allKeys:s=e.allKeys}=t;return{allKeys:s,scriptable:i,indexable:n,isScriptable:ni(i)?i:()=>i,isIndexable:ni(n)?n:()=>n}}const Jn=(t,e)=>t?t+ei(e):e,Zn=(t,e)=>Ve(e)&&"adapters"!==t&&(null===Object.getPrototypeOf(e)||e.constructor===Object);function Qn(t,e,i){if(Object.prototype.hasOwnProperty.call(t,e))return t[e];const n=i();return t[e]=n,n}function ts(t,e,i){return ni(t)?t(e,i):t}const es=(t,e)=>!0===t?e:"string"==typeof t?ti(e,t):void 0;function is(t,e,i,n,s){for(const o of e){const e=es(i,o);if(e){t.add(e);const o=ts(e._fallback,i,s);if(ii(o)&&o!==i&&o!==n)return o}else if(!1===e&&ii(n)&&i!==n)return null}return!1}function ns(t,e,i,n){const s=e._rootScopes,o=ts(e._fallback,i,n),r=[...t,...s],a=new Set;a.add(n);let l=ss(a,r,i,o||i,n);return null!==l&&(!ii(o)||o===i||(l=ss(a,r,o,l,n),null!==l))&&qn(Array.from(a),[""],s,o,(()=>function(t,e,i){const n=t._getTarget();e in n||(n[e]={});const s=n[e];return Be(s)&&Ve(i)?i:s}(e,i,n)))}function ss(t,e,i,n,s){for(;i;)i=is(t,e,i,n,s);return i}function os(t,e){for(const i of e){if(!i)continue;const e=i[t];if(ii(e))return e}}function rs(t){let e=t._keys;return e||(e=t._keys=function(t){const e=new Set;for(const i of t)for(const t of Object.keys(i).filter((t=>!t.startsWith("_"))))e.add(t);return Array.from(e)}(t._scopes)),e}function as(t,e,i,n){const{iScale:s}=t,{key:o="r"}=this._parsing,r=new Array(n);let a,l,h,c;for(a=0,l=n;a<l;++a)h=a+i,c=e[h],r[a]={r:s.parse(ti(c,o),h)};return r}const ls=Number.EPSILON||1e-14,hs=(t,e)=>e<t.length&&!t[e].skip&&t[e],cs=t=>"x"===t?"y":"x";function ds(t,e,i,n){const s=t.skip?e:t,o=e,r=i.skip?e:i,a=Mi(o,s),l=Mi(r,o);let h=a/(a+l),c=l/(a+l);h=isNaN(h)?0:h,c=isNaN(c)?0:c;const d=n*h,u=n*c;return{previous:{x:o.x-d*(r.x-s.x),y:o.y-d*(r.y-s.y)},next:{x:o.x+u*(r.x-s.x),y:o.y+u*(r.y-s.y)}}}function us(t,e,i){return Math.max(Math.min(t,i),e)}function fs(t,e,i,n,s){let o,r,a,l;if(e.spanGaps&&(t=t.filter((t=>!t.skip))),"monotone"===e.cubicInterpolationMode)!function(t,e="x"){const i=cs(e),n=t.length,s=Array(n).fill(0),o=Array(n);let r,a,l,h=hs(t,0);for(r=0;r<n;++r)if(a=l,l=h,h=hs(t,r+1),l){if(h){const t=h[e]-l[e];s[r]=0!==t?(h[i]-l[i])/t:0}o[r]=a?h?gi(s[r-1])!==gi(s[r])?0:(s[r-1]+s[r])/2:s[r-1]:s[r]}!function(t,e,i){const n=t.length;let s,o,r,a,l,h=hs(t,0);for(let c=0;c<n-1;++c)l=h,h=hs(t,c+1),l&&h&&(bi(e[c],0,ls)?i[c]=i[c+1]=0:(s=i[c]/e[c],o=i[c+1]/e[c],a=Math.pow(s,2)+Math.pow(o,2),a<=9||(r=3/Math.sqrt(a),i[c]=s*r*e[c],i[c+1]=o*r*e[c])))}(t,s,o),function(t,e,i="x"){const n=cs(i),s=t.length;let o,r,a,l=hs(t,0);for(let h=0;h<s;++h){if(r=a,a=l,l=hs(t,h+1),!a)continue;const s=a[i],c=a[n];r&&(o=(s-r[i])/3,a[`cp1${i}`]=s-o,a[`cp1${n}`]=c-o*e[h]),l&&(o=(l[i]-s)/3,a[`cp2${i}`]=s+o,a[`cp2${n}`]=c+o*e[h])}}(t,o,e)}(t,s);else{let i=n?t[t.length-1]:t[0];for(o=0,r=t.length;o<r;++o)a=t[o],l=ds(i,a,t[Math.min(o+1,r-(n?0:1))%r],e.tension),a.cp1x=l.previous.x,a.cp1y=l.previous.y,a.cp2x=l.next.x,a.cp2y=l.next.y,i=a}e.capBezierPoints&&function(t,e){let i,n,s,o,r,a=kn(t[0],e);for(i=0,n=t.length;i<n;++i)r=o,o=a,a=i<n-1&&kn(t[i+1],e),o&&(s=t[i],r&&(s.cp1x=us(s.cp1x,e.left,e.right),s.cp1y=us(s.cp1y,e.top,e.bottom)),a&&(s.cp2x=us(s.cp2x,e.left,e.right),s.cp2y=us(s.cp2y,e.top,e.bottom)))}(t,i)}function gs(){return"undefined"!=typeof window&&"undefined"!=typeof document}function ps(t){let e=t.parentNode;return e&&"[object ShadowRoot]"===e.toString()&&(e=e.host),e}function ms(t,e,i){let n;return"string"==typeof t?(n=parseInt(t,10),-1!==t.indexOf("%")&&(n=n/100*e.parentNode[i])):n=t,n}const bs=t=>window.getComputedStyle(t,null),xs=["top","right","bottom","left"];function _s(t,e,i){const n={};i=i?"-"+i:"";for(let s=0;s<4;s++){const o=xs[s];n[o]=parseFloat(t[e+"-"+o+i])||0}return n.width=n.left+n.right,n.height=n.top+n.bottom,n}function ys(t,e){if("native"in t)return t;const{canvas:i,currentDevicePixelRatio:n}=e,s=bs(i),o="border-box"===s.boxSizing,r=_s(s,"padding"),a=_s(s,"border","width"),{x:l,y:h,box:c}=function(t,e){const i=t.touches,n=i&&i.length?i[0]:t,{offsetX:s,offsetY:o}=n;let r,a,l=!1;if(((t,e,i)=>(t>0||e>0)&&(!i||!i.shadowRoot))(s,o,t.target))r=s,a=o;else{const t=e.getBoundingClientRect();r=n.clientX-t.left,a=n.clientY-t.top,l=!0}return{x:r,y:a,box:l}}(t,i),d=r.left+(c&&a.left),u=r.top+(c&&a.top);let{width:f,height:g}=e;return o&&(f-=r.width+a.width,g-=r.height+a.height),{x:Math.round((l-d)/f*i.width/n),y:Math.round((h-u)/g*i.height/n)}}const vs=t=>Math.round(10*t)/10;function ws(t,e,i){const n=e||1,s=Math.floor(t.height*n),o=Math.floor(t.width*n);t.height=s/n,t.width=o/n;const r=t.canvas;return r.style&&(i||!r.style.height&&!r.style.width)&&(r.style.height=`${t.height}px`,r.style.width=`${t.width}px`),(t.currentDevicePixelRatio!==n||r.height!==s||r.width!==o)&&(t.currentDevicePixelRatio=n,r.height=s,r.width=o,t.ctx.setTransform(n,0,0,n,0,0),!0)}const Ms=function(){let t=!1;try{const e={get passive(){return t=!0,!1}};window.addEventListener("test",null,e),window.removeEventListener("test",null,e)}catch(t){}return t}();function ks(t,e){const i=function(t,e){return bs(t).getPropertyValue(e)}(t,e),n=i&&i.match(/^(\d+)(\.\d+)?px$/);return n?+n[1]:void 0}function Ss(t,e,i,n){return{x:t.x+i*(e.x-t.x),y:t.y+i*(e.y-t.y)}}function Ps(t,e,i,n){return{x:t.x+i*(e.x-t.x),y:"middle"===n?i<.5?t.y:e.y:"after"===n?i<1?t.y:e.y:i>0?e.y:t.y}}function Ds(t,e,i,n){const s={x:t.cp2x,y:t.cp2y},o={x:e.cp1x,y:e.cp1y},r=Ss(t,s,i),a=Ss(s,o,i),l=Ss(o,e,i),h=Ss(r,a,i),c=Ss(a,l,i);return Ss(h,c,i)}const Cs=new Map;function As(t,e,i){return function(t,e){e=e||{};const i=t+JSON.stringify(e);let n=Cs.get(i);return n||(n=new Intl.NumberFormat(t,e),Cs.set(i,n)),n}(e,i).format(t)}function Os(t,e,i){return t?function(t,e){return{x:i=>t+t+e-i,setWidth(t){e=t},textAlign:t=>"center"===t?t:"right"===t?"left":"right",xPlus:(t,e)=>t-e,leftForLtr:(t,e)=>t-e}}(e,i):{x:t=>t,setWidth(t){},textAlign:t=>t,xPlus:(t,e)=>t+e,leftForLtr:(t,e)=>t}}function Es(t,e){let i,n;"ltr"!==e&&"rtl"!==e||(i=t.canvas.style,n=[i.getPropertyValue("direction"),i.getPropertyPriority("direction")],i.setProperty("direction",e,"important"),t.prevTextDirection=n)}function Ls(t,e){void 0!==e&&(delete t.prevTextDirection,t.canvas.style.setProperty("direction",e[0],e[1]))}function Ts(t){return"angle"===t?{between:Pi,compare:ki,normalize:Si}:{between:Ci,compare:(t,e)=>t-e,normalize:t=>t}}function Rs({start:t,end:e,count:i,loop:n,style:s}){return{start:t%i,end:e%i,loop:n&&(e-t+1)%i==0,style:s}}function Is(t,e,i){if(!i)return[t];const{property:n,start:s,end:o}=i,r=e.length,{compare:a,between:l,normalize:h}=Ts(n),{start:c,end:d,loop:u,style:f}=function(t,e,i){const{property:n,start:s,end:o}=i,{between:r,normalize:a}=Ts(n),l=e.length;let h,c,{start:d,end:u,loop:f}=t;if(f){for(d+=l,u+=l,h=0,c=l;h<c&&r(a(e[d%l][n]),s,o);++h)d--,u--;d%=l,u%=l}return u<d&&(u+=l),{start:d,end:u,loop:f,style:t.style}}(t,e,i),g=[];let p,m,b,x=!1,_=null;for(let t=c,i=c;t<=d;++t)m=e[t%r],m.skip||(p=h(m[n]),p!==b&&(x=l(p,s,o),null===_&&(x||l(s,b,p)&&0!==a(s,b))&&(_=0===a(p,s)?t:i),null!==_&&(!x||0===a(o,p)||l(o,b,p))&&(g.push(Rs({start:_,end:t,loop:u,count:r,style:f})),_=null),i=t,b=p));return null!==_&&g.push(Rs({start:_,end:d,loop:u,count:r,style:f})),g}function zs(t,e){const i=[],n=t.segments;for(let s=0;s<n.length;s++){const o=Is(n[s],t.points,e);o.length&&i.push(...o)}return i}function Fs(t){return{backgroundColor:t.backgroundColor,borderCapStyle:t.borderCapStyle,borderDash:t.borderDash,borderDashOffset:t.borderDashOffset,borderJoinStyle:t.borderJoinStyle,borderWidth:t.borderWidth,borderColor:t.borderColor}}function Bs(t,e){return e&&JSON.stringify(t)!==JSON.stringify(e)}var Vs=new class{constructor(){this._request=null,this._charts=new Map,this._running=!1,this._lastDate=void 0}_notify(t,e,i,n){const s=e.listeners[n],o=e.duration;s.forEach((n=>n({chart:t,initial:e.initial,numSteps:o,currentStep:Math.min(i-e.start,o)})))}_refresh(){this._request||(this._running=!0,this._request=Ee.call(window,(()=>{this._update(),this._request=null,this._running&&this._refresh()})))}_update(t=Date.now()){let e=0;this._charts.forEach(((i,n)=>{if(!i.running||!i.items.length)return;const s=i.items;let o,r=s.length-1,a=!1;for(;r>=0;--r)o=s[r],o._active?(o._total>i.duration&&(i.duration=o._total),o.tick(t),a=!0):(s[r]=s[s.length-1],s.pop());a&&(n.draw(),this._notify(n,i,t,"progress")),s.length||(i.running=!1,this._notify(n,i,t,"complete"),i.initial=!1),e+=s.length})),this._lastDate=t,0===e&&(this._running=!1)}_getAnims(t){const e=this._charts;let i=e.get(t);return i||(i={running:!1,initial:!0,items:[],listeners:{complete:[],progress:[]}},e.set(t,i)),i}listen(t,e,i){this._getAnims(t).listeners[e].push(i)}add(t,e){e&&e.length&&this._getAnims(t).items.push(...e)}has(t){return this._getAnims(t).items.length>0}start(t){const e=this._charts.get(t);e&&(e.running=!0,e.start=Date.now(),e.duration=e.items.reduce(((t,e)=>Math.max(t,e._duration)),0),this._refresh())}running(t){if(!this._running)return!1;const e=this._charts.get(t);return!!(e&&e.running&&e.items.length)}stop(t){const e=this._charts.get(t);if(!e||!e.items.length)return;const i=e.items;let n=i.length-1;for(;n>=0;--n)i[n].cancel();e.items=[],this._notify(t,e,Date.now(),"complete")}remove(t){return this._charts.delete(t)}};const Ns="transparent",Ws={boolean:(t,e,i)=>i>.5?e:t,color(t,e,i){const n=un(t||Ns),s=n.valid&&un(e||Ns);return s&&s.valid?s.mix(n,i).hexString():e},number:(t,e,i)=>t+(e-t)*i};class js{constructor(t,e,i,n){const s=e[i];n=Nn([t.to,n,s,t.from]);const o=Nn([t.from,s,n]);this._active=!0,this._fn=t.fn||Ws[t.type||typeof o],this._easing=Li[t.easing]||Li.linear,this._start=Math.floor(Date.now()+(t.delay||0)),this._duration=this._total=Math.floor(t.duration),this._loop=!!t.loop,this._target=e,this._prop=i,this._from=o,this._to=n,this._promises=void 0}active(){return this._active}update(t,e,i){if(this._active){this._notify(!1);const n=this._target[this._prop],s=i-this._start,o=this._duration-s;this._start=i,this._duration=Math.floor(Math.max(o,t.duration)),this._total+=s,this._loop=!!t.loop,this._to=Nn([t.to,e,n,t.from]),this._from=Nn([t.from,n,e])}}cancel(){this._active&&(this.tick(Date.now()),this._active=!1,this._notify(!1))}tick(t){const e=t-this._start,i=this._duration,n=this._prop,s=this._from,o=this._loop,r=this._to;let a;if(this._active=s!==r&&(o||e<i),!this._active)return this._target[n]=r,void this._notify(!0);e<0?this._target[n]=s:(a=e/i%2,a=o&&a>1?2-a:a,a=this._easing(Math.min(1,Math.max(0,a))),this._target[n]=this._fn(s,r,a))}wait(){const t=this._promises||(this._promises=[]);return new Promise(((e,i)=>{t.push({res:e,rej:i})}))}_notify(t){const e=t?"res":"rej",i=this._promises||[];for(let t=0;t<i.length;t++)i[t][e]()}}xn.set("animation",{delay:void 0,duration:1e3,easing:"easeOutQuart",fn:void 0,from:void 0,loop:void 0,to:void 0,type:void 0});const Hs=Object.keys(xn.animation);xn.describe("animation",{_fallback:!1,_indexable:!1,_scriptable:t=>"onProgress"!==t&&"onComplete"!==t&&"fn"!==t}),xn.set("animations",{colors:{type:"color",properties:["color","borderColor","backgroundColor"]},numbers:{type:"number",properties:["x","y","borderWidth","radius","tension"]}}),xn.describe("animations",{_fallback:"animation"}),xn.set("transitions",{active:{animation:{duration:400}},resize:{animation:{duration:0}},show:{animations:{colors:{from:"transparent"},visible:{type:"boolean",duration:0}}},hide:{animations:{colors:{to:"transparent"},visible:{type:"boolean",easing:"linear",fn:t=>0|t}}}});class $s{constructor(t,e){this._chart=t,this._properties=new Map,this.configure(e)}configure(t){if(!Ve(t))return;const e=this._properties;Object.getOwnPropertyNames(t).forEach((i=>{const n=t[i];if(!Ve(n))return;const s={};for(const t of Hs)s[t]=n[t];(Be(n.properties)&&n.properties||[i]).forEach((t=>{t!==i&&e.has(t)||e.set(t,s)}))}))}_animateOptions(t,e){const i=e.options,n=function(t,e){if(!e)return;let i=t.options;if(i)return i.$shared&&(t.options=i=Object.assign({},i,{$shared:!1,$animations:{}})),i;t.options=e}(t,i);if(!n)return[];const s=this._createAnimations(n,i);return i.$shared&&function(t,e){const i=[],n=Object.keys(e);for(let e=0;e<n.length;e++){const s=t[n[e]];s&&s.active()&&i.push(s.wait())}return Promise.all(i)}(t.options.$animations,i).then((()=>{t.options=i}),(()=>{})),s}_createAnimations(t,e){const i=this._properties,n=[],s=t.$animations||(t.$animations={}),o=Object.keys(e),r=Date.now();let a;for(a=o.length-1;a>=0;--a){const l=o[a];if("$"===l.charAt(0))continue;if("options"===l){n.push(...this._animateOptions(t,e));continue}const h=e[l];let c=s[l];const d=i.get(l);if(c){if(d&&c.active()){c.update(d,h,r);continue}c.cancel()}d&&d.duration?(s[l]=c=new js(d,t,l,h),n.push(c)):t[l]=h}return n}update(t,e){if(0===this._properties.size)return void Object.assign(t,e);const i=this._createAnimations(t,e);return i.length?(Vs.add(this._chart,i),!0):void 0}}function Ys(t,e){const i=t&&t.options||{},n=i.reverse,s=void 0===i.min?e:0,o=void 0===i.max?e:0;return{start:n?o:s,end:n?s:o}}function Us(t,e){const i=[],n=t._getSortedDatasetMetas(e);let s,o;for(s=0,o=n.length;s<o;++s)i.push(n[s].index);return i}function Xs(t,e,i,n={}){const s=t.keys,o="single"===n.mode;let r,a,l,h;if(null!==e){for(r=0,a=s.length;r<a;++r){if(l=+s[r],l===i){if(n.all)continue;break}h=t.values[l],Ne(h)&&(o||0===e||gi(e)===gi(h))&&(e+=h)}return e}}function qs(t,e){const i=t&&t.options.stacked;return i||void 0===i&&void 0!==e.stack}function Gs(t,e,i){const n=t[e]||(t[e]={});return n[i]||(n[i]={})}function Ks(t,e,i,n){for(const s of e.getMatchingVisibleMetas(n).reverse()){const e=t[s.index];if(i&&e>0||!i&&e<0)return s.index}return null}function Js(t,e){const{chart:i,_cachedMeta:n}=t,s=i._stacks||(i._stacks={}),{iScale:o,vScale:r,index:a}=n,l=o.axis,h=r.axis,c=function(t,e,i){return`${t.id}.${e.id}.${i.stack||i.type}`}(o,r,n),d=e.length;let u;for(let t=0;t<d;++t){const i=e[t],{[l]:o,[h]:d}=i;u=(i._stacks||(i._stacks={}))[h]=Gs(s,c,o),u[a]=d,u._top=Ks(u,r,!0,n.type),u._bottom=Ks(u,r,!1,n.type)}}function Zs(t,e){const i=t.scales;return Object.keys(i).filter((t=>i[t].axis===e)).shift()}function Qs(t,e){const i=t.controller.index,n=t.vScale&&t.vScale.axis;if(n){e=e||t._parsed;for(const t of e){const e=t._stacks;if(!e||void 0===e[n]||void 0===e[n][i])return;delete e[n][i]}}}const to=t=>"reset"===t||"none"===t,eo=(t,e)=>e?t:Object.assign({},t);class io{constructor(t,e){this.chart=t,this._ctx=t.ctx,this.index=e,this._cachedDataOpts={},this._cachedMeta=this.getMeta(),this._type=this._cachedMeta.type,this.options=void 0,this._parsing=!1,this._data=void 0,this._objectData=void 0,this._sharedOptions=void 0,this._drawStart=void 0,this._drawCount=void 0,this.enableOptionSharing=!1,this.supportsDecimation=!1,this.$context=void 0,this._syncList=[],this.initialize()}initialize(){const t=this._cachedMeta;this.configure(),this.linkScales(),t._stacked=qs(t.vScale,t),this.addElements()}updateIndex(t){this.index!==t&&Qs(this._cachedMeta),this.index=t}linkScales(){const t=this.chart,e=this._cachedMeta,i=this.getDataset(),n=(t,e,i,n)=>"x"===t?e:"r"===t?n:i,s=e.xAxisID=je(i.xAxisID,Zs(t,"x")),o=e.yAxisID=je(i.yAxisID,Zs(t,"y")),r=e.rAxisID=je(i.rAxisID,Zs(t,"r")),a=e.indexAxis,l=e.iAxisID=n(a,s,o,r),h=e.vAxisID=n(a,o,s,r);e.xScale=this.getScaleForId(s),e.yScale=this.getScaleForId(o),e.rScale=this.getScaleForId(r),e.iScale=this.getScaleForId(l),e.vScale=this.getScaleForId(h)}getDataset(){return this.chart.data.datasets[this.index]}getMeta(){return this.chart.getDatasetMeta(this.index)}getScaleForId(t){return this.chart.scales[t]}_getOtherScale(t){const e=this._cachedMeta;return t===e.iScale?e.vScale:e.iScale}reset(){this._update("reset")}_destroy(){const t=this._cachedMeta;this._data&&Un(this._data,this),t._stacked&&Qs(t)}_dataCheck(){const t=this.getDataset(),e=t.data||(t.data=[]),i=this._data;if(Ve(e))this._data=function(t){const e=Object.keys(t),i=new Array(e.length);let n,s,o;for(n=0,s=e.length;n<s;++n)o=e[n],i[n]={x:o,y:t[o]};return i}(e);else if(i!==e){if(i){Un(i,this);const t=this._cachedMeta;Qs(t),t._parsed=[]}e&&Object.isExtensible(e)&&(this,(n=e)._chartjs?n._chartjs.listeners.push(this):(Object.defineProperty(n,"_chartjs",{configurable:!0,enumerable:!1,value:{listeners:[this]}}),Yn.forEach((t=>{const e="_onData"+ei(t),i=n[t];Object.defineProperty(n,t,{configurable:!0,enumerable:!1,value(...t){const s=i.apply(this,t);return n._chartjs.listeners.forEach((i=>{"function"==typeof i[e]&&i[e](...t)})),s}})})))),this._syncList=[],this._data=e}var n}addElements(){const t=this._cachedMeta;this._dataCheck(),this.datasetElementType&&(t.dataset=new this.datasetElementType)}buildOrUpdateElements(t){const e=this._cachedMeta,i=this.getDataset();let n=!1;this._dataCheck();const s=e._stacked;e._stacked=qs(e.vScale,e),e.stack!==i.stack&&(n=!0,Qs(e),e.stack=i.stack),this._resyncElements(t),(n||s!==e._stacked)&&Js(this,e._parsed)}configure(){const t=this.chart.config,e=t.datasetScopeKeys(this._type),i=t.getOptionScopes(this.getDataset(),e,!0);this.options=t.createResolver(i,this.getContext()),this._parsing=this.options.parsing,this._cachedDataOpts={}}parse(t,e){const{_cachedMeta:i,_data:n}=this,{iScale:s,_stacked:o}=i,r=s.axis;let a,l,h,c=0===t&&e===n.length||i._sorted,d=t>0&&i._parsed[t-1];if(!1===this._parsing)i._parsed=n,i._sorted=!0,h=n;else{h=Be(n[t])?this.parseArrayData(i,n,t,e):Ve(n[t])?this.parseObjectData(i,n,t,e):this.parsePrimitiveData(i,n,t,e);const s=()=>null===l[r]||d&&l[r]<d[r];for(a=0;a<e;++a)i._parsed[a+t]=l=h[a],c&&(s()&&(c=!1),d=l);i._sorted=c}o&&Js(this,h)}parsePrimitiveData(t,e,i,n){const{iScale:s,vScale:o}=t,r=s.axis,a=o.axis,l=s.getLabels(),h=s===o,c=new Array(n);let d,u,f;for(d=0,u=n;d<u;++d)f=d+i,c[d]={[r]:h||s.parse(l[f],f),[a]:o.parse(e[f],f)};return c}parseArrayData(t,e,i,n){const{xScale:s,yScale:o}=t,r=new Array(n);let a,l,h,c;for(a=0,l=n;a<l;++a)h=a+i,c=e[h],r[a]={x:s.parse(c[0],h),y:o.parse(c[1],h)};return r}parseObjectData(t,e,i,n){const{xScale:s,yScale:o}=t,{xAxisKey:r="x",yAxisKey:a="y"}=this._parsing,l=new Array(n);let h,c,d,u;for(h=0,c=n;h<c;++h)d=h+i,u=e[d],l[h]={x:s.parse(ti(u,r),d),y:o.parse(ti(u,a),d)};return l}getParsed(t){return this._cachedMeta._parsed[t]}getDataElement(t){return this._cachedMeta.data[t]}applyStack(t,e,i){const n=this.chart,s=this._cachedMeta,o=e[t.axis];return Xs({keys:Us(n,!0),values:e._stacks[t.axis]},o,s.index,{mode:i})}updateRangeFromParsed(t,e,i,n){const s=i[e.axis];let o=null===s?NaN:s;const r=n&&i._stacks[e.axis];n&&r&&(n.values=r,o=Xs(n,s,this._cachedMeta.index)),t.min=Math.min(t.min,o),t.max=Math.max(t.max,o)}getMinMax(t,e){const i=this._cachedMeta,n=i._parsed,s=i._sorted&&t===i.iScale,o=n.length,r=this._getOtherScale(t),a=((t,e,i)=>t&&!e.hidden&&e._stacked&&{keys:Us(i,!0),values:null})(e,i,this.chart),l={min:Number.POSITIVE_INFINITY,max:Number.NEGATIVE_INFINITY},{min:h,max:c}=function(t){const{min:e,max:i,minDefined:n,maxDefined:s}=t.getUserBounds();return{min:n?e:Number.NEGATIVE_INFINITY,max:s?i:Number.POSITIVE_INFINITY}}(r);let d,u;function f(){u=n[d];const e=u[r.axis];return!Ne(u[t.axis])||h>e||c<e}for(d=0;d<o&&(f()||(this.updateRangeFromParsed(l,t,u,a),!s));++d);if(s)for(d=o-1;d>=0;--d)if(!f()){this.updateRangeFromParsed(l,t,u,a);break}return l}getAllParsedValues(t){const e=this._cachedMeta._parsed,i=[];let n,s,o;for(n=0,s=e.length;n<s;++n)o=e[n][t.axis],Ne(o)&&i.push(o);return i}getMaxOverflow(){return!1}getLabelAndValue(t){const e=this._cachedMeta,i=e.iScale,n=e.vScale,s=this.getParsed(t);return{label:i?""+i.getLabelForValue(s[i.axis]):"",value:n?""+n.getLabelForValue(s[n.axis]):""}}_update(t){const e=this._cachedMeta;this.update(t||"default"),e._clip=function(t){let e,i,n,s;return Ve(t)?(e=t.top,i=t.right,n=t.bottom,s=t.left):e=i=n=s=t,{top:e,right:i,bottom:n,left:s,disabled:!1===t}}(je(this.options.clip,function(t,e,i){if(!1===i)return!1;const n=Ys(t,i),s=Ys(e,i);return{top:s.end,right:n.end,bottom:s.start,left:n.start}}(e.xScale,e.yScale,this.getMaxOverflow())))}update(t){}draw(){const t=this._ctx,e=this.chart,i=this._cachedMeta,n=i.data||[],s=e.chartArea,o=[],r=this._drawStart||0,a=this._drawCount||n.length-r,l=this.options.drawActiveElementsOnTop;let h;for(i.dataset&&i.dataset.draw(t,s,r,a),h=r;h<r+a;++h){const e=n[h];e.hidden||(e.active&&l?o.push(e):e.draw(t,s))}for(h=0;h<o.length;++h)o[h].draw(t,s)}getStyle(t,e){const i=e?"active":"default";return void 0===t&&this._cachedMeta.dataset?this.resolveDatasetElementOptions(i):this.resolveDataElementOptions(t||0,i)}getContext(t,e,i){const n=this.getDataset();let s;if(t>=0&&t<this._cachedMeta.data.length){const e=this._cachedMeta.data[t];s=e.$context||(e.$context=function(t,e,i){return Wn(t,{active:!1,dataIndex:e,parsed:void 0,raw:void 0,element:i,index:e,mode:"default",type:"data"})}(this.getContext(),t,e)),s.parsed=this.getParsed(t),s.raw=n.data[t],s.index=s.dataIndex=t}else s=this.$context||(this.$context=function(t,e){return Wn(t,{active:!1,dataset:void 0,datasetIndex:e,index:e,mode:"default",type:"dataset"})}(this.chart.getContext(),this.index)),s.dataset=n,s.index=s.datasetIndex=this.index;return s.active=!!e,s.mode=i,s}resolveDatasetElementOptions(t){return this._resolveElementOptions(this.datasetElementType.id,t)}resolveDataElementOptions(t,e){return this._resolveElementOptions(this.dataElementType.id,e,t)}_resolveElementOptions(t,e="default",i){const n="active"===e,s=this._cachedDataOpts,o=t+"-"+e,r=s[o],a=this.enableOptionSharing&&ii(i);if(r)return eo(r,a);const l=this.chart.config,h=l.datasetElementScopeKeys(this._type,t),c=n?[`${t}Hover`,"hover",t,""]:[t,""],d=l.getOptionScopes(this.getDataset(),h),u=Object.keys(xn.elements[t]),f=l.resolveNamedOptions(d,u,(()=>this.getContext(i,n)),c);return f.$shared&&(f.$shared=a,s[o]=Object.freeze(eo(f,a))),f}_resolveAnimations(t,e,i){const n=this.chart,s=this._cachedDataOpts,o=`animation-${e}`,r=s[o];if(r)return r;let a;if(!1!==n.options.animation){const n=this.chart.config,s=n.datasetAnimationScopeKeys(this._type,e),o=n.getOptionScopes(this.getDataset(),s);a=n.createResolver(o,this.getContext(t,i,e))}const l=new $s(n,a&&a.animations);return a&&a._cacheable&&(s[o]=Object.freeze(l)),l}getSharedOptions(t){if(t.$shared)return this._sharedOptions||(this._sharedOptions=Object.assign({},t))}includeOptions(t,e){return!e||to(t)||this.chart._animationsDisabled}updateElement(t,e,i,n){to(n)?Object.assign(t,i):this._resolveAnimations(e,n).update(t,i)}updateSharedOptions(t,e,i){t&&!to(e)&&this._resolveAnimations(void 0,e).update(t,i)}_setStyle(t,e,i,n){t.active=n;const s=this.getStyle(e,n);this._resolveAnimations(e,i,n).update(t,{options:!n&&this.getSharedOptions(s)||s})}removeHoverStyle(t,e,i){this._setStyle(t,i,"active",!1)}setHoverStyle(t,e,i){this._setStyle(t,i,"active",!0)}_removeDatasetHoverStyle(){const t=this._cachedMeta.dataset;t&&this._setStyle(t,void 0,"active",!1)}_setDatasetHoverStyle(){const t=this._cachedMeta.dataset;t&&this._setStyle(t,void 0,"active",!0)}_resyncElements(t){const e=this._data,i=this._cachedMeta.data;for(const[t,e,i]of this._syncList)this[t](e,i);this._syncList=[];const n=i.length,s=e.length,o=Math.min(s,n);o&&this.parse(0,o),s>n?this._insertElements(n,s-n,t):s<n&&this._removeElements(s,n-s)}_insertElements(t,e,i=!0){const n=this._cachedMeta,s=n.data,o=t+e;let r;const a=t=>{for(t.length+=e,r=t.length-1;r>=o;r--)t[r]=t[r-e]};for(a(s),r=t;r<o;++r)s[r]=new this.dataElementType;this._parsing&&a(n._parsed),this.parse(t,e),i&&this.updateElements(s,t,e,"reset")}updateElements(t,e,i,n){}_removeElements(t,e){const i=this._cachedMeta;if(this._parsing){const n=i._parsed.splice(t,e);i._stacked&&Qs(i,n)}i.data.splice(t,e)}_sync(t){if(this._parsing)this._syncList.push(t);else{const[e,i,n]=t;this[e](i,n)}this.chart._dataChanges.push([this.index,...t])}_onDataPush(){const t=arguments.length;this._sync(["_insertElements",this.getDataset().data.length-t,t])}_onDataPop(){this._sync(["_removeElements",this._cachedMeta.data.length-1,1])}_onDataShift(){this._sync(["_removeElements",0,1])}_onDataSplice(t,e){e&&this._sync(["_removeElements",t,e]);const i=arguments.length-2;i&&this._sync(["_insertElements",t,i])}_onDataUnshift(){this._sync(["_insertElements",0,arguments.length])}}function no(t){const e=t.iScale,i=function(t,e){if(!t._cache.$bar){const i=t.getMatchingVisibleMetas(e);let n=[];for(let e=0,s=i.length;e<s;e++)n=n.concat(i[e].controller.getAllParsedValues(t));t._cache.$bar=Xn(n.sort(((t,e)=>t-e)))}return t._cache.$bar}(e,t.type);let n,s,o,r,a=e._length;const l=()=>{32767!==o&&-32768!==o&&(ii(r)&&(a=Math.min(a,Math.abs(o-r)||a)),r=o)};for(n=0,s=i.length;n<s;++n)o=e.getPixelForValue(i[n]),l();for(r=void 0,n=0,s=e.ticks.length;n<s;++n)o=e.getPixelForTick(n),l();return a}function so(t,e,i,n){return Be(t)?function(t,e,i,n){const s=i.parse(t[0],n),o=i.parse(t[1],n),r=Math.min(s,o),a=Math.max(s,o);let l=r,h=a;Math.abs(r)>Math.abs(a)&&(l=a,h=r),e[i.axis]=h,e._custom={barStart:l,barEnd:h,start:s,end:o,min:r,max:a}}(t,e,i,n):e[i.axis]=i.parse(t,n),e}function oo(t,e,i,n){const s=t.iScale,o=t.vScale,r=s.getLabels(),a=s===o,l=[];let h,c,d,u;for(h=i,c=i+n;h<c;++h)u=e[h],d={},d[s.axis]=a||s.parse(r[h],h),l.push(so(u,d,o,h));return l}function ro(t){return t&&void 0!==t.barStart&&void 0!==t.barEnd}function ao(t,e,i,n){let s=e.borderSkipped;const o={};if(!s)return void(t.borderSkipped=o);const{start:r,end:a,reverse:l,top:h,bottom:c}=function(t){let e,i,n,s,o;return t.horizontal?(e=t.base>t.x,i="left",n="right"):(e=t.base<t.y,i="bottom",n="top"),e?(s="end",o="start"):(s="start",o="end"),{start:i,end:n,reverse:e,top:s,bottom:o}}(t);"middle"===s&&i&&(t.enableBorderRadius=!0,(i._top||0)===n?s=h:(i._bottom||0)===n?s=c:(o[lo(c,r,a,l)]=!0,s=h)),o[lo(s,r,a,l)]=!0,t.borderSkipped=o}function lo(t,e,i,n){var s,o,r;return n?(r=i,t=ho(t=(s=t)===(o=e)?r:s===r?o:s,i,e)):t=ho(t,e,i),t}function ho(t,e,i){return"start"===t?e:"end"===t?i:t}function co(t,{inflateAmount:e},i){t.inflateAmount="auto"===e?1===i?.33:0:e}io.defaults={},io.prototype.datasetElementType=null,io.prototype.dataElementType=null;class uo extends io{parsePrimitiveData(t,e,i,n){return oo(t,e,i,n)}parseArrayData(t,e,i,n){return oo(t,e,i,n)}parseObjectData(t,e,i,n){const{iScale:s,vScale:o}=t,{xAxisKey:r="x",yAxisKey:a="y"}=this._parsing,l="x"===s.axis?r:a,h="x"===o.axis?r:a,c=[];let d,u,f,g;for(d=i,u=i+n;d<u;++d)g=e[d],f={},f[s.axis]=s.parse(ti(g,l),d),c.push(so(ti(g,h),f,o,d));return c}updateRangeFromParsed(t,e,i,n){super.updateRangeFromParsed(t,e,i,n);const s=i._custom;s&&e===this._cachedMeta.vScale&&(t.min=Math.min(t.min,s.min),t.max=Math.max(t.max,s.max))}getMaxOverflow(){return 0}getLabelAndValue(t){const e=this._cachedMeta,{iScale:i,vScale:n}=e,s=this.getParsed(t),o=s._custom,r=ro(o)?"["+o.start+", "+o.end+"]":""+n.getLabelForValue(s[n.axis]);return{label:""+i.getLabelForValue(s[i.axis]),value:r}}initialize(){this.enableOptionSharing=!0,super.initialize(),this._cachedMeta.stack=this.getDataset().stack}update(t){const e=this._cachedMeta;this.updateElements(e.data,0,e.data.length,t)}updateElements(t,e,i,n){const s="reset"===n,{index:o,_cachedMeta:{vScale:r}}=this,a=r.getBasePixel(),l=r.isHorizontal(),h=this._getRuler(),c=this.resolveDataElementOptions(e,n),d=this.getSharedOptions(c),u=this.includeOptions(n,d);this.updateSharedOptions(d,n,c);for(let c=e;c<e+i;c++){const e=this.getParsed(c),i=s||Fe(e[r.axis])?{base:a,head:a}:this._calculateBarValuePixels(c),f=this._calculateBarIndexPixels(c,h),g=(e._stacks||{})[r.axis],p={horizontal:l,base:i.base,enableBorderRadius:!g||ro(e._custom)||o===g._top||o===g._bottom,x:l?i.head:f.center,y:l?f.center:i.head,height:l?f.size:Math.abs(i.size),width:l?Math.abs(i.size):f.size};u&&(p.options=d||this.resolveDataElementOptions(c,t[c].active?"active":n));const m=p.options||t[c].options;ao(p,m,g,o),co(p,m,h.ratio),this.updateElement(t[c],c,p,n)}}_getStacks(t,e){const i=this._cachedMeta.iScale,n=i.getMatchingVisibleMetas(this._type),s=i.options.stacked,o=n.length,r=[];let a,l;for(a=0;a<o;++a)if(l=n[a],l.controller.options.grouped){if(void 0!==e){const t=l.controller.getParsed(e)[l.controller._cachedMeta.vScale.axis];if(Fe(t)||isNaN(t))continue}if((!1===s||-1===r.indexOf(l.stack)||void 0===s&&void 0===l.stack)&&r.push(l.stack),l.index===t)break}return r.length||r.push(void 0),r}_getStackCount(t){return this._getStacks(void 0,t).length}_getStackIndex(t,e,i){const n=this._getStacks(t,i),s=void 0!==e?n.indexOf(e):-1;return-1===s?n.length-1:s}_getRuler(){const t=this.options,e=this._cachedMeta,i=e.iScale,n=[];let s,o;for(s=0,o=e.data.length;s<o;++s)n.push(i.getPixelForValue(this.getParsed(s)[i.axis],s));const r=t.barThickness;return{min:r||no(e),pixels:n,start:i._startPixel,end:i._endPixel,stackCount:this._getStackCount(),scale:i,grouped:t.grouped,ratio:r?1:t.categoryPercentage*t.barPercentage}}_calculateBarValuePixels(t){const{_cachedMeta:{vScale:e,_stacked:i},options:{base:n,minBarLength:s}}=this,o=n||0,r=this.getParsed(t),a=r._custom,l=ro(a);let h,c,d=r[e.axis],u=0,f=i?this.applyStack(e,r,i):d;f!==d&&(u=f-d,f=d),l&&(d=a.barStart,f=a.barEnd-a.barStart,0!==d&&gi(d)!==gi(a.barEnd)&&(u=0),u+=d);const g=Fe(n)||l?u:n;let p=e.getPixelForValue(g);if(h=this.chart.getDataVisibility(t)?e.getPixelForValue(u+f):p,c=h-p,Math.abs(c)<s){c=function(t,e,i){return 0!==t?gi(t):(e.isHorizontal()?1:-1)*(e.min>=i?1:-1)}(c,e,o)*s,d===o&&(p-=c/2);const t=e.getPixelForDecimal(0),i=e.getPixelForDecimal(1),n=Math.min(t,i),r=Math.max(t,i);p=Math.max(Math.min(p,r),n),h=p+c}if(p===e.getPixelForValue(o)){const t=gi(c)*e.getLineWidthForValue(o)/2;p+=t,c-=t}return{size:c,base:p,head:h,center:h+c/2}}_calculateBarIndexPixels(t,e){const i=e.scale,n=this.options,s=n.skipNull,o=je(n.maxBarThickness,1/0);let r,a;if(e.grouped){const i=s?this._getStackCount(t):e.stackCount,l="flex"===n.barThickness?function(t,e,i,n){const s=e.pixels,o=s[t];let r=t>0?s[t-1]:null,a=t<s.length-1?s[t+1]:null;const l=i.categoryPercentage;null===r&&(r=o-(null===a?e.end-e.start:a-o)),null===a&&(a=o+o-r);const h=o-(o-Math.min(r,a))/2*l;return{chunk:Math.abs(a-r)/2*l/n,ratio:i.barPercentage,start:h}}(t,e,n,i):function(t,e,i,n){const s=i.barThickness;let o,r;return Fe(s)?(o=e.min*i.categoryPercentage,r=i.barPercentage):(o=s*n,r=1),{chunk:o/n,ratio:r,start:e.pixels[t]-o/2}}(t,e,n,i),h=this._getStackIndex(this.index,this._cachedMeta.stack,s?t:void 0);r=l.start+l.chunk*h+l.chunk/2,a=Math.min(o,l.chunk*l.ratio)}else r=i.getPixelForValue(this.getParsed(t)[i.axis],t),a=Math.min(o,e.min*e.ratio);return{base:r-a/2,head:r+a/2,center:r,size:a}}draw(){const t=this._cachedMeta,e=t.vScale,i=t.data,n=i.length;let s=0;for(;s<n;++s)null!==this.getParsed(s)[e.axis]&&i[s].draw(this._ctx)}}uo.id="bar",uo.defaults={datasetElementType:!1,dataElementType:"bar",categoryPercentage:.8,barPercentage:.9,grouped:!0,animations:{numbers:{type:"number",properties:["x","y","base","width","height"]}}},uo.overrides={scales:{_index_:{type:"category",offset:!0,grid:{offset:!0}},_value_:{type:"linear",beginAtZero:!0}}};class fo extends io{initialize(){this.enableOptionSharing=!0,super.initialize()}parsePrimitiveData(t,e,i,n){const s=super.parsePrimitiveData(t,e,i,n);for(let t=0;t<s.length;t++)s[t]._custom=this.resolveDataElementOptions(t+i).radius;return s}parseArrayData(t,e,i,n){const s=super.parseArrayData(t,e,i,n);for(let t=0;t<s.length;t++){const n=e[i+t];s[t]._custom=je(n[2],this.resolveDataElementOptions(t+i).radius)}return s}parseObjectData(t,e,i,n){const s=super.parseObjectData(t,e,i,n);for(let t=0;t<s.length;t++){const n=e[i+t];s[t]._custom=je(n&&n.r&&+n.r,this.resolveDataElementOptions(t+i).radius)}return s}getMaxOverflow(){const t=this._cachedMeta.data;let e=0;for(let i=t.length-1;i>=0;--i)e=Math.max(e,t[i].size(this.resolveDataElementOptions(i))/2);return e>0&&e}getLabelAndValue(t){const e=this._cachedMeta,{xScale:i,yScale:n}=e,s=this.getParsed(t),o=i.getLabelForValue(s.x),r=n.getLabelForValue(s.y),a=s._custom;return{label:e.label,value:"("+o+", "+r+(a?", "+a:"")+")"}}update(t){const e=this._cachedMeta.data;this.updateElements(e,0,e.length,t)}updateElements(t,e,i,n){const s="reset"===n,{iScale:o,vScale:r}=this._cachedMeta,a=this.resolveDataElementOptions(e,n),l=this.getSharedOptions(a),h=this.includeOptions(n,l),c=o.axis,d=r.axis;for(let a=e;a<e+i;a++){const e=t[a],i=!s&&this.getParsed(a),l={},u=l[c]=s?o.getPixelForDecimal(.5):o.getPixelForValue(i[c]),f=l[d]=s?r.getBasePixel():r.getPixelForValue(i[d]);l.skip=isNaN(u)||isNaN(f),h&&(l.options=this.resolveDataElementOptions(a,e.active?"active":n),s&&(l.options.radius=0)),this.updateElement(e,a,l,n)}this.updateSharedOptions(l,n,a)}resolveDataElementOptions(t,e){const i=this.getParsed(t);let n=super.resolveDataElementOptions(t,e);n.$shared&&(n=Object.assign({},n,{$shared:!1}));const s=n.radius;return"active"!==e&&(n.radius=0),n.radius+=je(i&&i._custom,s),n}}fo.id="bubble",fo.defaults={datasetElementType:!1,dataElementType:"point",animations:{numbers:{type:"number",properties:["x","y","borderWidth","radius"]}}},fo.overrides={scales:{x:{type:"linear"},y:{type:"linear"}},plugins:{tooltip:{callbacks:{title:()=>""}}}};class go extends io{constructor(t,e){super(t,e),this.enableOptionSharing=!0,this.innerRadius=void 0,this.outerRadius=void 0,this.offsetX=void 0,this.offsetY=void 0}linkScales(){}parse(t,e){const i=this.getDataset().data,n=this._cachedMeta;if(!1===this._parsing)n._parsed=i;else{let s,o,r=t=>+i[t];if(Ve(i[t])){const{key:t="value"}=this._parsing;r=e=>+ti(i[e],t)}for(s=t,o=t+e;s<o;++s)n._parsed[s]=r(s)}}_getRotation(){return _i(this.options.rotation-90)}_getCircumference(){return _i(this.options.circumference)}_getRotationExtents(){let t=ri,e=-ri;for(let i=0;i<this.chart.data.datasets.length;++i)if(this.chart.isDatasetVisible(i)){const n=this.chart.getDatasetMeta(i).controller,s=n._getRotation(),o=n._getCircumference();t=Math.min(t,s),e=Math.max(e,s+o)}return{rotation:t,circumference:e-t}}update(t){const e=this.chart,{chartArea:i}=e,n=this._cachedMeta,s=n.data,o=this.getMaxBorderWidth()+this.getMaxOffset(s)+this.options.spacing,r=Math.max((Math.min(i.width,i.height)-o)/2,0),a=Math.min((h=r,"string"==typeof(l=this.options.cutout)&&l.endsWith("%")?parseFloat(l)/100:l/h),1);var l,h;const c=this._getRingWeight(this.index),{circumference:d,rotation:u}=this._getRotationExtents(),{ratioX:f,ratioY:g,offsetX:p,offsetY:m}=function(t,e,i){let n=1,s=1,o=0,r=0;if(e<ri){const a=t,l=a+e,h=Math.cos(a),c=Math.sin(a),d=Math.cos(l),u=Math.sin(l),f=(t,e,n)=>Pi(t,a,l,!0)?1:Math.max(e,e*i,n,n*i),g=(t,e,n)=>Pi(t,a,l,!0)?-1:Math.min(e,e*i,n,n*i),p=f(0,h,d),m=f(ci,c,u),b=g(oi,h,d),x=g(oi+ci,c,u);n=(p-b)/2,s=(m-x)/2,o=-(p+b)/2,r=-(m+x)/2}return{ratioX:n,ratioY:s,offsetX:o,offsetY:r}}(u,d,a),b=(i.width-o)/f,x=(i.height-o)/g,_=Math.max(Math.min(b,x)/2,0),y=He(this.options.radius,_),v=(y-Math.max(y*a,0))/this._getVisibleDatasetWeightTotal();this.offsetX=p*y,this.offsetY=m*y,n.total=this.calculateTotal(),this.outerRadius=y-v*this._getRingWeightOffset(this.index),this.innerRadius=Math.max(this.outerRadius-v*c,0),this.updateElements(s,0,s.length,t)}_circumference(t,e){const i=this.options,n=this._cachedMeta,s=this._getCircumference();return e&&i.animation.animateRotate||!this.chart.getDataVisibility(t)||null===n._parsed[t]||n.data[t].hidden?0:this.calculateCircumference(n._parsed[t]*s/ri)}updateElements(t,e,i,n){const s="reset"===n,o=this.chart,r=o.chartArea,a=o.options.animation,l=(r.left+r.right)/2,h=(r.top+r.bottom)/2,c=s&&a.animateScale,d=c?0:this.innerRadius,u=c?0:this.outerRadius,f=this.resolveDataElementOptions(e,n),g=this.getSharedOptions(f),p=this.includeOptions(n,g);let m,b=this._getRotation();for(m=0;m<e;++m)b+=this._circumference(m,s);for(m=e;m<e+i;++m){const e=this._circumference(m,s),i=t[m],o={x:l+this.offsetX,y:h+this.offsetY,startAngle:b,endAngle:b+e,circumference:e,outerRadius:u,innerRadius:d};p&&(o.options=g||this.resolveDataElementOptions(m,i.active?"active":n)),b+=e,this.updateElement(i,m,o,n)}this.updateSharedOptions(g,n,f)}calculateTotal(){const t=this._cachedMeta,e=t.data;let i,n=0;for(i=0;i<e.length;i++){const s=t._parsed[i];null===s||isNaN(s)||!this.chart.getDataVisibility(i)||e[i].hidden||(n+=Math.abs(s))}return n}calculateCircumference(t){const e=this._cachedMeta.total;return e>0&&!isNaN(t)?ri*(Math.abs(t)/e):0}getLabelAndValue(t){const e=this._cachedMeta,i=this.chart,n=i.data.labels||[],s=As(e._parsed[t],i.options.locale);return{label:n[t]||"",value:s}}getMaxBorderWidth(t){let e=0;const i=this.chart;let n,s,o,r,a;if(!t)for(n=0,s=i.data.datasets.length;n<s;++n)if(i.isDatasetVisible(n)){o=i.getDatasetMeta(n),t=o.data,r=o.controller;break}if(!t)return 0;for(n=0,s=t.length;n<s;++n)a=r.resolveDataElementOptions(n),"inner"!==a.borderAlign&&(e=Math.max(e,a.borderWidth||0,a.hoverBorderWidth||0));return e}getMaxOffset(t){let e=0;for(let i=0,n=t.length;i<n;++i){const t=this.resolveDataElementOptions(i);e=Math.max(e,t.offset||0,t.hoverOffset||0)}return e}_getRingWeightOffset(t){let e=0;for(let i=0;i<t;++i)this.chart.isDatasetVisible(i)&&(e+=this._getRingWeight(i));return e}_getRingWeight(t){return Math.max(je(this.chart.data.datasets[t].weight,1),0)}_getVisibleDatasetWeightTotal(){return this._getRingWeightOffset(this.chart.data.datasets.length)||1}}go.id="doughnut",go.defaults={datasetElementType:!1,dataElementType:"arc",animation:{animateRotate:!0,animateScale:!1},animations:{numbers:{type:"number",properties:["circumference","endAngle","innerRadius","outerRadius","startAngle","x","y","offset","borderWidth","spacing"]}},cutout:"50%",rotation:0,circumference:360,radius:"100%",spacing:0,indexAxis:"r"},go.descriptors={_scriptable:t=>"spacing"!==t,_indexable:t=>"spacing"!==t},go.overrides={aspectRatio:1,plugins:{legend:{labels:{generateLabels(t){const e=t.data;if(e.labels.length&&e.datasets.length){const{labels:{pointStyle:i}}=t.legend.options;return e.labels.map(((e,n)=>{const s=t.getDatasetMeta(0).controller.getStyle(n);return{text:e,fillStyle:s.backgroundColor,strokeStyle:s.borderColor,lineWidth:s.borderWidth,pointStyle:i,hidden:!t.getDataVisibility(n),index:n}}))}return[]}},onClick(t,e,i){i.chart.toggleDataVisibility(e.index),i.chart.update()}},tooltip:{callbacks:{title:()=>"",label(t){let e=t.label;const i=": "+t.formattedValue;return Be(e)?(e=e.slice(),e[0]+=i):e+=i,e}}}}};class po extends io{initialize(){this.enableOptionSharing=!0,this.supportsDecimation=!0,super.initialize()}update(t){const e=this._cachedMeta,{dataset:i,data:n=[],_dataset:s}=e,o=this.chart._animationsDisabled;let{start:r,count:a}=function(t,e,i){const n=e.length;let s=0,o=n;if(t._sorted){const{iScale:r,_parsed:a}=t,l=r.axis,{min:h,max:c,minDefined:d,maxDefined:u}=r.getUserBounds();d&&(s=Di(Math.min(Hn(a,r.axis,h).lo,i?n:Hn(e,l,r.getPixelForValue(h)).lo),0,n-1)),o=u?Di(Math.max(Hn(a,r.axis,c).hi+1,i?0:Hn(e,l,r.getPixelForValue(c)).hi+1),s,n)-s:n-s}return{start:s,count:o}}(e,n,o);this._drawStart=r,this._drawCount=a,function(t){const{xScale:e,yScale:i,_scaleRanges:n}=t,s={xmin:e.min,xmax:e.max,ymin:i.min,ymax:i.max};if(!n)return t._scaleRanges=s,!0;const o=n.xmin!==e.min||n.xmax!==e.max||n.ymin!==i.min||n.ymax!==i.max;return Object.assign(n,s),o}(e)&&(r=0,a=n.length),i._chart=this.chart,i._datasetIndex=this.index,i._decimated=!!s._decimated,i.points=n;const l=this.resolveDatasetElementOptions(t);this.options.showLine||(l.borderWidth=0),l.segment=this.options.segment,this.updateElement(i,void 0,{animated:!o,options:l},t),this.updateElements(n,r,a,t)}updateElements(t,e,i,n){const s="reset"===n,{iScale:o,vScale:r,_stacked:a,_dataset:l}=this._cachedMeta,h=this.resolveDataElementOptions(e,n),c=this.getSharedOptions(h),d=this.includeOptions(n,c),u=o.axis,f=r.axis,{spanGaps:g,segment:p}=this.options,m=mi(g)?g:Number.POSITIVE_INFINITY,b=this.chart._animationsDisabled||s||"none"===n;let x=e>0&&this.getParsed(e-1);for(let h=e;h<e+i;++h){const e=t[h],i=this.getParsed(h),g=b?e:{},_=Fe(i[f]),y=g[u]=o.getPixelForValue(i[u],h),v=g[f]=s||_?r.getBasePixel():r.getPixelForValue(a?this.applyStack(r,i,a):i[f],h);g.skip=isNaN(y)||isNaN(v)||_,g.stop=h>0&&Math.abs(i[u]-x[u])>m,p&&(g.parsed=i,g.raw=l.data[h]),d&&(g.options=c||this.resolveDataElementOptions(h,e.active?"active":n)),b||this.updateElement(e,h,g,n),x=i}this.updateSharedOptions(c,n,h)}getMaxOverflow(){const t=this._cachedMeta,e=t.dataset,i=e.options&&e.options.borderWidth||0,n=t.data||[];if(!n.length)return i;const s=n[0].size(this.resolveDataElementOptions(0)),o=n[n.length-1].size(this.resolveDataElementOptions(n.length-1));return Math.max(i,s,o)/2}draw(){const t=this._cachedMeta;t.dataset.updateControlPoints(this.chart.chartArea,t.iScale.axis),super.draw()}}po.id="line",po.defaults={datasetElementType:"line",dataElementType:"point",showLine:!0,spanGaps:!1},po.overrides={scales:{_index_:{type:"category"},_value_:{type:"linear"}}};class mo extends io{constructor(t,e){super(t,e),this.innerRadius=void 0,this.outerRadius=void 0}getLabelAndValue(t){const e=this._cachedMeta,i=this.chart,n=i.data.labels||[],s=As(e._parsed[t].r,i.options.locale);return{label:n[t]||"",value:s}}parseObjectData(t,e,i,n){return as.bind(this)(t,e,i,n)}update(t){const e=this._cachedMeta.data;this._updateRadius(),this.updateElements(e,0,e.length,t)}getMinMax(){const t=this._cachedMeta,e={min:Number.POSITIVE_INFINITY,max:Number.NEGATIVE_INFINITY};return t.data.forEach(((t,i)=>{const n=this.getParsed(i).r;!isNaN(n)&&this.chart.getDataVisibility(i)&&(n<e.min&&(e.min=n),n>e.max&&(e.max=n))})),e}_updateRadius(){const t=this.chart,e=t.chartArea,i=t.options,n=Math.min(e.right-e.left,e.bottom-e.top),s=Math.max(n/2,0),o=(s-Math.max(i.cutoutPercentage?s/100*i.cutoutPercentage:1,0))/t.getVisibleDatasetCount();this.outerRadius=s-o*this.index,this.innerRadius=this.outerRadius-o}updateElements(t,e,i,n){const s="reset"===n,o=this.chart,r=o.options.animation,a=this._cachedMeta.rScale,l=a.xCenter,h=a.yCenter,c=a.getIndexAngle(0)-.5*oi;let d,u=c;const f=360/this.countVisibleElements();for(d=0;d<e;++d)u+=this._computeAngle(d,n,f);for(d=e;d<e+i;d++){const e=t[d];let i=u,g=u+this._computeAngle(d,n,f),p=o.getDataVisibility(d)?a.getDistanceFromCenterForValue(this.getParsed(d).r):0;u=g,s&&(r.animateScale&&(p=0),r.animateRotate&&(i=g=c));const m={x:l,y:h,innerRadius:0,outerRadius:p,startAngle:i,endAngle:g,options:this.resolveDataElementOptions(d,e.active?"active":n)};this.updateElement(e,d,m,n)}}countVisibleElements(){const t=this._cachedMeta;let e=0;return t.data.forEach(((t,i)=>{!isNaN(this.getParsed(i).r)&&this.chart.getDataVisibility(i)&&e++})),e}_computeAngle(t,e,i){return this.chart.getDataVisibility(t)?_i(this.resolveDataElementOptions(t,e).angle||i):0}}mo.id="polarArea",mo.defaults={dataElementType:"arc",animation:{animateRotate:!0,animateScale:!0},animations:{numbers:{type:"number",properties:["x","y","startAngle","endAngle","innerRadius","outerRadius"]}},indexAxis:"r",startAngle:0},mo.overrides={aspectRatio:1,plugins:{legend:{labels:{generateLabels(t){const e=t.data;if(e.labels.length&&e.datasets.length){const{labels:{pointStyle:i}}=t.legend.options;return e.labels.map(((e,n)=>{const s=t.getDatasetMeta(0).controller.getStyle(n);return{text:e,fillStyle:s.backgroundColor,strokeStyle:s.borderColor,lineWidth:s.borderWidth,pointStyle:i,hidden:!t.getDataVisibility(n),index:n}}))}return[]}},onClick(t,e,i){i.chart.toggleDataVisibility(e.index),i.chart.update()}},tooltip:{callbacks:{title:()=>"",label:t=>t.chart.data.labels[t.dataIndex]+": "+t.formattedValue}}},scales:{r:{type:"radialLinear",angleLines:{display:!1},beginAtZero:!0,grid:{circular:!0},pointLabels:{display:!1},startAngle:0}}};class bo extends go{}bo.id="pie",bo.defaults={cutout:0,rotation:0,circumference:360,radius:"100%"};class xo extends io{getLabelAndValue(t){const e=this._cachedMeta.vScale,i=this.getParsed(t);return{label:e.getLabels()[t],value:""+e.getLabelForValue(i[e.axis])}}parseObjectData(t,e,i,n){return as.bind(this)(t,e,i,n)}update(t){const e=this._cachedMeta,i=e.dataset,n=e.data||[],s=e.iScale.getLabels();if(i.points=n,"resize"!==t){const e=this.resolveDatasetElementOptions(t);this.options.showLine||(e.borderWidth=0);const o={_loop:!0,_fullLoop:s.length===n.length,options:e};this.updateElement(i,void 0,o,t)}this.updateElements(n,0,n.length,t)}updateElements(t,e,i,n){const s=this._cachedMeta.rScale,o="reset"===n;for(let r=e;r<e+i;r++){const e=t[r],i=this.resolveDataElementOptions(r,e.active?"active":n),a=s.getPointPositionForValue(r,this.getParsed(r).r),l=o?s.xCenter:a.x,h=o?s.yCenter:a.y,c={x:l,y:h,angle:a.angle,skip:isNaN(l)||isNaN(h),options:i};this.updateElement(e,r,c,n)}}}xo.id="radar",xo.defaults={datasetElementType:"line",dataElementType:"point",indexAxis:"r",showLine:!0,elements:{line:{fill:"start"}}},xo.overrides={aspectRatio:1,scales:{r:{type:"radialLinear"}}};class _o extends po{}_o.id="scatter",_o.defaults={showLine:!1,fill:!1},_o.overrides={interaction:{mode:"point"},plugins:{tooltip:{callbacks:{title:()=>"",label:t=>"("+t.label+", "+t.formattedValue+")"}}},scales:{x:{type:"linear"},y:{type:"linear"}}};var yo=Object.freeze({__proto__:null,BarController:uo,BubbleController:fo,DoughnutController:go,LineController:po,PolarAreaController:mo,PieController:bo,RadarController:xo,ScatterController:_o});function vo(){throw new Error("This method is not implemented: Check that a complete date adapter is provided.")}class wo{constructor(t){this.options=t||{}}formats(){return vo()}parse(t,e){return vo()}format(t,e){return vo()}add(t,e,i){return vo()}diff(t,e,i){return vo()}startOf(t,e,i){return vo()}endOf(t,e){return vo()}}wo.override=function(t){Object.assign(wo.prototype,t)};var Mo={_date:wo};function ko(t,e,i,n){const{controller:s,data:o,_sorted:r}=t,a=s._cachedMeta.iScale;if(a&&e===a.axis&&"r"!==e&&r&&o.length){const t=a._reversePixels?$n:Hn;if(!n)return t(o,e,i);if(s._sharedOptions){const n=o[0],s="function"==typeof n.getRange&&n.getRange(e);if(s){const n=t(o,e,i-s),r=t(o,e,i+s);return{lo:n.lo,hi:r.hi}}}}return{lo:0,hi:o.length-1}}function So(t,e,i,n,s){const o=t.getSortedVisibleDatasetMetas(),r=i[e];for(let t=0,i=o.length;t<i;++t){const{index:i,data:a}=o[t],{lo:l,hi:h}=ko(o[t],e,r,s);for(let t=l;t<=h;++t){const e=a[t];e.skip||n(e,i,t)}}}function Po(t,e,i,n,s){const o=[];return s||t.isPointInArea(e)?(So(t,i,e,(function(i,r,a){(s||kn(i,t.chartArea,0))&&i.inRange(e.x,e.y,n)&&o.push({element:i,datasetIndex:r,index:a})}),!0),o):o}function Do(t,e,i,n,s,o){return o||t.isPointInArea(e)?"r"!==i||n?function(t,e,i,n,s,o){let r=[];const a=function(t){const e=-1!==t.indexOf("x"),i=-1!==t.indexOf("y");return function(t,n){const s=e?Math.abs(t.x-n.x):0,o=i?Math.abs(t.y-n.y):0;return Math.sqrt(Math.pow(s,2)+Math.pow(o,2))}}(i);let l=Number.POSITIVE_INFINITY;return So(t,i,e,(function(i,h,c){const d=i.inRange(e.x,e.y,s);if(n&&!d)return;const u=i.getCenterPoint(s);if(!o&&!t.isPointInArea(u)&&!d)return;const f=a(e,u);f<l?(r=[{element:i,datasetIndex:h,index:c}],l=f):f===l&&r.push({element:i,datasetIndex:h,index:c})})),r}(t,e,i,n,s,o):function(t,e,i,n){let s=[];return So(t,i,e,(function(t,i,o){const{startAngle:r,endAngle:a}=t.getProps(["startAngle","endAngle"],n),{angle:l}=wi(t,{x:e.x,y:e.y});Pi(l,r,a)&&s.push({element:t,datasetIndex:i,index:o})})),s}(t,e,i,s):[]}function Co(t,e,i,n,s){const o=[],r="x"===i?"inXRange":"inYRange";let a=!1;return So(t,i,e,((t,n,l)=>{t[r](e[i],s)&&(o.push({element:t,datasetIndex:n,index:l}),a=a||t.inRange(e.x,e.y,s))})),n&&!a?[]:o}var Ao={evaluateInteractionItems:So,modes:{index(t,e,i,n){const s=ys(e,t),o=i.axis||"x",r=i.includeInvisible||!1,a=i.intersect?Po(t,s,o,n,r):Do(t,s,o,!1,n,r),l=[];return a.length?(t.getSortedVisibleDatasetMetas().forEach((t=>{const e=a[0].index,i=t.data[e];i&&!i.skip&&l.push({element:i,datasetIndex:t.index,index:e})})),l):[]},dataset(t,e,i,n){const s=ys(e,t),o=i.axis||"xy",r=i.includeInvisible||!1;let a=i.intersect?Po(t,s,o,n,r):Do(t,s,o,!1,n,r);if(a.length>0){const e=a[0].datasetIndex,i=t.getDatasetMeta(e).data;a=[];for(let t=0;t<i.length;++t)a.push({element:i[t],datasetIndex:e,index:t})}return a},point:(t,e,i,n)=>Po(t,ys(e,t),i.axis||"xy",n,i.includeInvisible||!1),nearest(t,e,i,n){const s=ys(e,t),o=i.axis||"xy",r=i.includeInvisible||!1;return Do(t,s,o,i.intersect,n,r)},x:(t,e,i,n)=>Co(t,ys(e,t),"x",i.intersect,n),y:(t,e,i,n)=>Co(t,ys(e,t),"y",i.intersect,n)}};const Oo=["left","top","right","bottom"];function Eo(t,e){return t.filter((t=>t.pos===e))}function Lo(t,e){return t.filter((t=>-1===Oo.indexOf(t.pos)&&t.box.axis===e))}function To(t,e){return t.sort(((t,i)=>{const n=e?i:t,s=e?t:i;return n.weight===s.weight?n.index-s.index:n.weight-s.weight}))}function Ro(t,e,i,n){return Math.max(t[i],e[i])+Math.max(t[n],e[n])}function Io(t,e){t.top=Math.max(t.top,e.top),t.left=Math.max(t.left,e.left),t.bottom=Math.max(t.bottom,e.bottom),t.right=Math.max(t.right,e.right)}function zo(t,e,i,n){const{pos:s,box:o}=i,r=t.maxPadding;if(!Ve(s)){i.size&&(t[s]-=i.size);const e=n[i.stack]||{size:0,count:1};e.size=Math.max(e.size,i.horizontal?o.height:o.width),i.size=e.size/e.count,t[s]+=i.size}o.getPadding&&Io(r,o.getPadding());const a=Math.max(0,e.outerWidth-Ro(r,t,"left","right")),l=Math.max(0,e.outerHeight-Ro(r,t,"top","bottom")),h=a!==t.w,c=l!==t.h;return t.w=a,t.h=l,i.horizontal?{same:h,other:c}:{same:c,other:h}}function Fo(t,e){const i=e.maxPadding;return function(t){const n={left:0,top:0,right:0,bottom:0};return t.forEach((t=>{n[t]=Math.max(e[t],i[t])})),n}(t?["left","right"]:["top","bottom"])}function Bo(t,e,i,n){const s=[];let o,r,a,l,h,c;for(o=0,r=t.length,h=0;o<r;++o){a=t[o],l=a.box,l.update(a.width||e.w,a.height||e.h,Fo(a.horizontal,e));const{same:r,other:d}=zo(e,i,a,n);h|=r&&s.length,c=c||d,l.fullSize||s.push(a)}return h&&Bo(s,e,i,n)||c}function Vo(t,e,i,n,s){t.top=i,t.left=e,t.right=e+n,t.bottom=i+s,t.width=n,t.height=s}function No(t,e,i,n){const s=i.padding;let{x:o,y:r}=e;for(const a of t){const t=a.box,l=n[a.stack]||{count:1,placed:0,weight:1},h=a.stackWeight/l.weight||1;if(a.horizontal){const n=e.w*h,o=l.size||t.height;ii(l.start)&&(r=l.start),t.fullSize?Vo(t,s.left,r,i.outerWidth-s.right-s.left,o):Vo(t,e.left+l.placed,r,n,o),l.start=r,l.placed+=n,r=t.bottom}else{const n=e.h*h,r=l.size||t.width;ii(l.start)&&(o=l.start),t.fullSize?Vo(t,o,s.top,r,i.outerHeight-s.bottom-s.top):Vo(t,o,e.top+l.placed,r,n),l.start=o,l.placed+=n,o=t.right}}e.x=o,e.y=r}xn.set("layout",{autoPadding:!0,padding:{top:0,right:0,bottom:0,left:0}});var Wo={addBox(t,e){t.boxes||(t.boxes=[]),e.fullSize=e.fullSize||!1,e.position=e.position||"top",e.weight=e.weight||0,e._layers=e._layers||function(){return[{z:0,draw(t){e.draw(t)}}]},t.boxes.push(e)},removeBox(t,e){const i=t.boxes?t.boxes.indexOf(e):-1;-1!==i&&t.boxes.splice(i,1)},configure(t,e,i){e.fullSize=i.fullSize,e.position=i.position,e.weight=i.weight},update(t,e,i,n){if(!t)return;const s=Bn(t.options.layout.padding),o=Math.max(e-s.width,0),r=Math.max(i-s.height,0),a=function(t){const e=function(t){const e=[];let i,n,s,o,r,a;for(i=0,n=(t||[]).length;i<n;++i)s=t[i],({position:o,options:{stack:r,stackWeight:a=1}}=s),e.push({index:i,box:s,pos:o,horizontal:s.isHorizontal(),weight:s.weight,stack:r&&o+r,stackWeight:a});return e}(t),i=To(e.filter((t=>t.box.fullSize)),!0),n=To(Eo(e,"left"),!0),s=To(Eo(e,"right")),o=To(Eo(e,"top"),!0),r=To(Eo(e,"bottom")),a=Lo(e,"x"),l=Lo(e,"y");return{fullSize:i,leftAndTop:n.concat(o),rightAndBottom:s.concat(l).concat(r).concat(a),chartArea:Eo(e,"chartArea"),vertical:n.concat(s).concat(l),horizontal:o.concat(r).concat(a)}}(t.boxes),l=a.vertical,h=a.horizontal;Ye(t.boxes,(t=>{"function"==typeof t.beforeLayout&&t.beforeLayout()}));const c=l.reduce(((t,e)=>e.box.options&&!1===e.box.options.display?t:t+1),0)||1,d=Object.freeze({outerWidth:e,outerHeight:i,padding:s,availableWidth:o,availableHeight:r,vBoxMaxWidth:o/2/c,hBoxMaxHeight:r/2}),u=Object.assign({},s);Io(u,Bn(n));const f=Object.assign({maxPadding:u,w:o,h:r,x:s.left,y:s.top},s),g=function(t,e){const i=function(t){const e={};for(const i of t){const{stack:t,pos:n,stackWeight:s}=i;if(!t||!Oo.includes(n))continue;const o=e[t]||(e[t]={count:0,placed:0,weight:0,size:0});o.count++,o.weight+=s}return e}(t),{vBoxMaxWidth:n,hBoxMaxHeight:s}=e;let o,r,a;for(o=0,r=t.length;o<r;++o){a=t[o];const{fullSize:r}=a.box,l=i[a.stack],h=l&&a.stackWeight/l.weight;a.horizontal?(a.width=h?h*n:r&&e.availableWidth,a.height=s):(a.width=n,a.height=h?h*s:r&&e.availableHeight)}return i}(l.concat(h),d);Bo(a.fullSize,f,d,g),Bo(l,f,d,g),Bo(h,f,d,g)&&Bo(l,f,d,g),function(t){const e=t.maxPadding;function i(i){const n=Math.max(e[i]-t[i],0);return t[i]+=n,n}t.y+=i("top"),t.x+=i("left"),i("right"),i("bottom")}(f),No(a.leftAndTop,f,d,g),f.x+=f.w,f.y+=f.h,No(a.rightAndBottom,f,d,g),t.chartArea={left:f.left,top:f.top,right:f.left+f.w,bottom:f.top+f.h,height:f.h,width:f.w},Ye(a.chartArea,(e=>{const i=e.box;Object.assign(i,t.chartArea),i.update(f.w,f.h,{left:0,top:0,right:0,bottom:0})}))}};class jo{acquireContext(t,e){}releaseContext(t){return!1}addEventListener(t,e,i){}removeEventListener(t,e,i){}getDevicePixelRatio(){return 1}getMaximumSize(t,e,i,n){return e=Math.max(0,e||t.width),i=i||t.height,{width:e,height:Math.max(0,n?Math.floor(e/n):i)}}isAttached(t){return!0}updateConfig(t){}}class Ho extends jo{acquireContext(t){return t&&t.getContext&&t.getContext("2d")||null}updateConfig(t){t.options.animation=!1}}const $o={touchstart:"mousedown",touchmove:"mousemove",touchend:"mouseup",pointerenter:"mouseenter",pointerdown:"mousedown",pointermove:"mousemove",pointerup:"mouseup",pointerleave:"mouseout",pointerout:"mouseout"},Yo=t=>null===t||""===t,Uo=!!Ms&&{passive:!0};function Xo(t,e,i){t.canvas.removeEventListener(e,i,Uo)}function qo(t,e){for(const i of t)if(i===e||i.contains(e))return!0}function Go(t,e,i){const n=t.canvas,s=new MutationObserver((t=>{let e=!1;for(const i of t)e=e||qo(i.addedNodes,n),e=e&&!qo(i.removedNodes,n);e&&i()}));return s.observe(document,{childList:!0,subtree:!0}),s}function Ko(t,e,i){const n=t.canvas,s=new MutationObserver((t=>{let e=!1;for(const i of t)e=e||qo(i.removedNodes,n),e=e&&!qo(i.addedNodes,n);e&&i()}));return s.observe(document,{childList:!0,subtree:!0}),s}const Jo=new Map;let Zo=0;function Qo(){const t=window.devicePixelRatio;t!==Zo&&(Zo=t,Jo.forEach(((e,i)=>{i.currentDevicePixelRatio!==t&&e()})))}function tr(t,e,i){const n=t.canvas,s=n&&ps(n);if(!s)return;const o=Le(((t,e)=>{const n=s.clientWidth;i(t,e),n<s.clientWidth&&i()}),window),r=new ResizeObserver((t=>{const e=t[0],i=e.contentRect.width,n=e.contentRect.height;0===i&&0===n||o(i,n)}));return r.observe(s),function(t,e){Jo.size||window.addEventListener("resize",Qo),Jo.set(t,e)}(t,o),r}function er(t,e,i){i&&i.disconnect(),"resize"===e&&function(t){Jo.delete(t),Jo.size||window.removeEventListener("resize",Qo)}(t)}function ir(t,e,i){const n=t.canvas,s=Le((e=>{null!==t.ctx&&i(function(t,e){const i=$o[t.type]||t.type,{x:n,y:s}=ys(t,e);return{type:i,chart:e,native:t,x:void 0!==n?n:null,y:void 0!==s?s:null}}(e,t))}),t,(t=>{const e=t[0];return[e,e.offsetX,e.offsetY]}));return function(t,e,i){t.addEventListener(e,i,Uo)}(n,e,s),s}class nr extends jo{acquireContext(t,e){const i=t&&t.getContext&&t.getContext("2d");return i&&i.canvas===t?(function(t,e){const i=t.style,n=t.getAttribute("height"),s=t.getAttribute("width");if(t.$chartjs={initial:{height:n,width:s,style:{display:i.display,height:i.height,width:i.width}}},i.display=i.display||"block",i.boxSizing=i.boxSizing||"border-box",Yo(s)){const e=ks(t,"width");void 0!==e&&(t.width=e)}if(Yo(n))if(""===t.style.height)t.height=t.width/(e||2);else{const e=ks(t,"height");void 0!==e&&(t.height=e)}}(t,e),i):null}releaseContext(t){const e=t.canvas;if(!e.$chartjs)return!1;const i=e.$chartjs.initial;["height","width"].forEach((t=>{const n=i[t];Fe(n)?e.removeAttribute(t):e.setAttribute(t,n)}));const n=i.style||{};return Object.keys(n).forEach((t=>{e.style[t]=n[t]})),e.width=e.width,delete e.$chartjs,!0}addEventListener(t,e,i){this.removeEventListener(t,e);const n=t.$proxies||(t.$proxies={}),s={attach:Go,detach:Ko,resize:tr}[e]||ir;n[e]=s(t,e,i)}removeEventListener(t,e){const i=t.$proxies||(t.$proxies={}),n=i[e];n&&(({attach:er,detach:er,resize:er}[e]||Xo)(t,e,n),i[e]=void 0)}getDevicePixelRatio(){return window.devicePixelRatio}getMaximumSize(t,e,i,n){return function(t,e,i,n){const s=bs(t),o=_s(s,"margin"),r=ms(s.maxWidth,t,"clientWidth")||li,a=ms(s.maxHeight,t,"clientHeight")||li,l=function(t,e,i){let n,s;if(void 0===e||void 0===i){const o=ps(t);if(o){const t=o.getBoundingClientRect(),r=bs(o),a=_s(r,"border","width"),l=_s(r,"padding");e=t.width-l.width-a.width,i=t.height-l.height-a.height,n=ms(r.maxWidth,o,"clientWidth"),s=ms(r.maxHeight,o,"clientHeight")}else e=t.clientWidth,i=t.clientHeight}return{width:e,height:i,maxWidth:n||li,maxHeight:s||li}}(t,e,i);let{width:h,height:c}=l;if("content-box"===s.boxSizing){const t=_s(s,"border","width"),e=_s(s,"padding");h-=e.width+t.width,c-=e.height+t.height}return h=Math.max(0,h-o.width),c=Math.max(0,n?Math.floor(h/n):c-o.height),h=vs(Math.min(h,r,l.maxWidth)),c=vs(Math.min(c,a,l.maxHeight)),h&&!c&&(c=vs(h/2)),{width:h,height:c}}(t,e,i,n)}isAttached(t){const e=ps(t);return!(!e||!e.isConnected)}}class sr{constructor(){this.x=void 0,this.y=void 0,this.active=!1,this.options=void 0,this.$animations=void 0}tooltipPosition(t){const{x:e,y:i}=this.getProps(["x","y"],t);return{x:e,y:i}}hasValue(){return mi(this.x)&&mi(this.y)}getProps(t,e){const i=this.$animations;if(!e||!i)return this;const n={};return t.forEach((t=>{n[t]=i[t]&&i[t].active()?i[t]._to:this[t]})),n}}sr.defaults={},sr.defaultRoutes=void 0;const or={values:t=>Be(t)?t:""+t,numeric(t,e,i){if(0===t)return"0";const n=this.chart.options.locale;let s,o=t;if(i.length>1){const e=Math.max(Math.abs(i[0].value),Math.abs(i[i.length-1].value));(e<1e-4||e>1e15)&&(s="scientific"),o=function(t,e){let i=e.length>3?e[2].value-e[1].value:e[1].value-e[0].value;return Math.abs(i)>=1&&t!==Math.floor(t)&&(i=t-Math.floor(t)),i}(t,i)}const r=fi(Math.abs(o)),a=Math.max(Math.min(-1*Math.floor(r),20),0),l={notation:s,minimumFractionDigits:a,maximumFractionDigits:a};return Object.assign(l,this.options.ticks.format),As(t,n,l)},logarithmic(t,e,i){if(0===t)return"0";const n=t/Math.pow(10,Math.floor(fi(t)));return 1===n||2===n||5===n?or.numeric.call(this,t,e,i):""}};var rr={formatters:or};function ar(t,e,i,n,s){const o=je(n,0),r=Math.min(je(s,t.length),t.length);let a,l,h,c=0;for(i=Math.ceil(i),s&&(a=s-n,i=a/Math.floor(a/i)),h=o;h<0;)c++,h=Math.round(o+c*i);for(l=Math.max(o,0);l<r;l++)l===h&&(e.push(t[l]),c++,h=Math.round(o+c*i))}xn.set("scale",{display:!0,offset:!1,reverse:!1,beginAtZero:!1,bounds:"ticks",grace:0,grid:{display:!0,lineWidth:1,drawBorder:!0,drawOnChartArea:!0,drawTicks:!0,tickLength:8,tickWidth:(t,e)=>e.lineWidth,tickColor:(t,e)=>e.color,offset:!1,borderDash:[],borderDashOffset:0,borderWidth:1},title:{display:!1,text:"",padding:{top:4,bottom:4}},ticks:{minRotation:0,maxRotation:50,mirror:!1,textStrokeWidth:0,textStrokeColor:"",padding:3,display:!0,autoSkip:!0,autoSkipPadding:3,labelOffset:0,callback:rr.formatters.values,minor:{},major:{},align:"center",crossAlign:"near",showLabelBackdrop:!1,backdropColor:"rgba(255, 255, 255, 0.75)",backdropPadding:2}}),xn.route("scale.ticks","color","","color"),xn.route("scale.grid","color","","borderColor"),xn.route("scale.grid","borderColor","","borderColor"),xn.route("scale.title","color","","color"),xn.describe("scale",{_fallback:!1,_scriptable:t=>!t.startsWith("before")&&!t.startsWith("after")&&"callback"!==t&&"parser"!==t,_indexable:t=>"borderDash"!==t&&"tickBorderDash"!==t}),xn.describe("scales",{_fallback:"scale"}),xn.describe("scale.ticks",{_scriptable:t=>"backdropPadding"!==t&&"callback"!==t,_indexable:t=>"backdropPadding"!==t});const lr=(t,e,i)=>"top"===e||"left"===e?t[e]+i:t[e]-i;function hr(t,e){const i=[],n=t.length/e,s=t.length;let o=0;for(;o<s;o+=n)i.push(t[Math.floor(o)]);return i}function cr(t,e,i){const n=t.ticks.length,s=Math.min(e,n-1),o=t._startPixel,r=t._endPixel,a=1e-6;let l,h=t.getPixelForTick(s);if(!(i&&(l=1===n?Math.max(h-o,r-h):0===e?(t.getPixelForTick(1)-h)/2:(h-t.getPixelForTick(s-1))/2,h+=s<e?l:-l,h<o-a||h>r+a)))return h}function dr(t){return t.drawTicks?t.tickLength:0}function ur(t,e){if(!t.display)return 0;const i=Vn(t.font,e),n=Bn(t.padding);return(Be(t.text)?t.text.length:1)*i.lineHeight+n.height}function fr(t,e,i){let n=Te(t);return(i&&"right"!==e||!i&&"right"===e)&&(n=(t=>"left"===t?"right":"right"===t?"left":t)(n)),n}class gr extends sr{constructor(t){super(),this.id=t.id,this.type=t.type,this.options=void 0,this.ctx=t.ctx,this.chart=t.chart,this.top=void 0,this.bottom=void 0,this.left=void 0,this.right=void 0,this.width=void 0,this.height=void 0,this._margins={left:0,right:0,top:0,bottom:0},this.maxWidth=void 0,this.maxHeight=void 0,this.paddingTop=void 0,this.paddingBottom=void 0,this.paddingLeft=void 0,this.paddingRight=void 0,this.axis=void 0,this.labelRotation=void 0,this.min=void 0,this.max=void 0,this._range=void 0,this.ticks=[],this._gridLineItems=null,this._labelItems=null,this._labelSizes=null,this._length=0,this._maxLength=0,this._longestTextCache={},this._startPixel=void 0,this._endPixel=void 0,this._reversePixels=!1,this._userMax=void 0,this._userMin=void 0,this._suggestedMax=void 0,this._suggestedMin=void 0,this._ticksLength=0,this._borderValue=0,this._cache={},this._dataLimitsCached=!1,this.$context=void 0}init(t){this.options=t.setContext(this.getContext()),this.axis=t.axis,this._userMin=this.parse(t.min),this._userMax=this.parse(t.max),this._suggestedMin=this.parse(t.suggestedMin),this._suggestedMax=this.parse(t.suggestedMax)}parse(t,e){return t}getUserBounds(){let{_userMin:t,_userMax:e,_suggestedMin:i,_suggestedMax:n}=this;return t=We(t,Number.POSITIVE_INFINITY),e=We(e,Number.NEGATIVE_INFINITY),i=We(i,Number.POSITIVE_INFINITY),n=We(n,Number.NEGATIVE_INFINITY),{min:We(t,i),max:We(e,n),minDefined:Ne(t),maxDefined:Ne(e)}}getMinMax(t){let e,{min:i,max:n,minDefined:s,maxDefined:o}=this.getUserBounds();if(s&&o)return{min:i,max:n};const r=this.getMatchingVisibleMetas();for(let a=0,l=r.length;a<l;++a)e=r[a].controller.getMinMax(this,t),s||(i=Math.min(i,e.min)),o||(n=Math.max(n,e.max));return i=o&&i>n?n:i,n=s&&i>n?i:n,{min:We(i,We(n,i)),max:We(n,We(i,n))}}getPadding(){return{left:this.paddingLeft||0,top:this.paddingTop||0,right:this.paddingRight||0,bottom:this.paddingBottom||0}}getTicks(){return this.ticks}getLabels(){const t=this.chart.data;return this.options.labels||(this.isHorizontal()?t.xLabels:t.yLabels)||t.labels||[]}beforeLayout(){this._cache={},this._dataLimitsCached=!1}beforeUpdate(){$e(this.options.beforeUpdate,[this])}update(t,e,i){const{beginAtZero:n,grace:s,ticks:o}=this.options,r=o.sampleSize;this.beforeUpdate(),this.maxWidth=t,this.maxHeight=e,this._margins=i=Object.assign({left:0,right:0,top:0,bottom:0},i),this.ticks=null,this._labelSizes=null,this._gridLineItems=null,this._labelItems=null,this.beforeSetDimensions(),this.setDimensions(),this.afterSetDimensions(),this._maxLength=this.isHorizontal()?this.width+i.left+i.right:this.height+i.top+i.bottom,this._dataLimitsCached||(this.beforeDataLimits(),this.determineDataLimits(),this.afterDataLimits(),this._range=function(t,e,i){const{min:n,max:s}=t,o=He(e,(s-n)/2),r=(t,e)=>i&&0===t?0:t+e;return{min:r(n,-Math.abs(o)),max:r(s,o)}}(this,s,n),this._dataLimitsCached=!0),this.beforeBuildTicks(),this.ticks=this.buildTicks()||[],this.afterBuildTicks();const a=r<this.ticks.length;this._convertTicksToLabels(a?hr(this.ticks,r):this.ticks),this.configure(),this.beforeCalculateLabelRotation(),this.calculateLabelRotation(),this.afterCalculateLabelRotation(),o.display&&(o.autoSkip||"auto"===o.source)&&(this.ticks=function(t,e){const i=t.options.ticks,n=i.maxTicksLimit||function(t){const e=t.options.offset,i=t._tickSize(),n=t._length/i+(e?0:1),s=t._maxLength/i;return Math.floor(Math.min(n,s))}(t),s=i.major.enabled?function(t){const e=[];let i,n;for(i=0,n=t.length;i<n;i++)t[i].major&&e.push(i);return e}(e):[],o=s.length,r=s[0],a=s[o-1],l=[];if(o>n)return function(t,e,i,n){let s,o=0,r=i[0];for(n=Math.ceil(n),s=0;s<t.length;s++)s===r&&(e.push(t[s]),o++,r=i[o*n])}(e,l,s,o/n),l;const h=function(t,e,i){const n=function(t){const e=t.length;let i,n;if(e<2)return!1;for(n=t[0],i=1;i<e;++i)if(t[i]-t[i-1]!==n)return!1;return n}(t),s=e.length/i;if(!n)return Math.max(s,1);const o=function(t){const e=[],i=Math.sqrt(t);let n;for(n=1;n<i;n++)t%n==0&&(e.push(n),e.push(t/n));return i===(0|i)&&e.push(i),e.sort(((t,e)=>t-e)).pop(),e}(n);for(let t=0,e=o.length-1;t<e;t++){const e=o[t];if(e>s)return e}return Math.max(s,1)}(s,e,n);if(o>0){let t,i;const n=o>1?Math.round((a-r)/(o-1)):null;for(ar(e,l,h,Fe(n)?0:r-n,r),t=0,i=o-1;t<i;t++)ar(e,l,h,s[t],s[t+1]);return ar(e,l,h,a,Fe(n)?e.length:a+n),l}return ar(e,l,h),l}(this,this.ticks),this._labelSizes=null,this.afterAutoSkip()),a&&this._convertTicksToLabels(this.ticks),this.beforeFit(),this.fit(),this.afterFit(),this.afterUpdate()}configure(){let t,e,i=this.options.reverse;this.isHorizontal()?(t=this.left,e=this.right):(t=this.top,e=this.bottom,i=!i),this._startPixel=t,this._endPixel=e,this._reversePixels=i,this._length=e-t,this._alignToPixels=this.options.alignToPixels}afterUpdate(){$e(this.options.afterUpdate,[this])}beforeSetDimensions(){$e(this.options.beforeSetDimensions,[this])}setDimensions(){this.isHorizontal()?(this.width=this.maxWidth,this.left=0,this.right=this.width):(this.height=this.maxHeight,this.top=0,this.bottom=this.height),this.paddingLeft=0,this.paddingTop=0,this.paddingRight=0,this.paddingBottom=0}afterSetDimensions(){$e(this.options.afterSetDimensions,[this])}_callHooks(t){this.chart.notifyPlugins(t,this.getContext()),$e(this.options[t],[this])}beforeDataLimits(){this._callHooks("beforeDataLimits")}determineDataLimits(){}afterDataLimits(){this._callHooks("afterDataLimits")}beforeBuildTicks(){this._callHooks("beforeBuildTicks")}buildTicks(){return[]}afterBuildTicks(){this._callHooks("afterBuildTicks")}beforeTickToLabelConversion(){$e(this.options.beforeTickToLabelConversion,[this])}generateTickLabels(t){const e=this.options.ticks;let i,n,s;for(i=0,n=t.length;i<n;i++)s=t[i],s.label=$e(e.callback,[s.value,i,t],this)}afterTickToLabelConversion(){$e(this.options.afterTickToLabelConversion,[this])}beforeCalculateLabelRotation(){$e(this.options.beforeCalculateLabelRotation,[this])}calculateLabelRotation(){const t=this.options,e=t.ticks,i=this.ticks.length,n=e.minRotation||0,s=e.maxRotation;let o,r,a,l=n;if(!this._isVisible()||!e.display||n>=s||i<=1||!this.isHorizontal())return void(this.labelRotation=n);const h=this._getLabelSizes(),c=h.widest.width,d=h.highest.height,u=Di(this.chart.width-c,0,this.maxWidth);o=t.offset?this.maxWidth/i:u/(i-1),c+6>o&&(o=u/(i-(t.offset?.5:1)),r=this.maxHeight-dr(t.grid)-e.padding-ur(t.title,this.chart.options.font),a=Math.sqrt(c*c+d*d),l=yi(Math.min(Math.asin(Di((h.highest.height+6)/o,-1,1)),Math.asin(Di(r/a,-1,1))-Math.asin(Di(d/a,-1,1)))),l=Math.max(n,Math.min(s,l))),this.labelRotation=l}afterCalculateLabelRotation(){$e(this.options.afterCalculateLabelRotation,[this])}afterAutoSkip(){}beforeFit(){$e(this.options.beforeFit,[this])}fit(){const t={width:0,height:0},{chart:e,options:{ticks:i,title:n,grid:s}}=this,o=this._isVisible(),r=this.isHorizontal();if(o){const o=ur(n,e.options.font);if(r?(t.width=this.maxWidth,t.height=dr(s)+o):(t.height=this.maxHeight,t.width=dr(s)+o),i.display&&this.ticks.length){const{first:e,last:n,widest:s,highest:o}=this._getLabelSizes(),a=2*i.padding,l=_i(this.labelRotation),h=Math.cos(l),c=Math.sin(l);if(r){const e=i.mirror?0:c*s.width+h*o.height;t.height=Math.min(this.maxHeight,t.height+e+a)}else{const e=i.mirror?0:h*s.width+c*o.height;t.width=Math.min(this.maxWidth,t.width+e+a)}this._calculatePadding(e,n,c,h)}}this._handleMargins(),r?(this.width=this._length=e.width-this._margins.left-this._margins.right,this.height=t.height):(this.width=t.width,this.height=this._length=e.height-this._margins.top-this._margins.bottom)}_calculatePadding(t,e,i,n){const{ticks:{align:s,padding:o},position:r}=this.options,a=0!==this.labelRotation,l="top"!==r&&"x"===this.axis;if(this.isHorizontal()){const r=this.getPixelForTick(0)-this.left,h=this.right-this.getPixelForTick(this.ticks.length-1);let c=0,d=0;a?l?(c=n*t.width,d=i*e.height):(c=i*t.height,d=n*e.width):"start"===s?d=e.width:"end"===s?c=t.width:"inner"!==s&&(c=t.width/2,d=e.width/2),this.paddingLeft=Math.max((c-r+o)*this.width/(this.width-r),0),this.paddingRight=Math.max((d-h+o)*this.width/(this.width-h),0)}else{let i=e.height/2,n=t.height/2;"start"===s?(i=0,n=t.height):"end"===s&&(i=e.height,n=0),this.paddingTop=i+o,this.paddingBottom=n+o}}_handleMargins(){this._margins&&(this._margins.left=Math.max(this.paddingLeft,this._margins.left),this._margins.top=Math.max(this.paddingTop,this._margins.top),this._margins.right=Math.max(this.paddingRight,this._margins.right),this._margins.bottom=Math.max(this.paddingBottom,this._margins.bottom))}afterFit(){$e(this.options.afterFit,[this])}isHorizontal(){const{axis:t,position:e}=this.options;return"top"===e||"bottom"===e||"x"===t}isFullSize(){return this.options.fullSize}_convertTicksToLabels(t){let e,i;for(this.beforeTickToLabelConversion(),this.generateTickLabels(t),e=0,i=t.length;e<i;e++)Fe(t[e].label)&&(t.splice(e,1),i--,e--);this.afterTickToLabelConversion()}_getLabelSizes(){let t=this._labelSizes;if(!t){const e=this.options.ticks.sampleSize;let i=this.ticks;e<i.length&&(i=hr(i,e)),this._labelSizes=t=this._computeLabelSizes(i,i.length)}return t}_computeLabelSizes(t,e){const{ctx:i,_longestTextCache:n}=this,s=[],o=[];let r,a,l,h,c,d,u,f,g,p,m,b=0,x=0;for(r=0;r<e;++r){if(h=t[r].label,c=this._resolveTickFontOptions(r),i.font=d=c.string,u=n[d]=n[d]||{data:{},gc:[]},f=c.lineHeight,g=p=0,Fe(h)||Be(h)){if(Be(h))for(a=0,l=h.length;a<l;++a)m=h[a],Fe(m)||Be(m)||(g=_n(i,u.data,u.gc,g,m),p+=f)}else g=_n(i,u.data,u.gc,g,h),p=f;s.push(g),o.push(p),b=Math.max(g,b),x=Math.max(p,x)}!function(t,e){Ye(t,(t=>{const i=t.gc,n=i.length/2;let s;if(n>e){for(s=0;s<n;++s)delete t.data[i[s]];i.splice(0,n)}}))}(n,e);const _=s.indexOf(b),y=o.indexOf(x),v=t=>({width:s[t]||0,height:o[t]||0});return{first:v(0),last:v(e-1),widest:v(_),highest:v(y),widths:s,heights:o}}getLabelForValue(t){return t}getPixelForValue(t,e){return NaN}getValueForPixel(t){}getPixelForTick(t){const e=this.ticks;return t<0||t>e.length-1?null:this.getPixelForValue(e[t].value)}getPixelForDecimal(t){this._reversePixels&&(t=1-t);const e=this._startPixel+t*this._length;return Di(this._alignToPixels?vn(this.chart,e,0):e,-32768,32767)}getDecimalForPixel(t){const e=(t-this._startPixel)/this._length;return this._reversePixels?1-e:e}getBasePixel(){return this.getPixelForValue(this.getBaseValue())}getBaseValue(){const{min:t,max:e}=this;return t<0&&e<0?e:t>0&&e>0?t:0}getContext(t){const e=this.ticks||[];if(t>=0&&t<e.length){const i=e[t];return i.$context||(i.$context=function(t,e,i){return Wn(t,{tick:i,index:e,type:"tick"})}(this.getContext(),t,i))}return this.$context||(this.$context=Wn(this.chart.getContext(),{scale:this,type:"scale"}))}_tickSize(){const t=this.options.ticks,e=_i(this.labelRotation),i=Math.abs(Math.cos(e)),n=Math.abs(Math.sin(e)),s=this._getLabelSizes(),o=t.autoSkipPadding||0,r=s?s.widest.width+o:0,a=s?s.highest.height+o:0;return this.isHorizontal()?a*i>r*n?r/i:a/n:a*n<r*i?a/i:r/n}_isVisible(){const t=this.options.display;return"auto"!==t?!!t:this.getMatchingVisibleMetas().length>0}_computeGridLineItems(t){const e=this.axis,i=this.chart,n=this.options,{grid:s,position:o}=n,r=s.offset,a=this.isHorizontal(),l=this.ticks.length+(r?1:0),h=dr(s),c=[],d=s.setContext(this.getContext()),u=d.drawBorder?d.borderWidth:0,f=u/2,g=function(t){return vn(i,t,u)};let p,m,b,x,_,y,v,w,M,k,S,P;if("top"===o)p=g(this.bottom),y=this.bottom-h,w=p-f,k=g(t.top)+f,P=t.bottom;else if("bottom"===o)p=g(this.top),k=t.top,P=g(t.bottom)-f,y=p+f,w=this.top+h;else if("left"===o)p=g(this.right),_=this.right-h,v=p-f,M=g(t.left)+f,S=t.right;else if("right"===o)p=g(this.left),M=t.left,S=g(t.right)-f,_=p+f,v=this.left+h;else if("x"===e){if("center"===o)p=g((t.top+t.bottom)/2+.5);else if(Ve(o)){const t=Object.keys(o)[0],e=o[t];p=g(this.chart.scales[t].getPixelForValue(e))}k=t.top,P=t.bottom,y=p+f,w=y+h}else if("y"===e){if("center"===o)p=g((t.left+t.right)/2);else if(Ve(o)){const t=Object.keys(o)[0],e=o[t];p=g(this.chart.scales[t].getPixelForValue(e))}_=p-f,v=_-h,M=t.left,S=t.right}const D=je(n.ticks.maxTicksLimit,l),C=Math.max(1,Math.ceil(l/D));for(m=0;m<l;m+=C){const t=s.setContext(this.getContext(m)),e=t.lineWidth,n=t.color,o=s.borderDash||[],l=t.borderDashOffset,h=t.tickWidth,d=t.tickColor,u=t.tickBorderDash||[],f=t.tickBorderDashOffset;b=cr(this,m,r),void 0!==b&&(x=vn(i,b,e),a?_=v=M=S=x:y=w=k=P=x,c.push({tx1:_,ty1:y,tx2:v,ty2:w,x1:M,y1:k,x2:S,y2:P,width:e,color:n,borderDash:o,borderDashOffset:l,tickWidth:h,tickColor:d,tickBorderDash:u,tickBorderDashOffset:f}))}return this._ticksLength=l,this._borderValue=p,c}_computeLabelItems(t){const e=this.axis,i=this.options,{position:n,ticks:s}=i,o=this.isHorizontal(),r=this.ticks,{align:a,crossAlign:l,padding:h,mirror:c}=s,d=dr(i.grid),u=d+h,f=c?-h:u,g=-_i(this.labelRotation),p=[];let m,b,x,_,y,v,w,M,k,S,P,D,C="middle";if("top"===n)v=this.bottom-f,w=this._getXAxisLabelAlignment();else if("bottom"===n)v=this.top+f,w=this._getXAxisLabelAlignment();else if("left"===n){const t=this._getYAxisLabelAlignment(d);w=t.textAlign,y=t.x}else if("right"===n){const t=this._getYAxisLabelAlignment(d);w=t.textAlign,y=t.x}else if("x"===e){if("center"===n)v=(t.top+t.bottom)/2+u;else if(Ve(n)){const t=Object.keys(n)[0],e=n[t];v=this.chart.scales[t].getPixelForValue(e)+u}w=this._getXAxisLabelAlignment()}else if("y"===e){if("center"===n)y=(t.left+t.right)/2-u;else if(Ve(n)){const t=Object.keys(n)[0],e=n[t];y=this.chart.scales[t].getPixelForValue(e)}w=this._getYAxisLabelAlignment(d).textAlign}"y"===e&&("start"===a?C="top":"end"===a&&(C="bottom"));const A=this._getLabelSizes();for(m=0,b=r.length;m<b;++m){x=r[m],_=x.label;const t=s.setContext(this.getContext(m));M=this.getPixelForTick(m)+s.labelOffset,k=this._resolveTickFontOptions(m),S=k.lineHeight,P=Be(_)?_.length:1;const e=P/2,i=t.color,a=t.textStrokeColor,h=t.textStrokeWidth;let d,u=w;if(o?(y=M,"inner"===w&&(u=m===b-1?this.options.reverse?"left":"right":0===m?this.options.reverse?"right":"left":"center"),D="top"===n?"near"===l||0!==g?-P*S+S/2:"center"===l?-A.highest.height/2-e*S+S:-A.highest.height+S/2:"near"===l||0!==g?S/2:"center"===l?A.highest.height/2-e*S:A.highest.height-P*S,c&&(D*=-1)):(v=M,D=(1-P)*S/2),t.showLabelBackdrop){const e=Bn(t.backdropPadding),i=A.heights[m],n=A.widths[m];let s=v+D-e.top,o=y-e.left;switch(C){case"middle":s-=i/2;break;case"bottom":s-=i}switch(w){case"center":o-=n/2;break;case"right":o-=n}d={left:o,top:s,width:n+e.width,height:i+e.height,color:t.backdropColor}}p.push({rotation:g,label:_,font:k,color:i,strokeColor:a,strokeWidth:h,textOffset:D,textAlign:u,textBaseline:C,translation:[y,v],backdrop:d})}return p}_getXAxisLabelAlignment(){const{position:t,ticks:e}=this.options;if(-_i(this.labelRotation))return"top"===t?"left":"right";let i="center";return"start"===e.align?i="left":"end"===e.align?i="right":"inner"===e.align&&(i="inner"),i}_getYAxisLabelAlignment(t){const{position:e,ticks:{crossAlign:i,mirror:n,padding:s}}=this.options,o=t+s,r=this._getLabelSizes().widest.width;let a,l;return"left"===e?n?(l=this.right+s,"near"===i?a="left":"center"===i?(a="center",l+=r/2):(a="right",l+=r)):(l=this.right-o,"near"===i?a="right":"center"===i?(a="center",l-=r/2):(a="left",l=this.left)):"right"===e?n?(l=this.left+s,"near"===i?a="right":"center"===i?(a="center",l-=r/2):(a="left",l-=r)):(l=this.left+o,"near"===i?a="left":"center"===i?(a="center",l+=r/2):(a="right",l=this.right)):a="right",{textAlign:a,x:l}}_computeLabelArea(){if(this.options.ticks.mirror)return;const t=this.chart,e=this.options.position;return"left"===e||"right"===e?{top:0,left:this.left,bottom:t.height,right:this.right}:"top"===e||"bottom"===e?{top:this.top,left:0,bottom:this.bottom,right:t.width}:void 0}drawBackground(){const{ctx:t,options:{backgroundColor:e},left:i,top:n,width:s,height:o}=this;e&&(t.save(),t.fillStyle=e,t.fillRect(i,n,s,o),t.restore())}getLineWidthForValue(t){const e=this.options.grid;if(!this._isVisible()||!e.display)return 0;const i=this.ticks.findIndex((e=>e.value===t));return i>=0?e.setContext(this.getContext(i)).lineWidth:0}drawGrid(t){const e=this.options.grid,i=this.ctx,n=this._gridLineItems||(this._gridLineItems=this._computeGridLineItems(t));let s,o;const r=(t,e,n)=>{n.width&&n.color&&(i.save(),i.lineWidth=n.width,i.strokeStyle=n.color,i.setLineDash(n.borderDash||[]),i.lineDashOffset=n.borderDashOffset,i.beginPath(),i.moveTo(t.x,t.y),i.lineTo(e.x,e.y),i.stroke(),i.restore())};if(e.display)for(s=0,o=n.length;s<o;++s){const t=n[s];e.drawOnChartArea&&r({x:t.x1,y:t.y1},{x:t.x2,y:t.y2},t),e.drawTicks&&r({x:t.tx1,y:t.ty1},{x:t.tx2,y:t.ty2},{color:t.tickColor,width:t.tickWidth,borderDash:t.tickBorderDash,borderDashOffset:t.tickBorderDashOffset})}}drawBorder(){const{chart:t,ctx:e,options:{grid:i}}=this,n=i.setContext(this.getContext()),s=i.drawBorder?n.borderWidth:0;if(!s)return;const o=i.setContext(this.getContext(0)).lineWidth,r=this._borderValue;let a,l,h,c;this.isHorizontal()?(a=vn(t,this.left,s)-s/2,l=vn(t,this.right,o)+o/2,h=c=r):(h=vn(t,this.top,s)-s/2,c=vn(t,this.bottom,o)+o/2,a=l=r),e.save(),e.lineWidth=n.borderWidth,e.strokeStyle=n.borderColor,e.beginPath(),e.moveTo(a,h),e.lineTo(l,c),e.stroke(),e.restore()}drawLabels(t){if(!this.options.ticks.display)return;const e=this.ctx,i=this._computeLabelArea();i&&Sn(e,i);const n=this._labelItems||(this._labelItems=this._computeLabelItems(t));let s,o;for(s=0,o=n.length;s<o;++s){const t=n[s],i=t.font,o=t.label;t.backdrop&&(e.fillStyle=t.backdrop.color,e.fillRect(t.backdrop.left,t.backdrop.top,t.backdrop.width,t.backdrop.height)),An(e,o,0,t.textOffset,i,t)}i&&Pn(e)}drawTitle(){const{ctx:t,options:{position:e,title:i,reverse:n}}=this;if(!i.display)return;const s=Vn(i.font),o=Bn(i.padding),r=i.align;let a=s.lineHeight/2;"bottom"===e||"center"===e||Ve(e)?(a+=o.bottom,Be(i.text)&&(a+=s.lineHeight*(i.text.length-1))):a+=o.top;const{titleX:l,titleY:h,maxWidth:c,rotation:d}=function(t,e,i,n){const{top:s,left:o,bottom:r,right:a,chart:l}=t,{chartArea:h,scales:c}=l;let d,u,f,g=0;const p=r-s,m=a-o;if(t.isHorizontal()){if(u=Re(n,o,a),Ve(i)){const t=Object.keys(i)[0],n=i[t];f=c[t].getPixelForValue(n)+p-e}else f="center"===i?(h.bottom+h.top)/2+p-e:lr(t,i,e);d=a-o}else{if(Ve(i)){const t=Object.keys(i)[0],n=i[t];u=c[t].getPixelForValue(n)-m+e}else u="center"===i?(h.left+h.right)/2-m+e:lr(t,i,e);f=Re(n,r,s),g="left"===i?-ci:ci}return{titleX:u,titleY:f,maxWidth:d,rotation:g}}(this,a,e,r);An(t,i.text,0,0,s,{color:i.color,maxWidth:c,rotation:d,textAlign:fr(r,e,n),textBaseline:"middle",translation:[l,h]})}draw(t){this._isVisible()&&(this.drawBackground(),this.drawGrid(t),this.drawBorder(),this.drawTitle(),this.drawLabels(t))}_layers(){const t=this.options,e=t.ticks&&t.ticks.z||0,i=je(t.grid&&t.grid.z,-1);return this._isVisible()&&this.draw===gr.prototype.draw?[{z:i,draw:t=>{this.drawBackground(),this.drawGrid(t),this.drawTitle()}},{z:i+1,draw:()=>{this.drawBorder()}},{z:e,draw:t=>{this.drawLabels(t)}}]:[{z:e,draw:t=>{this.draw(t)}}]}getMatchingVisibleMetas(t){const e=this.chart.getSortedVisibleDatasetMetas(),i=this.axis+"AxisID",n=[];let s,o;for(s=0,o=e.length;s<o;++s){const o=e[s];o[i]!==this.id||t&&o.type!==t||n.push(o)}return n}_resolveTickFontOptions(t){return Vn(this.options.ticks.setContext(this.getContext(t)).font)}_maxDigits(){const t=this._resolveTickFontOptions(0).lineHeight;return(this.isHorizontal()?this.width:this.height)/t}}class pr{constructor(t,e,i){this.type=t,this.scope=e,this.override=i,this.items=Object.create(null)}isForType(t){return Object.prototype.isPrototypeOf.call(this.type.prototype,t.prototype)}register(t){const e=Object.getPrototypeOf(t);let i;(function(t){return"id"in t&&"defaults"in t})(e)&&(i=this.register(e));const n=this.items,s=t.id,o=this.scope+"."+s;if(!s)throw new Error("class does not have id: "+t);return s in n||(n[s]=t,function(t,e,i){const n=Ke(Object.create(null),[i?xn.get(i):{},xn.get(e),t.defaults]);xn.set(e,n),t.defaultRoutes&&function(t,e){Object.keys(e).forEach((i=>{const n=i.split("."),s=n.pop(),o=[t].concat(n).join("."),r=e[i].split("."),a=r.pop(),l=r.join(".");xn.route(o,s,l,a)}))}(e,t.defaultRoutes),t.descriptors&&xn.describe(e,t.descriptors)}(t,o,i),this.override&&xn.override(t.id,t.overrides)),o}get(t){return this.items[t]}unregister(t){const e=this.items,i=t.id,n=this.scope;i in e&&delete e[i],n&&i in xn[n]&&(delete xn[n][i],this.override&&delete gn[i])}}var mr=new class{constructor(){this.controllers=new pr(io,"datasets",!0),this.elements=new pr(sr,"elements"),this.plugins=new pr(Object,"plugins"),this.scales=new pr(gr,"scales"),this._typedRegistries=[this.controllers,this.scales,this.elements]}add(...t){this._each("register",t)}remove(...t){this._each("unregister",t)}addControllers(...t){this._each("register",t,this.controllers)}addElements(...t){this._each("register",t,this.elements)}addPlugins(...t){this._each("register",t,this.plugins)}addScales(...t){this._each("register",t,this.scales)}getController(t){return this._get(t,this.controllers,"controller")}getElement(t){return this._get(t,this.elements,"element")}getPlugin(t){return this._get(t,this.plugins,"plugin")}getScale(t){return this._get(t,this.scales,"scale")}removeControllers(...t){this._each("unregister",t,this.controllers)}removeElements(...t){this._each("unregister",t,this.elements)}removePlugins(...t){this._each("unregister",t,this.plugins)}removeScales(...t){this._each("unregister",t,this.scales)}_each(t,e,i){[...e].forEach((e=>{const n=i||this._getRegistryForType(e);i||n.isForType(e)||n===this.plugins&&e.id?this._exec(t,n,e):Ye(e,(e=>{const n=i||this._getRegistryForType(e);this._exec(t,n,e)}))}))}_exec(t,e,i){const n=ei(t);$e(i["before"+n],[],i),e[t](i),$e(i["after"+n],[],i)}_getRegistryForType(t){for(let e=0;e<this._typedRegistries.length;e++){const i=this._typedRegistries[e];if(i.isForType(t))return i}return this.plugins}_get(t,e,i){const n=e.get(t);if(void 0===n)throw new Error('"'+t+'" is not a registered '+i+".");return n}};class br{constructor(){this._init=[]}notify(t,e,i,n){"beforeInit"===e&&(this._init=this._createDescriptors(t,!0),this._notify(this._init,t,"install"));const s=n?this._descriptors(t).filter(n):this._descriptors(t),o=this._notify(s,t,e,i);return"afterDestroy"===e&&(this._notify(s,t,"stop"),this._notify(this._init,t,"uninstall")),o}_notify(t,e,i,n){n=n||{};for(const s of t){const t=s.plugin;if(!1===$e(t[i],[e,n,s.options],t)&&n.cancelable)return!1}return!0}invalidate(){Fe(this._cache)||(this._oldCache=this._cache,this._cache=void 0)}_descriptors(t){if(this._cache)return this._cache;const e=this._cache=this._createDescriptors(t);return this._notifyStateChanges(t),e}_createDescriptors(t,e){const i=t&&t.config,n=je(i.options&&i.options.plugins,{}),s=function(t){const e=[],i=Object.keys(mr.plugins.items);for(let t=0;t<i.length;t++)e.push(mr.getPlugin(i[t]));const n=t.plugins||[];for(let t=0;t<n.length;t++){const i=n[t];-1===e.indexOf(i)&&e.push(i)}return e}(i);return!1!==n||e?function(t,e,i,n){const s=[],o=t.getContext();for(let r=0;r<e.length;r++){const a=e[r],l=xr(i[a.id],n);null!==l&&s.push({plugin:a,options:_r(t.config,a,l,o)})}return s}(t,s,n,e):[]}_notifyStateChanges(t){const e=this._oldCache||[],i=this._cache,n=(t,e)=>t.filter((t=>!e.some((e=>t.plugin.id===e.plugin.id))));this._notify(n(e,i),t,"stop"),this._notify(n(i,e),t,"start")}}function xr(t,e){return e||!1!==t?!0===t?{}:t:null}function _r(t,e,i,n){const s=t.pluginScopeKeys(e),o=t.getOptionScopes(i,s);return t.createResolver(o,n,[""],{scriptable:!1,indexable:!1,allKeys:!0})}function yr(t,e){const i=xn.datasets[t]||{};return((e.datasets||{})[t]||{}).indexAxis||e.indexAxis||i.indexAxis||"x"}function vr(t,e){return"x"===t||"y"===t?t:e.axis||("top"===(i=e.position)||"bottom"===i?"x":"left"===i||"right"===i?"y":void 0)||t.charAt(0).toLowerCase();var i}function wr(t){const e=t.options||(t.options={});e.plugins=je(e.plugins,{}),e.scales=function(t,e){const i=gn[t.type]||{scales:{}},n=e.scales||{},s=yr(t.type,e),o=Object.create(null),r=Object.create(null);return Object.keys(n).forEach((t=>{const e=n[t];if(!Ve(e))return console.error(`Invalid scale configuration for scale: ${t}`);if(e._proxy)return console.warn(`Ignoring resolver passed as options for scale: ${t}`);const a=vr(t,e),l=function(t,e){return t===e?"_index_":"_value_"}(a,s),h=i.scales||{};o[a]=o[a]||t,r[t]=Je(Object.create(null),[{axis:a},e,h[a],h[l]])})),t.data.datasets.forEach((i=>{const s=i.type||t.type,a=i.indexAxis||yr(s,e),l=(gn[s]||{}).scales||{};Object.keys(l).forEach((t=>{const e=function(t,e){let i=t;return"_index_"===t?i=e:"_value_"===t&&(i="x"===e?"y":"x"),i}(t,a),s=i[e+"AxisID"]||o[e]||e;r[s]=r[s]||Object.create(null),Je(r[s],[{axis:e},n[s],l[t]])}))})),Object.keys(r).forEach((t=>{const e=r[t];Je(e,[xn.scales[e.type],xn.scale])})),r}(t,e)}function Mr(t){return(t=t||{}).datasets=t.datasets||[],t.labels=t.labels||[],t}const kr=new Map,Sr=new Set;function Pr(t,e){let i=kr.get(t);return i||(i=e(),kr.set(t,i),Sr.add(i)),i}const Dr=(t,e,i)=>{const n=ti(e,i);void 0!==n&&t.add(n)};class Cr{constructor(t){this._config=function(t){return(t=t||{}).data=Mr(t.data),wr(t),t}(t),this._scopeCache=new Map,this._resolverCache=new Map}get platform(){return this._config.platform}get type(){return this._config.type}set type(t){this._config.type=t}get data(){return this._config.data}set data(t){this._config.data=Mr(t)}get options(){return this._config.options}set options(t){this._config.options=t}get plugins(){return this._config.plugins}update(){const t=this._config;this.clearCache(),wr(t)}clearCache(){this._scopeCache.clear(),this._resolverCache.clear()}datasetScopeKeys(t){return Pr(t,(()=>[[`datasets.${t}`,""]]))}datasetAnimationScopeKeys(t,e){return Pr(`${t}.transition.${e}`,(()=>[[`datasets.${t}.transitions.${e}`,`transitions.${e}`],[`datasets.${t}`,""]]))}datasetElementScopeKeys(t,e){return Pr(`${t}-${e}`,(()=>[[`datasets.${t}.elements.${e}`,`datasets.${t}`,`elements.${e}`,""]]))}pluginScopeKeys(t){const e=t.id;return Pr(`${this.type}-plugin-${e}`,(()=>[[`plugins.${e}`,...t.additionalOptionScopes||[]]]))}_cachedScopes(t,e){const i=this._scopeCache;let n=i.get(t);return n&&!e||(n=new Map,i.set(t,n)),n}getOptionScopes(t,e,i){const{options:n,type:s}=this,o=this._cachedScopes(t,i),r=o.get(e);if(r)return r;const a=new Set;e.forEach((e=>{t&&(a.add(t),e.forEach((e=>Dr(a,t,e)))),e.forEach((t=>Dr(a,n,t))),e.forEach((t=>Dr(a,gn[s]||{},t))),e.forEach((t=>Dr(a,xn,t))),e.forEach((t=>Dr(a,pn,t)))}));const l=Array.from(a);return 0===l.length&&l.push(Object.create(null)),Sr.has(e)&&o.set(e,l),l}chartOptionScopes(){const{options:t,type:e}=this;return[t,gn[e]||{},xn.datasets[e]||{},{type:e},xn,pn]}resolveNamedOptions(t,e,i,n=[""]){const s={$shared:!0},{resolver:o,subPrefixes:r}=Ar(this._resolverCache,t,n);let a=o;(function(t,e){const{isScriptable:i,isIndexable:n}=Kn(t);for(const s of e){const e=i(s),o=n(s),r=(o||e)&&t[s];if(e&&(ni(r)||Or(r))||o&&Be(r))return!0}return!1})(o,e)&&(s.$shared=!1,a=Gn(o,i=ni(i)?i():i,this.createResolver(t,i,r)));for(const t of e)s[t]=a[t];return s}createResolver(t,e,i=[""],n){const{resolver:s}=Ar(this._resolverCache,t,i);return Ve(e)?Gn(s,e,void 0,n):s}}function Ar(t,e,i){let n=t.get(e);n||(n=new Map,t.set(e,n));const s=i.join();let o=n.get(s);return o||(o={resolver:qn(e,i),subPrefixes:i.filter((t=>!t.toLowerCase().includes("hover")))},n.set(s,o)),o}const Or=t=>Ve(t)&&Object.getOwnPropertyNames(t).reduce(((e,i)=>e||ni(t[i])),!1),Er=["top","bottom","left","right","chartArea"];function Lr(t,e){return"top"===t||"bottom"===t||-1===Er.indexOf(t)&&"x"===e}function Tr(t,e){return function(i,n){return i[t]===n[t]?i[e]-n[e]:i[t]-n[t]}}function Rr(t){const e=t.chart,i=e.options.animation;e.notifyPlugins("afterRender"),$e(i&&i.onComplete,[t],e)}function Ir(t){const e=t.chart,i=e.options.animation;$e(i&&i.onProgress,[t],e)}function zr(t){return gs()&&"string"==typeof t?t=document.getElementById(t):t&&t.length&&(t=t[0]),t&&t.canvas&&(t=t.canvas),t}const Fr={},Br=t=>{const e=zr(t);return Object.values(Fr).filter((t=>t.canvas===e)).pop()};function Vr(t,e,i){const n=Object.keys(t);for(const s of n){const n=+s;if(n>=e){const o=t[s];delete t[s],(i>0||n>e)&&(t[n+i]=o)}}}class Nr{constructor(t,e){const i=this.config=new Cr(e),n=zr(t),s=Br(n);if(s)throw new Error("Canvas is already in use. Chart with ID '"+s.id+"' must be destroyed before the canvas can be reused.");const o=i.createResolver(i.chartOptionScopes(),this.getContext());this.platform=new(i.platform||function(t){return!gs()||"undefined"!=typeof OffscreenCanvas&&t instanceof OffscreenCanvas?Ho:nr}(n)),this.platform.updateConfig(i);const r=this.platform.acquireContext(n,o.aspectRatio),a=r&&r.canvas,l=a&&a.height,h=a&&a.width;this.id=ze(),this.ctx=r,this.canvas=a,this.width=h,this.height=l,this._options=o,this._aspectRatio=this.aspectRatio,this._layers=[],this._metasets=[],this._stacks=void 0,this.boxes=[],this.currentDevicePixelRatio=void 0,this.chartArea=void 0,this._active=[],this._lastEvent=void 0,this._listeners={},this._responsiveListeners=void 0,this._sortedMetasets=[],this.scales={},this._plugins=new br,this.$proxies={},this._hiddenIndices={},this.attached=!1,this._animationsDisabled=void 0,this.$context=void 0,this._doResize=function(t,e){let i;return function(...n){return e?(clearTimeout(i),i=setTimeout(t,e,n)):t.apply(this,n),e}}((t=>this.update(t)),o.resizeDelay||0),this._dataChanges=[],Fr[this.id]=this,r&&a?(Vs.listen(this,"complete",Rr),Vs.listen(this,"progress",Ir),this._initialize(),this.attached&&this.update()):console.error("Failed to create chart: can't acquire context from the given item")}get aspectRatio(){const{options:{aspectRatio:t,maintainAspectRatio:e},width:i,height:n,_aspectRatio:s}=this;return Fe(t)?e&&s?s:n?i/n:null:t}get data(){return this.config.data}set data(t){this.config.data=t}get options(){return this._options}set options(t){this.config.options=t}_initialize(){return this.notifyPlugins("beforeInit"),this.options.responsive?this.resize():ws(this,this.options.devicePixelRatio),this.bindEvents(),this.notifyPlugins("afterInit"),this}clear(){return wn(this.canvas,this.ctx),this}stop(){return Vs.stop(this),this}resize(t,e){Vs.running(this)?this._resizeBeforeDraw={width:t,height:e}:this._resize(t,e)}_resize(t,e){const i=this.options,n=this.canvas,s=i.maintainAspectRatio&&this.aspectRatio,o=this.platform.getMaximumSize(n,t,e,s),r=i.devicePixelRatio||this.platform.getDevicePixelRatio(),a=this.width?"resize":"attach";this.width=o.width,this.height=o.height,this._aspectRatio=this.aspectRatio,ws(this,r,!0)&&(this.notifyPlugins("resize",{size:o}),$e(i.onResize,[this,o],this),this.attached&&this._doResize(a)&&this.render())}ensureScalesHaveIDs(){Ye(this.options.scales||{},((t,e)=>{t.id=e}))}buildOrUpdateScales(){const t=this.options,e=t.scales,i=this.scales,n=Object.keys(i).reduce(((t,e)=>(t[e]=!1,t)),{});let s=[];e&&(s=s.concat(Object.keys(e).map((t=>{const i=e[t],n=vr(t,i),s="r"===n,o="x"===n;return{options:i,dposition:s?"chartArea":o?"bottom":"left",dtype:s?"radialLinear":o?"category":"linear"}})))),Ye(s,(e=>{const s=e.options,o=s.id,r=vr(o,s),a=je(s.type,e.dtype);void 0!==s.position&&Lr(s.position,r)===Lr(e.dposition)||(s.position=e.dposition),n[o]=!0;let l=null;o in i&&i[o].type===a?l=i[o]:(l=new(mr.getScale(a))({id:o,type:a,ctx:this.ctx,chart:this}),i[l.id]=l),l.init(s,t)})),Ye(n,((t,e)=>{t||delete i[e]})),Ye(i,(t=>{Wo.configure(this,t,t.options),Wo.addBox(this,t)}))}_updateMetasets(){const t=this._metasets,e=this.data.datasets.length,i=t.length;if(t.sort(((t,e)=>t.index-e.index)),i>e){for(let t=e;t<i;++t)this._destroyDatasetMeta(t);t.splice(e,i-e)}this._sortedMetasets=t.slice(0).sort(Tr("order","index"))}_removeUnreferencedMetasets(){const{_metasets:t,data:{datasets:e}}=this;t.length>e.length&&delete this._stacks,t.forEach(((t,i)=>{0===e.filter((e=>e===t._dataset)).length&&this._destroyDatasetMeta(i)}))}buildOrUpdateControllers(){const t=[],e=this.data.datasets;let i,n;for(this._removeUnreferencedMetasets(),i=0,n=e.length;i<n;i++){const n=e[i];let s=this.getDatasetMeta(i);const o=n.type||this.config.type;if(s.type&&s.type!==o&&(this._destroyDatasetMeta(i),s=this.getDatasetMeta(i)),s.type=o,s.indexAxis=n.indexAxis||yr(o,this.options),s.order=n.order||0,s.index=i,s.label=""+n.label,s.visible=this.isDatasetVisible(i),s.controller)s.controller.updateIndex(i),s.controller.linkScales();else{const e=mr.getController(o),{datasetElementType:n,dataElementType:r}=xn.datasets[o];Object.assign(e.prototype,{dataElementType:mr.getElement(r),datasetElementType:n&&mr.getElement(n)}),s.controller=new e(this,i),t.push(s.controller)}}return this._updateMetasets(),t}_resetElements(){Ye(this.data.datasets,((t,e)=>{this.getDatasetMeta(e).controller.reset()}),this)}reset(){this._resetElements(),this.notifyPlugins("reset")}update(t){const e=this.config;e.update();const i=this._options=e.createResolver(e.chartOptionScopes(),this.getContext()),n=this._animationsDisabled=!i.animation;if(this._updateScales(),this._checkEventBindings(),this._updateHiddenIndices(),this._plugins.invalidate(),!1===this.notifyPlugins("beforeUpdate",{mode:t,cancelable:!0}))return;const s=this.buildOrUpdateControllers();this.notifyPlugins("beforeElementsUpdate");let o=0;for(let t=0,e=this.data.datasets.length;t<e;t++){const{controller:e}=this.getDatasetMeta(t),i=!n&&-1===s.indexOf(e);e.buildOrUpdateElements(i),o=Math.max(+e.getMaxOverflow(),o)}o=this._minPadding=i.layout.autoPadding?o:0,this._updateLayout(o),n||Ye(s,(t=>{t.reset()})),this._updateDatasets(t),this.notifyPlugins("afterUpdate",{mode:t}),this._layers.sort(Tr("z","_idx"));const{_active:r,_lastEvent:a}=this;a?this._eventHandler(a,!0):r.length&&this._updateHoverStyles(r,r,!0),this.render()}_updateScales(){Ye(this.scales,(t=>{Wo.removeBox(this,t)})),this.ensureScalesHaveIDs(),this.buildOrUpdateScales()}_checkEventBindings(){const t=this.options,e=new Set(Object.keys(this._listeners)),i=new Set(t.events);si(e,i)&&!!this._responsiveListeners===t.responsive||(this.unbindEvents(),this.bindEvents())}_updateHiddenIndices(){const{_hiddenIndices:t}=this,e=this._getUniformDataChanges()||[];for(const{method:i,start:n,count:s}of e)Vr(t,n,"_removeElements"===i?-s:s)}_getUniformDataChanges(){const t=this._dataChanges;if(!t||!t.length)return;this._dataChanges=[];const e=this.data.datasets.length,i=e=>new Set(t.filter((t=>t[0]===e)).map(((t,e)=>e+","+t.splice(1).join(",")))),n=i(0);for(let t=1;t<e;t++)if(!si(n,i(t)))return;return Array.from(n).map((t=>t.split(","))).map((t=>({method:t[1],start:+t[2],count:+t[3]})))}_updateLayout(t){if(!1===this.notifyPlugins("beforeLayout",{cancelable:!0}))return;Wo.update(this,this.width,this.height,t);const e=this.chartArea,i=e.width<=0||e.height<=0;this._layers=[],Ye(this.boxes,(t=>{i&&"chartArea"===t.position||(t.configure&&t.configure(),this._layers.push(...t._layers()))}),this),this._layers.forEach(((t,e)=>{t._idx=e})),this.notifyPlugins("afterLayout")}_updateDatasets(t){if(!1!==this.notifyPlugins("beforeDatasetsUpdate",{mode:t,cancelable:!0})){for(let t=0,e=this.data.datasets.length;t<e;++t)this.getDatasetMeta(t).controller.configure();for(let e=0,i=this.data.datasets.length;e<i;++e)this._updateDataset(e,ni(t)?t({datasetIndex:e}):t);this.notifyPlugins("afterDatasetsUpdate",{mode:t})}}_updateDataset(t,e){const i=this.getDatasetMeta(t),n={meta:i,index:t,mode:e,cancelable:!0};!1!==this.notifyPlugins("beforeDatasetUpdate",n)&&(i.controller._update(e),n.cancelable=!1,this.notifyPlugins("afterDatasetUpdate",n))}render(){!1!==this.notifyPlugins("beforeRender",{cancelable:!0})&&(Vs.has(this)?this.attached&&!Vs.running(this)&&Vs.start(this):(this.draw(),Rr({chart:this})))}draw(){let t;if(this._resizeBeforeDraw){const{width:t,height:e}=this._resizeBeforeDraw;this._resize(t,e),this._resizeBeforeDraw=null}if(this.clear(),this.width<=0||this.height<=0)return;if(!1===this.notifyPlugins("beforeDraw",{cancelable:!0}))return;const e=this._layers;for(t=0;t<e.length&&e[t].z<=0;++t)e[t].draw(this.chartArea);for(this._drawDatasets();t<e.length;++t)e[t].draw(this.chartArea);this.notifyPlugins("afterDraw")}_getSortedDatasetMetas(t){const e=this._sortedMetasets,i=[];let n,s;for(n=0,s=e.length;n<s;++n){const s=e[n];t&&!s.visible||i.push(s)}return i}getSortedVisibleDatasetMetas(){return this._getSortedDatasetMetas(!0)}_drawDatasets(){if(!1===this.notifyPlugins("beforeDatasetsDraw",{cancelable:!0}))return;const t=this.getSortedVisibleDatasetMetas();for(let e=t.length-1;e>=0;--e)this._drawDataset(t[e]);this.notifyPlugins("afterDatasetsDraw")}_drawDataset(t){const e=this.ctx,i=t._clip,n=!i.disabled,s=this.chartArea,o={meta:t,index:t.index,cancelable:!0};!1!==this.notifyPlugins("beforeDatasetDraw",o)&&(n&&Sn(e,{left:!1===i.left?0:s.left-i.left,right:!1===i.right?this.width:s.right+i.right,top:!1===i.top?0:s.top-i.top,bottom:!1===i.bottom?this.height:s.bottom+i.bottom}),t.controller.draw(),n&&Pn(e),o.cancelable=!1,this.notifyPlugins("afterDatasetDraw",o))}isPointInArea(t){return kn(t,this.chartArea,this._minPadding)}getElementsAtEventForMode(t,e,i,n){const s=Ao.modes[e];return"function"==typeof s?s(this,t,i,n):[]}getDatasetMeta(t){const e=this.data.datasets[t],i=this._metasets;let n=i.filter((t=>t&&t._dataset===e)).pop();return n||(n={type:null,data:[],dataset:null,controller:null,hidden:null,xAxisID:null,yAxisID:null,order:e&&e.order||0,index:t,_dataset:e,_parsed:[],_sorted:!1},i.push(n)),n}getContext(){return this.$context||(this.$context=Wn(null,{chart:this,type:"chart"}))}getVisibleDatasetCount(){return this.getSortedVisibleDatasetMetas().length}isDatasetVisible(t){const e=this.data.datasets[t];if(!e)return!1;const i=this.getDatasetMeta(t);return"boolean"==typeof i.hidden?!i.hidden:!e.hidden}setDatasetVisibility(t,e){this.getDatasetMeta(t).hidden=!e}toggleDataVisibility(t){this._hiddenIndices[t]=!this._hiddenIndices[t]}getDataVisibility(t){return!this._hiddenIndices[t]}_updateVisibility(t,e,i){const n=i?"show":"hide",s=this.getDatasetMeta(t),o=s.controller._resolveAnimations(void 0,n);ii(e)?(s.data[e].hidden=!i,this.update()):(this.setDatasetVisibility(t,i),o.update(s,{visible:i}),this.update((e=>e.datasetIndex===t?n:void 0)))}hide(t,e){this._updateVisibility(t,e,!1)}show(t,e){this._updateVisibility(t,e,!0)}_destroyDatasetMeta(t){const e=this._metasets[t];e&&e.controller&&e.controller._destroy(),delete this._metasets[t]}_stop(){let t,e;for(this.stop(),Vs.remove(this),t=0,e=this.data.datasets.length;t<e;++t)this._destroyDatasetMeta(t)}destroy(){this.notifyPlugins("beforeDestroy");const{canvas:t,ctx:e}=this;this._stop(),this.config.clearCache(),t&&(this.unbindEvents(),wn(t,e),this.platform.releaseContext(e),this.canvas=null,this.ctx=null),this.notifyPlugins("destroy"),delete Fr[this.id],this.notifyPlugins("afterDestroy")}toBase64Image(...t){return this.canvas.toDataURL(...t)}bindEvents(){this.bindUserEvents(),this.options.responsive?this.bindResponsiveEvents():this.attached=!0}bindUserEvents(){const t=this._listeners,e=this.platform,i=(i,n)=>{e.addEventListener(this,i,n),t[i]=n},n=(t,e,i)=>{t.offsetX=e,t.offsetY=i,this._eventHandler(t)};Ye(this.options.events,(t=>i(t,n)))}bindResponsiveEvents(){this._responsiveListeners||(this._responsiveListeners={});const t=this._responsiveListeners,e=this.platform,i=(i,n)=>{e.addEventListener(this,i,n),t[i]=n},n=(i,n)=>{t[i]&&(e.removeEventListener(this,i,n),delete t[i])},s=(t,e)=>{this.canvas&&this.resize(t,e)};let o;const r=()=>{n("attach",r),this.attached=!0,this.resize(),i("resize",s),i("detach",o)};o=()=>{this.attached=!1,n("resize",s),this._stop(),this._resize(0,0),i("attach",r)},e.isAttached(this.canvas)?r():o()}unbindEvents(){Ye(this._listeners,((t,e)=>{this.platform.removeEventListener(this,e,t)})),this._listeners={},Ye(this._responsiveListeners,((t,e)=>{this.platform.removeEventListener(this,e,t)})),this._responsiveListeners=void 0}updateHoverStyle(t,e,i){const n=i?"set":"remove";let s,o,r,a;for("dataset"===e&&(s=this.getDatasetMeta(t[0].datasetIndex),s.controller["_"+n+"DatasetHoverStyle"]()),r=0,a=t.length;r<a;++r){o=t[r];const e=o&&this.getDatasetMeta(o.datasetIndex).controller;e&&e[n+"HoverStyle"](o.element,o.datasetIndex,o.index)}}getActiveElements(){return this._active||[]}setActiveElements(t){const e=this._active||[],i=t.map((({datasetIndex:t,index:e})=>{const i=this.getDatasetMeta(t);if(!i)throw new Error("No dataset found at index "+t);return{datasetIndex:t,element:i.data[e],index:e}}));!Ue(i,e)&&(this._active=i,this._lastEvent=null,this._updateHoverStyles(i,e))}notifyPlugins(t,e,i){return this._plugins.notify(this,t,e,i)}_updateHoverStyles(t,e,i){const n=this.options.hover,s=(t,e)=>t.filter((t=>!e.some((e=>t.datasetIndex===e.datasetIndex&&t.index===e.index)))),o=s(e,t),r=i?t:s(t,e);o.length&&this.updateHoverStyle(o,n.mode,!1),r.length&&n.mode&&this.updateHoverStyle(r,n.mode,!0)}_eventHandler(t,e){const i={event:t,replay:e,cancelable:!0,inChartArea:this.isPointInArea(t)},n=e=>(e.options.events||this.options.events).includes(t.native.type);if(!1===this.notifyPlugins("beforeEvent",i,n))return;const s=this._handleEvent(t,e,i.inChartArea);return i.cancelable=!1,this.notifyPlugins("afterEvent",i,n),(s||i.changed)&&this.render(),this}_handleEvent(t,e,i){const{_active:n=[],options:s}=this,o=e,r=this._getActiveElements(t,n,i,o),a=function(t){return"mouseup"===t.type||"click"===t.type||"contextmenu"===t.type}(t),l=function(t,e,i,n){return i&&"mouseout"!==t.type?n?e:t:null}(t,this._lastEvent,i,a);i&&(this._lastEvent=null,$e(s.onHover,[t,r,this],this),a&&$e(s.onClick,[t,r,this],this));const h=!Ue(r,n);return(h||e)&&(this._active=r,this._updateHoverStyles(r,n,e)),this._lastEvent=l,h}_getActiveElements(t,e,i,n){if("mouseout"===t.type)return[];if(!i)return e;const s=this.options.hover;return this.getElementsAtEventForMode(t,s.mode,s,n)}}const Wr=()=>Ye(Nr.instances,(t=>t._plugins.invalidate())),jr=!0;function Hr(t,e,i){const{startAngle:n,pixelMargin:s,x:o,y:r,outerRadius:a,innerRadius:l}=e;let h=s/a;t.beginPath(),t.arc(o,r,a,n-h,i+h),l>s?(h=s/l,t.arc(o,r,l,i+h,n-h,!0)):t.arc(o,r,s,i+ci,n-ci),t.closePath(),t.clip()}function $r(t,e,i,n){return{x:i+t*Math.cos(e),y:n+t*Math.sin(e)}}function Yr(t,e,i,n,s){const{x:o,y:r,startAngle:a,pixelMargin:l,innerRadius:h}=e,c=Math.max(e.outerRadius+n+i-l,0),d=h>0?h+n+i+l:0;let u=0;const f=s-a;if(n){const t=((h>0?h-n:0)+(c>0?c-n:0))/2;u=(f-(0!==t?f*t/(t+n):f))/2}const g=(f-Math.max(.001,f*c-i/oi)/c)/2,p=a+g+u,m=s-g-u,{outerStart:b,outerEnd:x,innerStart:_,innerEnd:y}=function(t,e,i,n){const s=In(t.options.borderRadius,["outerStart","outerEnd","innerStart","innerEnd"]),o=(i-e)/2,r=Math.min(o,n*e/2),a=t=>{const e=(i-Math.min(o,t))*n/2;return Di(t,0,Math.min(o,e))};return{outerStart:a(s.outerStart),outerEnd:a(s.outerEnd),innerStart:Di(s.innerStart,0,r),innerEnd:Di(s.innerEnd,0,r)}}(e,d,c,m-p),v=c-b,w=c-x,M=p+b/v,k=m-x/w,S=d+_,P=d+y,D=p+_/S,C=m-y/P;if(t.beginPath(),t.arc(o,r,c,M,k),x>0){const e=$r(w,k,o,r);t.arc(e.x,e.y,x,k,m+ci)}const A=$r(P,m,o,r);if(t.lineTo(A.x,A.y),y>0){const e=$r(P,C,o,r);t.arc(e.x,e.y,y,m+ci,C+Math.PI)}if(t.arc(o,r,d,m-y/d,p+_/d,!0),_>0){const e=$r(S,D,o,r);t.arc(e.x,e.y,_,D+Math.PI,p-ci)}const O=$r(v,p,o,r);if(t.lineTo(O.x,O.y),b>0){const e=$r(v,M,o,r);t.arc(e.x,e.y,b,p-ci,M)}t.closePath()}Object.defineProperties(Nr,{defaults:{enumerable:jr,value:xn},instances:{enumerable:jr,value:Fr},overrides:{enumerable:jr,value:gn},registry:{enumerable:jr,value:mr},version:{enumerable:jr,value:"3.8.0"},getChart:{enumerable:jr,value:Br},register:{enumerable:jr,value:(...t)=>{mr.add(...t),Wr()}},unregister:{enumerable:jr,value:(...t)=>{mr.remove(...t),Wr()}}});class Ur extends sr{constructor(t){super(),this.options=void 0,this.circumference=void 0,this.startAngle=void 0,this.endAngle=void 0,this.innerRadius=void 0,this.outerRadius=void 0,this.pixelMargin=0,this.fullCircles=0,t&&Object.assign(this,t)}inRange(t,e,i){const n=this.getProps(["x","y"],i),{angle:s,distance:o}=wi(n,{x:t,y:e}),{startAngle:r,endAngle:a,innerRadius:l,outerRadius:h,circumference:c}=this.getProps(["startAngle","endAngle","innerRadius","outerRadius","circumference"],i),d=this.options.spacing/2,u=je(c,a-r)>=ri||Pi(s,r,a),f=Ci(o,l+d,h+d);return u&&f}getCenterPoint(t){const{x:e,y:i,startAngle:n,endAngle:s,innerRadius:o,outerRadius:r}=this.getProps(["x","y","startAngle","endAngle","innerRadius","outerRadius","circumference"],t),{offset:a,spacing:l}=this.options,h=(n+s)/2,c=(o+r+l+a)/2;return{x:e+Math.cos(h)*c,y:i+Math.sin(h)*c}}tooltipPosition(t){return this.getCenterPoint(t)}draw(t){const{options:e,circumference:i}=this,n=(e.offset||0)/2,s=(e.spacing||0)/2;if(this.pixelMargin="inner"===e.borderAlign?.33:0,this.fullCircles=i>ri?Math.floor(i/ri):0,0===i||this.innerRadius<0||this.outerRadius<0)return;t.save();let o=0;if(n){o=n/2;const e=(this.startAngle+this.endAngle)/2;t.translate(Math.cos(e)*o,Math.sin(e)*o),this.circumference>=oi&&(o=n)}t.fillStyle=e.backgroundColor,t.strokeStyle=e.borderColor;const r=function(t,e,i,n){const{fullCircles:s,startAngle:o,circumference:r}=e;let a=e.endAngle;if(s){Yr(t,e,i,n,o+ri);for(let e=0;e<s;++e)t.fill();isNaN(r)||(a=o+r%ri,r%ri==0&&(a+=ri))}return Yr(t,e,i,n,a),t.fill(),a}(t,this,o,s);(function(t,e,i,n,s){const{options:o}=e,{borderWidth:r,borderJoinStyle:a}=o,l="inner"===o.borderAlign;r&&(l?(t.lineWidth=2*r,t.lineJoin=a||"round"):(t.lineWidth=r,t.lineJoin=a||"bevel"),e.fullCircles&&function(t,e,i){const{x:n,y:s,startAngle:o,pixelMargin:r,fullCircles:a}=e,l=Math.max(e.outerRadius-r,0),h=e.innerRadius+r;let c;for(i&&Hr(t,e,o+ri),t.beginPath(),t.arc(n,s,h,o+ri,o,!0),c=0;c<a;++c)t.stroke();for(t.beginPath(),t.arc(n,s,l,o,o+ri),c=0;c<a;++c)t.stroke()}(t,e,l),l&&Hr(t,e,s),Yr(t,e,i,n,s),t.stroke())})(t,this,o,s,r),t.restore()}}function Xr(t,e,i=e){t.lineCap=je(i.borderCapStyle,e.borderCapStyle),t.setLineDash(je(i.borderDash,e.borderDash)),t.lineDashOffset=je(i.borderDashOffset,e.borderDashOffset),t.lineJoin=je(i.borderJoinStyle,e.borderJoinStyle),t.lineWidth=je(i.borderWidth,e.borderWidth),t.strokeStyle=je(i.borderColor,e.borderColor)}function qr(t,e,i){t.lineTo(i.x,i.y)}function Gr(t,e,i={}){const n=t.length,{start:s=0,end:o=n-1}=i,{start:r,end:a}=e,l=Math.max(s,r),h=Math.min(o,a),c=s<r&&o<r||s>a&&o>a;return{count:n,start:l,loop:e.loop,ilen:h<l&&!c?n+h-l:h-l}}function Kr(t,e,i,n){const{points:s,options:o}=e,{count:r,start:a,loop:l,ilen:h}=Gr(s,i,n),c=function(t){return t.stepped?Dn:t.tension||"monotone"===t.cubicInterpolationMode?Cn:qr}(o);let d,u,f,{move:g=!0,reverse:p}=n||{};for(d=0;d<=h;++d)u=s[(a+(p?h-d:d))%r],u.skip||(g?(t.moveTo(u.x,u.y),g=!1):c(t,f,u,p,o.stepped),f=u);return l&&(u=s[(a+(p?h:0))%r],c(t,f,u,p,o.stepped)),!!l}function Jr(t,e,i,n){const s=e.points,{count:o,start:r,ilen:a}=Gr(s,i,n),{move:l=!0,reverse:h}=n||{};let c,d,u,f,g,p,m=0,b=0;const x=t=>(r+(h?a-t:t))%o,_=()=>{f!==g&&(t.lineTo(m,g),t.lineTo(m,f),t.lineTo(m,p))};for(l&&(d=s[x(0)],t.moveTo(d.x,d.y)),c=0;c<=a;++c){if(d=s[x(c)],d.skip)continue;const e=d.x,i=d.y,n=0|e;n===u?(i<f?f=i:i>g&&(g=i),m=(b*m+e)/++b):(_(),t.lineTo(e,i),u=n,b=0,f=g=i),p=i}_()}function Zr(t){const e=t.options,i=e.borderDash&&e.borderDash.length;return t._decimated||t._loop||e.tension||"monotone"===e.cubicInterpolationMode||e.stepped||i?Kr:Jr}Ur.id="arc",Ur.defaults={borderAlign:"center",borderColor:"#fff",borderJoinStyle:void 0,borderRadius:0,borderWidth:2,offset:0,spacing:0,angle:void 0},Ur.defaultRoutes={backgroundColor:"backgroundColor"};const Qr="function"==typeof Path2D;class ta extends sr{constructor(t){super(),this.animated=!0,this.options=void 0,this._chart=void 0,this._loop=void 0,this._fullLoop=void 0,this._path=void 0,this._points=void 0,this._segments=void 0,this._decimated=!1,this._pointsUpdated=!1,this._datasetIndex=void 0,t&&Object.assign(this,t)}updateControlPoints(t,e){const i=this.options;if((i.tension||"monotone"===i.cubicInterpolationMode)&&!i.stepped&&!this._pointsUpdated){const n=i.spanGaps?this._loop:this._fullLoop;fs(this._points,i,t,n,e),this._pointsUpdated=!0}}set points(t){this._points=t,delete this._segments,delete this._path,this._pointsUpdated=!1}get points(){return this._points}get segments(){return this._segments||(this._segments=function(t,e){const i=t.points,n=t.options.spanGaps,s=i.length;if(!s)return[];const o=!!t._loop,{start:r,end:a}=function(t,e,i,n){let s=0,o=e-1;if(i&&!n)for(;s<e&&!t[s].skip;)s++;for(;s<e&&t[s].skip;)s++;for(s%=e,i&&(o+=s);o>s&&t[o%e].skip;)o--;return o%=e,{start:s,end:o}}(i,s,o,n);return function(t,e,i,n){return n&&n.setContext&&i?function(t,e,i,n){const s=t._chart.getContext(),o=Fs(t.options),{_datasetIndex:r,options:{spanGaps:a}}=t,l=i.length,h=[];let c=o,d=e[0].start,u=d;function f(t,e,n,s){const o=a?-1:1;if(t!==e){for(t+=l;i[t%l].skip;)t-=o;for(;i[e%l].skip;)e+=o;t%l!=e%l&&(h.push({start:t%l,end:e%l,loop:n,style:s}),c=s,d=e%l)}}for(const t of e){d=a?d:t.start;let e,o=i[d%l];for(u=d+1;u<=t.end;u++){const a=i[u%l];e=Fs(n.setContext(Wn(s,{type:"segment",p0:o,p1:a,p0DataIndex:(u-1)%l,p1DataIndex:u%l,datasetIndex:r}))),Bs(e,c)&&f(d,u-1,t.loop,c),o=a,c=e}d<u-1&&f(d,u-1,t.loop,c)}return h}(t,e,i,n):e}(t,!0===n?[{start:r,end:a,loop:o}]:function(t,e,i,n){const s=t.length,o=[];let r,a=e,l=t[e];for(r=e+1;r<=i;++r){const i=t[r%s];i.skip||i.stop?l.skip||(n=!1,o.push({start:e%s,end:(r-1)%s,loop:n}),e=a=i.stop?r:null):(a=r,l.skip&&(e=r)),l=i}return null!==a&&o.push({start:e%s,end:a%s,loop:n}),o}(i,r,a<r?a+s:a,!!t._fullLoop&&0===r&&a===s-1),i,e)}(this,this.options.segment))}first(){const t=this.segments,e=this.points;return t.length&&e[t[0].start]}last(){const t=this.segments,e=this.points,i=t.length;return i&&e[t[i-1].end]}interpolate(t,e){const i=this.options,n=t[e],s=this.points,o=zs(this,{property:e,start:n,end:n});if(!o.length)return;const r=[],a=function(t){return t.stepped?Ps:t.tension||"monotone"===t.cubicInterpolationMode?Ds:Ss}(i);let l,h;for(l=0,h=o.length;l<h;++l){const{start:h,end:c}=o[l],d=s[h],u=s[c];if(d===u){r.push(d);continue}const f=a(d,u,Math.abs((n-d[e])/(u[e]-d[e])),i.stepped);f[e]=t[e],r.push(f)}return 1===r.length?r[0]:r}pathSegment(t,e,i){return Zr(this)(t,this,e,i)}path(t,e,i){const n=this.segments,s=Zr(this);let o=this._loop;e=e||0,i=i||this.points.length-e;for(const r of n)o&=s(t,this,r,{start:e,end:e+i-1});return!!o}draw(t,e,i,n){const s=this.options||{};(this.points||[]).length&&s.borderWidth&&(t.save(),function(t,e,i,n){Qr&&!e.options.segment?function(t,e,i,n){let s=e._path;s||(s=e._path=new Path2D,e.path(s,i,n)&&s.closePath()),Xr(t,e.options),t.stroke(s)}(t,e,i,n):function(t,e,i,n){const{segments:s,options:o}=e,r=Zr(e);for(const a of s)Xr(t,o,a.style),t.beginPath(),r(t,e,a,{start:i,end:i+n-1})&&t.closePath(),t.stroke()}(t,e,i,n)}(t,this,i,n),t.restore()),this.animated&&(this._pointsUpdated=!1,this._path=void 0)}}function ea(t,e,i,n){const s=t.options,{[i]:o}=t.getProps([i],n);return Math.abs(e-o)<s.radius+s.hitRadius}ta.id="line",ta.defaults={borderCapStyle:"butt",borderDash:[],borderDashOffset:0,borderJoinStyle:"miter",borderWidth:3,capBezierPoints:!0,cubicInterpolationMode:"default",fill:!1,spanGaps:!1,stepped:!1,tension:0},ta.defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"},ta.descriptors={_scriptable:!0,_indexable:t=>"borderDash"!==t&&"fill"!==t};class ia extends sr{constructor(t){super(),this.options=void 0,this.parsed=void 0,this.skip=void 0,this.stop=void 0,t&&Object.assign(this,t)}inRange(t,e,i){const n=this.options,{x:s,y:o}=this.getProps(["x","y"],i);return Math.pow(t-s,2)+Math.pow(e-o,2)<Math.pow(n.hitRadius+n.radius,2)}inXRange(t,e){return ea(this,t,"x",e)}inYRange(t,e){return ea(this,t,"y",e)}getCenterPoint(t){const{x:e,y:i}=this.getProps(["x","y"],t);return{x:e,y:i}}size(t){let e=(t=t||this.options||{}).radius||0;return e=Math.max(e,e&&t.hoverRadius||0),2*(e+(e&&t.borderWidth||0))}draw(t,e){const i=this.options;this.skip||i.radius<.1||!kn(this,e,this.size(i)/2)||(t.strokeStyle=i.borderColor,t.lineWidth=i.borderWidth,t.fillStyle=i.backgroundColor,Mn(t,i,this.x,this.y))}getRange(){const t=this.options||{};return t.radius+t.hitRadius}}function na(t,e){const{x:i,y:n,base:s,width:o,height:r}=t.getProps(["x","y","base","width","height"],e);let a,l,h,c,d;return t.horizontal?(d=r/2,a=Math.min(i,s),l=Math.max(i,s),h=n-d,c=n+d):(d=o/2,a=i-d,l=i+d,h=Math.min(n,s),c=Math.max(n,s)),{left:a,top:h,right:l,bottom:c}}function sa(t,e,i,n){return t?0:Di(e,i,n)}function oa(t,e,i,n){const s=null===e,o=null===i,r=t&&!(s&&o)&&na(t,n);return r&&(s||Ci(e,r.left,r.right))&&(o||Ci(i,r.top,r.bottom))}function ra(t,e){t.rect(e.x,e.y,e.w,e.h)}function aa(t,e,i={}){const n=t.x!==i.x?-e:0,s=t.y!==i.y?-e:0,o=(t.x+t.w!==i.x+i.w?e:0)-n,r=(t.y+t.h!==i.y+i.h?e:0)-s;return{x:t.x+n,y:t.y+s,w:t.w+o,h:t.h+r,radius:t.radius}}ia.id="point",ia.defaults={borderWidth:1,hitRadius:1,hoverBorderWidth:1,hoverRadius:4,pointStyle:"circle",radius:3,rotation:0},ia.defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"};class la extends sr{constructor(t){super(),this.options=void 0,this.horizontal=void 0,this.base=void 0,this.width=void 0,this.height=void 0,this.inflateAmount=void 0,t&&Object.assign(this,t)}draw(t){const{inflateAmount:e,options:{borderColor:i,backgroundColor:n}}=this,{inner:s,outer:o}=function(t){const e=na(t),i=e.right-e.left,n=e.bottom-e.top,s=function(t,e,i){const n=t.options.borderWidth,s=t.borderSkipped,o=zn(n);return{t:sa(s.top,o.top,0,i),r:sa(s.right,o.right,0,e),b:sa(s.bottom,o.bottom,0,i),l:sa(s.left,o.left,0,e)}}(t,i/2,n/2),o=function(t,e,i){const{enableBorderRadius:n}=t.getProps(["enableBorderRadius"]),s=t.options.borderRadius,o=Fn(s),r=Math.min(e,i),a=t.borderSkipped,l=n||Ve(s);return{topLeft:sa(!l||a.top||a.left,o.topLeft,0,r),topRight:sa(!l||a.top||a.right,o.topRight,0,r),bottomLeft:sa(!l||a.bottom||a.left,o.bottomLeft,0,r),bottomRight:sa(!l||a.bottom||a.right,o.bottomRight,0,r)}}(t,i/2,n/2);return{outer:{x:e.left,y:e.top,w:i,h:n,radius:o},inner:{x:e.left+s.l,y:e.top+s.t,w:i-s.l-s.r,h:n-s.t-s.b,radius:{topLeft:Math.max(0,o.topLeft-Math.max(s.t,s.l)),topRight:Math.max(0,o.topRight-Math.max(s.t,s.r)),bottomLeft:Math.max(0,o.bottomLeft-Math.max(s.b,s.l)),bottomRight:Math.max(0,o.bottomRight-Math.max(s.b,s.r))}}}}(this),r=(a=o.radius).topLeft||a.topRight||a.bottomLeft||a.bottomRight?En:ra;var a;t.save(),o.w===s.w&&o.h===s.h||(t.beginPath(),r(t,aa(o,e,s)),t.clip(),r(t,aa(s,-e,o)),t.fillStyle=i,t.fill("evenodd")),t.beginPath(),r(t,aa(s,e)),t.fillStyle=n,t.fill(),t.restore()}inRange(t,e,i){return oa(this,t,e,i)}inXRange(t,e){return oa(this,t,null,e)}inYRange(t,e){return oa(this,null,t,e)}getCenterPoint(t){const{x:e,y:i,base:n,horizontal:s}=this.getProps(["x","y","base","horizontal"],t);return{x:s?(e+n)/2:e,y:s?i:(i+n)/2}}getRange(t){return"x"===t?this.width/2:this.height/2}}la.id="bar",la.defaults={borderSkipped:"start",borderWidth:0,borderRadius:0,inflateAmount:"auto",pointStyle:void 0},la.defaultRoutes={backgroundColor:"backgroundColor",borderColor:"borderColor"};var ha=Object.freeze({__proto__:null,ArcElement:Ur,LineElement:ta,PointElement:ia,BarElement:la});function ca(t){if(t._decimated){const e=t._data;delete t._decimated,delete t._data,Object.defineProperty(t,"data",{value:e})}}function da(t){t.data.datasets.forEach((t=>{ca(t)}))}var ua={id:"decimation",defaults:{algorithm:"min-max",enabled:!1},beforeElementsUpdate:(t,e,i)=>{if(!i.enabled)return void da(t);const n=t.width;t.data.datasets.forEach(((e,s)=>{const{_data:o,indexAxis:r}=e,a=t.getDatasetMeta(s),l=o||e.data;if("y"===Nn([r,t.options.indexAxis]))return;if(!a.controller.supportsDecimation)return;const h=t.scales[a.xAxisID];if("linear"!==h.type&&"time"!==h.type)return;if(t.options.parsing)return;let c,{start:d,count:u}=function(t,e){const i=e.length;let n,s=0;const{iScale:o}=t,{min:r,max:a,minDefined:l,maxDefined:h}=o.getUserBounds();return l&&(s=Di(Hn(e,o.axis,r).lo,0,i-1)),n=h?Di(Hn(e,o.axis,a).hi+1,s,i)-s:i-s,{start:s,count:n}}(a,l);if(u<=(i.threshold||4*n))ca(e);else{switch(Fe(o)&&(e._data=l,delete e.data,Object.defineProperty(e,"data",{configurable:!0,enumerable:!0,get:function(){return this._decimated},set:function(t){this._data=t}})),i.algorithm){case"lttb":c=function(t,e,i,n,s){const o=s.samples||n;if(o>=i)return t.slice(e,e+i);const r=[],a=(i-2)/(o-2);let l=0;const h=e+i-1;let c,d,u,f,g,p=e;for(r[l++]=t[p],c=0;c<o-2;c++){let n,s=0,o=0;const h=Math.floor((c+1)*a)+1+e,m=Math.min(Math.floor((c+2)*a)+1,i)+e,b=m-h;for(n=h;n<m;n++)s+=t[n].x,o+=t[n].y;s/=b,o/=b;const x=Math.floor(c*a)+1+e,_=Math.min(Math.floor((c+1)*a)+1,i)+e,{x:y,y:v}=t[p];for(u=f=-1,n=x;n<_;n++)f=.5*Math.abs((y-s)*(t[n].y-v)-(y-t[n].x)*(o-v)),f>u&&(u=f,d=t[n],g=n);r[l++]=d,p=g}return r[l++]=t[h],r}(l,d,u,n,i);break;case"min-max":c=function(t,e,i,n){let s,o,r,a,l,h,c,d,u,f,g=0,p=0;const m=[],b=e+i-1,x=t[e].x,_=t[b].x-x;for(s=e;s<e+i;++s){o=t[s],r=(o.x-x)/_*n,a=o.y;const e=0|r;if(e===l)a<u?(u=a,h=s):a>f&&(f=a,c=s),g=(p*g+o.x)/++p;else{const i=s-1;if(!Fe(h)&&!Fe(c)){const e=Math.min(h,c),n=Math.max(h,c);e!==d&&e!==i&&m.push({...t[e],x:g}),n!==d&&n!==i&&m.push({...t[n],x:g})}s>0&&i!==d&&m.push(t[i]),m.push(o),l=e,p=0,u=f=a,h=c=d=s}}return m}(l,d,u,n);break;default:throw new Error(`Unsupported decimation algorithm '${i.algorithm}'`)}e._decimated=c}}))},destroy(t){da(t)}};function fa(t,e,i,n){if(n)return;let s=e[t],o=i[t];return"angle"===t&&(s=Si(s),o=Si(o)),{property:t,start:s,end:o}}function ga(t,e,i){for(;e>t;e--){const t=i[e];if(!isNaN(t.x)&&!isNaN(t.y))break}return e}function pa(t,e,i,n){return t&&e?n(t[i],e[i]):t?t[i]:e?e[i]:0}function ma(t,e){let i=[],n=!1;return Be(t)?(n=!0,i=t):i=function(t,e){const{x:i=null,y:n=null}=t||{},s=e.points,o=[];return e.segments.forEach((({start:t,end:e})=>{e=ga(t,e,s);const r=s[t],a=s[e];null!==n?(o.push({x:r.x,y:n}),o.push({x:a.x,y:n})):null!==i&&(o.push({x:i,y:r.y}),o.push({x:i,y:a.y}))})),o}(t,e),i.length?new ta({points:i,options:{tension:0},_loop:n,_fullLoop:n}):null}function ba(t,e,i){let n=t[e].fill;const s=[e];let o;if(!i)return n;for(;!1!==n&&-1===s.indexOf(n);){if(!Ne(n))return n;if(o=t[n],!o)return!1;if(o.visible)return n;s.push(n),n=o.fill}return!1}function xa(t,e,i){const n=function(t){const e=t.options,i=e.fill;let n=je(i&&i.target,i);return void 0===n&&(n=!!e.backgroundColor),!1!==n&&null!==n&&(!0===n?"origin":n)}(t);if(Ve(n))return!isNaN(n.value)&&n;let s=parseFloat(n);return Ne(s)&&Math.floor(s)===s?function(t,e,i,n){return"-"!==t&&"+"!==t||(i=e+i),!(i===e||i<0||i>=n)&&i}(n[0],e,s,i):["origin","start","end","stack","shape"].indexOf(n)>=0&&n}function _a(t,e,i){const n=[];for(let s=0;s<i.length;s++){const o=i[s],{first:r,last:a,point:l}=ya(o,e,"x");if(!(!l||r&&a))if(r)n.unshift(l);else if(t.push(l),!a)break}t.push(...n)}function ya(t,e,i){const n=t.interpolate(e,i);if(!n)return{};const s=n[i],o=t.segments,r=t.points;let a=!1,l=!1;for(let t=0;t<o.length;t++){const e=o[t],n=r[e.start][i],h=r[e.end][i];if(Ci(s,n,h)){a=s===n,l=s===h;break}}return{first:a,last:l,point:n}}class va{constructor(t){this.x=t.x,this.y=t.y,this.radius=t.radius}pathSegment(t,e,i){const{x:n,y:s,radius:o}=this;return e=e||{start:0,end:ri},t.arc(n,s,o,e.end,e.start,!0),!i.bounds}interpolate(t){const{x:e,y:i,radius:n}=this,s=t.angle;return{x:e+Math.cos(s)*n,y:i+Math.sin(s)*n,angle:s}}}function wa(t,e,i){const n=function(t){const{chart:e,fill:i,line:n}=t;if(Ne(i))return function(t,e){const i=t.getDatasetMeta(e);return i&&t.isDatasetVisible(e)?i.dataset:null}(e,i);if("stack"===i)return function(t){const{scale:e,index:i,line:n}=t,s=[],o=n.segments,r=n.points,a=function(t,e){const i=[],n=t.getMatchingVisibleMetas("line");for(let t=0;t<n.length;t++){const s=n[t];if(s.index===e)break;s.hidden||i.unshift(s.dataset)}return i}(e,i);a.push(ma({x:null,y:e.bottom},n));for(let t=0;t<o.length;t++){const e=o[t];for(let t=e.start;t<=e.end;t++)_a(s,r[t],a)}return new ta({points:s,options:{}})}(t);if("shape"===i)return!0;const s=function(t){return(t.scale||{}).getPointPositionForValue?function(t){const{scale:e,fill:i}=t,n=e.options,s=e.getLabels().length,o=n.reverse?e.max:e.min,r=function(t,e,i){let n;return n="start"===t?i:"end"===t?e.options.reverse?e.min:e.max:Ve(t)?t.value:e.getBaseValue(),n}(i,e,o),a=[];if(n.grid.circular){const t=e.getPointPositionForValue(0,o);return new va({x:t.x,y:t.y,radius:e.getDistanceFromCenterForValue(r)})}for(let t=0;t<s;++t)a.push(e.getPointPositionForValue(t,r));return a}(t):function(t){const{scale:e={},fill:i}=t,n=function(t,e){let i=null;return"start"===t?i=e.bottom:"end"===t?i=e.top:Ve(t)?i=e.getPixelForValue(t.value):e.getBasePixel&&(i=e.getBasePixel()),i}(i,e);if(Ne(n)){const t=e.isHorizontal();return{x:t?n:null,y:t?null:n}}return null}(t)}(t);return s instanceof va?s:ma(s,n)}(e),{line:s,scale:o,axis:r}=e,a=s.options,l=a.fill,h=a.backgroundColor,{above:c=h,below:d=h}=l||{};n&&s.points.length&&(Sn(t,i),function(t,e){const{line:i,target:n,above:s,below:o,area:r,scale:a}=e,l=i._loop?"angle":e.axis;t.save(),"x"===l&&o!==s&&(Ma(t,n,r.top),ka(t,{line:i,target:n,color:s,scale:a,property:l}),t.restore(),t.save(),Ma(t,n,r.bottom)),ka(t,{line:i,target:n,color:o,scale:a,property:l}),t.restore()}(t,{line:s,target:n,above:c,below:d,area:i,scale:o,axis:r}),Pn(t))}function Ma(t,e,i){const{segments:n,points:s}=e;let o=!0,r=!1;t.beginPath();for(const a of n){const{start:n,end:l}=a,h=s[n],c=s[ga(n,l,s)];o?(t.moveTo(h.x,h.y),o=!1):(t.lineTo(h.x,i),t.lineTo(h.x,h.y)),r=!!e.pathSegment(t,a,{move:r}),r?t.closePath():t.lineTo(c.x,i)}t.lineTo(e.first().x,i),t.closePath(),t.clip()}function ka(t,e){const{line:i,target:n,property:s,color:o,scale:r}=e,a=function(t,e,i){const n=t.segments,s=t.points,o=e.points,r=[];for(const t of n){let{start:n,end:a}=t;a=ga(n,a,s);const l=fa(i,s[n],s[a],t.loop);if(!e.segments){r.push({source:t,target:l,start:s[n],end:s[a]});continue}const h=zs(e,l);for(const e of h){const n=fa(i,o[e.start],o[e.end],e.loop),a=Is(t,s,n);for(const t of a)r.push({source:t,target:e,start:{[i]:pa(l,n,"start",Math.max)},end:{[i]:pa(l,n,"end",Math.min)}})}}return r}(i,n,s);for(const{source:e,target:l,start:h,end:c}of a){const{style:{backgroundColor:a=o}={}}=e,d=!0!==n;t.save(),t.fillStyle=a,Sa(t,r,d&&fa(s,h,c)),t.beginPath();const u=!!i.pathSegment(t,e);let f;if(d){u?t.closePath():Pa(t,n,c,s);const e=!!n.pathSegment(t,l,{move:u,reverse:!0});f=u&&e,f||Pa(t,n,h,s)}t.closePath(),t.fill(f?"evenodd":"nonzero"),t.restore()}}function Sa(t,e,i){const{top:n,bottom:s}=e.chart.chartArea,{property:o,start:r,end:a}=i||{};"x"===o&&(t.beginPath(),t.rect(r,n,a-r,s-n),t.clip())}function Pa(t,e,i,n){const s=e.interpolate(i,n);s&&t.lineTo(s.x,s.y)}var Da={id:"filler",afterDatasetsUpdate(t,e,i){const n=(t.data.datasets||[]).length,s=[];let o,r,a,l;for(r=0;r<n;++r)o=t.getDatasetMeta(r),a=o.dataset,l=null,a&&a.options&&a instanceof ta&&(l={visible:t.isDatasetVisible(r),index:r,fill:xa(a,r,n),chart:t,axis:o.controller.options.indexAxis,scale:o.vScale,line:a}),o.$filler=l,s.push(l);for(r=0;r<n;++r)l=s[r],l&&!1!==l.fill&&(l.fill=ba(s,r,i.propagate))},beforeDraw(t,e,i){const n="beforeDraw"===i.drawTime,s=t.getSortedVisibleDatasetMetas(),o=t.chartArea;for(let e=s.length-1;e>=0;--e){const i=s[e].$filler;i&&(i.line.updateControlPoints(o,i.axis),n&&wa(t.ctx,i,o))}},beforeDatasetsDraw(t,e,i){if("beforeDatasetsDraw"!==i.drawTime)return;const n=t.getSortedVisibleDatasetMetas();for(let e=n.length-1;e>=0;--e){const i=n[e].$filler;i&&wa(t.ctx,i,t.chartArea)}},beforeDatasetDraw(t,e,i){const n=e.meta.$filler;n&&!1!==n.fill&&"beforeDatasetDraw"===i.drawTime&&wa(t.ctx,n,t.chartArea)},defaults:{propagate:!0,drawTime:"beforeDatasetDraw"}};const Ca=(t,e)=>{let{boxHeight:i=e,boxWidth:n=e}=t;return t.usePointStyle&&(i=Math.min(i,e),n=Math.min(n,e)),{boxWidth:n,boxHeight:i,itemHeight:Math.max(e,i)}};class Aa extends sr{constructor(t){super(),this._added=!1,this.legendHitBoxes=[],this._hoveredItem=null,this.doughnutMode=!1,this.chart=t.chart,this.options=t.options,this.ctx=t.ctx,this.legendItems=void 0,this.columnSizes=void 0,this.lineWidths=void 0,this.maxHeight=void 0,this.maxWidth=void 0,this.top=void 0,this.bottom=void 0,this.left=void 0,this.right=void 0,this.height=void 0,this.width=void 0,this._margins=void 0,this.position=void 0,this.weight=void 0,this.fullSize=void 0}update(t,e,i){this.maxWidth=t,this.maxHeight=e,this._margins=i,this.setDimensions(),this.buildLabels(),this.fit()}setDimensions(){this.isHorizontal()?(this.width=this.maxWidth,this.left=this._margins.left,this.right=this.width):(this.height=this.maxHeight,this.top=this._margins.top,this.bottom=this.height)}buildLabels(){const t=this.options.labels||{};let e=$e(t.generateLabels,[this.chart],this)||[];t.filter&&(e=e.filter((e=>t.filter(e,this.chart.data)))),t.sort&&(e=e.sort(((e,i)=>t.sort(e,i,this.chart.data)))),this.options.reverse&&e.reverse(),this.legendItems=e}fit(){const{options:t,ctx:e}=this;if(!t.display)return void(this.width=this.height=0);const i=t.labels,n=Vn(i.font),s=n.size,o=this._computeTitleHeight(),{boxWidth:r,itemHeight:a}=Ca(i,s);let l,h;e.font=n.string,this.isHorizontal()?(l=this.maxWidth,h=this._fitRows(o,s,r,a)+10):(h=this.maxHeight,l=this._fitCols(o,s,r,a)+10),this.width=Math.min(l,t.maxWidth||this.maxWidth),this.height=Math.min(h,t.maxHeight||this.maxHeight)}_fitRows(t,e,i,n){const{ctx:s,maxWidth:o,options:{labels:{padding:r}}}=this,a=this.legendHitBoxes=[],l=this.lineWidths=[0],h=n+r;let c=t;s.textAlign="left",s.textBaseline="middle";let d=-1,u=-h;return this.legendItems.forEach(((t,f)=>{const g=i+e/2+s.measureText(t.text).width;(0===f||l[l.length-1]+g+2*r>o)&&(c+=h,l[l.length-(f>0?0:1)]=0,u+=h,d++),a[f]={left:0,top:u,row:d,width:g,height:n},l[l.length-1]+=g+r})),c}_fitCols(t,e,i,n){const{ctx:s,maxHeight:o,options:{labels:{padding:r}}}=this,a=this.legendHitBoxes=[],l=this.columnSizes=[],h=o-t;let c=r,d=0,u=0,f=0,g=0;return this.legendItems.forEach(((t,o)=>{const p=i+e/2+s.measureText(t.text).width;o>0&&u+n+2*r>h&&(c+=d+r,l.push({width:d,height:u}),f+=d+r,g++,d=u=0),a[o]={left:f,top:u,col:g,width:p,height:n},d=Math.max(d,p),u+=n+r})),c+=d,l.push({width:d,height:u}),c}adjustHitBoxes(){if(!this.options.display)return;const t=this._computeTitleHeight(),{legendHitBoxes:e,options:{align:i,labels:{padding:n},rtl:s}}=this,o=Os(s,this.left,this.width);if(this.isHorizontal()){let s=0,r=Re(i,this.left+n,this.right-this.lineWidths[s]);for(const a of e)s!==a.row&&(s=a.row,r=Re(i,this.left+n,this.right-this.lineWidths[s])),a.top+=this.top+t+n,a.left=o.leftForLtr(o.x(r),a.width),r+=a.width+n}else{let s=0,r=Re(i,this.top+t+n,this.bottom-this.columnSizes[s].height);for(const a of e)a.col!==s&&(s=a.col,r=Re(i,this.top+t+n,this.bottom-this.columnSizes[s].height)),a.top=r,a.left+=this.left+n,a.left=o.leftForLtr(o.x(a.left),a.width),r+=a.height+n}}isHorizontal(){return"top"===this.options.position||"bottom"===this.options.position}draw(){if(this.options.display){const t=this.ctx;Sn(t,this),this._draw(),Pn(t)}}_draw(){const{options:t,columnSizes:e,lineWidths:i,ctx:n}=this,{align:s,labels:o}=t,r=xn.color,a=Os(t.rtl,this.left,this.width),l=Vn(o.font),{color:h,padding:c}=o,d=l.size,u=d/2;let f;this.drawTitle(),n.textAlign=a.textAlign("left"),n.textBaseline="middle",n.lineWidth=.5,n.font=l.string;const{boxWidth:g,boxHeight:p,itemHeight:m}=Ca(o,d),b=this.isHorizontal(),x=this._computeTitleHeight();f=b?{x:Re(s,this.left+c,this.right-i[0]),y:this.top+c+x,line:0}:{x:this.left+c,y:Re(s,this.top+x+c,this.bottom-e[0].height),line:0},Es(this.ctx,t.textDirection);const _=m+c;this.legendItems.forEach(((y,v)=>{n.strokeStyle=y.fontColor||h,n.fillStyle=y.fontColor||h;const w=n.measureText(y.text).width,M=a.textAlign(y.textAlign||(y.textAlign=o.textAlign)),k=g+u+w;let S=f.x,P=f.y;a.setWidth(this.width),b?v>0&&S+k+c>this.right&&(P=f.y+=_,f.line++,S=f.x=Re(s,this.left+c,this.right-i[f.line])):v>0&&P+_>this.bottom&&(S=f.x=S+e[f.line].width+c,f.line++,P=f.y=Re(s,this.top+x+c,this.bottom-e[f.line].height)),function(t,e,i){if(isNaN(g)||g<=0||isNaN(p)||p<0)return;n.save();const s=je(i.lineWidth,1);if(n.fillStyle=je(i.fillStyle,r),n.lineCap=je(i.lineCap,"butt"),n.lineDashOffset=je(i.lineDashOffset,0),n.lineJoin=je(i.lineJoin,"miter"),n.lineWidth=s,n.strokeStyle=je(i.strokeStyle,r),n.setLineDash(je(i.lineDash,[])),o.usePointStyle){const o={radius:g*Math.SQRT2/2,pointStyle:i.pointStyle,rotation:i.rotation,borderWidth:s},r=a.xPlus(t,g/2);Mn(n,o,r,e+u)}else{const o=e+Math.max((d-p)/2,0),r=a.leftForLtr(t,g),l=Fn(i.borderRadius);n.beginPath(),Object.values(l).some((t=>0!==t))?En(n,{x:r,y:o,w:g,h:p,radius:l}):n.rect(r,o,g,p),n.fill(),0!==s&&n.stroke()}n.restore()}(a.x(S),P,y),S=((t,e,i,n)=>t===(n?"left":"right")?i:"center"===t?(e+i)/2:e)(M,S+g+u,b?S+k:this.right,t.rtl),function(t,e,i){An(n,i.text,t,e+m/2,l,{strikethrough:i.hidden,textAlign:a.textAlign(i.textAlign)})}(a.x(S),P,y),b?f.x+=k+c:f.y+=_})),Ls(this.ctx,t.textDirection)}drawTitle(){const t=this.options,e=t.title,i=Vn(e.font),n=Bn(e.padding);if(!e.display)return;const s=Os(t.rtl,this.left,this.width),o=this.ctx,r=e.position,a=i.size/2,l=n.top+a;let h,c=this.left,d=this.width;if(this.isHorizontal())d=Math.max(...this.lineWidths),h=this.top+l,c=Re(t.align,c,this.right-d);else{const e=this.columnSizes.reduce(((t,e)=>Math.max(t,e.height)),0);h=l+Re(t.align,this.top,this.bottom-e-t.labels.padding-this._computeTitleHeight())}const u=Re(r,c,c+d);o.textAlign=s.textAlign(Te(r)),o.textBaseline="middle",o.strokeStyle=e.color,o.fillStyle=e.color,o.font=i.string,An(o,e.text,u,h,i)}_computeTitleHeight(){const t=this.options.title,e=Vn(t.font),i=Bn(t.padding);return t.display?e.lineHeight+i.height:0}_getLegendItemAt(t,e){let i,n,s;if(Ci(t,this.left,this.right)&&Ci(e,this.top,this.bottom))for(s=this.legendHitBoxes,i=0;i<s.length;++i)if(n=s[i],Ci(t,n.left,n.left+n.width)&&Ci(e,n.top,n.top+n.height))return this.legendItems[i];return null}handleEvent(t){const e=this.options;if(!function(t,e){return!("mousemove"!==t&&"mouseout"!==t||!e.onHover&&!e.onLeave)||!(!e.onClick||"click"!==t&&"mouseup"!==t)}(t.type,e))return;const i=this._getLegendItemAt(t.x,t.y);if("mousemove"===t.type||"mouseout"===t.type){const o=this._hoveredItem,r=(s=i,null!==(n=o)&&null!==s&&n.datasetIndex===s.datasetIndex&&n.index===s.index);o&&!r&&$e(e.onLeave,[t,o,this],this),this._hoveredItem=i,i&&!r&&$e(e.onHover,[t,i,this],this)}else i&&$e(e.onClick,[t,i,this],this);var n,s}}var Oa={id:"legend",_element:Aa,start(t,e,i){const n=t.legend=new Aa({ctx:t.ctx,options:i,chart:t});Wo.configure(t,n,i),Wo.addBox(t,n)},stop(t){Wo.removeBox(t,t.legend),delete t.legend},beforeUpdate(t,e,i){const n=t.legend;Wo.configure(t,n,i),n.options=i},afterUpdate(t){const e=t.legend;e.buildLabels(),e.adjustHitBoxes()},afterEvent(t,e){e.replay||t.legend.handleEvent(e.event)},defaults:{display:!0,position:"top",align:"center",fullSize:!0,reverse:!1,weight:1e3,onClick(t,e,i){const n=e.datasetIndex,s=i.chart;s.isDatasetVisible(n)?(s.hide(n),e.hidden=!0):(s.show(n),e.hidden=!1)},onHover:null,onLeave:null,labels:{color:t=>t.chart.options.color,boxWidth:40,padding:10,generateLabels(t){const e=t.data.datasets,{labels:{usePointStyle:i,pointStyle:n,textAlign:s,color:o}}=t.legend.options;return t._getSortedDatasetMetas().map((t=>{const r=t.controller.getStyle(i?0:void 0),a=Bn(r.borderWidth);return{text:e[t.index].label,fillStyle:r.backgroundColor,fontColor:o,hidden:!t.visible,lineCap:r.borderCapStyle,lineDash:r.borderDash,lineDashOffset:r.borderDashOffset,lineJoin:r.borderJoinStyle,lineWidth:(a.width+a.height)/4,strokeStyle:r.borderColor,pointStyle:n||r.pointStyle,rotation:r.rotation,textAlign:s||r.textAlign,borderRadius:0,datasetIndex:t.index}}),this)}},title:{color:t=>t.chart.options.color,display:!1,position:"center",text:""}},descriptors:{_scriptable:t=>!t.startsWith("on"),labels:{_scriptable:t=>!["generateLabels","filter","sort"].includes(t)}}};class Ea extends sr{constructor(t){super(),this.chart=t.chart,this.options=t.options,this.ctx=t.ctx,this._padding=void 0,this.top=void 0,this.bottom=void 0,this.left=void 0,this.right=void 0,this.width=void 0,this.height=void 0,this.position=void 0,this.weight=void 0,this.fullSize=void 0}update(t,e){const i=this.options;if(this.left=0,this.top=0,!i.display)return void(this.width=this.height=this.right=this.bottom=0);this.width=this.right=t,this.height=this.bottom=e;const n=Be(i.text)?i.text.length:1;this._padding=Bn(i.padding);const s=n*Vn(i.font).lineHeight+this._padding.height;this.isHorizontal()?this.height=s:this.width=s}isHorizontal(){const t=this.options.position;return"top"===t||"bottom"===t}_drawArgs(t){const{top:e,left:i,bottom:n,right:s,options:o}=this,r=o.align;let a,l,h,c=0;return this.isHorizontal()?(l=Re(r,i,s),h=e+t,a=s-i):("left"===o.position?(l=i+t,h=Re(r,n,e),c=-.5*oi):(l=s-t,h=Re(r,e,n),c=.5*oi),a=n-e),{titleX:l,titleY:h,maxWidth:a,rotation:c}}draw(){const t=this.ctx,e=this.options;if(!e.display)return;const i=Vn(e.font),n=i.lineHeight/2+this._padding.top,{titleX:s,titleY:o,maxWidth:r,rotation:a}=this._drawArgs(n);An(t,e.text,0,0,i,{color:e.color,maxWidth:r,rotation:a,textAlign:Te(e.align),textBaseline:"middle",translation:[s,o]})}}var La={id:"title",_element:Ea,start(t,e,i){!function(t,e){const i=new Ea({ctx:t.ctx,options:e,chart:t});Wo.configure(t,i,e),Wo.addBox(t,i),t.titleBlock=i}(t,i)},stop(t){const e=t.titleBlock;Wo.removeBox(t,e),delete t.titleBlock},beforeUpdate(t,e,i){const n=t.titleBlock;Wo.configure(t,n,i),n.options=i},defaults:{align:"center",display:!1,font:{weight:"bold"},fullSize:!0,padding:10,position:"top",text:"",weight:2e3},defaultRoutes:{color:"color"},descriptors:{_scriptable:!0,_indexable:!1}};const Ta=new WeakMap;var Ra={id:"subtitle",start(t,e,i){const n=new Ea({ctx:t.ctx,options:i,chart:t});Wo.configure(t,n,i),Wo.addBox(t,n),Ta.set(t,n)},stop(t){Wo.removeBox(t,Ta.get(t)),Ta.delete(t)},beforeUpdate(t,e,i){const n=Ta.get(t);Wo.configure(t,n,i),n.options=i},defaults:{align:"center",display:!1,font:{weight:"normal"},fullSize:!0,padding:0,position:"top",text:"",weight:1500},defaultRoutes:{color:"color"},descriptors:{_scriptable:!0,_indexable:!1}};const Ia={average(t){if(!t.length)return!1;let e,i,n=0,s=0,o=0;for(e=0,i=t.length;e<i;++e){const i=t[e].element;if(i&&i.hasValue()){const t=i.tooltipPosition();n+=t.x,s+=t.y,++o}}return{x:n/o,y:s/o}},nearest(t,e){if(!t.length)return!1;let i,n,s,o=e.x,r=e.y,a=Number.POSITIVE_INFINITY;for(i=0,n=t.length;i<n;++i){const n=t[i].element;if(n&&n.hasValue()){const t=Mi(e,n.getCenterPoint());t<a&&(a=t,s=n)}}if(s){const t=s.tooltipPosition();o=t.x,r=t.y}return{x:o,y:r}}};function za(t,e){return e&&(Be(e)?Array.prototype.push.apply(t,e):t.push(e)),t}function Fa(t){return("string"==typeof t||t instanceof String)&&t.indexOf("\n")>-1?t.split("\n"):t}function Ba(t,e){const{element:i,datasetIndex:n,index:s}=e,o=t.getDatasetMeta(n).controller,{label:r,value:a}=o.getLabelAndValue(s);return{chart:t,label:r,parsed:o.getParsed(s),raw:t.data.datasets[n].data[s],formattedValue:a,dataset:o.getDataset(),dataIndex:s,datasetIndex:n,element:i}}function Va(t,e){const i=t.chart.ctx,{body:n,footer:s,title:o}=t,{boxWidth:r,boxHeight:a}=e,l=Vn(e.bodyFont),h=Vn(e.titleFont),c=Vn(e.footerFont),d=o.length,u=s.length,f=n.length,g=Bn(e.padding);let p=g.height,m=0,b=n.reduce(((t,e)=>t+e.before.length+e.lines.length+e.after.length),0);b+=t.beforeBody.length+t.afterBody.length,d&&(p+=d*h.lineHeight+(d-1)*e.titleSpacing+e.titleMarginBottom),b&&(p+=f*(e.displayColors?Math.max(a,l.lineHeight):l.lineHeight)+(b-f)*l.lineHeight+(b-1)*e.bodySpacing),u&&(p+=e.footerMarginTop+u*c.lineHeight+(u-1)*e.footerSpacing);let x=0;const _=function(t){m=Math.max(m,i.measureText(t).width+x)};return i.save(),i.font=h.string,Ye(t.title,_),i.font=l.string,Ye(t.beforeBody.concat(t.afterBody),_),x=e.displayColors?r+2+e.boxPadding:0,Ye(n,(t=>{Ye(t.before,_),Ye(t.lines,_),Ye(t.after,_)})),x=0,i.font=c.string,Ye(t.footer,_),i.restore(),m+=g.width,{width:m,height:p}}function Na(t,e,i,n){const{x:s,width:o}=i,{width:r,chartArea:{left:a,right:l}}=t;let h="center";return"center"===n?h=s<=(a+l)/2?"left":"right":s<=o/2?h="left":s>=r-o/2&&(h="right"),function(t,e,i,n){const{x:s,width:o}=n,r=i.caretSize+i.caretPadding;return"left"===t&&s+o+r>e.width||"right"===t&&s-o-r<0||void 0}(h,t,e,i)&&(h="center"),h}function Wa(t,e,i){const n=i.yAlign||e.yAlign||function(t,e){const{y:i,height:n}=e;return i<n/2?"top":i>t.height-n/2?"bottom":"center"}(t,i);return{xAlign:i.xAlign||e.xAlign||Na(t,e,i,n),yAlign:n}}function ja(t,e,i,n){const{caretSize:s,caretPadding:o,cornerRadius:r}=t,{xAlign:a,yAlign:l}=i,h=s+o,{topLeft:c,topRight:d,bottomLeft:u,bottomRight:f}=Fn(r);let g=function(t,e){let{x:i,width:n}=t;return"right"===e?i-=n:"center"===e&&(i-=n/2),i}(e,a);const p=function(t,e,i){let{y:n,height:s}=t;return"top"===e?n+=i:n-="bottom"===e?s+i:s/2,n}(e,l,h);return"center"===l?"left"===a?g+=h:"right"===a&&(g-=h):"left"===a?g-=Math.max(c,u)+s:"right"===a&&(g+=Math.max(d,f)+s),{x:Di(g,0,n.width-e.width),y:Di(p,0,n.height-e.height)}}function Ha(t,e,i){const n=Bn(i.padding);return"center"===e?t.x+t.width/2:"right"===e?t.x+t.width-n.right:t.x+n.left}function $a(t){return za([],Fa(t))}function Ya(t,e){const i=e&&e.dataset&&e.dataset.tooltip&&e.dataset.tooltip.callbacks;return i?t.override(i):t}class Ua extends sr{constructor(t){super(),this.opacity=0,this._active=[],this._eventPosition=void 0,this._size=void 0,this._cachedAnimations=void 0,this._tooltipItems=[],this.$animations=void 0,this.$context=void 0,this.chart=t.chart||t._chart,this._chart=this.chart,this.options=t.options,this.dataPoints=void 0,this.title=void 0,this.beforeBody=void 0,this.body=void 0,this.afterBody=void 0,this.footer=void 0,this.xAlign=void 0,this.yAlign=void 0,this.x=void 0,this.y=void 0,this.height=void 0,this.width=void 0,this.caretX=void 0,this.caretY=void 0,this.labelColors=void 0,this.labelPointStyles=void 0,this.labelTextColors=void 0}initialize(t){this.options=t,this._cachedAnimations=void 0,this.$context=void 0}_resolveAnimations(){const t=this._cachedAnimations;if(t)return t;const e=this.chart,i=this.options.setContext(this.getContext()),n=i.enabled&&e.options.animation&&i.animations,s=new $s(this.chart,n);return n._cacheable&&(this._cachedAnimations=Object.freeze(s)),s}getContext(){return this.$context||(this.$context=(this,Wn(this.chart.getContext(),{tooltip:this,tooltipItems:this._tooltipItems,type:"tooltip"})))}getTitle(t,e){const{callbacks:i}=e,n=i.beforeTitle.apply(this,[t]),s=i.title.apply(this,[t]),o=i.afterTitle.apply(this,[t]);let r=[];return r=za(r,Fa(n)),r=za(r,Fa(s)),r=za(r,Fa(o)),r}getBeforeBody(t,e){return $a(e.callbacks.beforeBody.apply(this,[t]))}getBody(t,e){const{callbacks:i}=e,n=[];return Ye(t,(t=>{const e={before:[],lines:[],after:[]},s=Ya(i,t);za(e.before,Fa(s.beforeLabel.call(this,t))),za(e.lines,s.label.call(this,t)),za(e.after,Fa(s.afterLabel.call(this,t))),n.push(e)})),n}getAfterBody(t,e){return $a(e.callbacks.afterBody.apply(this,[t]))}getFooter(t,e){const{callbacks:i}=e,n=i.beforeFooter.apply(this,[t]),s=i.footer.apply(this,[t]),o=i.afterFooter.apply(this,[t]);let r=[];return r=za(r,Fa(n)),r=za(r,Fa(s)),r=za(r,Fa(o)),r}_createItems(t){const e=this._active,i=this.chart.data,n=[],s=[],o=[];let r,a,l=[];for(r=0,a=e.length;r<a;++r)l.push(Ba(this.chart,e[r]));return t.filter&&(l=l.filter(((e,n,s)=>t.filter(e,n,s,i)))),t.itemSort&&(l=l.sort(((e,n)=>t.itemSort(e,n,i)))),Ye(l,(e=>{const i=Ya(t.callbacks,e);n.push(i.labelColor.call(this,e)),s.push(i.labelPointStyle.call(this,e)),o.push(i.labelTextColor.call(this,e))})),this.labelColors=n,this.labelPointStyles=s,this.labelTextColors=o,this.dataPoints=l,l}update(t,e){const i=this.options.setContext(this.getContext()),n=this._active;let s,o=[];if(n.length){const t=Ia[i.position].call(this,n,this._eventPosition);o=this._createItems(i),this.title=this.getTitle(o,i),this.beforeBody=this.getBeforeBody(o,i),this.body=this.getBody(o,i),this.afterBody=this.getAfterBody(o,i),this.footer=this.getFooter(o,i);const e=this._size=Va(this,i),r=Object.assign({},t,e),a=Wa(this.chart,i,r),l=ja(i,r,a,this.chart);this.xAlign=a.xAlign,this.yAlign=a.yAlign,s={opacity:1,x:l.x,y:l.y,width:e.width,height:e.height,caretX:t.x,caretY:t.y}}else 0!==this.opacity&&(s={opacity:0});this._tooltipItems=o,this.$context=void 0,s&&this._resolveAnimations().update(this,s),t&&i.external&&i.external.call(this,{chart:this.chart,tooltip:this,replay:e})}drawCaret(t,e,i,n){const s=this.getCaretPosition(t,i,n);e.lineTo(s.x1,s.y1),e.lineTo(s.x2,s.y2),e.lineTo(s.x3,s.y3)}getCaretPosition(t,e,i){const{xAlign:n,yAlign:s}=this,{caretSize:o,cornerRadius:r}=i,{topLeft:a,topRight:l,bottomLeft:h,bottomRight:c}=Fn(r),{x:d,y:u}=t,{width:f,height:g}=e;let p,m,b,x,_,y;return"center"===s?(_=u+g/2,"left"===n?(p=d,m=p-o,x=_+o,y=_-o):(p=d+f,m=p+o,x=_-o,y=_+o),b=p):(m="left"===n?d+Math.max(a,h)+o:"right"===n?d+f-Math.max(l,c)-o:this.caretX,"top"===s?(x=u,_=x-o,p=m-o,b=m+o):(x=u+g,_=x+o,p=m+o,b=m-o),y=x),{x1:p,x2:m,x3:b,y1:x,y2:_,y3:y}}drawTitle(t,e,i){const n=this.title,s=n.length;let o,r,a;if(s){const l=Os(i.rtl,this.x,this.width);for(t.x=Ha(this,i.titleAlign,i),e.textAlign=l.textAlign(i.titleAlign),e.textBaseline="middle",o=Vn(i.titleFont),r=i.titleSpacing,e.fillStyle=i.titleColor,e.font=o.string,a=0;a<s;++a)e.fillText(n[a],l.x(t.x),t.y+o.lineHeight/2),t.y+=o.lineHeight+r,a+1===s&&(t.y+=i.titleMarginBottom-r)}}_drawColorBox(t,e,i,n,s){const o=this.labelColors[i],r=this.labelPointStyles[i],{boxHeight:a,boxWidth:l,boxPadding:h}=s,c=Vn(s.bodyFont),d=Ha(this,"left",s),u=n.x(d),f=a<c.lineHeight?(c.lineHeight-a)/2:0,g=e.y+f;if(s.usePointStyle){const e={radius:Math.min(l,a)/2,pointStyle:r.pointStyle,rotation:r.rotation,borderWidth:1},i=n.leftForLtr(u,l)+l/2,h=g+a/2;t.strokeStyle=s.multiKeyBackground,t.fillStyle=s.multiKeyBackground,Mn(t,e,i,h),t.strokeStyle=o.borderColor,t.fillStyle=o.backgroundColor,Mn(t,e,i,h)}else{t.lineWidth=o.borderWidth||1,t.strokeStyle=o.borderColor,t.setLineDash(o.borderDash||[]),t.lineDashOffset=o.borderDashOffset||0;const e=n.leftForLtr(u,l-h),i=n.leftForLtr(n.xPlus(u,1),l-h-2),r=Fn(o.borderRadius);Object.values(r).some((t=>0!==t))?(t.beginPath(),t.fillStyle=s.multiKeyBackground,En(t,{x:e,y:g,w:l,h:a,radius:r}),t.fill(),t.stroke(),t.fillStyle=o.backgroundColor,t.beginPath(),En(t,{x:i,y:g+1,w:l-2,h:a-2,radius:r}),t.fill()):(t.fillStyle=s.multiKeyBackground,t.fillRect(e,g,l,a),t.strokeRect(e,g,l,a),t.fillStyle=o.backgroundColor,t.fillRect(i,g+1,l-2,a-2))}t.fillStyle=this.labelTextColors[i]}drawBody(t,e,i){const{body:n}=this,{bodySpacing:s,bodyAlign:o,displayColors:r,boxHeight:a,boxWidth:l,boxPadding:h}=i,c=Vn(i.bodyFont);let d=c.lineHeight,u=0;const f=Os(i.rtl,this.x,this.width),g=function(i){e.fillText(i,f.x(t.x+u),t.y+d/2),t.y+=d+s},p=f.textAlign(o);let m,b,x,_,y,v,w;for(e.textAlign=o,e.textBaseline="middle",e.font=c.string,t.x=Ha(this,p,i),e.fillStyle=i.bodyColor,Ye(this.beforeBody,g),u=r&&"right"!==p?"center"===o?l/2+h:l+2+h:0,_=0,v=n.length;_<v;++_){for(m=n[_],b=this.labelTextColors[_],e.fillStyle=b,Ye(m.before,g),x=m.lines,r&&x.length&&(this._drawColorBox(e,t,_,f,i),d=Math.max(c.lineHeight,a)),y=0,w=x.length;y<w;++y)g(x[y]),d=c.lineHeight;Ye(m.after,g)}u=0,d=c.lineHeight,Ye(this.afterBody,g),t.y-=s}drawFooter(t,e,i){const n=this.footer,s=n.length;let o,r;if(s){const a=Os(i.rtl,this.x,this.width);for(t.x=Ha(this,i.footerAlign,i),t.y+=i.footerMarginTop,e.textAlign=a.textAlign(i.footerAlign),e.textBaseline="middle",o=Vn(i.footerFont),e.fillStyle=i.footerColor,e.font=o.string,r=0;r<s;++r)e.fillText(n[r],a.x(t.x),t.y+o.lineHeight/2),t.y+=o.lineHeight+i.footerSpacing}}drawBackground(t,e,i,n){const{xAlign:s,yAlign:o}=this,{x:r,y:a}=t,{width:l,height:h}=i,{topLeft:c,topRight:d,bottomLeft:u,bottomRight:f}=Fn(n.cornerRadius);e.fillStyle=n.backgroundColor,e.strokeStyle=n.borderColor,e.lineWidth=n.borderWidth,e.beginPath(),e.moveTo(r+c,a),"top"===o&&this.drawCaret(t,e,i,n),e.lineTo(r+l-d,a),e.quadraticCurveTo(r+l,a,r+l,a+d),"center"===o&&"right"===s&&this.drawCaret(t,e,i,n),e.lineTo(r+l,a+h-f),e.quadraticCurveTo(r+l,a+h,r+l-f,a+h),"bottom"===o&&this.drawCaret(t,e,i,n),e.lineTo(r+u,a+h),e.quadraticCurveTo(r,a+h,r,a+h-u),"center"===o&&"left"===s&&this.drawCaret(t,e,i,n),e.lineTo(r,a+c),e.quadraticCurveTo(r,a,r+c,a),e.closePath(),e.fill(),n.borderWidth>0&&e.stroke()}_updateAnimationTarget(t){const e=this.chart,i=this.$animations,n=i&&i.x,s=i&&i.y;if(n||s){const i=Ia[t.position].call(this,this._active,this._eventPosition);if(!i)return;const o=this._size=Va(this,t),r=Object.assign({},i,this._size),a=Wa(e,t,r),l=ja(t,r,a,e);n._to===l.x&&s._to===l.y||(this.xAlign=a.xAlign,this.yAlign=a.yAlign,this.width=o.width,this.height=o.height,this.caretX=i.x,this.caretY=i.y,this._resolveAnimations().update(this,l))}}_willRender(){return!!this.opacity}draw(t){const e=this.options.setContext(this.getContext());let i=this.opacity;if(!i)return;this._updateAnimationTarget(e);const n={width:this.width,height:this.height},s={x:this.x,y:this.y};i=Math.abs(i)<.001?0:i;const o=Bn(e.padding),r=this.title.length||this.beforeBody.length||this.body.length||this.afterBody.length||this.footer.length;e.enabled&&r&&(t.save(),t.globalAlpha=i,this.drawBackground(s,t,n,e),Es(t,e.textDirection),s.y+=o.top,this.drawTitle(s,t,e),this.drawBody(s,t,e),this.drawFooter(s,t,e),Ls(t,e.textDirection),t.restore())}getActiveElements(){return this._active||[]}setActiveElements(t,e){const i=this._active,n=t.map((({datasetIndex:t,index:e})=>{const i=this.chart.getDatasetMeta(t);if(!i)throw new Error("Cannot find a dataset at index "+t);return{datasetIndex:t,element:i.data[e],index:e}})),s=!Ue(i,n),o=this._positionChanged(n,e);(s||o)&&(this._active=n,this._eventPosition=e,this._ignoreReplayEvents=!0,this.update(!0))}handleEvent(t,e,i=!0){if(e&&this._ignoreReplayEvents)return!1;this._ignoreReplayEvents=!1;const n=this.options,s=this._active||[],o=this._getActiveElements(t,s,e,i),r=this._positionChanged(o,t),a=e||!Ue(o,s)||r;return a&&(this._active=o,(n.enabled||n.external)&&(this._eventPosition={x:t.x,y:t.y},this.update(!0,e))),a}_getActiveElements(t,e,i,n){const s=this.options;if("mouseout"===t.type)return[];if(!n)return e;const o=this.chart.getElementsAtEventForMode(t,s.mode,s,i);return s.reverse&&o.reverse(),o}_positionChanged(t,e){const{caretX:i,caretY:n,options:s}=this,o=Ia[s.position].call(this,t,e);return!1!==o&&(i!==o.x||n!==o.y)}}Ua.positioners=Ia;var Xa={id:"tooltip",_element:Ua,positioners:Ia,afterInit(t,e,i){i&&(t.tooltip=new Ua({chart:t,options:i}))},beforeUpdate(t,e,i){t.tooltip&&t.tooltip.initialize(i)},reset(t,e,i){t.tooltip&&t.tooltip.initialize(i)},afterDraw(t){const e=t.tooltip;if(e&&e._willRender()){const i={tooltip:e};if(!1===t.notifyPlugins("beforeTooltipDraw",i))return;e.draw(t.ctx),t.notifyPlugins("afterTooltipDraw",i)}},afterEvent(t,e){if(t.tooltip){const i=e.replay;t.tooltip.handleEvent(e.event,i,e.inChartArea)&&(e.changed=!0)}},defaults:{enabled:!0,external:null,position:"average",backgroundColor:"rgba(0,0,0,0.8)",titleColor:"#fff",titleFont:{weight:"bold"},titleSpacing:2,titleMarginBottom:6,titleAlign:"left",bodyColor:"#fff",bodySpacing:2,bodyFont:{},bodyAlign:"left",footerColor:"#fff",footerSpacing:2,footerMarginTop:6,footerFont:{weight:"bold"},footerAlign:"left",padding:6,caretPadding:2,caretSize:5,cornerRadius:6,boxHeight:(t,e)=>e.bodyFont.size,boxWidth:(t,e)=>e.bodyFont.size,multiKeyBackground:"#fff",displayColors:!0,boxPadding:0,borderColor:"rgba(0,0,0,0)",borderWidth:0,animation:{duration:400,easing:"easeOutQuart"},animations:{numbers:{type:"number",properties:["x","y","width","height","caretX","caretY"]},opacity:{easing:"linear",duration:200}},callbacks:{beforeTitle:Ie,title(t){if(t.length>0){const e=t[0],i=e.chart.data.labels,n=i?i.length:0;if(this&&this.options&&"dataset"===this.options.mode)return e.dataset.label||"";if(e.label)return e.label;if(n>0&&e.dataIndex<n)return i[e.dataIndex]}return""},afterTitle:Ie,beforeBody:Ie,beforeLabel:Ie,label(t){if(this&&this.options&&"dataset"===this.options.mode)return t.label+": "+t.formattedValue||t.formattedValue;let e=t.dataset.label||"";e&&(e+=": ");const i=t.formattedValue;return Fe(i)||(e+=i),e},labelColor(t){const e=t.chart.getDatasetMeta(t.datasetIndex).controller.getStyle(t.dataIndex);return{borderColor:e.borderColor,backgroundColor:e.backgroundColor,borderWidth:e.borderWidth,borderDash:e.borderDash,borderDashOffset:e.borderDashOffset,borderRadius:0}},labelTextColor(){return this.options.bodyColor},labelPointStyle(t){const e=t.chart.getDatasetMeta(t.datasetIndex).controller.getStyle(t.dataIndex);return{pointStyle:e.pointStyle,rotation:e.rotation}},afterLabel:Ie,afterBody:Ie,beforeFooter:Ie,footer:Ie,afterFooter:Ie}},defaultRoutes:{bodyFont:"font",footerFont:"font",titleFont:"font"},descriptors:{_scriptable:t=>"filter"!==t&&"itemSort"!==t&&"external"!==t,_indexable:!1,callbacks:{_scriptable:!1,_indexable:!1},animation:{_fallback:!1},animations:{_fallback:"animation"}},additionalOptionScopes:["interaction"]},qa=Object.freeze({__proto__:null,Decimation:ua,Filler:Da,Legend:Oa,SubTitle:Ra,Title:La,Tooltip:Xa});class Ga extends gr{constructor(t){super(t),this._startValue=void 0,this._valueRange=0,this._addedLabels=[]}init(t){const e=this._addedLabels;if(e.length){const t=this.getLabels();for(const{index:i,label:n}of e)t[i]===n&&t.splice(i,1);this._addedLabels=[]}super.init(t)}parse(t,e){if(Fe(t))return null;const i=this.getLabels();return((t,e)=>null===t?null:Di(Math.round(t),0,e))(e=isFinite(e)&&i[e]===t?e:function(t,e,i,n){const s=t.indexOf(e);return-1===s?((t,e,i,n)=>("string"==typeof e?(i=t.push(e)-1,n.unshift({index:i,label:e})):isNaN(e)&&(i=null),i))(t,e,i,n):s!==t.lastIndexOf(e)?i:s}(i,t,je(e,t),this._addedLabels),i.length-1)}determineDataLimits(){const{minDefined:t,maxDefined:e}=this.getUserBounds();let{min:i,max:n}=this.getMinMax(!0);"ticks"===this.options.bounds&&(t||(i=0),e||(n=this.getLabels().length-1)),this.min=i,this.max=n}buildTicks(){const t=this.min,e=this.max,i=this.options.offset,n=[];let s=this.getLabels();s=0===t&&e===s.length-1?s:s.slice(t,e+1),this._valueRange=Math.max(s.length-(i?0:1),1),this._startValue=this.min-(i?.5:0);for(let i=t;i<=e;i++)n.push({value:i});return n}getLabelForValue(t){const e=this.getLabels();return t>=0&&t<e.length?e[t]:t}configure(){super.configure(),this.isHorizontal()||(this._reversePixels=!this._reversePixels)}getPixelForValue(t){return"number"!=typeof t&&(t=this.parse(t)),null===t?NaN:this.getPixelForDecimal((t-this._startValue)/this._valueRange)}getPixelForTick(t){const e=this.ticks;return t<0||t>e.length-1?null:this.getPixelForValue(e[t].value)}getValueForPixel(t){return Math.round(this._startValue+this.getDecimalForPixel(t)*this._valueRange)}getBasePixel(){return this.bottom}}function Ka(t,e,{horizontal:i,minRotation:n}){const s=_i(n),o=(i?Math.sin(s):Math.cos(s))||.001,r=.75*e*(""+t).length;return Math.min(e/o,r)}Ga.id="category",Ga.defaults={ticks:{callback:Ga.prototype.getLabelForValue}};class Ja extends gr{constructor(t){super(t),this.start=void 0,this.end=void 0,this._startValue=void 0,this._endValue=void 0,this._valueRange=0}parse(t,e){return Fe(t)||("number"==typeof t||t instanceof Number)&&!isFinite(+t)?null:+t}handleTickRangeOptions(){const{beginAtZero:t}=this.options,{minDefined:e,maxDefined:i}=this.getUserBounds();let{min:n,max:s}=this;const o=t=>n=e?n:t,r=t=>s=i?s:t;if(t){const t=gi(n),e=gi(s);t<0&&e<0?r(0):t>0&&e>0&&o(0)}if(n===s){let e=1;(s>=Number.MAX_SAFE_INTEGER||n<=Number.MIN_SAFE_INTEGER)&&(e=Math.abs(.05*s)),r(s+e),t||o(n-e)}this.min=n,this.max=s}getTickLimit(){const t=this.options.ticks;let e,{maxTicksLimit:i,stepSize:n}=t;return n?(e=Math.ceil(this.max/n)-Math.floor(this.min/n)+1,e>1e3&&(console.warn(`scales.${this.id}.ticks.stepSize: ${n} would result generating up to ${e} ticks. Limiting to 1000.`),e=1e3)):(e=this.computeTickLimit(),i=i||11),i&&(e=Math.min(i,e)),e}computeTickLimit(){return Number.POSITIVE_INFINITY}buildTicks(){const t=this.options,e=t.ticks;let i=this.getTickLimit();i=Math.max(2,i);const n=function(t,e){const i=[],{bounds:n,step:s,min:o,max:r,precision:a,count:l,maxTicks:h,maxDigits:c,includeBounds:d}=t,u=s||1,f=h-1,{min:g,max:p}=e,m=!Fe(o),b=!Fe(r),x=!Fe(l),_=(p-g)/(c+1);let y,v,w,M,k=pi((p-g)/f/u)*u;if(k<1e-14&&!m&&!b)return[{value:g},{value:p}];M=Math.ceil(p/k)-Math.floor(g/k),M>f&&(k=pi(M*k/f/u)*u),Fe(a)||(y=Math.pow(10,a),k=Math.ceil(k*y)/y),"ticks"===n?(v=Math.floor(g/k)*k,w=Math.ceil(p/k)*k):(v=g,w=p),m&&b&&s&&function(t,e){const i=Math.round(t);return i-e<=t&&i+e>=t}((r-o)/s,k/1e3)?(M=Math.round(Math.min((r-o)/k,h)),k=(r-o)/M,v=o,w=r):x?(v=m?o:v,w=b?r:w,M=l-1,k=(w-v)/M):(M=(w-v)/k,M=bi(M,Math.round(M),k/1e3)?Math.round(M):Math.ceil(M));const S=Math.max(vi(k),vi(v));y=Math.pow(10,Fe(a)?S:a),v=Math.round(v*y)/y,w=Math.round(w*y)/y;let P=0;for(m&&(d&&v!==o?(i.push({value:o}),v<o&&P++,bi(Math.round((v+P*k)*y)/y,o,Ka(o,_,t))&&P++):v<o&&P++);P<M;++P)i.push({value:Math.round((v+P*k)*y)/y});return b&&d&&w!==r?i.length&&bi(i[i.length-1].value,r,Ka(r,_,t))?i[i.length-1].value=r:i.push({value:r}):b&&w!==r||i.push({value:w}),i}({maxTicks:i,bounds:t.bounds,min:t.min,max:t.max,precision:e.precision,step:e.stepSize,count:e.count,maxDigits:this._maxDigits(),horizontal:this.isHorizontal(),minRotation:e.minRotation||0,includeBounds:!1!==e.includeBounds},this._range||this);return"ticks"===t.bounds&&xi(n,this,"value"),t.reverse?(n.reverse(),this.start=this.max,this.end=this.min):(this.start=this.min,this.end=this.max),n}configure(){const t=this.ticks;let e=this.min,i=this.max;if(super.configure(),this.options.offset&&t.length){const n=(i-e)/Math.max(t.length-1,1)/2;e-=n,i+=n}this._startValue=e,this._endValue=i,this._valueRange=i-e}getLabelForValue(t){return As(t,this.chart.options.locale,this.options.ticks.format)}}class Za extends Ja{determineDataLimits(){const{min:t,max:e}=this.getMinMax(!0);this.min=Ne(t)?t:0,this.max=Ne(e)?e:1,this.handleTickRangeOptions()}computeTickLimit(){const t=this.isHorizontal(),e=t?this.width:this.height,i=_i(this.options.ticks.minRotation),n=(t?Math.sin(i):Math.cos(i))||.001,s=this._resolveTickFontOptions(0);return Math.ceil(e/Math.min(40,s.lineHeight/n))}getPixelForValue(t){return null===t?NaN:this.getPixelForDecimal((t-this._startValue)/this._valueRange)}getValueForPixel(t){return this._startValue+this.getDecimalForPixel(t)*this._valueRange}}function Qa(t){return 1==t/Math.pow(10,Math.floor(fi(t)))}Za.id="linear",Za.defaults={ticks:{callback:rr.formatters.numeric}};class tl extends gr{constructor(t){super(t),this.start=void 0,this.end=void 0,this._startValue=void 0,this._valueRange=0}parse(t,e){const i=Ja.prototype.parse.apply(this,[t,e]);if(0!==i)return Ne(i)&&i>0?i:null;this._zero=!0}determineDataLimits(){const{min:t,max:e}=this.getMinMax(!0);this.min=Ne(t)?Math.max(0,t):null,this.max=Ne(e)?Math.max(0,e):null,this.options.beginAtZero&&(this._zero=!0),this.handleTickRangeOptions()}handleTickRangeOptions(){const{minDefined:t,maxDefined:e}=this.getUserBounds();let i=this.min,n=this.max;const s=e=>i=t?i:e,o=t=>n=e?n:t,r=(t,e)=>Math.pow(10,Math.floor(fi(t))+e);i===n&&(i<=0?(s(1),o(10)):(s(r(i,-1)),o(r(n,1)))),i<=0&&s(r(n,-1)),n<=0&&o(r(i,1)),this._zero&&this.min!==this._suggestedMin&&i===r(this.min,0)&&s(r(i,-1)),this.min=i,this.max=n}buildTicks(){const t=this.options,e=function(t,e){const i=Math.floor(fi(e.max)),n=Math.ceil(e.max/Math.pow(10,i)),s=[];let o=We(t.min,Math.pow(10,Math.floor(fi(e.min)))),r=Math.floor(fi(o)),a=Math.floor(o/Math.pow(10,r)),l=r<0?Math.pow(10,Math.abs(r)):1;do{s.push({value:o,major:Qa(o)}),++a,10===a&&(a=1,++r,l=r>=0?1:l),o=Math.round(a*Math.pow(10,r)*l)/l}while(r<i||r===i&&a<n);const h=We(t.max,o);return s.push({value:h,major:Qa(o)}),s}({min:this._userMin,max:this._userMax},this);return"ticks"===t.bounds&&xi(e,this,"value"),t.reverse?(e.reverse(),this.start=this.max,this.end=this.min):(this.start=this.min,this.end=this.max),e}getLabelForValue(t){return void 0===t?"0":As(t,this.chart.options.locale,this.options.ticks.format)}configure(){const t=this.min;super.configure(),this._startValue=fi(t),this._valueRange=fi(this.max)-fi(t)}getPixelForValue(t){return void 0!==t&&0!==t||(t=this.min),null===t||isNaN(t)?NaN:this.getPixelForDecimal(t===this.min?0:(fi(t)-this._startValue)/this._valueRange)}getValueForPixel(t){const e=this.getDecimalForPixel(t);return Math.pow(10,this._startValue+e*this._valueRange)}}function el(t){const e=t.ticks;if(e.display&&t.display){const t=Bn(e.backdropPadding);return je(e.font&&e.font.size,xn.font.size)+t.height}return 0}function il(t,e,i,n,s){return t===n||t===s?{start:e-i/2,end:e+i/2}:t<n||t>s?{start:e-i,end:e}:{start:e,end:e+i}}function nl(t,e,i,n,s){const o=Math.abs(Math.sin(i)),r=Math.abs(Math.cos(i));let a=0,l=0;n.start<e.l?(a=(e.l-n.start)/o,t.l=Math.min(t.l,e.l-a)):n.end>e.r&&(a=(n.end-e.r)/o,t.r=Math.max(t.r,e.r+a)),s.start<e.t?(l=(e.t-s.start)/r,t.t=Math.min(t.t,e.t-l)):s.end>e.b&&(l=(s.end-e.b)/r,t.b=Math.max(t.b,e.b+l))}function sl(t){return 0===t||180===t?"center":t<180?"left":"right"}function ol(t,e,i){return 90===i||270===i?t-=e/2:(i>270||i<90)&&(t-=e),t}function rl(t,e,i,n){const{ctx:s}=t;if(i)s.arc(t.xCenter,t.yCenter,e,0,ri);else{let i=t.getPointPosition(0,e);s.moveTo(i.x,i.y);for(let o=1;o<n;o++)i=t.getPointPosition(o,e),s.lineTo(i.x,i.y)}}tl.id="logarithmic",tl.defaults={ticks:{callback:rr.formatters.logarithmic,major:{enabled:!0}}};class al extends Ja{constructor(t){super(t),this.xCenter=void 0,this.yCenter=void 0,this.drawingArea=void 0,this._pointLabels=[],this._pointLabelItems=[]}setDimensions(){const t=this._padding=Bn(el(this.options)/2),e=this.width=this.maxWidth-t.width,i=this.height=this.maxHeight-t.height;this.xCenter=Math.floor(this.left+e/2+t.left),this.yCenter=Math.floor(this.top+i/2+t.top),this.drawingArea=Math.floor(Math.min(e,i)/2)}determineDataLimits(){const{min:t,max:e}=this.getMinMax(!1);this.min=Ne(t)&&!isNaN(t)?t:0,this.max=Ne(e)&&!isNaN(e)?e:0,this.handleTickRangeOptions()}computeTickLimit(){return Math.ceil(this.drawingArea/el(this.options))}generateTickLabels(t){Ja.prototype.generateTickLabels.call(this,t),this._pointLabels=this.getLabels().map(((t,e)=>{const i=$e(this.options.pointLabels.callback,[t,e],this);return i||0===i?i:""})).filter(((t,e)=>this.chart.getDataVisibility(e)))}fit(){const t=this.options;t.display&&t.pointLabels.display?function(t){const e={l:t.left+t._padding.left,r:t.right-t._padding.right,t:t.top+t._padding.top,b:t.bottom-t._padding.bottom},i=Object.assign({},e),n=[],s=[],o=t._pointLabels.length,r=t.options.pointLabels,a=r.centerPointLabels?oi/o:0;for(let d=0;d<o;d++){const o=r.setContext(t.getPointLabelContext(d));s[d]=o.padding;const u=t.getPointPosition(d,t.drawingArea+s[d],a),f=Vn(o.font),g=(l=t.ctx,h=f,c=Be(c=t._pointLabels[d])?c:[c],{w:yn(l,h.string,c),h:c.length*h.lineHeight});n[d]=g;const p=Si(t.getIndexAngle(d)+a),m=Math.round(yi(p));nl(i,e,p,il(m,u.x,g.w,0,180),il(m,u.y,g.h,90,270))}var l,h,c;t.setCenterPoint(e.l-i.l,i.r-e.r,e.t-i.t,i.b-e.b),t._pointLabelItems=function(t,e,i){const n=[],s=t._pointLabels.length,o=t.options,r=el(o)/2,a=t.drawingArea,l=o.pointLabels.centerPointLabels?oi/s:0;for(let o=0;o<s;o++){const s=t.getPointPosition(o,a+r+i[o],l),u=Math.round(yi(Si(s.angle+ci))),f=e[o],g=ol(s.y,f.h,u),p=sl(u),m=(h=s.x,c=f.w,"right"===(d=p)?h-=c:"center"===d&&(h-=c/2),h);n.push({x:s.x,y:g,textAlign:p,left:m,top:g,right:m+f.w,bottom:g+f.h})}var h,c,d;return n}(t,n,s)}(this):this.setCenterPoint(0,0,0,0)}setCenterPoint(t,e,i,n){this.xCenter+=Math.floor((t-e)/2),this.yCenter+=Math.floor((i-n)/2),this.drawingArea-=Math.min(this.drawingArea/2,Math.max(t,e,i,n))}getIndexAngle(t){return Si(t*(ri/(this._pointLabels.length||1))+_i(this.options.startAngle||0))}getDistanceFromCenterForValue(t){if(Fe(t))return NaN;const e=this.drawingArea/(this.max-this.min);return this.options.reverse?(this.max-t)*e:(t-this.min)*e}getValueForDistanceFromCenter(t){if(Fe(t))return NaN;const e=t/(this.drawingArea/(this.max-this.min));return this.options.reverse?this.max-e:this.min+e}getPointLabelContext(t){const e=this._pointLabels||[];if(t>=0&&t<e.length){const i=e[t];return function(t,e,i){return Wn(t,{label:i,index:e,type:"pointLabel"})}(this.getContext(),t,i)}}getPointPosition(t,e,i=0){const n=this.getIndexAngle(t)-ci+i;return{x:Math.cos(n)*e+this.xCenter,y:Math.sin(n)*e+this.yCenter,angle:n}}getPointPositionForValue(t,e){return this.getPointPosition(t,this.getDistanceFromCenterForValue(e))}getBasePosition(t){return this.getPointPositionForValue(t||0,this.getBaseValue())}getPointLabelPosition(t){const{left:e,top:i,right:n,bottom:s}=this._pointLabelItems[t];return{left:e,top:i,right:n,bottom:s}}drawBackground(){const{backgroundColor:t,grid:{circular:e}}=this.options;if(t){const i=this.ctx;i.save(),i.beginPath(),rl(this,this.getDistanceFromCenterForValue(this._endValue),e,this._pointLabels.length),i.closePath(),i.fillStyle=t,i.fill(),i.restore()}}drawGrid(){const t=this.ctx,e=this.options,{angleLines:i,grid:n}=e,s=this._pointLabels.length;let o,r,a;if(e.pointLabels.display&&function(t,e){const{ctx:i,options:{pointLabels:n}}=t;for(let s=e-1;s>=0;s--){const e=n.setContext(t.getPointLabelContext(s)),o=Vn(e.font),{x:r,y:a,textAlign:l,left:h,top:c,right:d,bottom:u}=t._pointLabelItems[s],{backdropColor:f}=e;if(!Fe(f)){const t=Fn(e.borderRadius),n=Bn(e.backdropPadding);i.fillStyle=f;const s=h-n.left,o=c-n.top,r=d-h+n.width,a=u-c+n.height;Object.values(t).some((t=>0!==t))?(i.beginPath(),En(i,{x:s,y:o,w:r,h:a,radius:t}),i.fill()):i.fillRect(s,o,r,a)}An(i,t._pointLabels[s],r,a+o.lineHeight/2,o,{color:e.color,textAlign:l,textBaseline:"middle"})}}(this,s),n.display&&this.ticks.forEach(((t,e)=>{0!==e&&(r=this.getDistanceFromCenterForValue(t.value),function(t,e,i,n){const s=t.ctx,o=e.circular,{color:r,lineWidth:a}=e;!o&&!n||!r||!a||i<0||(s.save(),s.strokeStyle=r,s.lineWidth=a,s.setLineDash(e.borderDash),s.lineDashOffset=e.borderDashOffset,s.beginPath(),rl(t,i,o,n),s.closePath(),s.stroke(),s.restore())}(this,n.setContext(this.getContext(e-1)),r,s))})),i.display){for(t.save(),o=s-1;o>=0;o--){const n=i.setContext(this.getPointLabelContext(o)),{color:s,lineWidth:l}=n;l&&s&&(t.lineWidth=l,t.strokeStyle=s,t.setLineDash(n.borderDash),t.lineDashOffset=n.borderDashOffset,r=this.getDistanceFromCenterForValue(e.ticks.reverse?this.min:this.max),a=this.getPointPosition(o,r),t.beginPath(),t.moveTo(this.xCenter,this.yCenter),t.lineTo(a.x,a.y),t.stroke())}t.restore()}}drawBorder(){}drawLabels(){const t=this.ctx,e=this.options,i=e.ticks;if(!i.display)return;const n=this.getIndexAngle(0);let s,o;t.save(),t.translate(this.xCenter,this.yCenter),t.rotate(n),t.textAlign="center",t.textBaseline="middle",this.ticks.forEach(((n,r)=>{if(0===r&&!e.reverse)return;const a=i.setContext(this.getContext(r)),l=Vn(a.font);if(s=this.getDistanceFromCenterForValue(this.ticks[r].value),a.showLabelBackdrop){t.font=l.string,o=t.measureText(n.label).width,t.fillStyle=a.backdropColor;const e=Bn(a.backdropPadding);t.fillRect(-o/2-e.left,-s-l.size/2-e.top,o+e.width,l.size+e.height)}An(t,n.label,0,-s,l,{color:a.color})})),t.restore()}drawTitle(){}}al.id="radialLinear",al.defaults={display:!0,animate:!0,position:"chartArea",angleLines:{display:!0,lineWidth:1,borderDash:[],borderDashOffset:0},grid:{circular:!1},startAngle:0,ticks:{showLabelBackdrop:!0,callback:rr.formatters.numeric},pointLabels:{backdropColor:void 0,backdropPadding:2,display:!0,font:{size:10},callback:t=>t,padding:5,centerPointLabels:!1}},al.defaultRoutes={"angleLines.color":"borderColor","pointLabels.color":"color","ticks.color":"color"},al.descriptors={angleLines:{_fallback:"grid"}};const ll={millisecond:{common:!0,size:1,steps:1e3},second:{common:!0,size:1e3,steps:60},minute:{common:!0,size:6e4,steps:60},hour:{common:!0,size:36e5,steps:24},day:{common:!0,size:864e5,steps:30},week:{common:!1,size:6048e5,steps:4},month:{common:!0,size:2628e6,steps:12},quarter:{common:!1,size:7884e6,steps:4},year:{common:!0,size:3154e7}},hl=Object.keys(ll);function cl(t,e){return t-e}function dl(t,e){if(Fe(e))return null;const i=t._adapter,{parser:n,round:s,isoWeekday:o}=t._parseOpts;let r=e;return"function"==typeof n&&(r=n(r)),Ne(r)||(r="string"==typeof n?i.parse(r,n):i.parse(r)),null===r?null:(s&&(r="week"!==s||!mi(o)&&!0!==o?i.startOf(r,s):i.startOf(r,"isoWeek",o)),+r)}function ul(t,e,i,n){const s=hl.length;for(let o=hl.indexOf(t);o<s-1;++o){const t=ll[hl[o]],s=t.steps?t.steps:Number.MAX_SAFE_INTEGER;if(t.common&&Math.ceil((i-e)/(s*t.size))<=n)return hl[o]}return hl[s-1]}function fl(t,e,i){if(i){if(i.length){const{lo:n,hi:s}=jn(i,e);t[i[n]>=e?i[n]:i[s]]=!0}}else t[e]=!0}function gl(t,e,i){const n=[],s={},o=e.length;let r,a;for(r=0;r<o;++r)a=e[r],s[a]=r,n.push({value:a,major:!1});return 0!==o&&i?function(t,e,i,n){const s=t._adapter,o=+s.startOf(e[0].value,n),r=e[e.length-1].value;let a,l;for(a=o;a<=r;a=+s.add(a,1,n))l=i[a],l>=0&&(e[l].major=!0);return e}(t,n,s,i):n}class pl extends gr{constructor(t){super(t),this._cache={data:[],labels:[],all:[]},this._unit="day",this._majorUnit=void 0,this._offsets={},this._normalized=!1,this._parseOpts=void 0}init(t,e){const i=t.time||(t.time={}),n=this._adapter=new Mo._date(t.adapters.date);Je(i.displayFormats,n.formats()),this._parseOpts={parser:i.parser,round:i.round,isoWeekday:i.isoWeekday},super.init(t),this._normalized=e.normalized}parse(t,e){return void 0===t?null:dl(this,t)}beforeLayout(){super.beforeLayout(),this._cache={data:[],labels:[],all:[]}}determineDataLimits(){const t=this.options,e=this._adapter,i=t.time.unit||"day";let{min:n,max:s,minDefined:o,maxDefined:r}=this.getUserBounds();function a(t){o||isNaN(t.min)||(n=Math.min(n,t.min)),r||isNaN(t.max)||(s=Math.max(s,t.max))}o&&r||(a(this._getLabelBounds()),"ticks"===t.bounds&&"labels"===t.ticks.source||a(this.getMinMax(!1))),n=Ne(n)&&!isNaN(n)?n:+e.startOf(Date.now(),i),s=Ne(s)&&!isNaN(s)?s:+e.endOf(Date.now(),i)+1,this.min=Math.min(n,s-1),this.max=Math.max(n+1,s)}_getLabelBounds(){const t=this.getLabelTimestamps();let e=Number.POSITIVE_INFINITY,i=Number.NEGATIVE_INFINITY;return t.length&&(e=t[0],i=t[t.length-1]),{min:e,max:i}}buildTicks(){const t=this.options,e=t.time,i=t.ticks,n="labels"===i.source?this.getLabelTimestamps():this._generate();"ticks"===t.bounds&&n.length&&(this.min=this._userMin||n[0],this.max=this._userMax||n[n.length-1]);const s=this.min,o=function(t,e,i){let n=0,s=t.length;for(;n<s&&t[n]<e;)n++;for(;s>n&&t[s-1]>i;)s--;return n>0||s<t.length?t.slice(n,s):t}(n,s,this.max);return this._unit=e.unit||(i.autoSkip?ul(e.minUnit,this.min,this.max,this._getLabelCapacity(s)):function(t,e,i,n,s){for(let o=hl.length-1;o>=hl.indexOf(i);o--){const i=hl[o];if(ll[i].common&&t._adapter.diff(s,n,i)>=e-1)return i}return hl[i?hl.indexOf(i):0]}(this,o.length,e.minUnit,this.min,this.max)),this._majorUnit=i.major.enabled&&"year"!==this._unit?function(t){for(let e=hl.indexOf(t)+1,i=hl.length;e<i;++e)if(ll[hl[e]].common)return hl[e]}(this._unit):void 0,this.initOffsets(n),t.reverse&&o.reverse(),gl(this,o,this._majorUnit)}afterAutoSkip(){this.options.offsetAfterAutoskip&&this.initOffsets(this.ticks.map((t=>+t.value)))}initOffsets(t){let e,i,n=0,s=0;this.options.offset&&t.length&&(e=this.getDecimalForValue(t[0]),n=1===t.length?1-e:(this.getDecimalForValue(t[1])-e)/2,i=this.getDecimalForValue(t[t.length-1]),s=1===t.length?i:(i-this.getDecimalForValue(t[t.length-2]))/2);const o=t.length<3?.5:.25;n=Di(n,0,o),s=Di(s,0,o),this._offsets={start:n,end:s,factor:1/(n+1+s)}}_generate(){const t=this._adapter,e=this.min,i=this.max,n=this.options,s=n.time,o=s.unit||ul(s.minUnit,e,i,this._getLabelCapacity(e)),r=je(s.stepSize,1),a="week"===o&&s.isoWeekday,l=mi(a)||!0===a,h={};let c,d,u=e;if(l&&(u=+t.startOf(u,"isoWeek",a)),u=+t.startOf(u,l?"day":o),t.diff(i,e,o)>1e5*r)throw new Error(e+" and "+i+" are too far apart with stepSize of "+r+" "+o);const f="data"===n.ticks.source&&this.getDataTimestamps();for(c=u,d=0;c<i;c=+t.add(c,r,o),d++)fl(h,c,f);return c!==i&&"ticks"!==n.bounds&&1!==d||fl(h,c,f),Object.keys(h).sort(((t,e)=>t-e)).map((t=>+t))}getLabelForValue(t){const e=this._adapter,i=this.options.time;return i.tooltipFormat?e.format(t,i.tooltipFormat):e.format(t,i.displayFormats.datetime)}_tickFormatFunction(t,e,i,n){const s=this.options,o=s.time.displayFormats,r=this._unit,a=this._majorUnit,l=r&&o[r],h=a&&o[a],c=i[e],d=a&&h&&c&&c.major,u=this._adapter.format(t,n||(d?h:l)),f=s.ticks.callback;return f?$e(f,[u,e,i],this):u}generateTickLabels(t){let e,i,n;for(e=0,i=t.length;e<i;++e)n=t[e],n.label=this._tickFormatFunction(n.value,e,t)}getDecimalForValue(t){return null===t?NaN:(t-this.min)/(this.max-this.min)}getPixelForValue(t){const e=this._offsets,i=this.getDecimalForValue(t);return this.getPixelForDecimal((e.start+i)*e.factor)}getValueForPixel(t){const e=this._offsets,i=this.getDecimalForPixel(t)/e.factor-e.end;return this.min+i*(this.max-this.min)}_getLabelSize(t){const e=this.options.ticks,i=this.ctx.measureText(t).width,n=_i(this.isHorizontal()?e.maxRotation:e.minRotation),s=Math.cos(n),o=Math.sin(n),r=this._resolveTickFontOptions(0).size;return{w:i*s+r*o,h:i*o+r*s}}_getLabelCapacity(t){const e=this.options.time,i=e.displayFormats,n=i[e.unit]||i.millisecond,s=this._tickFormatFunction(t,0,gl(this,[t],this._majorUnit),n),o=this._getLabelSize(s),r=Math.floor(this.isHorizontal()?this.width/o.w:this.height/o.h)-1;return r>0?r:1}getDataTimestamps(){let t,e,i=this._cache.data||[];if(i.length)return i;const n=this.getMatchingVisibleMetas();if(this._normalized&&n.length)return this._cache.data=n[0].controller.getAllParsedValues(this);for(t=0,e=n.length;t<e;++t)i=i.concat(n[t].controller.getAllParsedValues(this));return this._cache.data=this.normalize(i)}getLabelTimestamps(){const t=this._cache.labels||[];let e,i;if(t.length)return t;const n=this.getLabels();for(e=0,i=n.length;e<i;++e)t.push(dl(this,n[e]));return this._cache.labels=this._normalized?t:this.normalize(t)}normalize(t){return Xn(t.sort(cl))}}function ml(t,e,i){let n,s,o,r,a=0,l=t.length-1;i?(e>=t[a].pos&&e<=t[l].pos&&({lo:a,hi:l}=Hn(t,"pos",e)),({pos:n,time:o}=t[a]),({pos:s,time:r}=t[l])):(e>=t[a].time&&e<=t[l].time&&({lo:a,hi:l}=Hn(t,"time",e)),({time:n,pos:o}=t[a]),({time:s,pos:r}=t[l]));const h=s-n;return h?o+(r-o)*(e-n)/h:o}pl.id="time",pl.defaults={bounds:"data",adapters:{},time:{parser:!1,unit:!1,round:!1,isoWeekday:!1,minUnit:"millisecond",displayFormats:{}},ticks:{source:"auto",major:{enabled:!1}}};class bl extends pl{constructor(t){super(t),this._table=[],this._minPos=void 0,this._tableRange=void 0}initOffsets(){const t=this._getTimestampsForTable(),e=this._table=this.buildLookupTable(t);this._minPos=ml(e,this.min),this._tableRange=ml(e,this.max)-this._minPos,super.initOffsets(t)}buildLookupTable(t){const{min:e,max:i}=this,n=[],s=[];let o,r,a,l,h;for(o=0,r=t.length;o<r;++o)l=t[o],l>=e&&l<=i&&n.push(l);if(n.length<2)return[{time:e,pos:0},{time:i,pos:1}];for(o=0,r=n.length;o<r;++o)h=n[o+1],a=n[o-1],l=n[o],Math.round((h+a)/2)!==l&&s.push({time:l,pos:o/(r-1)});return s}_getTimestampsForTable(){let t=this._cache.all||[];if(t.length)return t;const e=this.getDataTimestamps(),i=this.getLabelTimestamps();return t=e.length&&i.length?this.normalize(e.concat(i)):e.length?e:i,t=this._cache.all=t,t}getDecimalForValue(t){return(ml(this._table,t)-this._minPos)/this._tableRange}getValueForPixel(t){const e=this._offsets,i=this.getDecimalForPixel(t)/e.factor-e.end;return ml(this._table,i*this._tableRange+this._minPos,!0)}}bl.id="timeseries",bl.defaults=pl.defaults;const xl=[yo,ha,qa,Object.freeze({__proto__:null,CategoryScale:Ga,LinearScale:Za,LogarithmicScale:tl,RadialLinearScale:al,TimeScale:pl,TimeSeriesScale:bl})];Nr.register(...xl);const _l=Nr;var yl=document.querySelector(".dashboard__btn-more"),vl=document.querySelector(".dashboard__head"),wl=document.querySelector(".dashboard__aside"),Ml=document.getElementById("myChart").getContext("2d"),kl=document.getElementById("myStatisticsChart").getContext("2d");if(new _l(Ml,{type:"doughnut",data:{datasets:[{data:[5120,3245,2472,3120],backgroundColor:["#A7E0DA","#FBEBB8","#E1F8FF","#99CCC7"]}]},options:{onHover:function(t){this.getElementsAtEventForMode(t,"index",{axis:"x",intersect:!0},!1).length?t.native.target.style.cursor="pointer":t.native.target.style.cursor="default"}}}),new _l(kl,{type:"bar",data:{labels:["Jun","Jul","Aug","Sep","Oct","Nov"],datasets:[{label:"Income",data:[6e4,8e4,5e4,15e4,11e3,5e4],backgroundColor:["rgba(167, 224, 218, 0.4)","rgba(167, 224, 218, 0.4)","rgba(167, 224, 218, 0.4)","#A7E0DA","rgba(167, 224, 218, 0.4)","rgba(167, 224, 218, 0.4)"],borderWidth:0,borderRadius:8,barThickness:36,borderSkipped:!1}]},options:{scales:{y:{beginAtZero:!0,ticks:{color:"rgba(255, 255, 255, 0.8)",font:{size:13,weight:700,family:"Space Grotesk"},callback:function(t,e,i){return Number((t/1e3).toString())+"K"}}},x:{categoryPercentage:1,barPercentage:1,ticks:{color:"rgba(255, 255, 255, 0.8)",font:{size:12,family:"Space Grotesk",weight:700}}}},plugins:{legend:{display:!1}},onHover:function(t){this.getElementsAtEventForMode(t,"index",{axis:"x",intersect:!0},!1).length?t.native.target.style.cursor="pointer":t.native.target.style.cursor="default"}}}),document.querySelector(".dashboard__map")){var Sl=document.querySelector(".dashboard__map");Sl.addEventListener("mouseover",(function(t){if(t.target.matches("[data-target]")){var e=t.target;e.addEventListener("mouseenter",(function(t){var i=e.dataset.target;i&&Sl.querySelector("[data-location=".concat(i,"]")).classList.add("active")})),e.addEventListener("mouseleave",(function(t){var i=e.dataset.target;i&&Sl.querySelector("[data-location=".concat(i,"]")).classList.remove("active")}))}}))}vl.addEventListener("click",(function(t){t.target.classList.contains("dashboard__btn-more")&&(console.log(1),wl.classList.toggle("active"),yl.classList.toggle("active"))})),new Oe(".dashboard__indicators-wrapper",{arrows:!1,pagination:!1,perPage:3,perMove:3,type:"loop",breakpoints:{576:{perPage:2,gap:"10px"}}}).mount()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/@splidejs/splide/dist/js/splide.esm.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/@splidejs/splide/dist/js/splide.esm.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CLASSES": () => (/* binding */ CLASSES),
+/* harmony export */   "CLASS_ACTIVE": () => (/* binding */ CLASS_ACTIVE),
+/* harmony export */   "CLASS_ARROW": () => (/* binding */ CLASS_ARROW),
+/* harmony export */   "CLASS_ARROWS": () => (/* binding */ CLASS_ARROWS),
+/* harmony export */   "CLASS_ARROW_NEXT": () => (/* binding */ CLASS_ARROW_NEXT),
+/* harmony export */   "CLASS_ARROW_PREV": () => (/* binding */ CLASS_ARROW_PREV),
+/* harmony export */   "CLASS_CLONE": () => (/* binding */ CLASS_CLONE),
+/* harmony export */   "CLASS_CONTAINER": () => (/* binding */ CLASS_CONTAINER),
+/* harmony export */   "CLASS_FOCUS_IN": () => (/* binding */ CLASS_FOCUS_IN),
+/* harmony export */   "CLASS_INITIALIZED": () => (/* binding */ CLASS_INITIALIZED),
+/* harmony export */   "CLASS_LIST": () => (/* binding */ CLASS_LIST),
+/* harmony export */   "CLASS_LOADING": () => (/* binding */ CLASS_LOADING),
+/* harmony export */   "CLASS_NEXT": () => (/* binding */ CLASS_NEXT),
+/* harmony export */   "CLASS_PAGINATION": () => (/* binding */ CLASS_PAGINATION),
+/* harmony export */   "CLASS_PAGINATION_PAGE": () => (/* binding */ CLASS_PAGINATION_PAGE),
+/* harmony export */   "CLASS_PREV": () => (/* binding */ CLASS_PREV),
+/* harmony export */   "CLASS_PROGRESS": () => (/* binding */ CLASS_PROGRESS),
+/* harmony export */   "CLASS_PROGRESS_BAR": () => (/* binding */ CLASS_PROGRESS_BAR),
+/* harmony export */   "CLASS_ROOT": () => (/* binding */ CLASS_ROOT),
+/* harmony export */   "CLASS_SLIDE": () => (/* binding */ CLASS_SLIDE),
+/* harmony export */   "CLASS_SPINNER": () => (/* binding */ CLASS_SPINNER),
+/* harmony export */   "CLASS_SR": () => (/* binding */ CLASS_SR),
+/* harmony export */   "CLASS_TOGGLE": () => (/* binding */ CLASS_TOGGLE),
+/* harmony export */   "CLASS_TOGGLE_PAUSE": () => (/* binding */ CLASS_TOGGLE_PAUSE),
+/* harmony export */   "CLASS_TOGGLE_PLAY": () => (/* binding */ CLASS_TOGGLE_PLAY),
+/* harmony export */   "CLASS_TRACK": () => (/* binding */ CLASS_TRACK),
+/* harmony export */   "CLASS_VISIBLE": () => (/* binding */ CLASS_VISIBLE),
+/* harmony export */   "DEFAULTS": () => (/* binding */ DEFAULTS),
+/* harmony export */   "EVENT_ACTIVE": () => (/* binding */ EVENT_ACTIVE),
+/* harmony export */   "EVENT_ARROWS_MOUNTED": () => (/* binding */ EVENT_ARROWS_MOUNTED),
+/* harmony export */   "EVENT_ARROWS_UPDATED": () => (/* binding */ EVENT_ARROWS_UPDATED),
+/* harmony export */   "EVENT_AUTOPLAY_PAUSE": () => (/* binding */ EVENT_AUTOPLAY_PAUSE),
+/* harmony export */   "EVENT_AUTOPLAY_PLAY": () => (/* binding */ EVENT_AUTOPLAY_PLAY),
+/* harmony export */   "EVENT_AUTOPLAY_PLAYING": () => (/* binding */ EVENT_AUTOPLAY_PLAYING),
+/* harmony export */   "EVENT_CLICK": () => (/* binding */ EVENT_CLICK),
+/* harmony export */   "EVENT_DESTROY": () => (/* binding */ EVENT_DESTROY),
+/* harmony export */   "EVENT_DRAG": () => (/* binding */ EVENT_DRAG),
+/* harmony export */   "EVENT_DRAGGED": () => (/* binding */ EVENT_DRAGGED),
+/* harmony export */   "EVENT_DRAGGING": () => (/* binding */ EVENT_DRAGGING),
+/* harmony export */   "EVENT_HIDDEN": () => (/* binding */ EVENT_HIDDEN),
+/* harmony export */   "EVENT_INACTIVE": () => (/* binding */ EVENT_INACTIVE),
+/* harmony export */   "EVENT_LAZYLOAD_LOADED": () => (/* binding */ EVENT_LAZYLOAD_LOADED),
+/* harmony export */   "EVENT_MOUNTED": () => (/* binding */ EVENT_MOUNTED),
+/* harmony export */   "EVENT_MOVE": () => (/* binding */ EVENT_MOVE),
+/* harmony export */   "EVENT_MOVED": () => (/* binding */ EVENT_MOVED),
+/* harmony export */   "EVENT_NAVIGATION_MOUNTED": () => (/* binding */ EVENT_NAVIGATION_MOUNTED),
+/* harmony export */   "EVENT_PAGINATION_MOUNTED": () => (/* binding */ EVENT_PAGINATION_MOUNTED),
+/* harmony export */   "EVENT_PAGINATION_UPDATED": () => (/* binding */ EVENT_PAGINATION_UPDATED),
+/* harmony export */   "EVENT_READY": () => (/* binding */ EVENT_READY),
+/* harmony export */   "EVENT_REFRESH": () => (/* binding */ EVENT_REFRESH),
+/* harmony export */   "EVENT_RESIZE": () => (/* binding */ EVENT_RESIZE),
+/* harmony export */   "EVENT_RESIZED": () => (/* binding */ EVENT_RESIZED),
+/* harmony export */   "EVENT_SCROLL": () => (/* binding */ EVENT_SCROLL),
+/* harmony export */   "EVENT_SCROLLED": () => (/* binding */ EVENT_SCROLLED),
+/* harmony export */   "EVENT_SHIFTED": () => (/* binding */ EVENT_SHIFTED),
+/* harmony export */   "EVENT_SLIDE_KEYDOWN": () => (/* binding */ EVENT_SLIDE_KEYDOWN),
+/* harmony export */   "EVENT_UPDATED": () => (/* binding */ EVENT_UPDATED),
+/* harmony export */   "EVENT_VISIBLE": () => (/* binding */ EVENT_VISIBLE),
+/* harmony export */   "EventBinder": () => (/* binding */ EventBinder),
+/* harmony export */   "EventInterface": () => (/* binding */ EventInterface),
+/* harmony export */   "FADE": () => (/* binding */ FADE),
+/* harmony export */   "LOOP": () => (/* binding */ LOOP),
+/* harmony export */   "LTR": () => (/* binding */ LTR),
+/* harmony export */   "RTL": () => (/* binding */ RTL),
+/* harmony export */   "RequestInterval": () => (/* binding */ RequestInterval),
+/* harmony export */   "SLIDE": () => (/* binding */ SLIDE),
+/* harmony export */   "STATUS_CLASSES": () => (/* binding */ STATUS_CLASSES),
+/* harmony export */   "Splide": () => (/* binding */ Splide),
+/* harmony export */   "SplideRenderer": () => (/* binding */ SplideRenderer),
+/* harmony export */   "State": () => (/* binding */ State),
+/* harmony export */   "TTB": () => (/* binding */ TTB),
+/* harmony export */   "Throttle": () => (/* binding */ Throttle),
+/* harmony export */   "default": () => (/* binding */ Splide)
+/* harmony export */ });
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+
+/*!
+ * Splide.js
+ * Version  : 4.0.7
+ * License  : MIT
+ * Copyright: 2022 Naotoshi Fujita
+ */
+var MEDIA_PREFERS_REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+var CREATED = 1;
+var MOUNTED = 2;
+var IDLE = 3;
+var MOVING = 4;
+var SCROLLING = 5;
+var DRAGGING = 6;
+var DESTROYED = 7;
+var STATES = {
+  CREATED: CREATED,
+  MOUNTED: MOUNTED,
+  IDLE: IDLE,
+  MOVING: MOVING,
+  SCROLLING: SCROLLING,
+  DRAGGING: DRAGGING,
+  DESTROYED: DESTROYED
+};
+
+function empty(array) {
+  array.length = 0;
+}
+
+function slice(arrayLike, start, end) {
+  return Array.prototype.slice.call(arrayLike, start, end);
+}
+
+function apply(func) {
+  return func.bind.apply(func, [null].concat(slice(arguments, 1)));
+}
+
+var nextTick = setTimeout;
+
+var noop = function noop() {};
+
+function raf(func) {
+  return requestAnimationFrame(func);
+}
+
+function typeOf(type, subject) {
+  return typeof subject === type;
+}
+
+function isObject(subject) {
+  return !isNull(subject) && typeOf("object", subject);
+}
+
+var isArray = Array.isArray;
+var isFunction = apply(typeOf, "function");
+var isString = apply(typeOf, "string");
+var isUndefined = apply(typeOf, "undefined");
+
+function isNull(subject) {
+  return subject === null;
+}
+
+function isHTMLElement(subject) {
+  return subject instanceof HTMLElement;
+}
+
+function toArray(value) {
+  return isArray(value) ? value : [value];
+}
+
+function forEach(values, iteratee) {
+  toArray(values).forEach(iteratee);
+}
+
+function includes(array, value) {
+  return array.indexOf(value) > -1;
+}
+
+function push(array, items) {
+  array.push.apply(array, toArray(items));
+  return array;
+}
+
+function toggleClass(elm, classes, add) {
+  if (elm) {
+    forEach(classes, function (name) {
+      if (name) {
+        elm.classList[add ? "add" : "remove"](name);
+      }
+    });
+  }
+}
+
+function addClass(elm, classes) {
+  toggleClass(elm, isString(classes) ? classes.split(" ") : classes, true);
+}
+
+function append(parent, children) {
+  forEach(children, parent.appendChild.bind(parent));
+}
+
+function before(nodes, ref) {
+  forEach(nodes, function (node) {
+    var parent = (ref || node).parentNode;
+
+    if (parent) {
+      parent.insertBefore(node, ref);
+    }
+  });
+}
+
+function matches(elm, selector) {
+  return isHTMLElement(elm) && (elm["msMatchesSelector"] || elm.matches).call(elm, selector);
+}
+
+function children(parent, selector) {
+  var children2 = parent ? slice(parent.children) : [];
+  return selector ? children2.filter(function (child) {
+    return matches(child, selector);
+  }) : children2;
+}
+
+function child(parent, selector) {
+  return selector ? children(parent, selector)[0] : parent.firstElementChild;
+}
+
+var ownKeys = Object.keys;
+
+function forOwn(object, iteratee, right) {
+  if (object) {
+    var keys = ownKeys(object);
+    keys = right ? keys.reverse() : keys;
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+
+      if (key !== "__proto__") {
+        if (iteratee(object[key], key) === false) {
+          break;
+        }
+      }
+    }
+  }
+
+  return object;
+}
+
+function assign(object) {
+  slice(arguments, 1).forEach(function (source) {
+    forOwn(source, function (value, key) {
+      object[key] = source[key];
+    });
+  });
+  return object;
+}
+
+function merge(object) {
+  slice(arguments, 1).forEach(function (source) {
+    forOwn(source, function (value, key) {
+      if (isArray(value)) {
+        object[key] = value.slice();
+      } else if (isObject(value)) {
+        object[key] = merge({}, isObject(object[key]) ? object[key] : {}, value);
+      } else {
+        object[key] = value;
+      }
+    });
+  });
+  return object;
+}
+
+function omit(object, keys) {
+  toArray(keys || ownKeys(object)).forEach(function (key) {
+    delete object[key];
+  });
+}
+
+function removeAttribute(elms, attrs) {
+  forEach(elms, function (elm) {
+    forEach(attrs, function (attr) {
+      elm && elm.removeAttribute(attr);
+    });
+  });
+}
+
+function setAttribute(elms, attrs, value) {
+  if (isObject(attrs)) {
+    forOwn(attrs, function (value2, name) {
+      setAttribute(elms, name, value2);
+    });
+  } else {
+    forEach(elms, function (elm) {
+      isNull(value) || value === "" ? removeAttribute(elm, attrs) : elm.setAttribute(attrs, String(value));
+    });
+  }
+}
+
+function create(tag, attrs, parent) {
+  var elm = document.createElement(tag);
+
+  if (attrs) {
+    isString(attrs) ? addClass(elm, attrs) : setAttribute(elm, attrs);
+  }
+
+  parent && append(parent, elm);
+  return elm;
+}
+
+function style(elm, prop, value) {
+  if (isUndefined(value)) {
+    return getComputedStyle(elm)[prop];
+  }
+
+  if (!isNull(value)) {
+    elm.style[prop] = "" + value;
+  }
+}
+
+function display(elm, display2) {
+  style(elm, "display", display2);
+}
+
+function focus(elm) {
+  elm["setActive"] && elm["setActive"]() || elm.focus({
+    preventScroll: true
+  });
+}
+
+function getAttribute(elm, attr) {
+  return elm.getAttribute(attr);
+}
+
+function hasClass(elm, className) {
+  return elm && elm.classList.contains(className);
+}
+
+function rect(target) {
+  return target.getBoundingClientRect();
+}
+
+function remove(nodes) {
+  forEach(nodes, function (node) {
+    if (node && node.parentNode) {
+      node.parentNode.removeChild(node);
+    }
+  });
+}
+
+function parseHtml(html) {
+  return child(new DOMParser().parseFromString(html, "text/html").body);
+}
+
+function prevent(e, stopPropagation) {
+  e.preventDefault();
+
+  if (stopPropagation) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+}
+
+function query(parent, selector) {
+  return parent && parent.querySelector(selector);
+}
+
+function queryAll(parent, selector) {
+  return selector ? slice(parent.querySelectorAll(selector)) : [];
+}
+
+function removeClass(elm, classes) {
+  toggleClass(elm, classes, false);
+}
+
+function timeOf(e) {
+  return e.timeStamp;
+}
+
+function unit(value) {
+  return isString(value) ? value : value ? value + "px" : "";
+}
+
+var PROJECT_CODE = "splide";
+var DATA_ATTRIBUTE = "data-" + PROJECT_CODE;
+
+function assert(condition, message) {
+  if (!condition) {
+    throw new Error("[" + PROJECT_CODE + "] " + (message || ""));
+  }
+}
+
+var min = Math.min,
+    max = Math.max,
+    floor = Math.floor,
+    ceil = Math.ceil,
+    abs = Math.abs;
+
+function approximatelyEqual(x, y, epsilon) {
+  return abs(x - y) < epsilon;
+}
+
+function between(number, minOrMax, maxOrMin, exclusive) {
+  var minimum = min(minOrMax, maxOrMin);
+  var maximum = max(minOrMax, maxOrMin);
+  return exclusive ? minimum < number && number < maximum : minimum <= number && number <= maximum;
+}
+
+function clamp(number, x, y) {
+  var minimum = min(x, y);
+  var maximum = max(x, y);
+  return min(max(minimum, number), maximum);
+}
+
+function sign(x) {
+  return +(x > 0) - +(x < 0);
+}
+
+function camelToKebab(string) {
+  return string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+function format(string, replacements) {
+  forEach(replacements, function (replacement) {
+    string = string.replace("%s", "" + replacement);
+  });
+  return string;
+}
+
+function pad(number) {
+  return number < 10 ? "0" + number : "" + number;
+}
+
+var ids = {};
+
+function uniqueId(prefix) {
+  return "" + prefix + pad(ids[prefix] = (ids[prefix] || 0) + 1);
+}
+
+function EventBinder() {
+  var listeners = [];
+
+  function bind(targets, events, callback, options) {
+    forEachEvent(targets, events, function (target, event, namespace) {
+      var isEventTarget = ("addEventListener" in target);
+      var remover = isEventTarget ? target.removeEventListener.bind(target, event, callback, options) : target["removeListener"].bind(target, callback);
+      isEventTarget ? target.addEventListener(event, callback, options) : target["addListener"](callback);
+      listeners.push([target, event, namespace, callback, remover]);
+    });
+  }
+
+  function unbind(targets, events, callback) {
+    forEachEvent(targets, events, function (target, event, namespace) {
+      listeners = listeners.filter(function (listener) {
+        if (listener[0] === target && listener[1] === event && listener[2] === namespace && (!callback || listener[3] === callback)) {
+          listener[4]();
+          return false;
+        }
+
+        return true;
+      });
+    });
+  }
+
+  function dispatch(target, type, detail) {
+    var e;
+    var bubbles = true;
+
+    if (typeof CustomEvent === "function") {
+      e = new CustomEvent(type, {
+        bubbles: bubbles,
+        detail: detail
+      });
+    } else {
+      e = document.createEvent("CustomEvent");
+      e.initCustomEvent(type, bubbles, false, detail);
+    }
+
+    target.dispatchEvent(e);
+    return e;
+  }
+
+  function forEachEvent(targets, events, iteratee) {
+    forEach(targets, function (target) {
+      target && forEach(events, function (events2) {
+        events2.split(" ").forEach(function (eventNS) {
+          var fragment = eventNS.split(".");
+          iteratee(target, fragment[0], fragment[1]);
+        });
+      });
+    });
+  }
+
+  function destroy() {
+    listeners.forEach(function (data) {
+      data[4]();
+    });
+    empty(listeners);
+  }
+
+  return {
+    bind: bind,
+    unbind: unbind,
+    dispatch: dispatch,
+    destroy: destroy
+  };
+}
+
+var EVENT_MOUNTED = "mounted";
+var EVENT_READY = "ready";
+var EVENT_MOVE = "move";
+var EVENT_MOVED = "moved";
+var EVENT_SHIFTED = "shifted";
+var EVENT_CLICK = "click";
+var EVENT_ACTIVE = "active";
+var EVENT_INACTIVE = "inactive";
+var EVENT_VISIBLE = "visible";
+var EVENT_HIDDEN = "hidden";
+var EVENT_SLIDE_KEYDOWN = "slide:keydown";
+var EVENT_REFRESH = "refresh";
+var EVENT_UPDATED = "updated";
+var EVENT_RESIZE = "resize";
+var EVENT_RESIZED = "resized";
+var EVENT_DRAG = "drag";
+var EVENT_DRAGGING = "dragging";
+var EVENT_DRAGGED = "dragged";
+var EVENT_SCROLL = "scroll";
+var EVENT_SCROLLED = "scrolled";
+var EVENT_DESTROY = "destroy";
+var EVENT_ARROWS_MOUNTED = "arrows:mounted";
+var EVENT_ARROWS_UPDATED = "arrows:updated";
+var EVENT_PAGINATION_MOUNTED = "pagination:mounted";
+var EVENT_PAGINATION_UPDATED = "pagination:updated";
+var EVENT_NAVIGATION_MOUNTED = "navigation:mounted";
+var EVENT_AUTOPLAY_PLAY = "autoplay:play";
+var EVENT_AUTOPLAY_PLAYING = "autoplay:playing";
+var EVENT_AUTOPLAY_PAUSE = "autoplay:pause";
+var EVENT_LAZYLOAD_LOADED = "lazyload:loaded";
+
+function EventInterface(Splide2) {
+  var bus = Splide2 ? Splide2.event.bus : document.createDocumentFragment();
+  var binder = EventBinder();
+
+  function on(events, callback) {
+    binder.bind(bus, toArray(events).join(" "), function (e) {
+      callback.apply(callback, isArray(e.detail) ? e.detail : []);
+    });
+  }
+
+  function emit(event) {
+    binder.dispatch(bus, event, slice(arguments, 1));
+  }
+
+  if (Splide2) {
+    Splide2.event.on(EVENT_DESTROY, binder.destroy);
+  }
+
+  return assign(binder, {
+    bus: bus,
+    on: on,
+    off: apply(binder.unbind, bus),
+    emit: emit
+  });
+}
+
+function RequestInterval(interval, onInterval, onUpdate, limit) {
+  var now = Date.now;
+  var startTime;
+  var rate = 0;
+  var id;
+  var paused = true;
+  var count = 0;
+
+  function update() {
+    if (!paused) {
+      rate = interval ? min((now() - startTime) / interval, 1) : 1;
+      onUpdate && onUpdate(rate);
+
+      if (rate >= 1) {
+        onInterval();
+        startTime = now();
+
+        if (limit && ++count >= limit) {
+          return pause();
+        }
+      }
+
+      raf(update);
+    }
+  }
+
+  function start(resume) {
+    !resume && cancel();
+    startTime = now() - (resume ? rate * interval : 0);
+    paused = false;
+    raf(update);
+  }
+
+  function pause() {
+    paused = true;
+  }
+
+  function rewind() {
+    startTime = now();
+    rate = 0;
+
+    if (onUpdate) {
+      onUpdate(rate);
+    }
+  }
+
+  function cancel() {
+    id && cancelAnimationFrame(id);
+    rate = 0;
+    id = 0;
+    paused = true;
+  }
+
+  function set(time) {
+    interval = time;
+  }
+
+  function isPaused() {
+    return paused;
+  }
+
+  return {
+    start: start,
+    rewind: rewind,
+    pause: pause,
+    cancel: cancel,
+    set: set,
+    isPaused: isPaused
+  };
+}
+
+function State(initialState) {
+  var state = initialState;
+
+  function set(value) {
+    state = value;
+  }
+
+  function is(states) {
+    return includes(toArray(states), state);
+  }
+
+  return {
+    set: set,
+    is: is
+  };
+}
+
+function Throttle(func, duration) {
+  var interval;
+
+  function throttled() {
+    if (!interval) {
+      interval = RequestInterval(duration || 0, function () {
+        func();
+        interval = null;
+      }, null, 1);
+      interval.start();
+    }
+  }
+
+  return throttled;
+}
+
+function Media(Splide2, Components2, options) {
+  var state = Splide2.state;
+  var breakpoints = options.breakpoints || {};
+  var reducedMotion = options.reducedMotion || {};
+  var binder = EventBinder();
+  var queries = [];
+
+  function setup() {
+    var isMin = options.mediaQuery === "min";
+    ownKeys(breakpoints).sort(function (n, m) {
+      return isMin ? +n - +m : +m - +n;
+    }).forEach(function (key) {
+      register(breakpoints[key], "(" + (isMin ? "min" : "max") + "-width:" + key + "px)");
+    });
+    register(reducedMotion, MEDIA_PREFERS_REDUCED_MOTION);
+    update();
+  }
+
+  function destroy(completely) {
+    if (completely) {
+      binder.destroy();
+    }
+  }
+
+  function register(options2, query) {
+    var queryList = matchMedia(query);
+    binder.bind(queryList, "change", update);
+    queries.push([options2, queryList]);
+  }
+
+  function update() {
+    var destroyed = state.is(DESTROYED);
+    var direction = options.direction;
+    var merged = queries.reduce(function (merged2, entry) {
+      return merge(merged2, entry[1].matches ? entry[0] : {});
+    }, {});
+    omit(options);
+    set(merged);
+
+    if (options.destroy) {
+      Splide2.destroy(options.destroy === "completely");
+    } else if (destroyed) {
+      destroy(true);
+      Splide2.mount();
+    } else {
+      direction !== options.direction && Splide2.refresh();
+    }
+  }
+
+  function reduce(enable) {
+    if (matchMedia(MEDIA_PREFERS_REDUCED_MOTION).matches) {
+      enable ? merge(options, reducedMotion) : omit(options, ownKeys(reducedMotion));
+    }
+  }
+
+  function set(opts, user) {
+    merge(options, opts);
+    user && merge(Object.getPrototypeOf(options), opts);
+
+    if (!state.is(CREATED)) {
+      Splide2.emit(EVENT_UPDATED, options);
+    }
+  }
+
+  return {
+    setup: setup,
+    destroy: destroy,
+    reduce: reduce,
+    set: set
+  };
+}
+
+var ARROW = "Arrow";
+var ARROW_LEFT = ARROW + "Left";
+var ARROW_RIGHT = ARROW + "Right";
+var ARROW_UP = ARROW + "Up";
+var ARROW_DOWN = ARROW + "Down";
+var LTR = "ltr";
+var RTL = "rtl";
+var TTB = "ttb";
+var ORIENTATION_MAP = {
+  width: ["height"],
+  left: ["top", "right"],
+  right: ["bottom", "left"],
+  x: ["y"],
+  X: ["Y"],
+  Y: ["X"],
+  ArrowLeft: [ARROW_UP, ARROW_RIGHT],
+  ArrowRight: [ARROW_DOWN, ARROW_LEFT]
+};
+
+function Direction(Splide2, Components2, options) {
+  function resolve(prop, axisOnly, direction) {
+    direction = direction || options.direction;
+    var index = direction === RTL && !axisOnly ? 1 : direction === TTB ? 0 : -1;
+    return ORIENTATION_MAP[prop] && ORIENTATION_MAP[prop][index] || prop.replace(/width|left|right/i, function (match, offset) {
+      var replacement = ORIENTATION_MAP[match.toLowerCase()][index] || match;
+      return offset > 0 ? replacement.charAt(0).toUpperCase() + replacement.slice(1) : replacement;
+    });
+  }
+
+  function orient(value) {
+    return value * (options.direction === RTL ? 1 : -1);
+  }
+
+  return {
+    resolve: resolve,
+    orient: orient
+  };
+}
+
+var ROLE = "role";
+var TAB_INDEX = "tabindex";
+var DISABLED = "disabled";
+var ARIA_PREFIX = "aria-";
+var ARIA_CONTROLS = ARIA_PREFIX + "controls";
+var ARIA_CURRENT = ARIA_PREFIX + "current";
+var ARIA_SELECTED = ARIA_PREFIX + "selected";
+var ARIA_LABEL = ARIA_PREFIX + "label";
+var ARIA_LABELLEDBY = ARIA_PREFIX + "labelledby";
+var ARIA_HIDDEN = ARIA_PREFIX + "hidden";
+var ARIA_ORIENTATION = ARIA_PREFIX + "orientation";
+var ARIA_ROLEDESCRIPTION = ARIA_PREFIX + "roledescription";
+var ARIA_LIVE = ARIA_PREFIX + "live";
+var ARIA_BUSY = ARIA_PREFIX + "busy";
+var ARIA_ATOMIC = ARIA_PREFIX + "atomic";
+var ALL_ATTRIBUTES = [ROLE, TAB_INDEX, DISABLED, ARIA_CONTROLS, ARIA_CURRENT, ARIA_LABEL, ARIA_LABELLEDBY, ARIA_HIDDEN, ARIA_ORIENTATION, ARIA_ROLEDESCRIPTION];
+var CLASS_ROOT = PROJECT_CODE;
+var CLASS_TRACK = PROJECT_CODE + "__track";
+var CLASS_LIST = PROJECT_CODE + "__list";
+var CLASS_SLIDE = PROJECT_CODE + "__slide";
+var CLASS_CLONE = CLASS_SLIDE + "--clone";
+var CLASS_CONTAINER = CLASS_SLIDE + "__container";
+var CLASS_ARROWS = PROJECT_CODE + "__arrows";
+var CLASS_ARROW = PROJECT_CODE + "__arrow";
+var CLASS_ARROW_PREV = CLASS_ARROW + "--prev";
+var CLASS_ARROW_NEXT = CLASS_ARROW + "--next";
+var CLASS_PAGINATION = PROJECT_CODE + "__pagination";
+var CLASS_PAGINATION_PAGE = CLASS_PAGINATION + "__page";
+var CLASS_PROGRESS = PROJECT_CODE + "__progress";
+var CLASS_PROGRESS_BAR = CLASS_PROGRESS + "__bar";
+var CLASS_TOGGLE = PROJECT_CODE + "__toggle";
+var CLASS_TOGGLE_PLAY = CLASS_TOGGLE + "__play";
+var CLASS_TOGGLE_PAUSE = CLASS_TOGGLE + "__pause";
+var CLASS_SPINNER = PROJECT_CODE + "__spinner";
+var CLASS_SR = PROJECT_CODE + "__sr";
+var CLASS_INITIALIZED = "is-initialized";
+var CLASS_ACTIVE = "is-active";
+var CLASS_PREV = "is-prev";
+var CLASS_NEXT = "is-next";
+var CLASS_VISIBLE = "is-visible";
+var CLASS_LOADING = "is-loading";
+var CLASS_FOCUS_IN = "is-focus-in";
+var STATUS_CLASSES = [CLASS_ACTIVE, CLASS_VISIBLE, CLASS_PREV, CLASS_NEXT, CLASS_LOADING, CLASS_FOCUS_IN];
+var CLASSES = {
+  slide: CLASS_SLIDE,
+  clone: CLASS_CLONE,
+  arrows: CLASS_ARROWS,
+  arrow: CLASS_ARROW,
+  prev: CLASS_ARROW_PREV,
+  next: CLASS_ARROW_NEXT,
+  pagination: CLASS_PAGINATION,
+  page: CLASS_PAGINATION_PAGE,
+  spinner: CLASS_SPINNER
+};
+
+function closest(from, selector) {
+  if (isFunction(from.closest)) {
+    return from.closest(selector);
+  }
+
+  var elm = from;
+
+  while (elm && elm.nodeType === 1) {
+    if (matches(elm, selector)) {
+      break;
+    }
+
+    elm = elm.parentElement;
+  }
+
+  return elm;
+}
+
+var FRICTION = 5;
+var LOG_INTERVAL = 200;
+var POINTER_DOWN_EVENTS = "touchstart mousedown";
+var POINTER_MOVE_EVENTS = "touchmove mousemove";
+var POINTER_UP_EVENTS = "touchend touchcancel mouseup click";
+
+function Elements(Splide2, Components2, options) {
+  var _EventInterface = EventInterface(Splide2),
+      on = _EventInterface.on,
+      bind = _EventInterface.bind;
+
+  var root = Splide2.root;
+  var i18n = options.i18n;
+  var elements = {};
+  var slides = [];
+  var rootClasses = [];
+  var trackClasses = [];
+  var track;
+  var list;
+  var isUsingKey;
+
+  function setup() {
+    collect();
+    init();
+    update();
+  }
+
+  function mount() {
+    on(EVENT_REFRESH, destroy);
+    on(EVENT_REFRESH, setup);
+    on(EVENT_UPDATED, update);
+    bind(document, POINTER_DOWN_EVENTS + " keydown", function (e) {
+      isUsingKey = e.type === "keydown";
+    }, {
+      capture: true
+    });
+    bind(root, "focusin", function () {
+      toggleClass(root, CLASS_FOCUS_IN, !!isUsingKey);
+    });
+  }
+
+  function destroy(completely) {
+    var attrs = ALL_ATTRIBUTES.concat("style");
+    empty(slides);
+    removeClass(root, rootClasses);
+    removeClass(track, trackClasses);
+    removeAttribute([track, list], attrs);
+    removeAttribute(root, completely ? attrs : ["style", ARIA_ROLEDESCRIPTION]);
+  }
+
+  function update() {
+    removeClass(root, rootClasses);
+    removeClass(track, trackClasses);
+    rootClasses = getClasses(CLASS_ROOT);
+    trackClasses = getClasses(CLASS_TRACK);
+    addClass(root, rootClasses);
+    addClass(track, trackClasses);
+    setAttribute(root, ARIA_LABEL, options.label);
+    setAttribute(root, ARIA_LABELLEDBY, options.labelledby);
+  }
+
+  function collect() {
+    track = find("." + CLASS_TRACK);
+    list = child(track, "." + CLASS_LIST);
+    assert(track && list, "A track/list element is missing.");
+    push(slides, children(list, "." + CLASS_SLIDE + ":not(." + CLASS_CLONE + ")"));
+    forOwn({
+      arrows: CLASS_ARROWS,
+      pagination: CLASS_PAGINATION,
+      prev: CLASS_ARROW_PREV,
+      next: CLASS_ARROW_NEXT,
+      bar: CLASS_PROGRESS_BAR,
+      toggle: CLASS_TOGGLE
+    }, function (className, key) {
+      elements[key] = find("." + className);
+    });
+    assign(elements, {
+      root: root,
+      track: track,
+      list: list,
+      slides: slides
+    });
+  }
+
+  function init() {
+    var id = root.id || uniqueId(PROJECT_CODE);
+    var role = options.role;
+    root.id = id;
+    track.id = track.id || id + "-track";
+    list.id = list.id || id + "-list";
+
+    if (!getAttribute(root, ROLE) && root.tagName !== "SECTION" && role) {
+      setAttribute(root, ROLE, role);
+    }
+
+    setAttribute(root, ARIA_ROLEDESCRIPTION, i18n.carousel);
+    setAttribute(list, ROLE, "presentation");
+  }
+
+  function find(selector) {
+    var elm = query(root, selector);
+    return elm && closest(elm, "." + CLASS_ROOT) === root ? elm : void 0;
+  }
+
+  function getClasses(base) {
+    return [base + "--" + options.type, base + "--" + options.direction, options.drag && base + "--draggable", options.isNavigation && base + "--nav", base === CLASS_ROOT && CLASS_ACTIVE];
+  }
+
+  return assign(elements, {
+    setup: setup,
+    mount: mount,
+    destroy: destroy
+  });
+}
+
+var SLIDE = "slide";
+var LOOP = "loop";
+var FADE = "fade";
+
+function Slide$1(Splide2, index, slideIndex, slide) {
+  var event = EventInterface(Splide2);
+  var on = event.on,
+      emit = event.emit,
+      bind = event.bind;
+  var Components = Splide2.Components,
+      root = Splide2.root,
+      options = Splide2.options;
+  var isNavigation = options.isNavigation,
+      updateOnMove = options.updateOnMove,
+      i18n = options.i18n,
+      pagination = options.pagination,
+      slideFocus = options.slideFocus;
+  var resolve = Components.Direction.resolve;
+  var styles = getAttribute(slide, "style");
+  var label = getAttribute(slide, ARIA_LABEL);
+  var isClone = slideIndex > -1;
+  var container = child(slide, "." + CLASS_CONTAINER);
+  var focusableNodes = queryAll(slide, options.focusableNodes || "");
+  var destroyed;
+
+  function mount() {
+    if (!isClone) {
+      slide.id = root.id + "-slide" + pad(index + 1);
+      setAttribute(slide, ROLE, pagination ? "tabpanel" : "group");
+      setAttribute(slide, ARIA_ROLEDESCRIPTION, i18n.slide);
+      setAttribute(slide, ARIA_LABEL, label || format(i18n.slideLabel, [index + 1, Splide2.length]));
+    }
+
+    listen();
+  }
+
+  function listen() {
+    bind(slide, "click", apply(emit, EVENT_CLICK, self));
+    bind(slide, "keydown", apply(emit, EVENT_SLIDE_KEYDOWN, self));
+    on([EVENT_MOVED, EVENT_SHIFTED, EVENT_SCROLLED], update);
+    on(EVENT_NAVIGATION_MOUNTED, initNavigation);
+
+    if (updateOnMove) {
+      on(EVENT_MOVE, onMove);
+    }
+  }
+
+  function destroy() {
+    destroyed = true;
+    event.destroy();
+    removeClass(slide, STATUS_CLASSES);
+    removeAttribute(slide, ALL_ATTRIBUTES);
+    setAttribute(slide, "style", styles);
+    setAttribute(slide, ARIA_LABEL, label || "");
+  }
+
+  function initNavigation() {
+    var controls = Splide2.splides.map(function (target) {
+      var Slide2 = target.splide.Components.Slides.getAt(index);
+      return Slide2 ? Slide2.slide.id : "";
+    }).join(" ");
+    setAttribute(slide, ARIA_LABEL, format(i18n.slideX, (isClone ? slideIndex : index) + 1));
+    setAttribute(slide, ARIA_CONTROLS, controls);
+    setAttribute(slide, ROLE, slideFocus ? "button" : "");
+    slideFocus && removeAttribute(slide, ARIA_ROLEDESCRIPTION);
+  }
+
+  function onMove() {
+    if (!destroyed) {
+      update();
+    }
+  }
+
+  function update() {
+    if (!destroyed) {
+      var curr = Splide2.index;
+      updateActivity();
+      updateVisibility();
+      toggleClass(slide, CLASS_PREV, index === curr - 1);
+      toggleClass(slide, CLASS_NEXT, index === curr + 1);
+    }
+  }
+
+  function updateActivity() {
+    var active = isActive();
+
+    if (active !== hasClass(slide, CLASS_ACTIVE)) {
+      toggleClass(slide, CLASS_ACTIVE, active);
+      setAttribute(slide, ARIA_CURRENT, isNavigation && active || "");
+      emit(active ? EVENT_ACTIVE : EVENT_INACTIVE, self);
+    }
+  }
+
+  function updateVisibility() {
+    var visible = isVisible();
+    var hidden = !visible && (!isActive() || isClone);
+
+    if (!Splide2.state.is([MOVING, SCROLLING])) {
+      setAttribute(slide, ARIA_HIDDEN, hidden || "");
+    }
+
+    setAttribute(focusableNodes, TAB_INDEX, hidden ? -1 : "");
+
+    if (slideFocus) {
+      setAttribute(slide, TAB_INDEX, hidden ? -1 : 0);
+    }
+
+    if (visible !== hasClass(slide, CLASS_VISIBLE)) {
+      toggleClass(slide, CLASS_VISIBLE, visible);
+      emit(visible ? EVENT_VISIBLE : EVENT_HIDDEN, self);
+    }
+
+    if (!visible && document.activeElement === slide) {
+      var Slide2 = Components.Slides.getAt(Splide2.index);
+      Slide2 && focus(Slide2.slide);
+    }
+  }
+
+  function style$1(prop, value, useContainer) {
+    style(useContainer && container || slide, prop, value);
+  }
+
+  function isActive() {
+    var curr = Splide2.index;
+    return curr === index || options.cloneStatus && curr === slideIndex;
+  }
+
+  function isVisible() {
+    if (Splide2.is(FADE)) {
+      return isActive();
+    }
+
+    var trackRect = rect(Components.Elements.track);
+    var slideRect = rect(slide);
+    var left = resolve("left", true);
+    var right = resolve("right", true);
+    return floor(trackRect[left]) <= ceil(slideRect[left]) && floor(slideRect[right]) <= ceil(trackRect[right]);
+  }
+
+  function isWithin(from, distance) {
+    var diff = abs(from - index);
+
+    if (!isClone && (options.rewind || Splide2.is(LOOP))) {
+      diff = min(diff, Splide2.length - diff);
+    }
+
+    return diff <= distance;
+  }
+
+  var self = {
+    index: index,
+    slideIndex: slideIndex,
+    slide: slide,
+    container: container,
+    isClone: isClone,
+    mount: mount,
+    destroy: destroy,
+    update: update,
+    style: style$1,
+    isWithin: isWithin
+  };
+  return self;
+}
+
+function Slides(Splide2, Components2, options) {
+  var _EventInterface2 = EventInterface(Splide2),
+      on = _EventInterface2.on,
+      emit = _EventInterface2.emit,
+      bind = _EventInterface2.bind;
+
+  var _Components2$Elements = Components2.Elements,
+      slides = _Components2$Elements.slides,
+      list = _Components2$Elements.list;
+  var Slides2 = [];
+
+  function mount() {
+    init();
+    on(EVENT_REFRESH, destroy);
+    on(EVENT_REFRESH, init);
+    on([EVENT_MOUNTED, EVENT_REFRESH], function () {
+      Slides2.sort(function (Slide1, Slide2) {
+        return Slide1.index - Slide2.index;
+      });
+    });
+  }
+
+  function init() {
+    slides.forEach(function (slide, index) {
+      register(slide, index, -1);
+    });
+  }
+
+  function destroy() {
+    forEach$1(function (Slide2) {
+      Slide2.destroy();
+    });
+    empty(Slides2);
+  }
+
+  function update() {
+    forEach$1(function (Slide2) {
+      Slide2.update();
+    });
+  }
+
+  function register(slide, index, slideIndex) {
+    var object = Slide$1(Splide2, index, slideIndex, slide);
+    object.mount();
+    Slides2.push(object);
+  }
+
+  function get(excludeClones) {
+    return excludeClones ? filter(function (Slide2) {
+      return !Slide2.isClone;
+    }) : Slides2;
+  }
+
+  function getIn(page) {
+    var Controller = Components2.Controller;
+    var index = Controller.toIndex(page);
+    var max = Controller.hasFocus() ? 1 : options.perPage;
+    return filter(function (Slide2) {
+      return between(Slide2.index, index, index + max - 1);
+    });
+  }
+
+  function getAt(index) {
+    return filter(index)[0];
+  }
+
+  function add(items, index) {
+    forEach(items, function (slide) {
+      if (isString(slide)) {
+        slide = parseHtml(slide);
+      }
+
+      if (isHTMLElement(slide)) {
+        var ref = slides[index];
+        ref ? before(slide, ref) : append(list, slide);
+        addClass(slide, options.classes.slide);
+        observeImages(slide, apply(emit, EVENT_RESIZE));
+      }
+    });
+    emit(EVENT_REFRESH);
+  }
+
+  function remove$1(matcher) {
+    remove(filter(matcher).map(function (Slide2) {
+      return Slide2.slide;
+    }));
+    emit(EVENT_REFRESH);
+  }
+
+  function forEach$1(iteratee, excludeClones) {
+    get(excludeClones).forEach(iteratee);
+  }
+
+  function filter(matcher) {
+    return Slides2.filter(isFunction(matcher) ? matcher : function (Slide2) {
+      return isString(matcher) ? matches(Slide2.slide, matcher) : includes(toArray(matcher), Slide2.index);
+    });
+  }
+
+  function style(prop, value, useContainer) {
+    forEach$1(function (Slide2) {
+      Slide2.style(prop, value, useContainer);
+    });
+  }
+
+  function observeImages(elm, callback) {
+    var images = queryAll(elm, "img");
+    var length = images.length;
+
+    if (length) {
+      images.forEach(function (img) {
+        bind(img, "load error", function () {
+          if (! --length) {
+            callback();
+          }
+        });
+      });
+    } else {
+      callback();
+    }
+  }
+
+  function getLength(excludeClones) {
+    return excludeClones ? slides.length : Slides2.length;
+  }
+
+  function isEnough() {
+    return Slides2.length > options.perPage;
+  }
+
+  return {
+    mount: mount,
+    destroy: destroy,
+    update: update,
+    register: register,
+    get: get,
+    getIn: getIn,
+    getAt: getAt,
+    add: add,
+    remove: remove$1,
+    forEach: forEach$1,
+    filter: filter,
+    style: style,
+    getLength: getLength,
+    isEnough: isEnough
+  };
+}
+
+function Layout(Splide2, Components2, options) {
+  var _EventInterface3 = EventInterface(Splide2),
+      on = _EventInterface3.on,
+      bind = _EventInterface3.bind,
+      emit = _EventInterface3.emit;
+
+  var Slides = Components2.Slides;
+  var resolve = Components2.Direction.resolve;
+  var _Components2$Elements2 = Components2.Elements,
+      root = _Components2$Elements2.root,
+      track = _Components2$Elements2.track,
+      list = _Components2$Elements2.list;
+  var getAt = Slides.getAt,
+      styleSlides = Slides.style;
+  var vertical;
+  var rootRect;
+
+  function mount() {
+    init();
+    bind(window, "resize load", Throttle(apply(emit, EVENT_RESIZE)));
+    on([EVENT_UPDATED, EVENT_REFRESH], init);
+    on(EVENT_RESIZE, resize);
+  }
+
+  function init() {
+    rootRect = null;
+    vertical = options.direction === TTB;
+    style(root, "maxWidth", unit(options.width));
+    style(track, resolve("paddingLeft"), cssPadding(false));
+    style(track, resolve("paddingRight"), cssPadding(true));
+    resize();
+  }
+
+  function resize() {
+    var newRect = rect(root);
+
+    if (!rootRect || rootRect.width !== newRect.width || rootRect.height !== newRect.height) {
+      style(track, "height", cssTrackHeight());
+      styleSlides(resolve("marginRight"), unit(options.gap));
+      styleSlides("width", cssSlideWidth());
+      styleSlides("height", cssSlideHeight(), true);
+      rootRect = newRect;
+      emit(EVENT_RESIZED);
+    }
+  }
+
+  function cssPadding(right) {
+    var padding = options.padding;
+    var prop = resolve(right ? "right" : "left");
+    return padding && unit(padding[prop] || (isObject(padding) ? 0 : padding)) || "0px";
+  }
+
+  function cssTrackHeight() {
+    var height = "";
+
+    if (vertical) {
+      height = cssHeight();
+      assert(height, "height or heightRatio is missing.");
+      height = "calc(" + height + " - " + cssPadding(false) + " - " + cssPadding(true) + ")";
+    }
+
+    return height;
+  }
+
+  function cssHeight() {
+    return unit(options.height || rect(list).width * options.heightRatio);
+  }
+
+  function cssSlideWidth() {
+    return options.autoWidth ? null : unit(options.fixedWidth) || (vertical ? "" : cssSlideSize());
+  }
+
+  function cssSlideHeight() {
+    return unit(options.fixedHeight) || (vertical ? options.autoHeight ? null : cssSlideSize() : cssHeight());
+  }
+
+  function cssSlideSize() {
+    var gap = unit(options.gap);
+    return "calc((100%" + (gap && " + " + gap) + ")/" + (options.perPage || 1) + (gap && " - " + gap) + ")";
+  }
+
+  function listSize() {
+    return rect(list)[resolve("width")];
+  }
+
+  function slideSize(index, withoutGap) {
+    var Slide = getAt(index || 0);
+    return Slide ? rect(Slide.slide)[resolve("width")] + (withoutGap ? 0 : getGap()) : 0;
+  }
+
+  function totalSize(index, withoutGap) {
+    var Slide = getAt(index);
+
+    if (Slide) {
+      var right = rect(Slide.slide)[resolve("right")];
+      var left = rect(list)[resolve("left")];
+      return abs(right - left) + (withoutGap ? 0 : getGap());
+    }
+
+    return 0;
+  }
+
+  function sliderSize() {
+    return totalSize(Splide2.length - 1, true) - totalSize(-1, true);
+  }
+
+  function getGap() {
+    var Slide = getAt(0);
+    return Slide && parseFloat(style(Slide.slide, resolve("marginRight"))) || 0;
+  }
+
+  function getPadding(right) {
+    return parseFloat(style(track, resolve("padding" + (right ? "Right" : "Left")))) || 0;
+  }
+
+  return {
+    mount: mount,
+    listSize: listSize,
+    slideSize: slideSize,
+    sliderSize: sliderSize,
+    totalSize: totalSize,
+    getPadding: getPadding
+  };
+}
+
+var MULTIPLIER = 2;
+
+function Clones(Splide2, Components2, options) {
+  var _EventInterface4 = EventInterface(Splide2),
+      on = _EventInterface4.on,
+      emit = _EventInterface4.emit;
+
+  var Elements = Components2.Elements,
+      Slides = Components2.Slides;
+  var resolve = Components2.Direction.resolve;
+  var clones = [];
+  var cloneCount;
+
+  function mount() {
+    init();
+    on(EVENT_REFRESH, destroy);
+    on(EVENT_REFRESH, init);
+    on([EVENT_UPDATED, EVENT_RESIZE], observe);
+  }
+
+  function init() {
+    if (cloneCount = computeCloneCount()) {
+      generate(cloneCount);
+      emit(EVENT_RESIZE);
+    }
+  }
+
+  function destroy() {
+    remove(clones);
+    empty(clones);
+  }
+
+  function observe() {
+    if (cloneCount < computeCloneCount()) {
+      emit(EVENT_REFRESH);
+    }
+  }
+
+  function generate(count) {
+    var slides = Slides.get().slice();
+    var length = slides.length;
+
+    if (length) {
+      while (slides.length < count) {
+        push(slides, slides);
+      }
+
+      push(slides.slice(-count), slides.slice(0, count)).forEach(function (Slide, index) {
+        var isHead = index < count;
+        var clone = cloneDeep(Slide.slide, index);
+        isHead ? before(clone, slides[0].slide) : append(Elements.list, clone);
+        push(clones, clone);
+        Slides.register(clone, index - count + (isHead ? 0 : length), Slide.index);
+      });
+    }
+  }
+
+  function cloneDeep(elm, index) {
+    var clone = elm.cloneNode(true);
+    addClass(clone, options.classes.clone);
+    clone.id = Splide2.root.id + "-clone" + pad(index + 1);
+    return clone;
+  }
+
+  function computeCloneCount() {
+    var clones2 = options.clones;
+
+    if (!Splide2.is(LOOP)) {
+      clones2 = 0;
+    } else if (!clones2) {
+      var fixedSize = options[resolve("fixedWidth")] && Components2.Layout.slideSize(0);
+      var fixedCount = fixedSize && ceil(rect(Elements.track)[resolve("width")] / fixedSize);
+      clones2 = fixedCount || options[resolve("autoWidth")] && Splide2.length || options.perPage * MULTIPLIER;
+    }
+
+    return clones2;
+  }
+
+  return {
+    mount: mount,
+    destroy: destroy
+  };
+}
+
+function Move(Splide2, Components2, options) {
+  var _EventInterface5 = EventInterface(Splide2),
+      on = _EventInterface5.on,
+      emit = _EventInterface5.emit;
+
+  var set = Splide2.state.set;
+  var _Components2$Layout = Components2.Layout,
+      slideSize = _Components2$Layout.slideSize,
+      getPadding = _Components2$Layout.getPadding,
+      totalSize = _Components2$Layout.totalSize,
+      listSize = _Components2$Layout.listSize,
+      sliderSize = _Components2$Layout.sliderSize;
+  var _Components2$Directio = Components2.Direction,
+      resolve = _Components2$Directio.resolve,
+      orient = _Components2$Directio.orient;
+  var _Components2$Elements3 = Components2.Elements,
+      list = _Components2$Elements3.list,
+      track = _Components2$Elements3.track;
+  var Transition;
+
+  function mount() {
+    Transition = Components2.Transition;
+    on([EVENT_MOUNTED, EVENT_RESIZED, EVENT_UPDATED, EVENT_REFRESH], reposition);
+  }
+
+  function reposition() {
+    if (!Components2.Controller.isBusy()) {
+      Components2.Scroll.cancel();
+      jump(Splide2.index);
+      Components2.Slides.update();
+    }
+  }
+
+  function move(dest, index, prev, callback) {
+    if (dest !== index && canShift(dest > prev)) {
+      cancel();
+      translate(shift(getPosition(), dest > prev), true);
+    }
+
+    set(MOVING);
+    emit(EVENT_MOVE, index, prev, dest);
+    Transition.start(index, function () {
+      set(IDLE);
+      emit(EVENT_MOVED, index, prev, dest);
+      callback && callback();
+    });
+  }
+
+  function jump(index) {
+    translate(toPosition(index, true));
+  }
+
+  function translate(position, preventLoop) {
+    if (!Splide2.is(FADE)) {
+      var destination = preventLoop ? position : loop(position);
+      style(list, "transform", "translate" + resolve("X") + "(" + destination + "px)");
+      position !== destination && emit(EVENT_SHIFTED);
+    }
+  }
+
+  function loop(position) {
+    if (Splide2.is(LOOP)) {
+      var index = toIndex(position);
+      var exceededMax = index > Components2.Controller.getEnd();
+      var exceededMin = index < 0;
+
+      if (exceededMin || exceededMax) {
+        position = shift(position, exceededMax);
+      }
+    }
+
+    return position;
+  }
+
+  function shift(position, backwards) {
+    var excess = position - getLimit(backwards);
+    var size = sliderSize();
+    position -= orient(size * (ceil(abs(excess) / size) || 1)) * (backwards ? 1 : -1);
+    return position;
+  }
+
+  function cancel() {
+    translate(getPosition());
+    Transition.cancel();
+  }
+
+  function toIndex(position) {
+    var Slides = Components2.Slides.get();
+    var index = 0;
+    var minDistance = Infinity;
+
+    for (var i = 0; i < Slides.length; i++) {
+      var slideIndex = Slides[i].index;
+      var distance = abs(toPosition(slideIndex, true) - position);
+
+      if (distance <= minDistance) {
+        minDistance = distance;
+        index = slideIndex;
+      } else {
+        break;
+      }
+    }
+
+    return index;
+  }
+
+  function toPosition(index, trimming) {
+    var position = orient(totalSize(index - 1) - offset(index));
+    return trimming ? trim(position) : position;
+  }
+
+  function getPosition() {
+    var left = resolve("left");
+    return rect(list)[left] - rect(track)[left] + orient(getPadding(false));
+  }
+
+  function trim(position) {
+    if (options.trimSpace && Splide2.is(SLIDE)) {
+      position = clamp(position, 0, orient(sliderSize() - listSize()));
+    }
+
+    return position;
+  }
+
+  function offset(index) {
+    var focus = options.focus;
+    return focus === "center" ? (listSize() - slideSize(index, true)) / 2 : +focus * slideSize(index) || 0;
+  }
+
+  function getLimit(max) {
+    return toPosition(max ? Components2.Controller.getEnd() : 0, !!options.trimSpace);
+  }
+
+  function canShift(backwards) {
+    var shifted = orient(shift(getPosition(), backwards));
+    return backwards ? shifted >= 0 : shifted <= list[resolve("scrollWidth")] - rect(track)[resolve("width")];
+  }
+
+  function exceededLimit(max, position) {
+    position = isUndefined(position) ? getPosition() : position;
+    var exceededMin = max !== true && orient(position) < orient(getLimit(false));
+    var exceededMax = max !== false && orient(position) > orient(getLimit(true));
+    return exceededMin || exceededMax;
+  }
+
+  return {
+    mount: mount,
+    move: move,
+    jump: jump,
+    translate: translate,
+    shift: shift,
+    cancel: cancel,
+    toIndex: toIndex,
+    toPosition: toPosition,
+    getPosition: getPosition,
+    getLimit: getLimit,
+    exceededLimit: exceededLimit,
+    reposition: reposition
+  };
+}
+
+function Controller(Splide2, Components2, options) {
+  var _EventInterface6 = EventInterface(Splide2),
+      on = _EventInterface6.on;
+
+  var Move = Components2.Move;
+  var getPosition = Move.getPosition,
+      getLimit = Move.getLimit,
+      toPosition = Move.toPosition;
+  var _Components2$Slides = Components2.Slides,
+      isEnough = _Components2$Slides.isEnough,
+      getLength = _Components2$Slides.getLength;
+  var isLoop = Splide2.is(LOOP);
+  var isSlide = Splide2.is(SLIDE);
+  var getNext = apply(getAdjacent, false);
+  var getPrev = apply(getAdjacent, true);
+  var currIndex = options.start || 0;
+  var prevIndex = currIndex;
+  var slideCount;
+  var perMove;
+  var perPage;
+
+  function mount() {
+    init();
+    on([EVENT_UPDATED, EVENT_REFRESH], init);
+  }
+
+  function init() {
+    slideCount = getLength(true);
+    perMove = options.perMove;
+    perPage = options.perPage;
+    var index = clamp(currIndex, 0, slideCount - 1);
+
+    if (index !== currIndex) {
+      currIndex = index;
+      Move.reposition();
+    }
+  }
+
+  function go(control, allowSameIndex, callback) {
+    if (!isBusy()) {
+      var dest = parse(control);
+      var index = loop(dest);
+
+      if (index > -1 && (allowSameIndex || index !== currIndex)) {
+        setIndex(index);
+        Move.move(dest, index, prevIndex, callback);
+      }
+    }
+  }
+
+  function scroll(destination, duration, snap, callback) {
+    Components2.Scroll.scroll(destination, duration, snap, function () {
+      setIndex(loop(Move.toIndex(getPosition())));
+      callback && callback();
+    });
+  }
+
+  function parse(control) {
+    var index = currIndex;
+
+    if (isString(control)) {
+      var _ref = control.match(/([+\-<>])(\d+)?/) || [],
+          indicator = _ref[1],
+          number = _ref[2];
+
+      if (indicator === "+" || indicator === "-") {
+        index = computeDestIndex(currIndex + +("" + indicator + (+number || 1)), currIndex);
+      } else if (indicator === ">") {
+        index = number ? toIndex(+number) : getNext(true);
+      } else if (indicator === "<") {
+        index = getPrev(true);
+      }
+    } else {
+      index = isLoop ? control : clamp(control, 0, getEnd());
+    }
+
+    return index;
+  }
+
+  function getAdjacent(prev, destination) {
+    var number = perMove || (hasFocus() ? 1 : perPage);
+    var dest = computeDestIndex(currIndex + number * (prev ? -1 : 1), currIndex, !(perMove || hasFocus()));
+
+    if (dest === -1 && isSlide) {
+      if (!approximatelyEqual(getPosition(), getLimit(!prev), 1)) {
+        return prev ? 0 : getEnd();
+      }
+    }
+
+    return destination ? dest : loop(dest);
+  }
+
+  function computeDestIndex(dest, from, snapPage) {
+    if (isEnough()) {
+      var end = getEnd();
+      var index = computeMovableDestIndex(dest);
+
+      if (index !== dest) {
+        from = dest;
+        dest = index;
+        snapPage = false;
+      }
+
+      if (dest < 0 || dest > end) {
+        if (!perMove && (between(0, dest, from, true) || between(end, from, dest, true))) {
+          dest = toIndex(toPage(dest));
+        } else {
+          if (isLoop) {
+            dest = snapPage ? dest < 0 ? -(slideCount % perPage || perPage) : slideCount : dest;
+          } else if (options.rewind) {
+            dest = dest < 0 ? end : 0;
+          } else {
+            dest = -1;
+          }
+        }
+      } else {
+        if (snapPage && dest !== from) {
+          dest = toIndex(toPage(from) + (dest < from ? -1 : 1));
+        }
+      }
+    } else {
+      dest = -1;
+    }
+
+    return dest;
+  }
+
+  function computeMovableDestIndex(dest) {
+    if (isSlide && options.trimSpace === "move" && dest !== currIndex) {
+      var position = getPosition();
+
+      while (position === toPosition(dest, true) && between(dest, 0, Splide2.length - 1, !options.rewind)) {
+        dest < currIndex ? --dest : ++dest;
+      }
+    }
+
+    return dest;
+  }
+
+  function loop(index) {
+    return isLoop ? (index + slideCount) % slideCount || 0 : index;
+  }
+
+  function getEnd() {
+    return max(slideCount - (hasFocus() || isLoop && perMove ? 1 : perPage), 0);
+  }
+
+  function toIndex(page) {
+    return clamp(hasFocus() ? page : perPage * page, 0, getEnd());
+  }
+
+  function toPage(index) {
+    return hasFocus() ? index : floor((index >= getEnd() ? slideCount - 1 : index) / perPage);
+  }
+
+  function toDest(destination) {
+    var closest = Move.toIndex(destination);
+    return isSlide ? clamp(closest, 0, getEnd()) : closest;
+  }
+
+  function setIndex(index) {
+    if (index !== currIndex) {
+      prevIndex = currIndex;
+      currIndex = index;
+    }
+  }
+
+  function getIndex(prev) {
+    return prev ? prevIndex : currIndex;
+  }
+
+  function hasFocus() {
+    return !isUndefined(options.focus) || options.isNavigation;
+  }
+
+  function isBusy() {
+    return Splide2.state.is([MOVING, SCROLLING]) && !!options.waitForTransition;
+  }
+
+  return {
+    mount: mount,
+    go: go,
+    scroll: scroll,
+    getNext: getNext,
+    getPrev: getPrev,
+    getAdjacent: getAdjacent,
+    getEnd: getEnd,
+    setIndex: setIndex,
+    getIndex: getIndex,
+    toIndex: toIndex,
+    toPage: toPage,
+    toDest: toDest,
+    hasFocus: hasFocus,
+    isBusy: isBusy
+  };
+}
+
+var XML_NAME_SPACE = "http://www.w3.org/2000/svg";
+var PATH = "m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z";
+var SIZE = 40;
+
+function Arrows(Splide2, Components2, options) {
+  var event = EventInterface(Splide2);
+  var on = event.on,
+      bind = event.bind,
+      emit = event.emit;
+  var classes = options.classes,
+      i18n = options.i18n;
+  var Elements = Components2.Elements,
+      Controller = Components2.Controller;
+  var userArrows = Elements.arrows,
+      track = Elements.track;
+  var wrapper = userArrows;
+  var prev = Elements.prev;
+  var next = Elements.next;
+  var created;
+  var wrapperClasses;
+  var arrows = {};
+
+  function mount() {
+    init();
+    on(EVENT_UPDATED, remount);
+  }
+
+  function remount() {
+    destroy();
+    mount();
+  }
+
+  function init() {
+    var enabled = options.arrows;
+
+    if (enabled && !(prev && next)) {
+      createArrows();
+    }
+
+    if (prev && next) {
+      assign(arrows, {
+        prev: prev,
+        next: next
+      });
+      display(wrapper, enabled ? "" : "none");
+      addClass(wrapper, wrapperClasses = CLASS_ARROWS + "--" + options.direction);
+
+      if (enabled) {
+        listen();
+        update();
+        setAttribute([prev, next], ARIA_CONTROLS, track.id);
+        emit(EVENT_ARROWS_MOUNTED, prev, next);
+      }
+    }
+  }
+
+  function destroy() {
+    event.destroy();
+    removeClass(wrapper, wrapperClasses);
+
+    if (created) {
+      remove(userArrows ? [prev, next] : wrapper);
+      prev = next = null;
+    } else {
+      removeAttribute([prev, next], ALL_ATTRIBUTES);
+    }
+  }
+
+  function listen() {
+    on([EVENT_MOVED, EVENT_REFRESH, EVENT_SCROLLED], update);
+    bind(next, "click", apply(go, ">"));
+    bind(prev, "click", apply(go, "<"));
+  }
+
+  function go(control) {
+    Controller.go(control, true);
+  }
+
+  function createArrows() {
+    wrapper = userArrows || create("div", classes.arrows);
+    prev = createArrow(true);
+    next = createArrow(false);
+    created = true;
+    append(wrapper, [prev, next]);
+    !userArrows && before(wrapper, track);
+  }
+
+  function createArrow(prev2) {
+    var arrow = "<button class=\"" + classes.arrow + " " + (prev2 ? classes.prev : classes.next) + "\" type=\"button\"><svg xmlns=\"" + XML_NAME_SPACE + "\" viewBox=\"0 0 " + SIZE + " " + SIZE + "\" width=\"" + SIZE + "\" height=\"" + SIZE + "\" focusable=\"false\"><path d=\"" + (options.arrowPath || PATH) + "\" />";
+    return parseHtml(arrow);
+  }
+
+  function update() {
+    var index = Splide2.index;
+    var prevIndex = Controller.getPrev();
+    var nextIndex = Controller.getNext();
+    var prevLabel = prevIndex > -1 && index < prevIndex ? i18n.last : i18n.prev;
+    var nextLabel = nextIndex > -1 && index > nextIndex ? i18n.first : i18n.next;
+    prev.disabled = prevIndex < 0;
+    next.disabled = nextIndex < 0;
+    setAttribute(prev, ARIA_LABEL, prevLabel);
+    setAttribute(next, ARIA_LABEL, nextLabel);
+    emit(EVENT_ARROWS_UPDATED, prev, next, prevIndex, nextIndex);
+  }
+
+  return {
+    arrows: arrows,
+    mount: mount,
+    destroy: destroy
+  };
+}
+
+var INTERVAL_DATA_ATTRIBUTE = DATA_ATTRIBUTE + "-interval";
+
+function Autoplay(Splide2, Components2, options) {
+  var _EventInterface7 = EventInterface(Splide2),
+      on = _EventInterface7.on,
+      bind = _EventInterface7.bind,
+      emit = _EventInterface7.emit;
+
+  var interval = RequestInterval(options.interval, Splide2.go.bind(Splide2, ">"), onAnimationFrame);
+  var isPaused = interval.isPaused;
+  var Elements = Components2.Elements,
+      _Components2$Elements4 = Components2.Elements,
+      root = _Components2$Elements4.root,
+      toggle = _Components2$Elements4.toggle;
+  var autoplay = options.autoplay;
+  var hovered;
+  var focused;
+  var stopped = autoplay === "pause";
+
+  function mount() {
+    if (autoplay) {
+      listen();
+      toggle && setAttribute(toggle, ARIA_CONTROLS, Elements.track.id);
+      stopped || play();
+      update();
+    }
+  }
+
+  function listen() {
+    if (options.pauseOnHover) {
+      bind(root, "mouseenter mouseleave", function (e) {
+        hovered = e.type === "mouseenter";
+        autoToggle();
+      });
+    }
+
+    if (options.pauseOnFocus) {
+      bind(root, "focusin focusout", function (e) {
+        focused = e.type === "focusin";
+        autoToggle();
+      });
+    }
+
+    if (toggle) {
+      bind(toggle, "click", function () {
+        stopped ? play() : pause(true);
+      });
+    }
+
+    on([EVENT_MOVE, EVENT_SCROLL, EVENT_REFRESH], interval.rewind);
+    on(EVENT_MOVE, onMove);
+  }
+
+  function play() {
+    if (isPaused() && Components2.Slides.isEnough()) {
+      interval.start(!options.resetProgress);
+      focused = hovered = stopped = false;
+      update();
+      emit(EVENT_AUTOPLAY_PLAY);
+    }
+  }
+
+  function pause(stop) {
+    if (stop === void 0) {
+      stop = true;
+    }
+
+    stopped = !!stop;
+    update();
+
+    if (!isPaused()) {
+      interval.pause();
+      emit(EVENT_AUTOPLAY_PAUSE);
+    }
+  }
+
+  function autoToggle() {
+    if (!stopped) {
+      hovered || focused ? pause(false) : play();
+    }
+  }
+
+  function update() {
+    if (toggle) {
+      toggleClass(toggle, CLASS_ACTIVE, !stopped);
+      setAttribute(toggle, ARIA_LABEL, options.i18n[stopped ? "play" : "pause"]);
+    }
+  }
+
+  function onAnimationFrame(rate) {
+    var bar = Elements.bar;
+    bar && style(bar, "width", rate * 100 + "%");
+    emit(EVENT_AUTOPLAY_PLAYING, rate);
+  }
+
+  function onMove(index) {
+    var Slide = Components2.Slides.getAt(index);
+    interval.set(Slide && +getAttribute(Slide.slide, INTERVAL_DATA_ATTRIBUTE) || options.interval);
+  }
+
+  return {
+    mount: mount,
+    destroy: interval.cancel,
+    play: play,
+    pause: pause,
+    isPaused: isPaused
+  };
+}
+
+function Cover(Splide2, Components2, options) {
+  var _EventInterface8 = EventInterface(Splide2),
+      on = _EventInterface8.on;
+
+  function mount() {
+    if (options.cover) {
+      on(EVENT_LAZYLOAD_LOADED, apply(toggle, true));
+      on([EVENT_MOUNTED, EVENT_UPDATED, EVENT_REFRESH], apply(cover, true));
+    }
+  }
+
+  function cover(cover2) {
+    Components2.Slides.forEach(function (Slide) {
+      var img = child(Slide.container || Slide.slide, "img");
+
+      if (img && img.src) {
+        toggle(cover2, img, Slide);
+      }
+    });
+  }
+
+  function toggle(cover2, img, Slide) {
+    Slide.style("background", cover2 ? "center/cover no-repeat url(\"" + img.src + "\")" : "", true);
+    display(img, cover2 ? "none" : "");
+  }
+
+  return {
+    mount: mount,
+    destroy: apply(cover, false)
+  };
+}
+
+var BOUNCE_DIFF_THRESHOLD = 10;
+var BOUNCE_DURATION = 600;
+var FRICTION_FACTOR = 0.6;
+var BASE_VELOCITY = 1.5;
+var MIN_DURATION = 800;
+
+function Scroll(Splide2, Components2, options) {
+  var _EventInterface9 = EventInterface(Splide2),
+      on = _EventInterface9.on,
+      emit = _EventInterface9.emit;
+
+  var set = Splide2.state.set;
+  var Move = Components2.Move;
+  var getPosition = Move.getPosition,
+      getLimit = Move.getLimit,
+      exceededLimit = Move.exceededLimit,
+      translate = Move.translate;
+  var interval;
+  var callback;
+  var friction = 1;
+
+  function mount() {
+    on(EVENT_MOVE, clear);
+    on([EVENT_UPDATED, EVENT_REFRESH], cancel);
+  }
+
+  function scroll(destination, duration, snap, onScrolled, noConstrain) {
+    var from = getPosition();
+    clear();
+
+    if (snap) {
+      var size = Components2.Layout.sliderSize();
+      var offset = sign(destination) * size * floor(abs(destination) / size) || 0;
+      destination = Move.toPosition(Components2.Controller.toDest(destination % size)) + offset;
+    }
+
+    var noDistance = approximatelyEqual(from, destination, 1);
+    friction = 1;
+    duration = noDistance ? 0 : duration || max(abs(destination - from) / BASE_VELOCITY, MIN_DURATION);
+    callback = onScrolled;
+    interval = RequestInterval(duration, onEnd, apply(update, from, destination, noConstrain), 1);
+    set(SCROLLING);
+    emit(EVENT_SCROLL);
+    interval.start();
+  }
+
+  function onEnd() {
+    set(IDLE);
+    callback && callback();
+    emit(EVENT_SCROLLED);
+  }
+
+  function update(from, to, noConstrain, rate) {
+    var position = getPosition();
+    var target = from + (to - from) * easing(rate);
+    var diff = (target - position) * friction;
+    translate(position + diff);
+
+    if (Splide2.is(SLIDE) && !noConstrain && exceededLimit()) {
+      friction *= FRICTION_FACTOR;
+
+      if (abs(diff) < BOUNCE_DIFF_THRESHOLD) {
+        scroll(getLimit(exceededLimit(true)), BOUNCE_DURATION, false, callback, true);
+      }
+    }
+  }
+
+  function clear() {
+    if (interval) {
+      interval.cancel();
+    }
+  }
+
+  function cancel() {
+    if (interval && !interval.isPaused()) {
+      clear();
+      onEnd();
+    }
+  }
+
+  function easing(t) {
+    var easingFunc = options.easingFunc;
+    return easingFunc ? easingFunc(t) : 1 - Math.pow(1 - t, 4);
+  }
+
+  return {
+    mount: mount,
+    destroy: clear,
+    scroll: scroll,
+    cancel: cancel
+  };
+}
+
+var SCROLL_LISTENER_OPTIONS = {
+  passive: false,
+  capture: true
+};
+
+function Drag(Splide2, Components2, options) {
+  var _EventInterface10 = EventInterface(Splide2),
+      on = _EventInterface10.on,
+      emit = _EventInterface10.emit,
+      bind = _EventInterface10.bind,
+      unbind = _EventInterface10.unbind;
+
+  var state = Splide2.state;
+  var Move = Components2.Move,
+      Scroll = Components2.Scroll,
+      Controller = Components2.Controller,
+      track = Components2.Elements.track,
+      reduce = Components2.Media.reduce;
+  var _Components2$Directio2 = Components2.Direction,
+      resolve = _Components2$Directio2.resolve,
+      orient = _Components2$Directio2.orient;
+  var getPosition = Move.getPosition,
+      exceededLimit = Move.exceededLimit;
+  var basePosition;
+  var baseEvent;
+  var prevBaseEvent;
+  var isFree;
+  var dragging;
+  var exceeded = false;
+  var clickPrevented;
+  var disabled;
+  var target;
+
+  function mount() {
+    bind(track, POINTER_MOVE_EVENTS, noop, SCROLL_LISTENER_OPTIONS);
+    bind(track, POINTER_UP_EVENTS, noop, SCROLL_LISTENER_OPTIONS);
+    bind(track, POINTER_DOWN_EVENTS, onPointerDown, SCROLL_LISTENER_OPTIONS);
+    bind(track, "click", onClick, {
+      capture: true
+    });
+    bind(track, "dragstart", prevent);
+    on([EVENT_MOUNTED, EVENT_UPDATED], init);
+  }
+
+  function init() {
+    var drag = options.drag;
+    disable(!drag);
+    isFree = drag === "free";
+  }
+
+  function onPointerDown(e) {
+    clickPrevented = false;
+
+    if (!disabled) {
+      var isTouch = isTouchEvent(e);
+
+      if (isDraggable(e.target) && (isTouch || !e.button)) {
+        if (!Controller.isBusy()) {
+          target = isTouch ? track : window;
+          dragging = state.is([MOVING, SCROLLING]);
+          prevBaseEvent = null;
+          bind(target, POINTER_MOVE_EVENTS, onPointerMove, SCROLL_LISTENER_OPTIONS);
+          bind(target, POINTER_UP_EVENTS, onPointerUp, SCROLL_LISTENER_OPTIONS);
+          Move.cancel();
+          Scroll.cancel();
+          save(e);
+        } else {
+          prevent(e, true);
+        }
+      }
+    }
+  }
+
+  function onPointerMove(e) {
+    if (!state.is(DRAGGING)) {
+      state.set(DRAGGING);
+      emit(EVENT_DRAG);
+    }
+
+    if (e.cancelable) {
+      if (dragging) {
+        Move.translate(basePosition + constrain(diffCoord(e)));
+        var expired = diffTime(e) > LOG_INTERVAL;
+        var hasExceeded = exceeded !== (exceeded = exceededLimit());
+
+        if (expired || hasExceeded) {
+          save(e);
+        }
+
+        clickPrevented = true;
+        emit(EVENT_DRAGGING);
+        prevent(e);
+      } else if (isSliderDirection(e)) {
+        dragging = shouldStart(e);
+        prevent(e);
+      }
+    }
+  }
+
+  function onPointerUp(e) {
+    if (state.is(DRAGGING)) {
+      state.set(IDLE);
+      emit(EVENT_DRAGGED);
+    }
+
+    if (dragging) {
+      move(e);
+      prevent(e);
+    }
+
+    unbind(target, POINTER_MOVE_EVENTS, onPointerMove);
+    unbind(target, POINTER_UP_EVENTS, onPointerUp);
+    dragging = false;
+  }
+
+  function onClick(e) {
+    if (!disabled && clickPrevented) {
+      prevent(e, true);
+    }
+  }
+
+  function save(e) {
+    prevBaseEvent = baseEvent;
+    baseEvent = e;
+    basePosition = getPosition();
+  }
+
+  function move(e) {
+    var velocity = computeVelocity(e);
+    var destination = computeDestination(velocity);
+    var rewind = options.rewind && options.rewindByDrag;
+    reduce(false);
+
+    if (isFree) {
+      Controller.scroll(destination, 0, options.snap);
+    } else if (Splide2.is(FADE)) {
+      Controller.go(orient(sign(velocity)) < 0 ? rewind ? "<" : "-" : rewind ? ">" : "+");
+    } else if (Splide2.is(SLIDE) && exceeded && rewind) {
+      Controller.go(exceededLimit(true) ? ">" : "<");
+    } else {
+      Controller.go(Controller.toDest(destination), true);
+    }
+
+    reduce(true);
+  }
+
+  function shouldStart(e) {
+    var thresholds = options.dragMinThreshold;
+    var isObj = isObject(thresholds);
+    var mouse = isObj && thresholds.mouse || 0;
+    var touch = (isObj ? thresholds.touch : +thresholds) || 10;
+    return abs(diffCoord(e)) > (isTouchEvent(e) ? touch : mouse);
+  }
+
+  function isSliderDirection(e) {
+    return abs(diffCoord(e)) > abs(diffCoord(e, true));
+  }
+
+  function computeVelocity(e) {
+    if (Splide2.is(LOOP) || !exceeded) {
+      var time = diffTime(e);
+
+      if (time && time < LOG_INTERVAL) {
+        return diffCoord(e) / time;
+      }
+    }
+
+    return 0;
+  }
+
+  function computeDestination(velocity) {
+    return getPosition() + sign(velocity) * min(abs(velocity) * (options.flickPower || 600), isFree ? Infinity : Components2.Layout.listSize() * (options.flickMaxPages || 1));
+  }
+
+  function diffCoord(e, orthogonal) {
+    return coordOf(e, orthogonal) - coordOf(getBaseEvent(e), orthogonal);
+  }
+
+  function diffTime(e) {
+    return timeOf(e) - timeOf(getBaseEvent(e));
+  }
+
+  function getBaseEvent(e) {
+    return baseEvent === e && prevBaseEvent || baseEvent;
+  }
+
+  function coordOf(e, orthogonal) {
+    return (isTouchEvent(e) ? e.changedTouches[0] : e)["page" + resolve(orthogonal ? "Y" : "X")];
+  }
+
+  function constrain(diff) {
+    return diff / (exceeded && Splide2.is(SLIDE) ? FRICTION : 1);
+  }
+
+  function isDraggable(target2) {
+    var noDrag = options.noDrag;
+    return !matches(target2, "." + CLASS_PAGINATION_PAGE + ", ." + CLASS_ARROW) && (!noDrag || !matches(target2, noDrag));
+  }
+
+  function isTouchEvent(e) {
+    return typeof TouchEvent !== "undefined" && e instanceof TouchEvent;
+  }
+
+  function isDragging() {
+    return dragging;
+  }
+
+  function disable(value) {
+    disabled = value;
+  }
+
+  return {
+    mount: mount,
+    disable: disable,
+    isDragging: isDragging
+  };
+}
+
+var NORMALIZATION_MAP = {
+  Spacebar: " ",
+  Right: ARROW_RIGHT,
+  Left: ARROW_LEFT,
+  Up: ARROW_UP,
+  Down: ARROW_DOWN
+};
+
+function normalizeKey(key) {
+  key = isString(key) ? key : key.key;
+  return NORMALIZATION_MAP[key] || key;
+}
+
+var KEYBOARD_EVENT = "keydown";
+
+function Keyboard(Splide2, Components2, options) {
+  var _EventInterface11 = EventInterface(Splide2),
+      on = _EventInterface11.on,
+      bind = _EventInterface11.bind,
+      unbind = _EventInterface11.unbind;
+
+  var root = Splide2.root;
+  var resolve = Components2.Direction.resolve;
+  var target;
+  var disabled;
+
+  function mount() {
+    init();
+    on(EVENT_UPDATED, destroy);
+    on(EVENT_UPDATED, init);
+    on(EVENT_MOVE, onMove);
+  }
+
+  function init() {
+    var keyboard = options.keyboard;
+
+    if (keyboard) {
+      target = keyboard === "global" ? window : root;
+      bind(target, KEYBOARD_EVENT, onKeydown);
+    }
+  }
+
+  function destroy() {
+    unbind(target, KEYBOARD_EVENT);
+  }
+
+  function disable(value) {
+    disabled = value;
+  }
+
+  function onMove() {
+    var _disabled = disabled;
+    disabled = true;
+    nextTick(function () {
+      disabled = _disabled;
+    });
+  }
+
+  function onKeydown(e) {
+    if (!disabled) {
+      var key = normalizeKey(e);
+
+      if (key === resolve(ARROW_LEFT)) {
+        Splide2.go("<");
+      } else if (key === resolve(ARROW_RIGHT)) {
+        Splide2.go(">");
+      }
+    }
+  }
+
+  return {
+    mount: mount,
+    destroy: destroy,
+    disable: disable
+  };
+}
+
+var SRC_DATA_ATTRIBUTE = DATA_ATTRIBUTE + "-lazy";
+var SRCSET_DATA_ATTRIBUTE = SRC_DATA_ATTRIBUTE + "-srcset";
+var IMAGE_SELECTOR = "[" + SRC_DATA_ATTRIBUTE + "], [" + SRCSET_DATA_ATTRIBUTE + "]";
+
+function LazyLoad(Splide2, Components2, options) {
+  var _EventInterface12 = EventInterface(Splide2),
+      on = _EventInterface12.on,
+      off = _EventInterface12.off,
+      bind = _EventInterface12.bind,
+      emit = _EventInterface12.emit;
+
+  var isSequential = options.lazyLoad === "sequential";
+  var events = [EVENT_MOUNTED, EVENT_REFRESH, EVENT_MOVED, EVENT_SCROLLED];
+  var entries = [];
+
+  function mount() {
+    if (options.lazyLoad) {
+      init();
+      on(EVENT_REFRESH, init);
+      isSequential || on(events, observe);
+    }
+  }
+
+  function init() {
+    empty(entries);
+    Components2.Slides.forEach(function (Slide) {
+      queryAll(Slide.slide, IMAGE_SELECTOR).forEach(function (img) {
+        var src = getAttribute(img, SRC_DATA_ATTRIBUTE);
+        var srcset = getAttribute(img, SRCSET_DATA_ATTRIBUTE);
+
+        if (src !== img.src || srcset !== img.srcset) {
+          var className = options.classes.spinner;
+          var parent = img.parentElement;
+          var spinner = child(parent, "." + className) || create("span", className, parent);
+          entries.push([img, Slide, spinner]);
+          img.src || display(img, "none");
+        }
+      });
+    });
+    isSequential && loadNext();
+  }
+
+  function observe() {
+    entries = entries.filter(function (data) {
+      var distance = options.perPage * ((options.preloadPages || 1) + 1) - 1;
+      return data[1].isWithin(Splide2.index, distance) ? load(data) : true;
+    });
+    entries.length || off(events);
+  }
+
+  function load(data) {
+    var img = data[0];
+    addClass(data[1].slide, CLASS_LOADING);
+    bind(img, "load error", apply(onLoad, data));
+    setAttribute(img, "src", getAttribute(img, SRC_DATA_ATTRIBUTE));
+    setAttribute(img, "srcset", getAttribute(img, SRCSET_DATA_ATTRIBUTE));
+    removeAttribute(img, SRC_DATA_ATTRIBUTE);
+    removeAttribute(img, SRCSET_DATA_ATTRIBUTE);
+  }
+
+  function onLoad(data, e) {
+    var img = data[0],
+        Slide = data[1];
+    removeClass(Slide.slide, CLASS_LOADING);
+
+    if (e.type !== "error") {
+      remove(data[2]);
+      display(img, "");
+      emit(EVENT_LAZYLOAD_LOADED, img, Slide);
+      emit(EVENT_RESIZE);
+    }
+
+    isSequential && loadNext();
+  }
+
+  function loadNext() {
+    entries.length && load(entries.shift());
+  }
+
+  return {
+    mount: mount,
+    destroy: apply(empty, entries)
+  };
+}
+
+function Pagination(Splide2, Components2, options) {
+  var event = EventInterface(Splide2);
+  var on = event.on,
+      emit = event.emit,
+      bind = event.bind;
+  var Slides = Components2.Slides,
+      Elements = Components2.Elements,
+      Controller = Components2.Controller;
+  var hasFocus = Controller.hasFocus,
+      getIndex = Controller.getIndex,
+      go = Controller.go;
+  var resolve = Components2.Direction.resolve;
+  var items = [];
+  var list;
+  var paginationClasses;
+
+  function mount() {
+    destroy();
+    on([EVENT_UPDATED, EVENT_REFRESH], mount);
+
+    if (options.pagination && Slides.isEnough()) {
+      on([EVENT_MOVE, EVENT_SCROLL, EVENT_SCROLLED], update);
+      createPagination();
+      update();
+      emit(EVENT_PAGINATION_MOUNTED, {
+        list: list,
+        items: items
+      }, getAt(Splide2.index));
+    }
+  }
+
+  function destroy() {
+    if (list) {
+      remove(Elements.pagination ? slice(list.children) : list);
+      removeClass(list, paginationClasses);
+      empty(items);
+      list = null;
+    }
+
+    event.destroy();
+  }
+
+  function createPagination() {
+    var length = Splide2.length;
+    var classes = options.classes,
+        i18n = options.i18n,
+        perPage = options.perPage;
+    var max = hasFocus() ? length : ceil(length / perPage);
+    list = Elements.pagination || create("ul", classes.pagination, Elements.track.parentElement);
+    addClass(list, paginationClasses = CLASS_PAGINATION + "--" + getDirection());
+    setAttribute(list, ROLE, "tablist");
+    setAttribute(list, ARIA_LABEL, i18n.select);
+    setAttribute(list, ARIA_ORIENTATION, getDirection() === TTB ? "vertical" : "");
+
+    for (var i = 0; i < max; i++) {
+      var li = create("li", null, list);
+      var button = create("button", {
+        class: classes.page,
+        type: "button"
+      }, li);
+      var controls = Slides.getIn(i).map(function (Slide) {
+        return Slide.slide.id;
+      });
+      var text = !hasFocus() && perPage > 1 ? i18n.pageX : i18n.slideX;
+      bind(button, "click", apply(onClick, i));
+
+      if (options.paginationKeyboard) {
+        bind(button, "keydown", apply(onKeydown, i));
+      }
+
+      setAttribute(li, ROLE, "presentation");
+      setAttribute(button, ROLE, "tab");
+      setAttribute(button, ARIA_CONTROLS, controls.join(" "));
+      setAttribute(button, ARIA_LABEL, format(text, i + 1));
+      setAttribute(button, TAB_INDEX, -1);
+      items.push({
+        li: li,
+        button: button,
+        page: i
+      });
+    }
+  }
+
+  function onClick(page) {
+    go(">" + page, true);
+  }
+
+  function onKeydown(page, e) {
+    var length = items.length;
+    var key = normalizeKey(e);
+    var dir = getDirection();
+    var nextPage = -1;
+
+    if (key === resolve(ARROW_RIGHT, false, dir)) {
+      nextPage = ++page % length;
+    } else if (key === resolve(ARROW_LEFT, false, dir)) {
+      nextPage = (--page + length) % length;
+    } else if (key === "Home") {
+      nextPage = 0;
+    } else if (key === "End") {
+      nextPage = length - 1;
+    }
+
+    var item = items[nextPage];
+
+    if (item) {
+      focus(item.button);
+      go(">" + nextPage);
+      prevent(e, true);
+    }
+  }
+
+  function getDirection() {
+    return options.paginationDirection || options.direction;
+  }
+
+  function getAt(index) {
+    return items[Controller.toPage(index)];
+  }
+
+  function update() {
+    var prev = getAt(getIndex(true));
+    var curr = getAt(getIndex());
+
+    if (prev) {
+      var button = prev.button;
+      removeClass(button, CLASS_ACTIVE);
+      removeAttribute(button, ARIA_SELECTED);
+      setAttribute(button, TAB_INDEX, -1);
+    }
+
+    if (curr) {
+      var _button = curr.button;
+      addClass(_button, CLASS_ACTIVE);
+      setAttribute(_button, ARIA_SELECTED, true);
+      setAttribute(_button, TAB_INDEX, "");
+    }
+
+    emit(EVENT_PAGINATION_UPDATED, {
+      list: list,
+      items: items
+    }, prev, curr);
+  }
+
+  return {
+    items: items,
+    mount: mount,
+    destroy: destroy,
+    getAt: getAt,
+    update: update
+  };
+}
+
+var TRIGGER_KEYS = [" ", "Enter"];
+
+function Sync(Splide2, Components2, options) {
+  var isNavigation = options.isNavigation,
+      slideFocus = options.slideFocus;
+  var events = [];
+
+  function setup() {
+    Splide2.options = {
+      slideFocus: isUndefined(slideFocus) ? isNavigation : slideFocus
+    };
+  }
+
+  function mount() {
+    Splide2.splides.forEach(function (target) {
+      if (!target.isParent) {
+        sync(Splide2, target.splide);
+        sync(target.splide, Splide2);
+      }
+    });
+
+    if (isNavigation) {
+      navigate();
+    }
+  }
+
+  function destroy() {
+    events.forEach(function (event) {
+      event.destroy();
+    });
+    empty(events);
+  }
+
+  function remount() {
+    destroy();
+    mount();
+  }
+
+  function sync(splide, target) {
+    var event = EventInterface(splide);
+    event.on(EVENT_MOVE, function (index, prev, dest) {
+      target.go(target.is(LOOP) ? dest : index);
+    });
+    events.push(event);
+  }
+
+  function navigate() {
+    var event = EventInterface(Splide2);
+    var on = event.on;
+    on(EVENT_CLICK, onClick);
+    on(EVENT_SLIDE_KEYDOWN, onKeydown);
+    on([EVENT_MOUNTED, EVENT_UPDATED], update);
+    events.push(event);
+    event.emit(EVENT_NAVIGATION_MOUNTED, Splide2.splides);
+  }
+
+  function update() {
+    setAttribute(Components2.Elements.list, ARIA_ORIENTATION, options.direction === TTB ? "vertical" : "");
+  }
+
+  function onClick(Slide) {
+    Splide2.go(Slide.index);
+  }
+
+  function onKeydown(Slide, e) {
+    if (includes(TRIGGER_KEYS, normalizeKey(e))) {
+      onClick(Slide);
+      prevent(e);
+    }
+  }
+
+  return {
+    setup: setup,
+    mount: mount,
+    destroy: destroy,
+    remount: remount
+  };
+}
+
+function Wheel(Splide2, Components2, options) {
+  var _EventInterface13 = EventInterface(Splide2),
+      bind = _EventInterface13.bind;
+
+  var lastTime = 0;
+
+  function mount() {
+    if (options.wheel) {
+      bind(Components2.Elements.track, "wheel", onWheel, SCROLL_LISTENER_OPTIONS);
+    }
+  }
+
+  function onWheel(e) {
+    if (e.cancelable) {
+      var deltaY = e.deltaY;
+      var backwards = deltaY < 0;
+      var timeStamp = timeOf(e);
+
+      var _min = options.wheelMinThreshold || 0;
+
+      var sleep = options.wheelSleep || 0;
+
+      if (abs(deltaY) > _min && timeStamp - lastTime > sleep) {
+        Splide2.go(backwards ? "<" : ">");
+        lastTime = timeStamp;
+      }
+
+      shouldPrevent(backwards) && prevent(e);
+    }
+  }
+
+  function shouldPrevent(backwards) {
+    return !options.releaseWheel || Splide2.state.is(MOVING) || Components2.Controller.getAdjacent(backwards) !== -1;
+  }
+
+  return {
+    mount: mount
+  };
+}
+
+var SR_REMOVAL_DELAY = 90;
+
+function Live(Splide2, Components2, options) {
+  var _EventInterface14 = EventInterface(Splide2),
+      on = _EventInterface14.on;
+
+  var track = Components2.Elements.track;
+  var enabled = options.live && !options.isNavigation;
+  var sr = create("span", CLASS_SR);
+  var interval = RequestInterval(SR_REMOVAL_DELAY, apply(toggle, false));
+
+  function mount() {
+    if (enabled) {
+      disable(!Components2.Autoplay.isPaused());
+      setAttribute(track, ARIA_ATOMIC, true);
+      sr.textContent = "\u2026";
+      on(EVENT_AUTOPLAY_PLAY, apply(disable, true));
+      on(EVENT_AUTOPLAY_PAUSE, apply(disable, false));
+      on([EVENT_MOVED, EVENT_SCROLLED], apply(toggle, true));
+    }
+  }
+
+  function toggle(active) {
+    setAttribute(track, ARIA_BUSY, active);
+
+    if (active) {
+      append(track, sr);
+      interval.start();
+    } else {
+      remove(sr);
+    }
+  }
+
+  function destroy() {
+    removeAttribute(track, [ARIA_LIVE, ARIA_ATOMIC, ARIA_BUSY]);
+    remove(sr);
+  }
+
+  function disable(disabled) {
+    if (enabled) {
+      setAttribute(track, ARIA_LIVE, disabled ? "off" : "polite");
+    }
+  }
+
+  return {
+    mount: mount,
+    disable: disable,
+    destroy: destroy
+  };
+}
+
+var ComponentConstructors = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  Media: Media,
+  Direction: Direction,
+  Elements: Elements,
+  Slides: Slides,
+  Layout: Layout,
+  Clones: Clones,
+  Move: Move,
+  Controller: Controller,
+  Arrows: Arrows,
+  Autoplay: Autoplay,
+  Cover: Cover,
+  Scroll: Scroll,
+  Drag: Drag,
+  Keyboard: Keyboard,
+  LazyLoad: LazyLoad,
+  Pagination: Pagination,
+  Sync: Sync,
+  Wheel: Wheel,
+  Live: Live
+});
+var I18N = {
+  prev: "Previous slide",
+  next: "Next slide",
+  first: "Go to first slide",
+  last: "Go to last slide",
+  slideX: "Go to slide %s",
+  pageX: "Go to page %s",
+  play: "Start autoplay",
+  pause: "Pause autoplay",
+  carousel: "carousel",
+  slide: "slide",
+  select: "Select a slide to show",
+  slideLabel: "%s of %s"
+};
+var DEFAULTS = {
+  type: "slide",
+  role: "region",
+  speed: 400,
+  perPage: 1,
+  cloneStatus: true,
+  arrows: true,
+  pagination: true,
+  paginationKeyboard: true,
+  interval: 5e3,
+  pauseOnHover: true,
+  pauseOnFocus: true,
+  resetProgress: true,
+  easing: "cubic-bezier(0.25, 1, 0.5, 1)",
+  drag: true,
+  direction: "ltr",
+  trimSpace: true,
+  focusableNodes: "a, button, textarea, input, select, iframe",
+  live: true,
+  classes: CLASSES,
+  i18n: I18N,
+  reducedMotion: {
+    speed: 0,
+    rewindSpeed: 0,
+    autoplay: "pause"
+  }
+};
+
+function Fade(Splide2, Components2, options) {
+  var _EventInterface15 = EventInterface(Splide2),
+      on = _EventInterface15.on;
+
+  function mount() {
+    on([EVENT_MOUNTED, EVENT_REFRESH], function () {
+      nextTick(function () {
+        Components2.Slides.style("transition", "opacity " + options.speed + "ms " + options.easing);
+      });
+    });
+  }
+
+  function start(index, done) {
+    var track = Components2.Elements.track;
+    style(track, "height", unit(rect(track).height));
+    nextTick(function () {
+      done();
+      style(track, "height", "");
+    });
+  }
+
+  return {
+    mount: mount,
+    start: start,
+    cancel: noop
+  };
+}
+
+function Slide(Splide2, Components2, options) {
+  var _EventInterface16 = EventInterface(Splide2),
+      bind = _EventInterface16.bind;
+
+  var Move = Components2.Move,
+      Controller = Components2.Controller,
+      Scroll = Components2.Scroll;
+  var list = Components2.Elements.list;
+  var transition = apply(style, list, "transition");
+  var endCallback;
+
+  function mount() {
+    bind(list, "transitionend", function (e) {
+      if (e.target === list && endCallback) {
+        cancel();
+        endCallback();
+      }
+    });
+  }
+
+  function start(index, done) {
+    var destination = Move.toPosition(index, true);
+    var position = Move.getPosition();
+    var speed = getSpeed(index);
+
+    if (abs(destination - position) >= 1 && speed >= 1) {
+      if (options.useScroll) {
+        Scroll.scroll(destination, speed, false, done);
+      } else {
+        transition("transform " + speed + "ms " + options.easing);
+        Move.translate(destination, true);
+        endCallback = done;
+      }
+    } else {
+      Move.jump(index);
+      done();
+    }
+  }
+
+  function cancel() {
+    transition("");
+    Scroll.cancel();
+  }
+
+  function getSpeed(index) {
+    var rewindSpeed = options.rewindSpeed;
+
+    if (Splide2.is(SLIDE) && rewindSpeed) {
+      var prev = Controller.getIndex(true);
+      var end = Controller.getEnd();
+
+      if (prev === 0 && index >= end || prev >= end && index === 0) {
+        return rewindSpeed;
+      }
+    }
+
+    return options.speed;
+  }
+
+  return {
+    mount: mount,
+    start: start,
+    cancel: cancel
+  };
+}
+
+var _Splide = /*#__PURE__*/function () {
+  function _Splide(target, options) {
+    this.event = EventInterface();
+    this.Components = {};
+    this.state = State(CREATED);
+    this.splides = [];
+    this._o = {};
+    this._E = {};
+    var root = isString(target) ? query(document, target) : target;
+    assert(root, root + " is invalid.");
+    this.root = root;
+    options = merge({
+      label: getAttribute(root, ARIA_LABEL) || "",
+      labelledby: getAttribute(root, ARIA_LABELLEDBY) || ""
+    }, DEFAULTS, _Splide.defaults, options || {});
+
+    try {
+      merge(options, JSON.parse(getAttribute(root, DATA_ATTRIBUTE)));
+    } catch (e) {
+      assert(false, "Invalid JSON");
+    }
+
+    this._o = Object.create(merge({}, options));
+  }
+
+  var _proto = _Splide.prototype;
+
+  _proto.mount = function mount(Extensions, Transition) {
+    var _this = this;
+
+    var state = this.state,
+        Components2 = this.Components;
+    assert(state.is([CREATED, DESTROYED]), "Already mounted!");
+    state.set(CREATED);
+    this._C = Components2;
+    this._T = Transition || this._T || (this.is(FADE) ? Fade : Slide);
+    this._E = Extensions || this._E;
+    var Constructors = assign({}, ComponentConstructors, this._E, {
+      Transition: this._T
+    });
+    forOwn(Constructors, function (Component, key) {
+      var component = Component(_this, Components2, _this._o);
+      Components2[key] = component;
+      component.setup && component.setup();
+    });
+    forOwn(Components2, function (component) {
+      component.mount && component.mount();
+    });
+    this.emit(EVENT_MOUNTED);
+    addClass(this.root, CLASS_INITIALIZED);
+    state.set(IDLE);
+    this.emit(EVENT_READY);
+    return this;
+  };
+
+  _proto.sync = function sync(splide) {
+    this.splides.push({
+      splide: splide
+    });
+    splide.splides.push({
+      splide: this,
+      isParent: true
+    });
+
+    if (this.state.is(IDLE)) {
+      this._C.Sync.remount();
+
+      splide.Components.Sync.remount();
+    }
+
+    return this;
+  };
+
+  _proto.go = function go(control) {
+    this._C.Controller.go(control);
+
+    return this;
+  };
+
+  _proto.on = function on(events, callback) {
+    this.event.on(events, callback);
+    return this;
+  };
+
+  _proto.off = function off(events) {
+    this.event.off(events);
+    return this;
+  };
+
+  _proto.emit = function emit(event) {
+    var _this$event;
+
+    (_this$event = this.event).emit.apply(_this$event, [event].concat(slice(arguments, 1)));
+
+    return this;
+  };
+
+  _proto.add = function add(slides, index) {
+    this._C.Slides.add(slides, index);
+
+    return this;
+  };
+
+  _proto.remove = function remove(matcher) {
+    this._C.Slides.remove(matcher);
+
+    return this;
+  };
+
+  _proto.is = function is(type) {
+    return this._o.type === type;
+  };
+
+  _proto.refresh = function refresh() {
+    this.emit(EVENT_REFRESH);
+    return this;
+  };
+
+  _proto.destroy = function destroy(completely) {
+    if (completely === void 0) {
+      completely = true;
+    }
+
+    var event = this.event,
+        state = this.state;
+
+    if (state.is(CREATED)) {
+      EventInterface(this).on(EVENT_READY, this.destroy.bind(this, completely));
+    } else {
+      forOwn(this._C, function (component) {
+        component.destroy && component.destroy(completely);
+      }, true);
+      event.emit(EVENT_DESTROY);
+      event.destroy();
+      completely && empty(this.splides);
+      state.set(DESTROYED);
+    }
+
+    return this;
+  };
+
+  _createClass(_Splide, [{
+    key: "options",
+    get: function get() {
+      return this._o;
+    },
+    set: function set(options) {
+      this._C.Media.set(options, true);
+    }
+  }, {
+    key: "length",
+    get: function get() {
+      return this._C.Slides.getLength(true);
+    }
+  }, {
+    key: "index",
+    get: function get() {
+      return this._C.Controller.getIndex();
+    }
+  }]);
+
+  return _Splide;
+}();
+
+var Splide = _Splide;
+Splide.defaults = {};
+Splide.STATES = STATES;
+var CLASS_RENDERED = "is-rendered";
+var RENDERER_DEFAULT_CONFIG = {
+  listTag: "ul",
+  slideTag: "li"
+};
+
+var Style = /*#__PURE__*/function () {
+  function Style(id, options) {
+    this.styles = {};
+    this.id = id;
+    this.options = options;
+  }
+
+  var _proto2 = Style.prototype;
+
+  _proto2.rule = function rule(selector, prop, value, breakpoint) {
+    breakpoint = breakpoint || "default";
+    var selectors = this.styles[breakpoint] = this.styles[breakpoint] || {};
+    var styles = selectors[selector] = selectors[selector] || {};
+    styles[prop] = value;
+  };
+
+  _proto2.build = function build() {
+    var _this2 = this;
+
+    var css = "";
+
+    if (this.styles.default) {
+      css += this.buildSelectors(this.styles.default);
+    }
+
+    Object.keys(this.styles).sort(function (n, m) {
+      return _this2.options.mediaQuery === "min" ? +n - +m : +m - +n;
+    }).forEach(function (breakpoint) {
+      if (breakpoint !== "default") {
+        css += "@media screen and (max-width: " + breakpoint + "px) {";
+        css += _this2.buildSelectors(_this2.styles[breakpoint]);
+        css += "}";
+      }
+    });
+    return css;
+  };
+
+  _proto2.buildSelectors = function buildSelectors(selectors) {
+    var _this3 = this;
+
+    var css = "";
+    forOwn(selectors, function (styles, selector) {
+      selector = ("#" + _this3.id + " " + selector).trim();
+      css += selector + " {";
+      forOwn(styles, function (value, prop) {
+        if (value || value === 0) {
+          css += prop + ": " + value + ";";
+        }
+      });
+      css += "}";
+    });
+    return css;
+  };
+
+  return Style;
+}();
+
+var SplideRenderer = /*#__PURE__*/function () {
+  function SplideRenderer(contents, options, config, defaults) {
+    this.slides = [];
+    this.options = {};
+    this.breakpoints = [];
+    merge(DEFAULTS, defaults || {});
+    merge(merge(this.options, DEFAULTS), options || {});
+    this.contents = contents;
+    this.config = assign({}, RENDERER_DEFAULT_CONFIG, config || {});
+    this.id = this.config.id || uniqueId("splide");
+    this.Style = new Style(this.id, this.options);
+    this.Direction = Direction(null, null, this.options);
+    assert(this.contents.length, "Provide at least 1 content.");
+    this.init();
+  }
+
+  SplideRenderer.clean = function clean(splide) {
+    var _EventInterface17 = EventInterface(splide),
+        on = _EventInterface17.on;
+
+    var root = splide.root;
+    var clones = queryAll(root, "." + CLASS_CLONE);
+    on(EVENT_MOUNTED, function () {
+      remove(child(root, "style"));
+    });
+    remove(clones);
+  };
+
+  var _proto3 = SplideRenderer.prototype;
+
+  _proto3.init = function init() {
+    this.parseBreakpoints();
+    this.initSlides();
+    this.registerRootStyles();
+    this.registerTrackStyles();
+    this.registerSlideStyles();
+    this.registerListStyles();
+  };
+
+  _proto3.initSlides = function initSlides() {
+    var _this4 = this;
+
+    push(this.slides, this.contents.map(function (content, index) {
+      content = isString(content) ? {
+        html: content
+      } : content;
+      content.styles = content.styles || {};
+      content.attrs = content.attrs || {};
+
+      _this4.cover(content);
+
+      var classes = _this4.options.classes.slide + " " + (index === 0 ? CLASS_ACTIVE : "");
+      assign(content.attrs, {
+        class: (classes + " " + (content.attrs.class || "")).trim(),
+        style: _this4.buildStyles(content.styles)
+      });
+      return content;
+    }));
+
+    if (this.isLoop()) {
+      this.generateClones(this.slides);
+    }
+  };
+
+  _proto3.registerRootStyles = function registerRootStyles() {
+    var _this5 = this;
+
+    this.breakpoints.forEach(function (_ref2) {
+      var width = _ref2[0],
+          options = _ref2[1];
+
+      _this5.Style.rule(" ", "max-width", unit(options.width), width);
+    });
+  };
+
+  _proto3.registerTrackStyles = function registerTrackStyles() {
+    var _this6 = this;
+
+    var Style2 = this.Style;
+    var selector = "." + CLASS_TRACK;
+    this.breakpoints.forEach(function (_ref3) {
+      var width = _ref3[0],
+          options = _ref3[1];
+      Style2.rule(selector, _this6.resolve("paddingLeft"), _this6.cssPadding(options, false), width);
+      Style2.rule(selector, _this6.resolve("paddingRight"), _this6.cssPadding(options, true), width);
+      Style2.rule(selector, "height", _this6.cssTrackHeight(options), width);
+    });
+  };
+
+  _proto3.registerListStyles = function registerListStyles() {
+    var _this7 = this;
+
+    var Style2 = this.Style;
+    var selector = "." + CLASS_LIST;
+    this.breakpoints.forEach(function (_ref4) {
+      var width = _ref4[0],
+          options = _ref4[1];
+      Style2.rule(selector, "transform", _this7.buildTranslate(options), width);
+
+      if (!_this7.cssSlideHeight(options)) {
+        Style2.rule(selector, "aspect-ratio", _this7.cssAspectRatio(options), width);
+      }
+    });
+  };
+
+  _proto3.registerSlideStyles = function registerSlideStyles() {
+    var _this8 = this;
+
+    var Style2 = this.Style;
+    var selector = "." + CLASS_SLIDE;
+    this.breakpoints.forEach(function (_ref5) {
+      var width = _ref5[0],
+          options = _ref5[1];
+      Style2.rule(selector, "width", _this8.cssSlideWidth(options), width);
+      Style2.rule(selector, "height", _this8.cssSlideHeight(options) || "100%", width);
+      Style2.rule(selector, _this8.resolve("marginRight"), unit(options.gap) || "0px", width);
+      Style2.rule(selector + " > img", "display", options.cover ? "none" : "inline", width);
+    });
+  };
+
+  _proto3.buildTranslate = function buildTranslate(options) {
+    var _this$Direction = this.Direction,
+        resolve = _this$Direction.resolve,
+        orient = _this$Direction.orient;
+    var values = [];
+    values.push(this.cssOffsetClones(options));
+    values.push(this.cssOffsetGaps(options));
+
+    if (this.isCenter(options)) {
+      values.push(this.buildCssValue(orient(-50), "%"));
+      values.push.apply(values, this.cssOffsetCenter(options));
+    }
+
+    return values.filter(Boolean).map(function (value) {
+      return "translate" + resolve("X") + "(" + value + ")";
+    }).join(" ");
+  };
+
+  _proto3.cssOffsetClones = function cssOffsetClones(options) {
+    var _this$Direction2 = this.Direction,
+        resolve = _this$Direction2.resolve,
+        orient = _this$Direction2.orient;
+    var cloneCount = this.getCloneCount();
+
+    if (this.isFixedWidth(options)) {
+      var _this$parseCssValue = this.parseCssValue(options[resolve("fixedWidth")]),
+          value = _this$parseCssValue.value,
+          unit2 = _this$parseCssValue.unit;
+
+      return this.buildCssValue(orient(value) * cloneCount, unit2);
+    }
+
+    var percent = 100 * cloneCount / options.perPage;
+    return orient(percent) + "%";
+  };
+
+  _proto3.cssOffsetCenter = function cssOffsetCenter(options) {
+    var _this$Direction3 = this.Direction,
+        resolve = _this$Direction3.resolve,
+        orient = _this$Direction3.orient;
+
+    if (this.isFixedWidth(options)) {
+      var _this$parseCssValue2 = this.parseCssValue(options[resolve("fixedWidth")]),
+          value = _this$parseCssValue2.value,
+          unit2 = _this$parseCssValue2.unit;
+
+      return [this.buildCssValue(orient(value / 2), unit2)];
+    }
+
+    var values = [];
+    var perPage = options.perPage,
+        gap = options.gap;
+    values.push(orient(50 / perPage) + "%");
+
+    if (gap) {
+      var _this$parseCssValue3 = this.parseCssValue(gap),
+          _value = _this$parseCssValue3.value,
+          _unit = _this$parseCssValue3.unit;
+
+      var gapOffset = (_value / perPage - _value) / 2;
+      values.push(this.buildCssValue(orient(gapOffset), _unit));
+    }
+
+    return values;
+  };
+
+  _proto3.cssOffsetGaps = function cssOffsetGaps(options) {
+    var cloneCount = this.getCloneCount();
+
+    if (cloneCount && options.gap) {
+      var orient = this.Direction.orient;
+
+      var _this$parseCssValue4 = this.parseCssValue(options.gap),
+          value = _this$parseCssValue4.value,
+          unit2 = _this$parseCssValue4.unit;
+
+      if (this.isFixedWidth(options)) {
+        return this.buildCssValue(orient(value * cloneCount), unit2);
+      }
+
+      var perPage = options.perPage;
+      var gaps = cloneCount / perPage;
+      return this.buildCssValue(orient(gaps * value), unit2);
+    }
+
+    return "";
+  };
+
+  _proto3.resolve = function resolve(prop) {
+    return camelToKebab(this.Direction.resolve(prop));
+  };
+
+  _proto3.cssPadding = function cssPadding(options, right) {
+    var padding = options.padding;
+    var prop = this.Direction.resolve(right ? "right" : "left", true);
+    return padding && unit(padding[prop] || (isObject(padding) ? 0 : padding)) || "0px";
+  };
+
+  _proto3.cssTrackHeight = function cssTrackHeight(options) {
+    var height = "";
+
+    if (this.isVertical()) {
+      height = this.cssHeight(options);
+      assert(height, '"height" is missing.');
+      height = "calc(" + height + " - " + this.cssPadding(options, false) + " - " + this.cssPadding(options, true) + ")";
+    }
+
+    return height;
+  };
+
+  _proto3.cssHeight = function cssHeight(options) {
+    return unit(options.height);
+  };
+
+  _proto3.cssSlideWidth = function cssSlideWidth(options) {
+    return options.autoWidth ? "" : unit(options.fixedWidth) || (this.isVertical() ? "" : this.cssSlideSize(options));
+  };
+
+  _proto3.cssSlideHeight = function cssSlideHeight(options) {
+    return unit(options.fixedHeight) || (this.isVertical() ? options.autoHeight ? "" : this.cssSlideSize(options) : this.cssHeight(options));
+  };
+
+  _proto3.cssSlideSize = function cssSlideSize(options) {
+    var gap = unit(options.gap);
+    return "calc((100%" + (gap && " + " + gap) + ")/" + (options.perPage || 1) + (gap && " - " + gap) + ")";
+  };
+
+  _proto3.cssAspectRatio = function cssAspectRatio(options) {
+    var heightRatio = options.heightRatio;
+    return heightRatio ? "" + 1 / heightRatio : "";
+  };
+
+  _proto3.buildCssValue = function buildCssValue(value, unit2) {
+    return "" + value + unit2;
+  };
+
+  _proto3.parseCssValue = function parseCssValue(value) {
+    if (isString(value)) {
+      var number = parseFloat(value) || 0;
+      var unit2 = value.replace(/\d*(\.\d*)?/, "") || "px";
+      return {
+        value: number,
+        unit: unit2
+      };
+    }
+
+    return {
+      value: value,
+      unit: "px"
+    };
+  };
+
+  _proto3.parseBreakpoints = function parseBreakpoints() {
+    var _this9 = this;
+
+    var breakpoints = this.options.breakpoints;
+    this.breakpoints.push(["default", this.options]);
+
+    if (breakpoints) {
+      forOwn(breakpoints, function (options, width) {
+        _this9.breakpoints.push([width, merge(merge({}, _this9.options), options)]);
+      });
+    }
+  };
+
+  _proto3.isFixedWidth = function isFixedWidth(options) {
+    return !!options[this.Direction.resolve("fixedWidth")];
+  };
+
+  _proto3.isLoop = function isLoop() {
+    return this.options.type === LOOP;
+  };
+
+  _proto3.isCenter = function isCenter(options) {
+    if (options.focus === "center") {
+      if (this.isLoop()) {
+        return true;
+      }
+
+      if (this.options.type === SLIDE) {
+        return !this.options.trimSpace;
+      }
+    }
+
+    return false;
+  };
+
+  _proto3.isVertical = function isVertical() {
+    return this.options.direction === TTB;
+  };
+
+  _proto3.buildClasses = function buildClasses() {
+    var options = this.options;
+    return [CLASS_ROOT, CLASS_ROOT + "--" + options.type, CLASS_ROOT + "--" + options.direction, options.drag && CLASS_ROOT + "--draggable", options.isNavigation && CLASS_ROOT + "--nav", CLASS_ACTIVE, !this.config.hidden && CLASS_RENDERED].filter(Boolean).join(" ");
+  };
+
+  _proto3.buildAttrs = function buildAttrs(attrs) {
+    var attr = "";
+    forOwn(attrs, function (value, key) {
+      attr += value ? " " + camelToKebab(key) + "=\"" + value + "\"" : "";
+    });
+    return attr.trim();
+  };
+
+  _proto3.buildStyles = function buildStyles(styles) {
+    var style = "";
+    forOwn(styles, function (value, key) {
+      style += " " + camelToKebab(key) + ":" + value + ";";
+    });
+    return style.trim();
+  };
+
+  _proto3.renderSlides = function renderSlides() {
+    var _this10 = this;
+
+    var tag = this.config.slideTag;
+    return this.slides.map(function (content) {
+      return "<" + tag + " " + _this10.buildAttrs(content.attrs) + ">" + (content.html || "") + "</" + tag + ">";
+    }).join("");
+  };
+
+  _proto3.cover = function cover(content) {
+    var styles = content.styles,
+        _content$html = content.html,
+        html = _content$html === void 0 ? "" : _content$html;
+
+    if (this.options.cover && !this.options.lazyLoad) {
+      var src = html.match(/<img.*?src\s*=\s*(['"])(.+?)\1.*?>/);
+
+      if (src && src[2]) {
+        styles.background = "center/cover no-repeat url('" + src[2] + "')";
+      }
+    }
+  };
+
+  _proto3.generateClones = function generateClones(contents) {
+    var classes = this.options.classes;
+    var count = this.getCloneCount();
+    var slides = contents.slice();
+
+    while (slides.length < count) {
+      push(slides, slides);
+    }
+
+    push(slides.slice(-count).reverse(), slides.slice(0, count)).forEach(function (content, index) {
+      var attrs = assign({}, content.attrs, {
+        class: content.attrs.class + " " + classes.clone
+      });
+      var clone = assign({}, content, {
+        attrs: attrs
+      });
+      index < count ? contents.unshift(clone) : contents.push(clone);
+    });
+  };
+
+  _proto3.getCloneCount = function getCloneCount() {
+    if (this.isLoop()) {
+      var options = this.options;
+
+      if (options.clones) {
+        return options.clones;
+      }
+
+      var perPage = max.apply(void 0, this.breakpoints.map(function (_ref6) {
+        var options2 = _ref6[1];
+        return options2.perPage;
+      }));
+      return perPage * ((options.flickMaxPages || 1) + 1);
+    }
+
+    return 0;
+  };
+
+  _proto3.renderArrows = function renderArrows() {
+    var html = "";
+    html += "<div class=\"" + this.options.classes.arrows + "\">";
+    html += this.renderArrow(true);
+    html += this.renderArrow(false);
+    html += "</div>";
+    return html;
+  };
+
+  _proto3.renderArrow = function renderArrow(prev) {
+    var _this$options = this.options,
+        classes = _this$options.classes,
+        i18n = _this$options.i18n;
+    var attrs = {
+      class: classes.arrow + " " + (prev ? classes.prev : classes.next),
+      type: "button",
+      ariaLabel: prev ? i18n.prev : i18n.next
+    };
+    return "<button " + this.buildAttrs(attrs) + "><svg xmlns=\"" + XML_NAME_SPACE + "\" viewBox=\"0 0 " + SIZE + " " + SIZE + "\" width=\"" + SIZE + "\" height=\"" + SIZE + "\"><path d=\"" + (this.options.arrowPath || PATH) + "\" /></svg></button>";
+  };
+
+  _proto3.html = function html() {
+    var _this$config = this.config,
+        rootClass = _this$config.rootClass,
+        listTag = _this$config.listTag,
+        arrows = _this$config.arrows,
+        beforeTrack = _this$config.beforeTrack,
+        afterTrack = _this$config.afterTrack,
+        slider = _this$config.slider,
+        beforeSlider = _this$config.beforeSlider,
+        afterSlider = _this$config.afterSlider;
+    var html = "";
+    html += "<div id=\"" + this.id + "\" class=\"" + this.buildClasses() + " " + (rootClass || "") + "\">";
+    html += "<style>" + this.Style.build() + "</style>";
+
+    if (slider) {
+      html += beforeSlider || "";
+      html += "<div class=\"splide__slider\">";
+    }
+
+    html += beforeTrack || "";
+
+    if (arrows) {
+      html += this.renderArrows();
+    }
+
+    html += "<div class=\"splide__track\">";
+    html += "<" + listTag + " class=\"splide__list\">";
+    html += this.renderSlides();
+    html += "</" + listTag + ">";
+    html += "</div>";
+    html += afterTrack || "";
+
+    if (slider) {
+      html += "</div>";
+      html += afterSlider || "";
+    }
+
+    html += "</div>";
+    return html;
+  };
+
+  return SplideRenderer;
+}();
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/chart.js/auto/auto.esm.js":
+/*!************************************************!*\
+  !*** ./node_modules/chart.js/auto/auto.esm.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _dist_chart_esm_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dist/chart.esm.js */ "./node_modules/chart.js/dist/chart.esm.js");
+
+
+_dist_chart_esm_js__WEBPACK_IMPORTED_MODULE_0__.Chart.register(..._dist_chart_esm_js__WEBPACK_IMPORTED_MODULE_0__.registerables);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_dist_chart_esm_js__WEBPACK_IMPORTED_MODULE_0__.Chart);
+
+
+/***/ }),
+
+/***/ "./node_modules/chart.js/dist/chart.esm.js":
+/*!*************************************************!*\
+  !*** ./node_modules/chart.js/dist/chart.esm.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Animation": () => (/* binding */ Animation),
+/* harmony export */   "Animations": () => (/* binding */ Animations),
+/* harmony export */   "ArcElement": () => (/* binding */ ArcElement),
+/* harmony export */   "BarController": () => (/* binding */ BarController),
+/* harmony export */   "BarElement": () => (/* binding */ BarElement),
+/* harmony export */   "BasePlatform": () => (/* binding */ BasePlatform),
+/* harmony export */   "BasicPlatform": () => (/* binding */ BasicPlatform),
+/* harmony export */   "BubbleController": () => (/* binding */ BubbleController),
+/* harmony export */   "CategoryScale": () => (/* binding */ CategoryScale),
+/* harmony export */   "Chart": () => (/* binding */ Chart),
+/* harmony export */   "DatasetController": () => (/* binding */ DatasetController),
+/* harmony export */   "Decimation": () => (/* binding */ plugin_decimation),
+/* harmony export */   "DomPlatform": () => (/* binding */ DomPlatform),
+/* harmony export */   "DoughnutController": () => (/* binding */ DoughnutController),
+/* harmony export */   "Element": () => (/* binding */ Element),
+/* harmony export */   "Filler": () => (/* binding */ index),
+/* harmony export */   "Interaction": () => (/* binding */ Interaction),
+/* harmony export */   "Legend": () => (/* binding */ plugin_legend),
+/* harmony export */   "LineController": () => (/* binding */ LineController),
+/* harmony export */   "LineElement": () => (/* binding */ LineElement),
+/* harmony export */   "LinearScale": () => (/* binding */ LinearScale),
+/* harmony export */   "LogarithmicScale": () => (/* binding */ LogarithmicScale),
+/* harmony export */   "PieController": () => (/* binding */ PieController),
+/* harmony export */   "PointElement": () => (/* binding */ PointElement),
+/* harmony export */   "PolarAreaController": () => (/* binding */ PolarAreaController),
+/* harmony export */   "RadarController": () => (/* binding */ RadarController),
+/* harmony export */   "RadialLinearScale": () => (/* binding */ RadialLinearScale),
+/* harmony export */   "Scale": () => (/* binding */ Scale),
+/* harmony export */   "ScatterController": () => (/* binding */ ScatterController),
+/* harmony export */   "SubTitle": () => (/* binding */ plugin_subtitle),
+/* harmony export */   "Ticks": () => (/* binding */ Ticks),
+/* harmony export */   "TimeScale": () => (/* binding */ TimeScale),
+/* harmony export */   "TimeSeriesScale": () => (/* binding */ TimeSeriesScale),
+/* harmony export */   "Title": () => (/* binding */ plugin_title),
+/* harmony export */   "Tooltip": () => (/* binding */ plugin_tooltip),
+/* harmony export */   "_adapters": () => (/* binding */ adapters),
+/* harmony export */   "_detectPlatform": () => (/* binding */ _detectPlatform),
+/* harmony export */   "animator": () => (/* binding */ animator),
+/* harmony export */   "controllers": () => (/* binding */ controllers),
+/* harmony export */   "defaults": () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d),
+/* harmony export */   "elements": () => (/* binding */ elements),
+/* harmony export */   "layouts": () => (/* binding */ layouts),
+/* harmony export */   "plugins": () => (/* binding */ plugins),
+/* harmony export */   "registerables": () => (/* binding */ registerables),
+/* harmony export */   "registry": () => (/* binding */ registry),
+/* harmony export */   "scales": () => (/* binding */ scales)
+/* harmony export */ });
+/* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunks/helpers.segment.js */ "./node_modules/chart.js/dist/chunks/helpers.segment.js");
+/*!
+ * Chart.js v3.8.0
+ * https://www.chartjs.org
+ * (c) 2022 Chart.js Contributors
+ * Released under the MIT License
+ */
+
+
+
+class Animator {
+  constructor() {
+    this._request = null;
+    this._charts = new Map();
+    this._running = false;
+    this._lastDate = undefined;
+  }
+  _notify(chart, anims, date, type) {
+    const callbacks = anims.listeners[type];
+    const numSteps = anims.duration;
+    callbacks.forEach(fn => fn({
+      chart,
+      initial: anims.initial,
+      numSteps,
+      currentStep: Math.min(date - anims.start, numSteps)
+    }));
+  }
+  _refresh() {
+    if (this._request) {
+      return;
+    }
+    this._running = true;
+    this._request = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.r.call(window, () => {
+      this._update();
+      this._request = null;
+      if (this._running) {
+        this._refresh();
+      }
+    });
+  }
+  _update(date = Date.now()) {
+    let remaining = 0;
+    this._charts.forEach((anims, chart) => {
+      if (!anims.running || !anims.items.length) {
+        return;
+      }
+      const items = anims.items;
+      let i = items.length - 1;
+      let draw = false;
+      let item;
+      for (; i >= 0; --i) {
+        item = items[i];
+        if (item._active) {
+          if (item._total > anims.duration) {
+            anims.duration = item._total;
+          }
+          item.tick(date);
+          draw = true;
+        } else {
+          items[i] = items[items.length - 1];
+          items.pop();
+        }
+      }
+      if (draw) {
+        chart.draw();
+        this._notify(chart, anims, date, 'progress');
+      }
+      if (!items.length) {
+        anims.running = false;
+        this._notify(chart, anims, date, 'complete');
+        anims.initial = false;
+      }
+      remaining += items.length;
+    });
+    this._lastDate = date;
+    if (remaining === 0) {
+      this._running = false;
+    }
+  }
+  _getAnims(chart) {
+    const charts = this._charts;
+    let anims = charts.get(chart);
+    if (!anims) {
+      anims = {
+        running: false,
+        initial: true,
+        items: [],
+        listeners: {
+          complete: [],
+          progress: []
+        }
+      };
+      charts.set(chart, anims);
+    }
+    return anims;
+  }
+  listen(chart, event, cb) {
+    this._getAnims(chart).listeners[event].push(cb);
+  }
+  add(chart, items) {
+    if (!items || !items.length) {
+      return;
+    }
+    this._getAnims(chart).items.push(...items);
+  }
+  has(chart) {
+    return this._getAnims(chart).items.length > 0;
+  }
+  start(chart) {
+    const anims = this._charts.get(chart);
+    if (!anims) {
+      return;
+    }
+    anims.running = true;
+    anims.start = Date.now();
+    anims.duration = anims.items.reduce((acc, cur) => Math.max(acc, cur._duration), 0);
+    this._refresh();
+  }
+  running(chart) {
+    if (!this._running) {
+      return false;
+    }
+    const anims = this._charts.get(chart);
+    if (!anims || !anims.running || !anims.items.length) {
+      return false;
+    }
+    return true;
+  }
+  stop(chart) {
+    const anims = this._charts.get(chart);
+    if (!anims || !anims.items.length) {
+      return;
+    }
+    const items = anims.items;
+    let i = items.length - 1;
+    for (; i >= 0; --i) {
+      items[i].cancel();
+    }
+    anims.items = [];
+    this._notify(chart, anims, Date.now(), 'complete');
+  }
+  remove(chart) {
+    return this._charts.delete(chart);
+  }
+}
+var animator = new Animator();
+
+const transparent = 'transparent';
+const interpolators = {
+  boolean(from, to, factor) {
+    return factor > 0.5 ? to : from;
+  },
+  color(from, to, factor) {
+    const c0 = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.c)(from || transparent);
+    const c1 = c0.valid && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.c)(to || transparent);
+    return c1 && c1.valid
+      ? c1.mix(c0, factor).hexString()
+      : to;
+  },
+  number(from, to, factor) {
+    return from + (to - from) * factor;
+  }
+};
+class Animation {
+  constructor(cfg, target, prop, to) {
+    const currentValue = target[prop];
+    to = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a)([cfg.to, to, currentValue, cfg.from]);
+    const from = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a)([cfg.from, currentValue, to]);
+    this._active = true;
+    this._fn = cfg.fn || interpolators[cfg.type || typeof from];
+    this._easing = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.e[cfg.easing] || _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.e.linear;
+    this._start = Math.floor(Date.now() + (cfg.delay || 0));
+    this._duration = this._total = Math.floor(cfg.duration);
+    this._loop = !!cfg.loop;
+    this._target = target;
+    this._prop = prop;
+    this._from = from;
+    this._to = to;
+    this._promises = undefined;
+  }
+  active() {
+    return this._active;
+  }
+  update(cfg, to, date) {
+    if (this._active) {
+      this._notify(false);
+      const currentValue = this._target[this._prop];
+      const elapsed = date - this._start;
+      const remain = this._duration - elapsed;
+      this._start = date;
+      this._duration = Math.floor(Math.max(remain, cfg.duration));
+      this._total += elapsed;
+      this._loop = !!cfg.loop;
+      this._to = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a)([cfg.to, to, currentValue, cfg.from]);
+      this._from = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a)([cfg.from, currentValue, to]);
+    }
+  }
+  cancel() {
+    if (this._active) {
+      this.tick(Date.now());
+      this._active = false;
+      this._notify(false);
+    }
+  }
+  tick(date) {
+    const elapsed = date - this._start;
+    const duration = this._duration;
+    const prop = this._prop;
+    const from = this._from;
+    const loop = this._loop;
+    const to = this._to;
+    let factor;
+    this._active = from !== to && (loop || (elapsed < duration));
+    if (!this._active) {
+      this._target[prop] = to;
+      this._notify(true);
+      return;
+    }
+    if (elapsed < 0) {
+      this._target[prop] = from;
+      return;
+    }
+    factor = (elapsed / duration) % 2;
+    factor = loop && factor > 1 ? 2 - factor : factor;
+    factor = this._easing(Math.min(1, Math.max(0, factor)));
+    this._target[prop] = this._fn(from, to, factor);
+  }
+  wait() {
+    const promises = this._promises || (this._promises = []);
+    return new Promise((res, rej) => {
+      promises.push({res, rej});
+    });
+  }
+  _notify(resolved) {
+    const method = resolved ? 'res' : 'rej';
+    const promises = this._promises || [];
+    for (let i = 0; i < promises.length; i++) {
+      promises[i][method]();
+    }
+  }
+}
+
+const numbers = ['x', 'y', 'borderWidth', 'radius', 'tension'];
+const colors = ['color', 'borderColor', 'backgroundColor'];
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set('animation', {
+  delay: undefined,
+  duration: 1000,
+  easing: 'easeOutQuart',
+  fn: undefined,
+  from: undefined,
+  loop: undefined,
+  to: undefined,
+  type: undefined,
+});
+const animationOptions = Object.keys(_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.animation);
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe('animation', {
+  _fallback: false,
+  _indexable: false,
+  _scriptable: (name) => name !== 'onProgress' && name !== 'onComplete' && name !== 'fn',
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set('animations', {
+  colors: {
+    type: 'color',
+    properties: colors
+  },
+  numbers: {
+    type: 'number',
+    properties: numbers
+  },
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe('animations', {
+  _fallback: 'animation',
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set('transitions', {
+  active: {
+    animation: {
+      duration: 400
+    }
+  },
+  resize: {
+    animation: {
+      duration: 0
+    }
+  },
+  show: {
+    animations: {
+      colors: {
+        from: 'transparent'
+      },
+      visible: {
+        type: 'boolean',
+        duration: 0
+      },
+    }
+  },
+  hide: {
+    animations: {
+      colors: {
+        to: 'transparent'
+      },
+      visible: {
+        type: 'boolean',
+        easing: 'linear',
+        fn: v => v | 0
+      },
+    }
+  }
+});
+class Animations {
+  constructor(chart, config) {
+    this._chart = chart;
+    this._properties = new Map();
+    this.configure(config);
+  }
+  configure(config) {
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(config)) {
+      return;
+    }
+    const animatedProps = this._properties;
+    Object.getOwnPropertyNames(config).forEach(key => {
+      const cfg = config[key];
+      if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(cfg)) {
+        return;
+      }
+      const resolved = {};
+      for (const option of animationOptions) {
+        resolved[option] = cfg[option];
+      }
+      ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(cfg.properties) && cfg.properties || [key]).forEach((prop) => {
+        if (prop === key || !animatedProps.has(prop)) {
+          animatedProps.set(prop, resolved);
+        }
+      });
+    });
+  }
+  _animateOptions(target, values) {
+    const newOptions = values.options;
+    const options = resolveTargetOptions(target, newOptions);
+    if (!options) {
+      return [];
+    }
+    const animations = this._createAnimations(options, newOptions);
+    if (newOptions.$shared) {
+      awaitAll(target.options.$animations, newOptions).then(() => {
+        target.options = newOptions;
+      }, () => {
+      });
+    }
+    return animations;
+  }
+  _createAnimations(target, values) {
+    const animatedProps = this._properties;
+    const animations = [];
+    const running = target.$animations || (target.$animations = {});
+    const props = Object.keys(values);
+    const date = Date.now();
+    let i;
+    for (i = props.length - 1; i >= 0; --i) {
+      const prop = props[i];
+      if (prop.charAt(0) === '$') {
+        continue;
+      }
+      if (prop === 'options') {
+        animations.push(...this._animateOptions(target, values));
+        continue;
+      }
+      const value = values[prop];
+      let animation = running[prop];
+      const cfg = animatedProps.get(prop);
+      if (animation) {
+        if (cfg && animation.active()) {
+          animation.update(cfg, value, date);
+          continue;
+        } else {
+          animation.cancel();
+        }
+      }
+      if (!cfg || !cfg.duration) {
+        target[prop] = value;
+        continue;
+      }
+      running[prop] = animation = new Animation(cfg, target, prop, value);
+      animations.push(animation);
+    }
+    return animations;
+  }
+  update(target, values) {
+    if (this._properties.size === 0) {
+      Object.assign(target, values);
+      return;
+    }
+    const animations = this._createAnimations(target, values);
+    if (animations.length) {
+      animator.add(this._chart, animations);
+      return true;
+    }
+  }
+}
+function awaitAll(animations, properties) {
+  const running = [];
+  const keys = Object.keys(properties);
+  for (let i = 0; i < keys.length; i++) {
+    const anim = animations[keys[i]];
+    if (anim && anim.active()) {
+      running.push(anim.wait());
+    }
+  }
+  return Promise.all(running);
+}
+function resolveTargetOptions(target, newOptions) {
+  if (!newOptions) {
+    return;
+  }
+  let options = target.options;
+  if (!options) {
+    target.options = newOptions;
+    return;
+  }
+  if (options.$shared) {
+    target.options = options = Object.assign({}, options, {$shared: false, $animations: {}});
+  }
+  return options;
+}
+
+function scaleClip(scale, allowedOverflow) {
+  const opts = scale && scale.options || {};
+  const reverse = opts.reverse;
+  const min = opts.min === undefined ? allowedOverflow : 0;
+  const max = opts.max === undefined ? allowedOverflow : 0;
+  return {
+    start: reverse ? max : min,
+    end: reverse ? min : max
+  };
+}
+function defaultClip(xScale, yScale, allowedOverflow) {
+  if (allowedOverflow === false) {
+    return false;
+  }
+  const x = scaleClip(xScale, allowedOverflow);
+  const y = scaleClip(yScale, allowedOverflow);
+  return {
+    top: y.end,
+    right: x.end,
+    bottom: y.start,
+    left: x.start
+  };
+}
+function toClip(value) {
+  let t, r, b, l;
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(value)) {
+    t = value.top;
+    r = value.right;
+    b = value.bottom;
+    l = value.left;
+  } else {
+    t = r = b = l = value;
+  }
+  return {
+    top: t,
+    right: r,
+    bottom: b,
+    left: l,
+    disabled: value === false
+  };
+}
+function getSortedDatasetIndices(chart, filterVisible) {
+  const keys = [];
+  const metasets = chart._getSortedDatasetMetas(filterVisible);
+  let i, ilen;
+  for (i = 0, ilen = metasets.length; i < ilen; ++i) {
+    keys.push(metasets[i].index);
+  }
+  return keys;
+}
+function applyStack(stack, value, dsIndex, options = {}) {
+  const keys = stack.keys;
+  const singleMode = options.mode === 'single';
+  let i, ilen, datasetIndex, otherValue;
+  if (value === null) {
+    return;
+  }
+  for (i = 0, ilen = keys.length; i < ilen; ++i) {
+    datasetIndex = +keys[i];
+    if (datasetIndex === dsIndex) {
+      if (options.all) {
+        continue;
+      }
+      break;
+    }
+    otherValue = stack.values[datasetIndex];
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(otherValue) && (singleMode || (value === 0 || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(value) === (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(otherValue)))) {
+      value += otherValue;
+    }
+  }
+  return value;
+}
+function convertObjectDataToArray(data) {
+  const keys = Object.keys(data);
+  const adata = new Array(keys.length);
+  let i, ilen, key;
+  for (i = 0, ilen = keys.length; i < ilen; ++i) {
+    key = keys[i];
+    adata[i] = {
+      x: key,
+      y: data[key]
+    };
+  }
+  return adata;
+}
+function isStacked(scale, meta) {
+  const stacked = scale && scale.options.stacked;
+  return stacked || (stacked === undefined && meta.stack !== undefined);
+}
+function getStackKey(indexScale, valueScale, meta) {
+  return `${indexScale.id}.${valueScale.id}.${meta.stack || meta.type}`;
+}
+function getUserBounds(scale) {
+  const {min, max, minDefined, maxDefined} = scale.getUserBounds();
+  return {
+    min: minDefined ? min : Number.NEGATIVE_INFINITY,
+    max: maxDefined ? max : Number.POSITIVE_INFINITY
+  };
+}
+function getOrCreateStack(stacks, stackKey, indexValue) {
+  const subStack = stacks[stackKey] || (stacks[stackKey] = {});
+  return subStack[indexValue] || (subStack[indexValue] = {});
+}
+function getLastIndexInStack(stack, vScale, positive, type) {
+  for (const meta of vScale.getMatchingVisibleMetas(type).reverse()) {
+    const value = stack[meta.index];
+    if ((positive && value > 0) || (!positive && value < 0)) {
+      return meta.index;
+    }
+  }
+  return null;
+}
+function updateStacks(controller, parsed) {
+  const {chart, _cachedMeta: meta} = controller;
+  const stacks = chart._stacks || (chart._stacks = {});
+  const {iScale, vScale, index: datasetIndex} = meta;
+  const iAxis = iScale.axis;
+  const vAxis = vScale.axis;
+  const key = getStackKey(iScale, vScale, meta);
+  const ilen = parsed.length;
+  let stack;
+  for (let i = 0; i < ilen; ++i) {
+    const item = parsed[i];
+    const {[iAxis]: index, [vAxis]: value} = item;
+    const itemStacks = item._stacks || (item._stacks = {});
+    stack = itemStacks[vAxis] = getOrCreateStack(stacks, key, index);
+    stack[datasetIndex] = value;
+    stack._top = getLastIndexInStack(stack, vScale, true, meta.type);
+    stack._bottom = getLastIndexInStack(stack, vScale, false, meta.type);
+  }
+}
+function getFirstScaleId(chart, axis) {
+  const scales = chart.scales;
+  return Object.keys(scales).filter(key => scales[key].axis === axis).shift();
+}
+function createDatasetContext(parent, index) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent,
+    {
+      active: false,
+      dataset: undefined,
+      datasetIndex: index,
+      index,
+      mode: 'default',
+      type: 'dataset'
+    }
+  );
+}
+function createDataContext(parent, index, element) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent, {
+    active: false,
+    dataIndex: index,
+    parsed: undefined,
+    raw: undefined,
+    element,
+    index,
+    mode: 'default',
+    type: 'data'
+  });
+}
+function clearStacks(meta, items) {
+  const datasetIndex = meta.controller.index;
+  const axis = meta.vScale && meta.vScale.axis;
+  if (!axis) {
+    return;
+  }
+  items = items || meta._parsed;
+  for (const parsed of items) {
+    const stacks = parsed._stacks;
+    if (!stacks || stacks[axis] === undefined || stacks[axis][datasetIndex] === undefined) {
+      return;
+    }
+    delete stacks[axis][datasetIndex];
+  }
+}
+const isDirectUpdateMode = (mode) => mode === 'reset' || mode === 'none';
+const cloneIfNotShared = (cached, shared) => shared ? cached : Object.assign({}, cached);
+const createStack = (canStack, meta, chart) => canStack && !meta.hidden && meta._stacked
+  && {keys: getSortedDatasetIndices(chart, true), values: null};
+class DatasetController {
+  constructor(chart, datasetIndex) {
+    this.chart = chart;
+    this._ctx = chart.ctx;
+    this.index = datasetIndex;
+    this._cachedDataOpts = {};
+    this._cachedMeta = this.getMeta();
+    this._type = this._cachedMeta.type;
+    this.options = undefined;
+    this._parsing = false;
+    this._data = undefined;
+    this._objectData = undefined;
+    this._sharedOptions = undefined;
+    this._drawStart = undefined;
+    this._drawCount = undefined;
+    this.enableOptionSharing = false;
+    this.supportsDecimation = false;
+    this.$context = undefined;
+    this._syncList = [];
+    this.initialize();
+  }
+  initialize() {
+    const meta = this._cachedMeta;
+    this.configure();
+    this.linkScales();
+    meta._stacked = isStacked(meta.vScale, meta);
+    this.addElements();
+  }
+  updateIndex(datasetIndex) {
+    if (this.index !== datasetIndex) {
+      clearStacks(this._cachedMeta);
+    }
+    this.index = datasetIndex;
+  }
+  linkScales() {
+    const chart = this.chart;
+    const meta = this._cachedMeta;
+    const dataset = this.getDataset();
+    const chooseId = (axis, x, y, r) => axis === 'x' ? x : axis === 'r' ? r : y;
+    const xid = meta.xAxisID = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(dataset.xAxisID, getFirstScaleId(chart, 'x'));
+    const yid = meta.yAxisID = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(dataset.yAxisID, getFirstScaleId(chart, 'y'));
+    const rid = meta.rAxisID = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(dataset.rAxisID, getFirstScaleId(chart, 'r'));
+    const indexAxis = meta.indexAxis;
+    const iid = meta.iAxisID = chooseId(indexAxis, xid, yid, rid);
+    const vid = meta.vAxisID = chooseId(indexAxis, yid, xid, rid);
+    meta.xScale = this.getScaleForId(xid);
+    meta.yScale = this.getScaleForId(yid);
+    meta.rScale = this.getScaleForId(rid);
+    meta.iScale = this.getScaleForId(iid);
+    meta.vScale = this.getScaleForId(vid);
+  }
+  getDataset() {
+    return this.chart.data.datasets[this.index];
+  }
+  getMeta() {
+    return this.chart.getDatasetMeta(this.index);
+  }
+  getScaleForId(scaleID) {
+    return this.chart.scales[scaleID];
+  }
+  _getOtherScale(scale) {
+    const meta = this._cachedMeta;
+    return scale === meta.iScale
+      ? meta.vScale
+      : meta.iScale;
+  }
+  reset() {
+    this._update('reset');
+  }
+  _destroy() {
+    const meta = this._cachedMeta;
+    if (this._data) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.u)(this._data, this);
+    }
+    if (meta._stacked) {
+      clearStacks(meta);
+    }
+  }
+  _dataCheck() {
+    const dataset = this.getDataset();
+    const data = dataset.data || (dataset.data = []);
+    const _data = this._data;
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(data)) {
+      this._data = convertObjectDataToArray(data);
+    } else if (_data !== data) {
+      if (_data) {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.u)(_data, this);
+        const meta = this._cachedMeta;
+        clearStacks(meta);
+        meta._parsed = [];
+      }
+      if (data && Object.isExtensible(data)) {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.l)(data, this);
+      }
+      this._syncList = [];
+      this._data = data;
+    }
+  }
+  addElements() {
+    const meta = this._cachedMeta;
+    this._dataCheck();
+    if (this.datasetElementType) {
+      meta.dataset = new this.datasetElementType();
+    }
+  }
+  buildOrUpdateElements(resetNewElements) {
+    const meta = this._cachedMeta;
+    const dataset = this.getDataset();
+    let stackChanged = false;
+    this._dataCheck();
+    const oldStacked = meta._stacked;
+    meta._stacked = isStacked(meta.vScale, meta);
+    if (meta.stack !== dataset.stack) {
+      stackChanged = true;
+      clearStacks(meta);
+      meta.stack = dataset.stack;
+    }
+    this._resyncElements(resetNewElements);
+    if (stackChanged || oldStacked !== meta._stacked) {
+      updateStacks(this, meta._parsed);
+    }
+  }
+  configure() {
+    const config = this.chart.config;
+    const scopeKeys = config.datasetScopeKeys(this._type);
+    const scopes = config.getOptionScopes(this.getDataset(), scopeKeys, true);
+    this.options = config.createResolver(scopes, this.getContext());
+    this._parsing = this.options.parsing;
+    this._cachedDataOpts = {};
+  }
+  parse(start, count) {
+    const {_cachedMeta: meta, _data: data} = this;
+    const {iScale, _stacked} = meta;
+    const iAxis = iScale.axis;
+    let sorted = start === 0 && count === data.length ? true : meta._sorted;
+    let prev = start > 0 && meta._parsed[start - 1];
+    let i, cur, parsed;
+    if (this._parsing === false) {
+      meta._parsed = data;
+      meta._sorted = true;
+      parsed = data;
+    } else {
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(data[start])) {
+        parsed = this.parseArrayData(meta, data, start, count);
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(data[start])) {
+        parsed = this.parseObjectData(meta, data, start, count);
+      } else {
+        parsed = this.parsePrimitiveData(meta, data, start, count);
+      }
+      const isNotInOrderComparedToPrev = () => cur[iAxis] === null || (prev && cur[iAxis] < prev[iAxis]);
+      for (i = 0; i < count; ++i) {
+        meta._parsed[i + start] = cur = parsed[i];
+        if (sorted) {
+          if (isNotInOrderComparedToPrev()) {
+            sorted = false;
+          }
+          prev = cur;
+        }
+      }
+      meta._sorted = sorted;
+    }
+    if (_stacked) {
+      updateStacks(this, parsed);
+    }
+  }
+  parsePrimitiveData(meta, data, start, count) {
+    const {iScale, vScale} = meta;
+    const iAxis = iScale.axis;
+    const vAxis = vScale.axis;
+    const labels = iScale.getLabels();
+    const singleScale = iScale === vScale;
+    const parsed = new Array(count);
+    let i, ilen, index;
+    for (i = 0, ilen = count; i < ilen; ++i) {
+      index = i + start;
+      parsed[i] = {
+        [iAxis]: singleScale || iScale.parse(labels[index], index),
+        [vAxis]: vScale.parse(data[index], index)
+      };
+    }
+    return parsed;
+  }
+  parseArrayData(meta, data, start, count) {
+    const {xScale, yScale} = meta;
+    const parsed = new Array(count);
+    let i, ilen, index, item;
+    for (i = 0, ilen = count; i < ilen; ++i) {
+      index = i + start;
+      item = data[index];
+      parsed[i] = {
+        x: xScale.parse(item[0], index),
+        y: yScale.parse(item[1], index)
+      };
+    }
+    return parsed;
+  }
+  parseObjectData(meta, data, start, count) {
+    const {xScale, yScale} = meta;
+    const {xAxisKey = 'x', yAxisKey = 'y'} = this._parsing;
+    const parsed = new Array(count);
+    let i, ilen, index, item;
+    for (i = 0, ilen = count; i < ilen; ++i) {
+      index = i + start;
+      item = data[index];
+      parsed[i] = {
+        x: xScale.parse((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(item, xAxisKey), index),
+        y: yScale.parse((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(item, yAxisKey), index)
+      };
+    }
+    return parsed;
+  }
+  getParsed(index) {
+    return this._cachedMeta._parsed[index];
+  }
+  getDataElement(index) {
+    return this._cachedMeta.data[index];
+  }
+  applyStack(scale, parsed, mode) {
+    const chart = this.chart;
+    const meta = this._cachedMeta;
+    const value = parsed[scale.axis];
+    const stack = {
+      keys: getSortedDatasetIndices(chart, true),
+      values: parsed._stacks[scale.axis]
+    };
+    return applyStack(stack, value, meta.index, {mode});
+  }
+  updateRangeFromParsed(range, scale, parsed, stack) {
+    const parsedValue = parsed[scale.axis];
+    let value = parsedValue === null ? NaN : parsedValue;
+    const values = stack && parsed._stacks[scale.axis];
+    if (stack && values) {
+      stack.values = values;
+      value = applyStack(stack, parsedValue, this._cachedMeta.index);
+    }
+    range.min = Math.min(range.min, value);
+    range.max = Math.max(range.max, value);
+  }
+  getMinMax(scale, canStack) {
+    const meta = this._cachedMeta;
+    const _parsed = meta._parsed;
+    const sorted = meta._sorted && scale === meta.iScale;
+    const ilen = _parsed.length;
+    const otherScale = this._getOtherScale(scale);
+    const stack = createStack(canStack, meta, this.chart);
+    const range = {min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY};
+    const {min: otherMin, max: otherMax} = getUserBounds(otherScale);
+    let i, parsed;
+    function _skip() {
+      parsed = _parsed[i];
+      const otherValue = parsed[otherScale.axis];
+      return !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(parsed[scale.axis]) || otherMin > otherValue || otherMax < otherValue;
+    }
+    for (i = 0; i < ilen; ++i) {
+      if (_skip()) {
+        continue;
+      }
+      this.updateRangeFromParsed(range, scale, parsed, stack);
+      if (sorted) {
+        break;
+      }
+    }
+    if (sorted) {
+      for (i = ilen - 1; i >= 0; --i) {
+        if (_skip()) {
+          continue;
+        }
+        this.updateRangeFromParsed(range, scale, parsed, stack);
+        break;
+      }
+    }
+    return range;
+  }
+  getAllParsedValues(scale) {
+    const parsed = this._cachedMeta._parsed;
+    const values = [];
+    let i, ilen, value;
+    for (i = 0, ilen = parsed.length; i < ilen; ++i) {
+      value = parsed[i][scale.axis];
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(value)) {
+        values.push(value);
+      }
+    }
+    return values;
+  }
+  getMaxOverflow() {
+    return false;
+  }
+  getLabelAndValue(index) {
+    const meta = this._cachedMeta;
+    const iScale = meta.iScale;
+    const vScale = meta.vScale;
+    const parsed = this.getParsed(index);
+    return {
+      label: iScale ? '' + iScale.getLabelForValue(parsed[iScale.axis]) : '',
+      value: vScale ? '' + vScale.getLabelForValue(parsed[vScale.axis]) : ''
+    };
+  }
+  _update(mode) {
+    const meta = this._cachedMeta;
+    this.update(mode || 'default');
+    meta._clip = toClip((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(this.options.clip, defaultClip(meta.xScale, meta.yScale, this.getMaxOverflow())));
+  }
+  update(mode) {}
+  draw() {
+    const ctx = this._ctx;
+    const chart = this.chart;
+    const meta = this._cachedMeta;
+    const elements = meta.data || [];
+    const area = chart.chartArea;
+    const active = [];
+    const start = this._drawStart || 0;
+    const count = this._drawCount || (elements.length - start);
+    const drawActiveElementsOnTop = this.options.drawActiveElementsOnTop;
+    let i;
+    if (meta.dataset) {
+      meta.dataset.draw(ctx, area, start, count);
+    }
+    for (i = start; i < start + count; ++i) {
+      const element = elements[i];
+      if (element.hidden) {
+        continue;
+      }
+      if (element.active && drawActiveElementsOnTop) {
+        active.push(element);
+      } else {
+        element.draw(ctx, area);
+      }
+    }
+    for (i = 0; i < active.length; ++i) {
+      active[i].draw(ctx, area);
+    }
+  }
+  getStyle(index, active) {
+    const mode = active ? 'active' : 'default';
+    return index === undefined && this._cachedMeta.dataset
+      ? this.resolveDatasetElementOptions(mode)
+      : this.resolveDataElementOptions(index || 0, mode);
+  }
+  getContext(index, active, mode) {
+    const dataset = this.getDataset();
+    let context;
+    if (index >= 0 && index < this._cachedMeta.data.length) {
+      const element = this._cachedMeta.data[index];
+      context = element.$context ||
+        (element.$context = createDataContext(this.getContext(), index, element));
+      context.parsed = this.getParsed(index);
+      context.raw = dataset.data[index];
+      context.index = context.dataIndex = index;
+    } else {
+      context = this.$context ||
+        (this.$context = createDatasetContext(this.chart.getContext(), this.index));
+      context.dataset = dataset;
+      context.index = context.datasetIndex = this.index;
+    }
+    context.active = !!active;
+    context.mode = mode;
+    return context;
+  }
+  resolveDatasetElementOptions(mode) {
+    return this._resolveElementOptions(this.datasetElementType.id, mode);
+  }
+  resolveDataElementOptions(index, mode) {
+    return this._resolveElementOptions(this.dataElementType.id, mode, index);
+  }
+  _resolveElementOptions(elementType, mode = 'default', index) {
+    const active = mode === 'active';
+    const cache = this._cachedDataOpts;
+    const cacheKey = elementType + '-' + mode;
+    const cached = cache[cacheKey];
+    const sharing = this.enableOptionSharing && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.j)(index);
+    if (cached) {
+      return cloneIfNotShared(cached, sharing);
+    }
+    const config = this.chart.config;
+    const scopeKeys = config.datasetElementScopeKeys(this._type, elementType);
+    const prefixes = active ? [`${elementType}Hover`, 'hover', elementType, ''] : [elementType, ''];
+    const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
+    const names = Object.keys(_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.elements[elementType]);
+    const context = () => this.getContext(index, active);
+    const values = config.resolveNamedOptions(scopes, names, context, prefixes);
+    if (values.$shared) {
+      values.$shared = sharing;
+      cache[cacheKey] = Object.freeze(cloneIfNotShared(values, sharing));
+    }
+    return values;
+  }
+  _resolveAnimations(index, transition, active) {
+    const chart = this.chart;
+    const cache = this._cachedDataOpts;
+    const cacheKey = `animation-${transition}`;
+    const cached = cache[cacheKey];
+    if (cached) {
+      return cached;
+    }
+    let options;
+    if (chart.options.animation !== false) {
+      const config = this.chart.config;
+      const scopeKeys = config.datasetAnimationScopeKeys(this._type, transition);
+      const scopes = config.getOptionScopes(this.getDataset(), scopeKeys);
+      options = config.createResolver(scopes, this.getContext(index, active, transition));
+    }
+    const animations = new Animations(chart, options && options.animations);
+    if (options && options._cacheable) {
+      cache[cacheKey] = Object.freeze(animations);
+    }
+    return animations;
+  }
+  getSharedOptions(options) {
+    if (!options.$shared) {
+      return;
+    }
+    return this._sharedOptions || (this._sharedOptions = Object.assign({}, options));
+  }
+  includeOptions(mode, sharedOptions) {
+    return !sharedOptions || isDirectUpdateMode(mode) || this.chart._animationsDisabled;
+  }
+  updateElement(element, index, properties, mode) {
+    if (isDirectUpdateMode(mode)) {
+      Object.assign(element, properties);
+    } else {
+      this._resolveAnimations(index, mode).update(element, properties);
+    }
+  }
+  updateSharedOptions(sharedOptions, mode, newOptions) {
+    if (sharedOptions && !isDirectUpdateMode(mode)) {
+      this._resolveAnimations(undefined, mode).update(sharedOptions, newOptions);
+    }
+  }
+  _setStyle(element, index, mode, active) {
+    element.active = active;
+    const options = this.getStyle(index, active);
+    this._resolveAnimations(index, mode, active).update(element, {
+      options: (!active && this.getSharedOptions(options)) || options
+    });
+  }
+  removeHoverStyle(element, datasetIndex, index) {
+    this._setStyle(element, index, 'active', false);
+  }
+  setHoverStyle(element, datasetIndex, index) {
+    this._setStyle(element, index, 'active', true);
+  }
+  _removeDatasetHoverStyle() {
+    const element = this._cachedMeta.dataset;
+    if (element) {
+      this._setStyle(element, undefined, 'active', false);
+    }
+  }
+  _setDatasetHoverStyle() {
+    const element = this._cachedMeta.dataset;
+    if (element) {
+      this._setStyle(element, undefined, 'active', true);
+    }
+  }
+  _resyncElements(resetNewElements) {
+    const data = this._data;
+    const elements = this._cachedMeta.data;
+    for (const [method, arg1, arg2] of this._syncList) {
+      this[method](arg1, arg2);
+    }
+    this._syncList = [];
+    const numMeta = elements.length;
+    const numData = data.length;
+    const count = Math.min(numData, numMeta);
+    if (count) {
+      this.parse(0, count);
+    }
+    if (numData > numMeta) {
+      this._insertElements(numMeta, numData - numMeta, resetNewElements);
+    } else if (numData < numMeta) {
+      this._removeElements(numData, numMeta - numData);
+    }
+  }
+  _insertElements(start, count, resetNewElements = true) {
+    const meta = this._cachedMeta;
+    const data = meta.data;
+    const end = start + count;
+    let i;
+    const move = (arr) => {
+      arr.length += count;
+      for (i = arr.length - 1; i >= end; i--) {
+        arr[i] = arr[i - count];
+      }
+    };
+    move(data);
+    for (i = start; i < end; ++i) {
+      data[i] = new this.dataElementType();
+    }
+    if (this._parsing) {
+      move(meta._parsed);
+    }
+    this.parse(start, count);
+    if (resetNewElements) {
+      this.updateElements(data, start, count, 'reset');
+    }
+  }
+  updateElements(element, start, count, mode) {}
+  _removeElements(start, count) {
+    const meta = this._cachedMeta;
+    if (this._parsing) {
+      const removed = meta._parsed.splice(start, count);
+      if (meta._stacked) {
+        clearStacks(meta, removed);
+      }
+    }
+    meta.data.splice(start, count);
+  }
+  _sync(args) {
+    if (this._parsing) {
+      this._syncList.push(args);
+    } else {
+      const [method, arg1, arg2] = args;
+      this[method](arg1, arg2);
+    }
+    this.chart._dataChanges.push([this.index, ...args]);
+  }
+  _onDataPush() {
+    const count = arguments.length;
+    this._sync(['_insertElements', this.getDataset().data.length - count, count]);
+  }
+  _onDataPop() {
+    this._sync(['_removeElements', this._cachedMeta.data.length - 1, 1]);
+  }
+  _onDataShift() {
+    this._sync(['_removeElements', 0, 1]);
+  }
+  _onDataSplice(start, count) {
+    if (count) {
+      this._sync(['_removeElements', start, count]);
+    }
+    const newCount = arguments.length - 2;
+    if (newCount) {
+      this._sync(['_insertElements', start, newCount]);
+    }
+  }
+  _onDataUnshift() {
+    this._sync(['_insertElements', 0, arguments.length]);
+  }
+}
+DatasetController.defaults = {};
+DatasetController.prototype.datasetElementType = null;
+DatasetController.prototype.dataElementType = null;
+
+function getAllScaleValues(scale, type) {
+  if (!scale._cache.$bar) {
+    const visibleMetas = scale.getMatchingVisibleMetas(type);
+    let values = [];
+    for (let i = 0, ilen = visibleMetas.length; i < ilen; i++) {
+      values = values.concat(visibleMetas[i].controller.getAllParsedValues(scale));
+    }
+    scale._cache.$bar = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__._)(values.sort((a, b) => a - b));
+  }
+  return scale._cache.$bar;
+}
+function computeMinSampleSize(meta) {
+  const scale = meta.iScale;
+  const values = getAllScaleValues(scale, meta.type);
+  let min = scale._length;
+  let i, ilen, curr, prev;
+  const updateMinAndPrev = () => {
+    if (curr === 32767 || curr === -32768) {
+      return;
+    }
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.j)(prev)) {
+      min = Math.min(min, Math.abs(curr - prev) || min);
+    }
+    prev = curr;
+  };
+  for (i = 0, ilen = values.length; i < ilen; ++i) {
+    curr = scale.getPixelForValue(values[i]);
+    updateMinAndPrev();
+  }
+  prev = undefined;
+  for (i = 0, ilen = scale.ticks.length; i < ilen; ++i) {
+    curr = scale.getPixelForTick(i);
+    updateMinAndPrev();
+  }
+  return min;
+}
+function computeFitCategoryTraits(index, ruler, options, stackCount) {
+  const thickness = options.barThickness;
+  let size, ratio;
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(thickness)) {
+    size = ruler.min * options.categoryPercentage;
+    ratio = options.barPercentage;
+  } else {
+    size = thickness * stackCount;
+    ratio = 1;
+  }
+  return {
+    chunk: size / stackCount,
+    ratio,
+    start: ruler.pixels[index] - (size / 2)
+  };
+}
+function computeFlexCategoryTraits(index, ruler, options, stackCount) {
+  const pixels = ruler.pixels;
+  const curr = pixels[index];
+  let prev = index > 0 ? pixels[index - 1] : null;
+  let next = index < pixels.length - 1 ? pixels[index + 1] : null;
+  const percent = options.categoryPercentage;
+  if (prev === null) {
+    prev = curr - (next === null ? ruler.end - ruler.start : next - curr);
+  }
+  if (next === null) {
+    next = curr + curr - prev;
+  }
+  const start = curr - (curr - Math.min(prev, next)) / 2 * percent;
+  const size = Math.abs(next - prev) / 2 * percent;
+  return {
+    chunk: size / stackCount,
+    ratio: options.barPercentage,
+    start
+  };
+}
+function parseFloatBar(entry, item, vScale, i) {
+  const startValue = vScale.parse(entry[0], i);
+  const endValue = vScale.parse(entry[1], i);
+  const min = Math.min(startValue, endValue);
+  const max = Math.max(startValue, endValue);
+  let barStart = min;
+  let barEnd = max;
+  if (Math.abs(min) > Math.abs(max)) {
+    barStart = max;
+    barEnd = min;
+  }
+  item[vScale.axis] = barEnd;
+  item._custom = {
+    barStart,
+    barEnd,
+    start: startValue,
+    end: endValue,
+    min,
+    max
+  };
+}
+function parseValue(entry, item, vScale, i) {
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(entry)) {
+    parseFloatBar(entry, item, vScale, i);
+  } else {
+    item[vScale.axis] = vScale.parse(entry, i);
+  }
+  return item;
+}
+function parseArrayOrPrimitive(meta, data, start, count) {
+  const iScale = meta.iScale;
+  const vScale = meta.vScale;
+  const labels = iScale.getLabels();
+  const singleScale = iScale === vScale;
+  const parsed = [];
+  let i, ilen, item, entry;
+  for (i = start, ilen = start + count; i < ilen; ++i) {
+    entry = data[i];
+    item = {};
+    item[iScale.axis] = singleScale || iScale.parse(labels[i], i);
+    parsed.push(parseValue(entry, item, vScale, i));
+  }
+  return parsed;
+}
+function isFloatBar(custom) {
+  return custom && custom.barStart !== undefined && custom.barEnd !== undefined;
+}
+function barSign(size, vScale, actualBase) {
+  if (size !== 0) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(size);
+  }
+  return (vScale.isHorizontal() ? 1 : -1) * (vScale.min >= actualBase ? 1 : -1);
+}
+function borderProps(properties) {
+  let reverse, start, end, top, bottom;
+  if (properties.horizontal) {
+    reverse = properties.base > properties.x;
+    start = 'left';
+    end = 'right';
+  } else {
+    reverse = properties.base < properties.y;
+    start = 'bottom';
+    end = 'top';
+  }
+  if (reverse) {
+    top = 'end';
+    bottom = 'start';
+  } else {
+    top = 'start';
+    bottom = 'end';
+  }
+  return {start, end, reverse, top, bottom};
+}
+function setBorderSkipped(properties, options, stack, index) {
+  let edge = options.borderSkipped;
+  const res = {};
+  if (!edge) {
+    properties.borderSkipped = res;
+    return;
+  }
+  const {start, end, reverse, top, bottom} = borderProps(properties);
+  if (edge === 'middle' && stack) {
+    properties.enableBorderRadius = true;
+    if ((stack._top || 0) === index) {
+      edge = top;
+    } else if ((stack._bottom || 0) === index) {
+      edge = bottom;
+    } else {
+      res[parseEdge(bottom, start, end, reverse)] = true;
+      edge = top;
+    }
+  }
+  res[parseEdge(edge, start, end, reverse)] = true;
+  properties.borderSkipped = res;
+}
+function parseEdge(edge, a, b, reverse) {
+  if (reverse) {
+    edge = swap(edge, a, b);
+    edge = startEnd(edge, b, a);
+  } else {
+    edge = startEnd(edge, a, b);
+  }
+  return edge;
+}
+function swap(orig, v1, v2) {
+  return orig === v1 ? v2 : orig === v2 ? v1 : orig;
+}
+function startEnd(v, start, end) {
+  return v === 'start' ? start : v === 'end' ? end : v;
+}
+function setInflateAmount(properties, {inflateAmount}, ratio) {
+  properties.inflateAmount = inflateAmount === 'auto'
+    ? ratio === 1 ? 0.33 : 0
+    : inflateAmount;
+}
+class BarController extends DatasetController {
+  parsePrimitiveData(meta, data, start, count) {
+    return parseArrayOrPrimitive(meta, data, start, count);
+  }
+  parseArrayData(meta, data, start, count) {
+    return parseArrayOrPrimitive(meta, data, start, count);
+  }
+  parseObjectData(meta, data, start, count) {
+    const {iScale, vScale} = meta;
+    const {xAxisKey = 'x', yAxisKey = 'y'} = this._parsing;
+    const iAxisKey = iScale.axis === 'x' ? xAxisKey : yAxisKey;
+    const vAxisKey = vScale.axis === 'x' ? xAxisKey : yAxisKey;
+    const parsed = [];
+    let i, ilen, item, obj;
+    for (i = start, ilen = start + count; i < ilen; ++i) {
+      obj = data[i];
+      item = {};
+      item[iScale.axis] = iScale.parse((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(obj, iAxisKey), i);
+      parsed.push(parseValue((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(obj, vAxisKey), item, vScale, i));
+    }
+    return parsed;
+  }
+  updateRangeFromParsed(range, scale, parsed, stack) {
+    super.updateRangeFromParsed(range, scale, parsed, stack);
+    const custom = parsed._custom;
+    if (custom && scale === this._cachedMeta.vScale) {
+      range.min = Math.min(range.min, custom.min);
+      range.max = Math.max(range.max, custom.max);
+    }
+  }
+  getMaxOverflow() {
+    return 0;
+  }
+  getLabelAndValue(index) {
+    const meta = this._cachedMeta;
+    const {iScale, vScale} = meta;
+    const parsed = this.getParsed(index);
+    const custom = parsed._custom;
+    const value = isFloatBar(custom)
+      ? '[' + custom.start + ', ' + custom.end + ']'
+      : '' + vScale.getLabelForValue(parsed[vScale.axis]);
+    return {
+      label: '' + iScale.getLabelForValue(parsed[iScale.axis]),
+      value
+    };
+  }
+  initialize() {
+    this.enableOptionSharing = true;
+    super.initialize();
+    const meta = this._cachedMeta;
+    meta.stack = this.getDataset().stack;
+  }
+  update(mode) {
+    const meta = this._cachedMeta;
+    this.updateElements(meta.data, 0, meta.data.length, mode);
+  }
+  updateElements(bars, start, count, mode) {
+    const reset = mode === 'reset';
+    const {index, _cachedMeta: {vScale}} = this;
+    const base = vScale.getBasePixel();
+    const horizontal = vScale.isHorizontal();
+    const ruler = this._getRuler();
+    const firstOpts = this.resolveDataElementOptions(start, mode);
+    const sharedOptions = this.getSharedOptions(firstOpts);
+    const includeOptions = this.includeOptions(mode, sharedOptions);
+    this.updateSharedOptions(sharedOptions, mode, firstOpts);
+    for (let i = start; i < start + count; i++) {
+      const parsed = this.getParsed(i);
+      const vpixels = reset || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(parsed[vScale.axis]) ? {base, head: base} : this._calculateBarValuePixels(i);
+      const ipixels = this._calculateBarIndexPixels(i, ruler);
+      const stack = (parsed._stacks || {})[vScale.axis];
+      const properties = {
+        horizontal,
+        base: vpixels.base,
+        enableBorderRadius: !stack || isFloatBar(parsed._custom) || (index === stack._top || index === stack._bottom),
+        x: horizontal ? vpixels.head : ipixels.center,
+        y: horizontal ? ipixels.center : vpixels.head,
+        height: horizontal ? ipixels.size : Math.abs(vpixels.size),
+        width: horizontal ? Math.abs(vpixels.size) : ipixels.size
+      };
+      if (includeOptions) {
+        properties.options = sharedOptions || this.resolveDataElementOptions(i, bars[i].active ? 'active' : mode);
+      }
+      const options = properties.options || bars[i].options;
+      setBorderSkipped(properties, options, stack, index);
+      setInflateAmount(properties, options, ruler.ratio);
+      this.updateElement(bars[i], i, properties, mode);
+    }
+  }
+  _getStacks(last, dataIndex) {
+    const meta = this._cachedMeta;
+    const iScale = meta.iScale;
+    const metasets = iScale.getMatchingVisibleMetas(this._type);
+    const stacked = iScale.options.stacked;
+    const ilen = metasets.length;
+    const stacks = [];
+    let i, item;
+    for (i = 0; i < ilen; ++i) {
+      item = metasets[i];
+      if (!item.controller.options.grouped) {
+        continue;
+      }
+      if (typeof dataIndex !== 'undefined') {
+        const val = item.controller.getParsed(dataIndex)[
+          item.controller._cachedMeta.vScale.axis
+        ];
+        if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(val) || isNaN(val)) {
+          continue;
+        }
+      }
+      if (stacked === false || stacks.indexOf(item.stack) === -1 ||
+				(stacked === undefined && item.stack === undefined)) {
+        stacks.push(item.stack);
+      }
+      if (item.index === last) {
+        break;
+      }
+    }
+    if (!stacks.length) {
+      stacks.push(undefined);
+    }
+    return stacks;
+  }
+  _getStackCount(index) {
+    return this._getStacks(undefined, index).length;
+  }
+  _getStackIndex(datasetIndex, name, dataIndex) {
+    const stacks = this._getStacks(datasetIndex, dataIndex);
+    const index = (name !== undefined)
+      ? stacks.indexOf(name)
+      : -1;
+    return (index === -1)
+      ? stacks.length - 1
+      : index;
+  }
+  _getRuler() {
+    const opts = this.options;
+    const meta = this._cachedMeta;
+    const iScale = meta.iScale;
+    const pixels = [];
+    let i, ilen;
+    for (i = 0, ilen = meta.data.length; i < ilen; ++i) {
+      pixels.push(iScale.getPixelForValue(this.getParsed(i)[iScale.axis], i));
+    }
+    const barThickness = opts.barThickness;
+    const min = barThickness || computeMinSampleSize(meta);
+    return {
+      min,
+      pixels,
+      start: iScale._startPixel,
+      end: iScale._endPixel,
+      stackCount: this._getStackCount(),
+      scale: iScale,
+      grouped: opts.grouped,
+      ratio: barThickness ? 1 : opts.categoryPercentage * opts.barPercentage
+    };
+  }
+  _calculateBarValuePixels(index) {
+    const {_cachedMeta: {vScale, _stacked}, options: {base: baseValue, minBarLength}} = this;
+    const actualBase = baseValue || 0;
+    const parsed = this.getParsed(index);
+    const custom = parsed._custom;
+    const floating = isFloatBar(custom);
+    let value = parsed[vScale.axis];
+    let start = 0;
+    let length = _stacked ? this.applyStack(vScale, parsed, _stacked) : value;
+    let head, size;
+    if (length !== value) {
+      start = length - value;
+      length = value;
+    }
+    if (floating) {
+      value = custom.barStart;
+      length = custom.barEnd - custom.barStart;
+      if (value !== 0 && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(value) !== (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(custom.barEnd)) {
+        start = 0;
+      }
+      start += value;
+    }
+    const startValue = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(baseValue) && !floating ? baseValue : start;
+    let base = vScale.getPixelForValue(startValue);
+    if (this.chart.getDataVisibility(index)) {
+      head = vScale.getPixelForValue(start + length);
+    } else {
+      head = base;
+    }
+    size = head - base;
+    if (Math.abs(size) < minBarLength) {
+      size = barSign(size, vScale, actualBase) * minBarLength;
+      if (value === actualBase) {
+        base -= size / 2;
+      }
+      const startPixel = vScale.getPixelForDecimal(0);
+      const endPixel = vScale.getPixelForDecimal(1);
+      const min = Math.min(startPixel, endPixel);
+      const max = Math.max(startPixel, endPixel);
+      base = Math.max(Math.min(base, max), min);
+      head = base + size;
+    }
+    if (base === vScale.getPixelForValue(actualBase)) {
+      const halfGrid = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(size) * vScale.getLineWidthForValue(actualBase) / 2;
+      base += halfGrid;
+      size -= halfGrid;
+    }
+    return {
+      size,
+      base,
+      head,
+      center: head + size / 2
+    };
+  }
+  _calculateBarIndexPixels(index, ruler) {
+    const scale = ruler.scale;
+    const options = this.options;
+    const skipNull = options.skipNull;
+    const maxBarThickness = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(options.maxBarThickness, Infinity);
+    let center, size;
+    if (ruler.grouped) {
+      const stackCount = skipNull ? this._getStackCount(index) : ruler.stackCount;
+      const range = options.barThickness === 'flex'
+        ? computeFlexCategoryTraits(index, ruler, options, stackCount)
+        : computeFitCategoryTraits(index, ruler, options, stackCount);
+      const stackIndex = this._getStackIndex(this.index, this._cachedMeta.stack, skipNull ? index : undefined);
+      center = range.start + (range.chunk * stackIndex) + (range.chunk / 2);
+      size = Math.min(maxBarThickness, range.chunk * range.ratio);
+    } else {
+      center = scale.getPixelForValue(this.getParsed(index)[scale.axis], index);
+      size = Math.min(maxBarThickness, ruler.min * ruler.ratio);
+    }
+    return {
+      base: center - size / 2,
+      head: center + size / 2,
+      center,
+      size
+    };
+  }
+  draw() {
+    const meta = this._cachedMeta;
+    const vScale = meta.vScale;
+    const rects = meta.data;
+    const ilen = rects.length;
+    let i = 0;
+    for (; i < ilen; ++i) {
+      if (this.getParsed(i)[vScale.axis] !== null) {
+        rects[i].draw(this._ctx);
+      }
+    }
+  }
+}
+BarController.id = 'bar';
+BarController.defaults = {
+  datasetElementType: false,
+  dataElementType: 'bar',
+  categoryPercentage: 0.8,
+  barPercentage: 0.9,
+  grouped: true,
+  animations: {
+    numbers: {
+      type: 'number',
+      properties: ['x', 'y', 'base', 'width', 'height']
+    }
+  }
+};
+BarController.overrides = {
+  scales: {
+    _index_: {
+      type: 'category',
+      offset: true,
+      grid: {
+        offset: true
+      }
+    },
+    _value_: {
+      type: 'linear',
+      beginAtZero: true,
+    }
+  }
+};
+
+class BubbleController extends DatasetController {
+  initialize() {
+    this.enableOptionSharing = true;
+    super.initialize();
+  }
+  parsePrimitiveData(meta, data, start, count) {
+    const parsed = super.parsePrimitiveData(meta, data, start, count);
+    for (let i = 0; i < parsed.length; i++) {
+      parsed[i]._custom = this.resolveDataElementOptions(i + start).radius;
+    }
+    return parsed;
+  }
+  parseArrayData(meta, data, start, count) {
+    const parsed = super.parseArrayData(meta, data, start, count);
+    for (let i = 0; i < parsed.length; i++) {
+      const item = data[start + i];
+      parsed[i]._custom = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(item[2], this.resolveDataElementOptions(i + start).radius);
+    }
+    return parsed;
+  }
+  parseObjectData(meta, data, start, count) {
+    const parsed = super.parseObjectData(meta, data, start, count);
+    for (let i = 0; i < parsed.length; i++) {
+      const item = data[start + i];
+      parsed[i]._custom = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(item && item.r && +item.r, this.resolveDataElementOptions(i + start).radius);
+    }
+    return parsed;
+  }
+  getMaxOverflow() {
+    const data = this._cachedMeta.data;
+    let max = 0;
+    for (let i = data.length - 1; i >= 0; --i) {
+      max = Math.max(max, data[i].size(this.resolveDataElementOptions(i)) / 2);
+    }
+    return max > 0 && max;
+  }
+  getLabelAndValue(index) {
+    const meta = this._cachedMeta;
+    const {xScale, yScale} = meta;
+    const parsed = this.getParsed(index);
+    const x = xScale.getLabelForValue(parsed.x);
+    const y = yScale.getLabelForValue(parsed.y);
+    const r = parsed._custom;
+    return {
+      label: meta.label,
+      value: '(' + x + ', ' + y + (r ? ', ' + r : '') + ')'
+    };
+  }
+  update(mode) {
+    const points = this._cachedMeta.data;
+    this.updateElements(points, 0, points.length, mode);
+  }
+  updateElements(points, start, count, mode) {
+    const reset = mode === 'reset';
+    const {iScale, vScale} = this._cachedMeta;
+    const firstOpts = this.resolveDataElementOptions(start, mode);
+    const sharedOptions = this.getSharedOptions(firstOpts);
+    const includeOptions = this.includeOptions(mode, sharedOptions);
+    const iAxis = iScale.axis;
+    const vAxis = vScale.axis;
+    for (let i = start; i < start + count; i++) {
+      const point = points[i];
+      const parsed = !reset && this.getParsed(i);
+      const properties = {};
+      const iPixel = properties[iAxis] = reset ? iScale.getPixelForDecimal(0.5) : iScale.getPixelForValue(parsed[iAxis]);
+      const vPixel = properties[vAxis] = reset ? vScale.getBasePixel() : vScale.getPixelForValue(parsed[vAxis]);
+      properties.skip = isNaN(iPixel) || isNaN(vPixel);
+      if (includeOptions) {
+        properties.options = this.resolveDataElementOptions(i, point.active ? 'active' : mode);
+        if (reset) {
+          properties.options.radius = 0;
+        }
+      }
+      this.updateElement(point, i, properties, mode);
+    }
+    this.updateSharedOptions(sharedOptions, mode, firstOpts);
+  }
+  resolveDataElementOptions(index, mode) {
+    const parsed = this.getParsed(index);
+    let values = super.resolveDataElementOptions(index, mode);
+    if (values.$shared) {
+      values = Object.assign({}, values, {$shared: false});
+    }
+    const radius = values.radius;
+    if (mode !== 'active') {
+      values.radius = 0;
+    }
+    values.radius += (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(parsed && parsed._custom, radius);
+    return values;
+  }
+}
+BubbleController.id = 'bubble';
+BubbleController.defaults = {
+  datasetElementType: false,
+  dataElementType: 'point',
+  animations: {
+    numbers: {
+      type: 'number',
+      properties: ['x', 'y', 'borderWidth', 'radius']
+    }
+  }
+};
+BubbleController.overrides = {
+  scales: {
+    x: {
+      type: 'linear'
+    },
+    y: {
+      type: 'linear'
+    }
+  },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        title() {
+          return '';
+        }
+      }
+    }
+  }
+};
+
+function getRatioAndOffset(rotation, circumference, cutout) {
+  let ratioX = 1;
+  let ratioY = 1;
+  let offsetX = 0;
+  let offsetY = 0;
+  if (circumference < _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T) {
+    const startAngle = rotation;
+    const endAngle = startAngle + circumference;
+    const startX = Math.cos(startAngle);
+    const startY = Math.sin(startAngle);
+    const endX = Math.cos(endAngle);
+    const endY = Math.sin(endAngle);
+    const calcMax = (angle, a, b) => (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.p)(angle, startAngle, endAngle, true) ? 1 : Math.max(a, a * cutout, b, b * cutout);
+    const calcMin = (angle, a, b) => (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.p)(angle, startAngle, endAngle, true) ? -1 : Math.min(a, a * cutout, b, b * cutout);
+    const maxX = calcMax(0, startX, endX);
+    const maxY = calcMax(_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H, startY, endY);
+    const minX = calcMin(_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P, startX, endX);
+    const minY = calcMin(_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H, startY, endY);
+    ratioX = (maxX - minX) / 2;
+    ratioY = (maxY - minY) / 2;
+    offsetX = -(maxX + minX) / 2;
+    offsetY = -(maxY + minY) / 2;
+  }
+  return {ratioX, ratioY, offsetX, offsetY};
+}
+class DoughnutController extends DatasetController {
+  constructor(chart, datasetIndex) {
+    super(chart, datasetIndex);
+    this.enableOptionSharing = true;
+    this.innerRadius = undefined;
+    this.outerRadius = undefined;
+    this.offsetX = undefined;
+    this.offsetY = undefined;
+  }
+  linkScales() {}
+  parse(start, count) {
+    const data = this.getDataset().data;
+    const meta = this._cachedMeta;
+    if (this._parsing === false) {
+      meta._parsed = data;
+    } else {
+      let getter = (i) => +data[i];
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(data[start])) {
+        const {key = 'value'} = this._parsing;
+        getter = (i) => +(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(data[i], key);
+      }
+      let i, ilen;
+      for (i = start, ilen = start + count; i < ilen; ++i) {
+        meta._parsed[i] = getter(i);
+      }
+    }
+  }
+  _getRotation() {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.options.rotation - 90);
+  }
+  _getCircumference() {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.options.circumference);
+  }
+  _getRotationExtents() {
+    let min = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T;
+    let max = -_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T;
+    for (let i = 0; i < this.chart.data.datasets.length; ++i) {
+      if (this.chart.isDatasetVisible(i)) {
+        const controller = this.chart.getDatasetMeta(i).controller;
+        const rotation = controller._getRotation();
+        const circumference = controller._getCircumference();
+        min = Math.min(min, rotation);
+        max = Math.max(max, rotation + circumference);
+      }
+    }
+    return {
+      rotation: min,
+      circumference: max - min,
+    };
+  }
+  update(mode) {
+    const chart = this.chart;
+    const {chartArea} = chart;
+    const meta = this._cachedMeta;
+    const arcs = meta.data;
+    const spacing = this.getMaxBorderWidth() + this.getMaxOffset(arcs) + this.options.spacing;
+    const maxSize = Math.max((Math.min(chartArea.width, chartArea.height) - spacing) / 2, 0);
+    const cutout = Math.min((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.m)(this.options.cutout, maxSize), 1);
+    const chartWeight = this._getRingWeight(this.index);
+    const {circumference, rotation} = this._getRotationExtents();
+    const {ratioX, ratioY, offsetX, offsetY} = getRatioAndOffset(rotation, circumference, cutout);
+    const maxWidth = (chartArea.width - spacing) / ratioX;
+    const maxHeight = (chartArea.height - spacing) / ratioY;
+    const maxRadius = Math.max(Math.min(maxWidth, maxHeight) / 2, 0);
+    const outerRadius = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.n)(this.options.radius, maxRadius);
+    const innerRadius = Math.max(outerRadius * cutout, 0);
+    const radiusLength = (outerRadius - innerRadius) / this._getVisibleDatasetWeightTotal();
+    this.offsetX = offsetX * outerRadius;
+    this.offsetY = offsetY * outerRadius;
+    meta.total = this.calculateTotal();
+    this.outerRadius = outerRadius - radiusLength * this._getRingWeightOffset(this.index);
+    this.innerRadius = Math.max(this.outerRadius - radiusLength * chartWeight, 0);
+    this.updateElements(arcs, 0, arcs.length, mode);
+  }
+  _circumference(i, reset) {
+    const opts = this.options;
+    const meta = this._cachedMeta;
+    const circumference = this._getCircumference();
+    if ((reset && opts.animation.animateRotate) || !this.chart.getDataVisibility(i) || meta._parsed[i] === null || meta.data[i].hidden) {
+      return 0;
+    }
+    return this.calculateCircumference(meta._parsed[i] * circumference / _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T);
+  }
+  updateElements(arcs, start, count, mode) {
+    const reset = mode === 'reset';
+    const chart = this.chart;
+    const chartArea = chart.chartArea;
+    const opts = chart.options;
+    const animationOpts = opts.animation;
+    const centerX = (chartArea.left + chartArea.right) / 2;
+    const centerY = (chartArea.top + chartArea.bottom) / 2;
+    const animateScale = reset && animationOpts.animateScale;
+    const innerRadius = animateScale ? 0 : this.innerRadius;
+    const outerRadius = animateScale ? 0 : this.outerRadius;
+    const firstOpts = this.resolveDataElementOptions(start, mode);
+    const sharedOptions = this.getSharedOptions(firstOpts);
+    const includeOptions = this.includeOptions(mode, sharedOptions);
+    let startAngle = this._getRotation();
+    let i;
+    for (i = 0; i < start; ++i) {
+      startAngle += this._circumference(i, reset);
+    }
+    for (i = start; i < start + count; ++i) {
+      const circumference = this._circumference(i, reset);
+      const arc = arcs[i];
+      const properties = {
+        x: centerX + this.offsetX,
+        y: centerY + this.offsetY,
+        startAngle,
+        endAngle: startAngle + circumference,
+        circumference,
+        outerRadius,
+        innerRadius
+      };
+      if (includeOptions) {
+        properties.options = sharedOptions || this.resolveDataElementOptions(i, arc.active ? 'active' : mode);
+      }
+      startAngle += circumference;
+      this.updateElement(arc, i, properties, mode);
+    }
+    this.updateSharedOptions(sharedOptions, mode, firstOpts);
+  }
+  calculateTotal() {
+    const meta = this._cachedMeta;
+    const metaData = meta.data;
+    let total = 0;
+    let i;
+    for (i = 0; i < metaData.length; i++) {
+      const value = meta._parsed[i];
+      if (value !== null && !isNaN(value) && this.chart.getDataVisibility(i) && !metaData[i].hidden) {
+        total += Math.abs(value);
+      }
+    }
+    return total;
+  }
+  calculateCircumference(value) {
+    const total = this._cachedMeta.total;
+    if (total > 0 && !isNaN(value)) {
+      return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T * (Math.abs(value) / total);
+    }
+    return 0;
+  }
+  getLabelAndValue(index) {
+    const meta = this._cachedMeta;
+    const chart = this.chart;
+    const labels = chart.data.labels || [];
+    const value = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.o)(meta._parsed[index], chart.options.locale);
+    return {
+      label: labels[index] || '',
+      value,
+    };
+  }
+  getMaxBorderWidth(arcs) {
+    let max = 0;
+    const chart = this.chart;
+    let i, ilen, meta, controller, options;
+    if (!arcs) {
+      for (i = 0, ilen = chart.data.datasets.length; i < ilen; ++i) {
+        if (chart.isDatasetVisible(i)) {
+          meta = chart.getDatasetMeta(i);
+          arcs = meta.data;
+          controller = meta.controller;
+          break;
+        }
+      }
+    }
+    if (!arcs) {
+      return 0;
+    }
+    for (i = 0, ilen = arcs.length; i < ilen; ++i) {
+      options = controller.resolveDataElementOptions(i);
+      if (options.borderAlign !== 'inner') {
+        max = Math.max(max, options.borderWidth || 0, options.hoverBorderWidth || 0);
+      }
+    }
+    return max;
+  }
+  getMaxOffset(arcs) {
+    let max = 0;
+    for (let i = 0, ilen = arcs.length; i < ilen; ++i) {
+      const options = this.resolveDataElementOptions(i);
+      max = Math.max(max, options.offset || 0, options.hoverOffset || 0);
+    }
+    return max;
+  }
+  _getRingWeightOffset(datasetIndex) {
+    let ringWeightOffset = 0;
+    for (let i = 0; i < datasetIndex; ++i) {
+      if (this.chart.isDatasetVisible(i)) {
+        ringWeightOffset += this._getRingWeight(i);
+      }
+    }
+    return ringWeightOffset;
+  }
+  _getRingWeight(datasetIndex) {
+    return Math.max((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(this.chart.data.datasets[datasetIndex].weight, 1), 0);
+  }
+  _getVisibleDatasetWeightTotal() {
+    return this._getRingWeightOffset(this.chart.data.datasets.length) || 1;
+  }
+}
+DoughnutController.id = 'doughnut';
+DoughnutController.defaults = {
+  datasetElementType: false,
+  dataElementType: 'arc',
+  animation: {
+    animateRotate: true,
+    animateScale: false
+  },
+  animations: {
+    numbers: {
+      type: 'number',
+      properties: ['circumference', 'endAngle', 'innerRadius', 'outerRadius', 'startAngle', 'x', 'y', 'offset', 'borderWidth', 'spacing']
+    },
+  },
+  cutout: '50%',
+  rotation: 0,
+  circumference: 360,
+  radius: '100%',
+  spacing: 0,
+  indexAxis: 'r',
+};
+DoughnutController.descriptors = {
+  _scriptable: (name) => name !== 'spacing',
+  _indexable: (name) => name !== 'spacing',
+};
+DoughnutController.overrides = {
+  aspectRatio: 1,
+  plugins: {
+    legend: {
+      labels: {
+        generateLabels(chart) {
+          const data = chart.data;
+          if (data.labels.length && data.datasets.length) {
+            const {labels: {pointStyle}} = chart.legend.options;
+            return data.labels.map((label, i) => {
+              const meta = chart.getDatasetMeta(0);
+              const style = meta.controller.getStyle(i);
+              return {
+                text: label,
+                fillStyle: style.backgroundColor,
+                strokeStyle: style.borderColor,
+                lineWidth: style.borderWidth,
+                pointStyle: pointStyle,
+                hidden: !chart.getDataVisibility(i),
+                index: i
+              };
+            });
+          }
+          return [];
+        }
+      },
+      onClick(e, legendItem, legend) {
+        legend.chart.toggleDataVisibility(legendItem.index);
+        legend.chart.update();
+      }
+    },
+    tooltip: {
+      callbacks: {
+        title() {
+          return '';
+        },
+        label(tooltipItem) {
+          let dataLabel = tooltipItem.label;
+          const value = ': ' + tooltipItem.formattedValue;
+          if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(dataLabel)) {
+            dataLabel = dataLabel.slice();
+            dataLabel[0] += value;
+          } else {
+            dataLabel += value;
+          }
+          return dataLabel;
+        }
+      }
+    }
+  }
+};
+
+class LineController extends DatasetController {
+  initialize() {
+    this.enableOptionSharing = true;
+    this.supportsDecimation = true;
+    super.initialize();
+  }
+  update(mode) {
+    const meta = this._cachedMeta;
+    const {dataset: line, data: points = [], _dataset} = meta;
+    const animationsDisabled = this.chart._animationsDisabled;
+    let {start, count} = getStartAndCountOfVisiblePoints(meta, points, animationsDisabled);
+    this._drawStart = start;
+    this._drawCount = count;
+    if (scaleRangesChanged(meta)) {
+      start = 0;
+      count = points.length;
+    }
+    line._chart = this.chart;
+    line._datasetIndex = this.index;
+    line._decimated = !!_dataset._decimated;
+    line.points = points;
+    const options = this.resolveDatasetElementOptions(mode);
+    if (!this.options.showLine) {
+      options.borderWidth = 0;
+    }
+    options.segment = this.options.segment;
+    this.updateElement(line, undefined, {
+      animated: !animationsDisabled,
+      options
+    }, mode);
+    this.updateElements(points, start, count, mode);
+  }
+  updateElements(points, start, count, mode) {
+    const reset = mode === 'reset';
+    const {iScale, vScale, _stacked, _dataset} = this._cachedMeta;
+    const firstOpts = this.resolveDataElementOptions(start, mode);
+    const sharedOptions = this.getSharedOptions(firstOpts);
+    const includeOptions = this.includeOptions(mode, sharedOptions);
+    const iAxis = iScale.axis;
+    const vAxis = vScale.axis;
+    const {spanGaps, segment} = this.options;
+    const maxGapLength = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.q)(spanGaps) ? spanGaps : Number.POSITIVE_INFINITY;
+    const directUpdate = this.chart._animationsDisabled || reset || mode === 'none';
+    let prevParsed = start > 0 && this.getParsed(start - 1);
+    for (let i = start; i < start + count; ++i) {
+      const point = points[i];
+      const parsed = this.getParsed(i);
+      const properties = directUpdate ? point : {};
+      const nullData = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(parsed[vAxis]);
+      const iPixel = properties[iAxis] = iScale.getPixelForValue(parsed[iAxis], i);
+      const vPixel = properties[vAxis] = reset || nullData ? vScale.getBasePixel() : vScale.getPixelForValue(_stacked ? this.applyStack(vScale, parsed, _stacked) : parsed[vAxis], i);
+      properties.skip = isNaN(iPixel) || isNaN(vPixel) || nullData;
+      properties.stop = i > 0 && (Math.abs(parsed[iAxis] - prevParsed[iAxis])) > maxGapLength;
+      if (segment) {
+        properties.parsed = parsed;
+        properties.raw = _dataset.data[i];
+      }
+      if (includeOptions) {
+        properties.options = sharedOptions || this.resolveDataElementOptions(i, point.active ? 'active' : mode);
+      }
+      if (!directUpdate) {
+        this.updateElement(point, i, properties, mode);
+      }
+      prevParsed = parsed;
+    }
+    this.updateSharedOptions(sharedOptions, mode, firstOpts);
+  }
+  getMaxOverflow() {
+    const meta = this._cachedMeta;
+    const dataset = meta.dataset;
+    const border = dataset.options && dataset.options.borderWidth || 0;
+    const data = meta.data || [];
+    if (!data.length) {
+      return border;
+    }
+    const firstPoint = data[0].size(this.resolveDataElementOptions(0));
+    const lastPoint = data[data.length - 1].size(this.resolveDataElementOptions(data.length - 1));
+    return Math.max(border, firstPoint, lastPoint) / 2;
+  }
+  draw() {
+    const meta = this._cachedMeta;
+    meta.dataset.updateControlPoints(this.chart.chartArea, meta.iScale.axis);
+    super.draw();
+  }
+}
+LineController.id = 'line';
+LineController.defaults = {
+  datasetElementType: 'line',
+  dataElementType: 'point',
+  showLine: true,
+  spanGaps: false,
+};
+LineController.overrides = {
+  scales: {
+    _index_: {
+      type: 'category',
+    },
+    _value_: {
+      type: 'linear',
+    },
+  }
+};
+function getStartAndCountOfVisiblePoints(meta, points, animationsDisabled) {
+  const pointCount = points.length;
+  let start = 0;
+  let count = pointCount;
+  if (meta._sorted) {
+    const {iScale, _parsed} = meta;
+    const axis = iScale.axis;
+    const {min, max, minDefined, maxDefined} = iScale.getUserBounds();
+    if (minDefined) {
+      start = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(Math.min(
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(_parsed, iScale.axis, min).lo,
+        animationsDisabled ? pointCount : (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(points, axis, iScale.getPixelForValue(min)).lo),
+      0, pointCount - 1);
+    }
+    if (maxDefined) {
+      count = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(Math.max(
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(_parsed, iScale.axis, max).hi + 1,
+        animationsDisabled ? 0 : (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(points, axis, iScale.getPixelForValue(max)).hi + 1),
+      start, pointCount) - start;
+    } else {
+      count = pointCount - start;
+    }
+  }
+  return {start, count};
+}
+function scaleRangesChanged(meta) {
+  const {xScale, yScale, _scaleRanges} = meta;
+  const newRanges = {
+    xmin: xScale.min,
+    xmax: xScale.max,
+    ymin: yScale.min,
+    ymax: yScale.max
+  };
+  if (!_scaleRanges) {
+    meta._scaleRanges = newRanges;
+    return true;
+  }
+  const changed = _scaleRanges.xmin !== xScale.min
+		|| _scaleRanges.xmax !== xScale.max
+		|| _scaleRanges.ymin !== yScale.min
+		|| _scaleRanges.ymax !== yScale.max;
+  Object.assign(_scaleRanges, newRanges);
+  return changed;
+}
+
+class PolarAreaController extends DatasetController {
+  constructor(chart, datasetIndex) {
+    super(chart, datasetIndex);
+    this.innerRadius = undefined;
+    this.outerRadius = undefined;
+  }
+  getLabelAndValue(index) {
+    const meta = this._cachedMeta;
+    const chart = this.chart;
+    const labels = chart.data.labels || [];
+    const value = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.o)(meta._parsed[index].r, chart.options.locale);
+    return {
+      label: labels[index] || '',
+      value,
+    };
+  }
+  parseObjectData(meta, data, start, count) {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.y.bind(this)(meta, data, start, count);
+  }
+  update(mode) {
+    const arcs = this._cachedMeta.data;
+    this._updateRadius();
+    this.updateElements(arcs, 0, arcs.length, mode);
+  }
+  getMinMax() {
+    const meta = this._cachedMeta;
+    const range = {min: Number.POSITIVE_INFINITY, max: Number.NEGATIVE_INFINITY};
+    meta.data.forEach((element, index) => {
+      const parsed = this.getParsed(index).r;
+      if (!isNaN(parsed) && this.chart.getDataVisibility(index)) {
+        if (parsed < range.min) {
+          range.min = parsed;
+        }
+        if (parsed > range.max) {
+          range.max = parsed;
+        }
+      }
+    });
+    return range;
+  }
+  _updateRadius() {
+    const chart = this.chart;
+    const chartArea = chart.chartArea;
+    const opts = chart.options;
+    const minSize = Math.min(chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+    const outerRadius = Math.max(minSize / 2, 0);
+    const innerRadius = Math.max(opts.cutoutPercentage ? (outerRadius / 100) * (opts.cutoutPercentage) : 1, 0);
+    const radiusLength = (outerRadius - innerRadius) / chart.getVisibleDatasetCount();
+    this.outerRadius = outerRadius - (radiusLength * this.index);
+    this.innerRadius = this.outerRadius - radiusLength;
+  }
+  updateElements(arcs, start, count, mode) {
+    const reset = mode === 'reset';
+    const chart = this.chart;
+    const opts = chart.options;
+    const animationOpts = opts.animation;
+    const scale = this._cachedMeta.rScale;
+    const centerX = scale.xCenter;
+    const centerY = scale.yCenter;
+    const datasetStartAngle = scale.getIndexAngle(0) - 0.5 * _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P;
+    let angle = datasetStartAngle;
+    let i;
+    const defaultAngle = 360 / this.countVisibleElements();
+    for (i = 0; i < start; ++i) {
+      angle += this._computeAngle(i, mode, defaultAngle);
+    }
+    for (i = start; i < start + count; i++) {
+      const arc = arcs[i];
+      let startAngle = angle;
+      let endAngle = angle + this._computeAngle(i, mode, defaultAngle);
+      let outerRadius = chart.getDataVisibility(i) ? scale.getDistanceFromCenterForValue(this.getParsed(i).r) : 0;
+      angle = endAngle;
+      if (reset) {
+        if (animationOpts.animateScale) {
+          outerRadius = 0;
+        }
+        if (animationOpts.animateRotate) {
+          startAngle = endAngle = datasetStartAngle;
+        }
+      }
+      const properties = {
+        x: centerX,
+        y: centerY,
+        innerRadius: 0,
+        outerRadius,
+        startAngle,
+        endAngle,
+        options: this.resolveDataElementOptions(i, arc.active ? 'active' : mode)
+      };
+      this.updateElement(arc, i, properties, mode);
+    }
+  }
+  countVisibleElements() {
+    const meta = this._cachedMeta;
+    let count = 0;
+    meta.data.forEach((element, index) => {
+      if (!isNaN(this.getParsed(index).r) && this.chart.getDataVisibility(index)) {
+        count++;
+      }
+    });
+    return count;
+  }
+  _computeAngle(index, mode, defaultAngle) {
+    return this.chart.getDataVisibility(index)
+      ? (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.resolveDataElementOptions(index, mode).angle || defaultAngle)
+      : 0;
+  }
+}
+PolarAreaController.id = 'polarArea';
+PolarAreaController.defaults = {
+  dataElementType: 'arc',
+  animation: {
+    animateRotate: true,
+    animateScale: true
+  },
+  animations: {
+    numbers: {
+      type: 'number',
+      properties: ['x', 'y', 'startAngle', 'endAngle', 'innerRadius', 'outerRadius']
+    },
+  },
+  indexAxis: 'r',
+  startAngle: 0,
+};
+PolarAreaController.overrides = {
+  aspectRatio: 1,
+  plugins: {
+    legend: {
+      labels: {
+        generateLabels(chart) {
+          const data = chart.data;
+          if (data.labels.length && data.datasets.length) {
+            const {labels: {pointStyle}} = chart.legend.options;
+            return data.labels.map((label, i) => {
+              const meta = chart.getDatasetMeta(0);
+              const style = meta.controller.getStyle(i);
+              return {
+                text: label,
+                fillStyle: style.backgroundColor,
+                strokeStyle: style.borderColor,
+                lineWidth: style.borderWidth,
+                pointStyle: pointStyle,
+                hidden: !chart.getDataVisibility(i),
+                index: i
+              };
+            });
+          }
+          return [];
+        }
+      },
+      onClick(e, legendItem, legend) {
+        legend.chart.toggleDataVisibility(legendItem.index);
+        legend.chart.update();
+      }
+    },
+    tooltip: {
+      callbacks: {
+        title() {
+          return '';
+        },
+        label(context) {
+          return context.chart.data.labels[context.dataIndex] + ': ' + context.formattedValue;
+        }
+      }
+    }
+  },
+  scales: {
+    r: {
+      type: 'radialLinear',
+      angleLines: {
+        display: false
+      },
+      beginAtZero: true,
+      grid: {
+        circular: true
+      },
+      pointLabels: {
+        display: false
+      },
+      startAngle: 0
+    }
+  }
+};
+
+class PieController extends DoughnutController {
+}
+PieController.id = 'pie';
+PieController.defaults = {
+  cutout: 0,
+  rotation: 0,
+  circumference: 360,
+  radius: '100%'
+};
+
+class RadarController extends DatasetController {
+  getLabelAndValue(index) {
+    const vScale = this._cachedMeta.vScale;
+    const parsed = this.getParsed(index);
+    return {
+      label: vScale.getLabels()[index],
+      value: '' + vScale.getLabelForValue(parsed[vScale.axis])
+    };
+  }
+  parseObjectData(meta, data, start, count) {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.y.bind(this)(meta, data, start, count);
+  }
+  update(mode) {
+    const meta = this._cachedMeta;
+    const line = meta.dataset;
+    const points = meta.data || [];
+    const labels = meta.iScale.getLabels();
+    line.points = points;
+    if (mode !== 'resize') {
+      const options = this.resolveDatasetElementOptions(mode);
+      if (!this.options.showLine) {
+        options.borderWidth = 0;
+      }
+      const properties = {
+        _loop: true,
+        _fullLoop: labels.length === points.length,
+        options
+      };
+      this.updateElement(line, undefined, properties, mode);
+    }
+    this.updateElements(points, 0, points.length, mode);
+  }
+  updateElements(points, start, count, mode) {
+    const scale = this._cachedMeta.rScale;
+    const reset = mode === 'reset';
+    for (let i = start; i < start + count; i++) {
+      const point = points[i];
+      const options = this.resolveDataElementOptions(i, point.active ? 'active' : mode);
+      const pointPosition = scale.getPointPositionForValue(i, this.getParsed(i).r);
+      const x = reset ? scale.xCenter : pointPosition.x;
+      const y = reset ? scale.yCenter : pointPosition.y;
+      const properties = {
+        x,
+        y,
+        angle: pointPosition.angle,
+        skip: isNaN(x) || isNaN(y),
+        options
+      };
+      this.updateElement(point, i, properties, mode);
+    }
+  }
+}
+RadarController.id = 'radar';
+RadarController.defaults = {
+  datasetElementType: 'line',
+  dataElementType: 'point',
+  indexAxis: 'r',
+  showLine: true,
+  elements: {
+    line: {
+      fill: 'start'
+    }
+  },
+};
+RadarController.overrides = {
+  aspectRatio: 1,
+  scales: {
+    r: {
+      type: 'radialLinear',
+    }
+  }
+};
+
+class ScatterController extends LineController {
+}
+ScatterController.id = 'scatter';
+ScatterController.defaults = {
+  showLine: false,
+  fill: false
+};
+ScatterController.overrides = {
+  interaction: {
+    mode: 'point'
+  },
+  plugins: {
+    tooltip: {
+      callbacks: {
+        title() {
+          return '';
+        },
+        label(item) {
+          return '(' + item.label + ', ' + item.formattedValue + ')';
+        }
+      }
+    }
+  },
+  scales: {
+    x: {
+      type: 'linear'
+    },
+    y: {
+      type: 'linear'
+    }
+  }
+};
+
+var controllers = /*#__PURE__*/Object.freeze({
+__proto__: null,
+BarController: BarController,
+BubbleController: BubbleController,
+DoughnutController: DoughnutController,
+LineController: LineController,
+PolarAreaController: PolarAreaController,
+PieController: PieController,
+RadarController: RadarController,
+ScatterController: ScatterController
+});
+
+function abstract() {
+  throw new Error('This method is not implemented: Check that a complete date adapter is provided.');
+}
+class DateAdapter {
+  constructor(options) {
+    this.options = options || {};
+  }
+  formats() {
+    return abstract();
+  }
+  parse(value, format) {
+    return abstract();
+  }
+  format(timestamp, format) {
+    return abstract();
+  }
+  add(timestamp, amount, unit) {
+    return abstract();
+  }
+  diff(a, b, unit) {
+    return abstract();
+  }
+  startOf(timestamp, unit, weekday) {
+    return abstract();
+  }
+  endOf(timestamp, unit) {
+    return abstract();
+  }
+}
+DateAdapter.override = function(members) {
+  Object.assign(DateAdapter.prototype, members);
+};
+var adapters = {
+  _date: DateAdapter
+};
+
+function binarySearch(metaset, axis, value, intersect) {
+  const {controller, data, _sorted} = metaset;
+  const iScale = controller._cachedMeta.iScale;
+  if (iScale && axis === iScale.axis && axis !== 'r' && _sorted && data.length) {
+    const lookupMethod = iScale._reversePixels ? _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.A : _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x;
+    if (!intersect) {
+      return lookupMethod(data, axis, value);
+    } else if (controller._sharedOptions) {
+      const el = data[0];
+      const range = typeof el.getRange === 'function' && el.getRange(axis);
+      if (range) {
+        const start = lookupMethod(data, axis, value - range);
+        const end = lookupMethod(data, axis, value + range);
+        return {lo: start.lo, hi: end.hi};
+      }
+    }
+  }
+  return {lo: 0, hi: data.length - 1};
+}
+function evaluateInteractionItems(chart, axis, position, handler, intersect) {
+  const metasets = chart.getSortedVisibleDatasetMetas();
+  const value = position[axis];
+  for (let i = 0, ilen = metasets.length; i < ilen; ++i) {
+    const {index, data} = metasets[i];
+    const {lo, hi} = binarySearch(metasets[i], axis, value, intersect);
+    for (let j = lo; j <= hi; ++j) {
+      const element = data[j];
+      if (!element.skip) {
+        handler(element, index, j);
+      }
+    }
+  }
+}
+function getDistanceMetricForAxis(axis) {
+  const useX = axis.indexOf('x') !== -1;
+  const useY = axis.indexOf('y') !== -1;
+  return function(pt1, pt2) {
+    const deltaX = useX ? Math.abs(pt1.x - pt2.x) : 0;
+    const deltaY = useY ? Math.abs(pt1.y - pt2.y) : 0;
+    return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+  };
+}
+function getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) {
+  const items = [];
+  if (!includeInvisible && !chart.isPointInArea(position)) {
+    return items;
+  }
+  const evaluationFunc = function(element, datasetIndex, index) {
+    if (!includeInvisible && !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.B)(element, chart.chartArea, 0)) {
+      return;
+    }
+    if (element.inRange(position.x, position.y, useFinalPosition)) {
+      items.push({element, datasetIndex, index});
+    }
+  };
+  evaluateInteractionItems(chart, axis, position, evaluationFunc, true);
+  return items;
+}
+function getNearestRadialItems(chart, position, axis, useFinalPosition) {
+  let items = [];
+  function evaluationFunc(element, datasetIndex, index) {
+    const {startAngle, endAngle} = element.getProps(['startAngle', 'endAngle'], useFinalPosition);
+    const {angle} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.C)(element, {x: position.x, y: position.y});
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.p)(angle, startAngle, endAngle)) {
+      items.push({element, datasetIndex, index});
+    }
+  }
+  evaluateInteractionItems(chart, axis, position, evaluationFunc);
+  return items;
+}
+function getNearestCartesianItems(chart, position, axis, intersect, useFinalPosition, includeInvisible) {
+  let items = [];
+  const distanceMetric = getDistanceMetricForAxis(axis);
+  let minDistance = Number.POSITIVE_INFINITY;
+  function evaluationFunc(element, datasetIndex, index) {
+    const inRange = element.inRange(position.x, position.y, useFinalPosition);
+    if (intersect && !inRange) {
+      return;
+    }
+    const center = element.getCenterPoint(useFinalPosition);
+    const pointInArea = !!includeInvisible || chart.isPointInArea(center);
+    if (!pointInArea && !inRange) {
+      return;
+    }
+    const distance = distanceMetric(position, center);
+    if (distance < minDistance) {
+      items = [{element, datasetIndex, index}];
+      minDistance = distance;
+    } else if (distance === minDistance) {
+      items.push({element, datasetIndex, index});
+    }
+  }
+  evaluateInteractionItems(chart, axis, position, evaluationFunc);
+  return items;
+}
+function getNearestItems(chart, position, axis, intersect, useFinalPosition, includeInvisible) {
+  if (!includeInvisible && !chart.isPointInArea(position)) {
+    return [];
+  }
+  return axis === 'r' && !intersect
+    ? getNearestRadialItems(chart, position, axis, useFinalPosition)
+    : getNearestCartesianItems(chart, position, axis, intersect, useFinalPosition, includeInvisible);
+}
+function getAxisItems(chart, position, axis, intersect, useFinalPosition) {
+  const items = [];
+  const rangeMethod = axis === 'x' ? 'inXRange' : 'inYRange';
+  let intersectsItem = false;
+  evaluateInteractionItems(chart, axis, position, (element, datasetIndex, index) => {
+    if (element[rangeMethod](position[axis], useFinalPosition)) {
+      items.push({element, datasetIndex, index});
+      intersectsItem = intersectsItem || element.inRange(position.x, position.y, useFinalPosition);
+    }
+  });
+  if (intersect && !intersectsItem) {
+    return [];
+  }
+  return items;
+}
+var Interaction = {
+  evaluateInteractionItems,
+  modes: {
+    index(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      const axis = options.axis || 'x';
+      const includeInvisible = options.includeInvisible || false;
+      const items = options.intersect
+        ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible)
+        : getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
+      const elements = [];
+      if (!items.length) {
+        return [];
+      }
+      chart.getSortedVisibleDatasetMetas().forEach((meta) => {
+        const index = items[0].index;
+        const element = meta.data[index];
+        if (element && !element.skip) {
+          elements.push({element, datasetIndex: meta.index, index});
+        }
+      });
+      return elements;
+    },
+    dataset(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      const axis = options.axis || 'xy';
+      const includeInvisible = options.includeInvisible || false;
+      let items = options.intersect
+        ? getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible) :
+        getNearestItems(chart, position, axis, false, useFinalPosition, includeInvisible);
+      if (items.length > 0) {
+        const datasetIndex = items[0].datasetIndex;
+        const data = chart.getDatasetMeta(datasetIndex).data;
+        items = [];
+        for (let i = 0; i < data.length; ++i) {
+          items.push({element: data[i], datasetIndex, index: i});
+        }
+      }
+      return items;
+    },
+    point(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      const axis = options.axis || 'xy';
+      const includeInvisible = options.includeInvisible || false;
+      return getIntersectItems(chart, position, axis, useFinalPosition, includeInvisible);
+    },
+    nearest(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      const axis = options.axis || 'xy';
+      const includeInvisible = options.includeInvisible || false;
+      return getNearestItems(chart, position, axis, options.intersect, useFinalPosition, includeInvisible);
+    },
+    x(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      return getAxisItems(chart, position, 'x', options.intersect, useFinalPosition);
+    },
+    y(chart, e, options, useFinalPosition) {
+      const position = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(e, chart);
+      return getAxisItems(chart, position, 'y', options.intersect, useFinalPosition);
+    }
+  }
+};
+
+const STATIC_POSITIONS = ['left', 'top', 'right', 'bottom'];
+function filterByPosition(array, position) {
+  return array.filter(v => v.pos === position);
+}
+function filterDynamicPositionByAxis(array, axis) {
+  return array.filter(v => STATIC_POSITIONS.indexOf(v.pos) === -1 && v.box.axis === axis);
+}
+function sortByWeight(array, reverse) {
+  return array.sort((a, b) => {
+    const v0 = reverse ? b : a;
+    const v1 = reverse ? a : b;
+    return v0.weight === v1.weight ?
+      v0.index - v1.index :
+      v0.weight - v1.weight;
+  });
+}
+function wrapBoxes(boxes) {
+  const layoutBoxes = [];
+  let i, ilen, box, pos, stack, stackWeight;
+  for (i = 0, ilen = (boxes || []).length; i < ilen; ++i) {
+    box = boxes[i];
+    ({position: pos, options: {stack, stackWeight = 1}} = box);
+    layoutBoxes.push({
+      index: i,
+      box,
+      pos,
+      horizontal: box.isHorizontal(),
+      weight: box.weight,
+      stack: stack && (pos + stack),
+      stackWeight
+    });
+  }
+  return layoutBoxes;
+}
+function buildStacks(layouts) {
+  const stacks = {};
+  for (const wrap of layouts) {
+    const {stack, pos, stackWeight} = wrap;
+    if (!stack || !STATIC_POSITIONS.includes(pos)) {
+      continue;
+    }
+    const _stack = stacks[stack] || (stacks[stack] = {count: 0, placed: 0, weight: 0, size: 0});
+    _stack.count++;
+    _stack.weight += stackWeight;
+  }
+  return stacks;
+}
+function setLayoutDims(layouts, params) {
+  const stacks = buildStacks(layouts);
+  const {vBoxMaxWidth, hBoxMaxHeight} = params;
+  let i, ilen, layout;
+  for (i = 0, ilen = layouts.length; i < ilen; ++i) {
+    layout = layouts[i];
+    const {fullSize} = layout.box;
+    const stack = stacks[layout.stack];
+    const factor = stack && layout.stackWeight / stack.weight;
+    if (layout.horizontal) {
+      layout.width = factor ? factor * vBoxMaxWidth : fullSize && params.availableWidth;
+      layout.height = hBoxMaxHeight;
+    } else {
+      layout.width = vBoxMaxWidth;
+      layout.height = factor ? factor * hBoxMaxHeight : fullSize && params.availableHeight;
+    }
+  }
+  return stacks;
+}
+function buildLayoutBoxes(boxes) {
+  const layoutBoxes = wrapBoxes(boxes);
+  const fullSize = sortByWeight(layoutBoxes.filter(wrap => wrap.box.fullSize), true);
+  const left = sortByWeight(filterByPosition(layoutBoxes, 'left'), true);
+  const right = sortByWeight(filterByPosition(layoutBoxes, 'right'));
+  const top = sortByWeight(filterByPosition(layoutBoxes, 'top'), true);
+  const bottom = sortByWeight(filterByPosition(layoutBoxes, 'bottom'));
+  const centerHorizontal = filterDynamicPositionByAxis(layoutBoxes, 'x');
+  const centerVertical = filterDynamicPositionByAxis(layoutBoxes, 'y');
+  return {
+    fullSize,
+    leftAndTop: left.concat(top),
+    rightAndBottom: right.concat(centerVertical).concat(bottom).concat(centerHorizontal),
+    chartArea: filterByPosition(layoutBoxes, 'chartArea'),
+    vertical: left.concat(right).concat(centerVertical),
+    horizontal: top.concat(bottom).concat(centerHorizontal)
+  };
+}
+function getCombinedMax(maxPadding, chartArea, a, b) {
+  return Math.max(maxPadding[a], chartArea[a]) + Math.max(maxPadding[b], chartArea[b]);
+}
+function updateMaxPadding(maxPadding, boxPadding) {
+  maxPadding.top = Math.max(maxPadding.top, boxPadding.top);
+  maxPadding.left = Math.max(maxPadding.left, boxPadding.left);
+  maxPadding.bottom = Math.max(maxPadding.bottom, boxPadding.bottom);
+  maxPadding.right = Math.max(maxPadding.right, boxPadding.right);
+}
+function updateDims(chartArea, params, layout, stacks) {
+  const {pos, box} = layout;
+  const maxPadding = chartArea.maxPadding;
+  if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(pos)) {
+    if (layout.size) {
+      chartArea[pos] -= layout.size;
+    }
+    const stack = stacks[layout.stack] || {size: 0, count: 1};
+    stack.size = Math.max(stack.size, layout.horizontal ? box.height : box.width);
+    layout.size = stack.size / stack.count;
+    chartArea[pos] += layout.size;
+  }
+  if (box.getPadding) {
+    updateMaxPadding(maxPadding, box.getPadding());
+  }
+  const newWidth = Math.max(0, params.outerWidth - getCombinedMax(maxPadding, chartArea, 'left', 'right'));
+  const newHeight = Math.max(0, params.outerHeight - getCombinedMax(maxPadding, chartArea, 'top', 'bottom'));
+  const widthChanged = newWidth !== chartArea.w;
+  const heightChanged = newHeight !== chartArea.h;
+  chartArea.w = newWidth;
+  chartArea.h = newHeight;
+  return layout.horizontal
+    ? {same: widthChanged, other: heightChanged}
+    : {same: heightChanged, other: widthChanged};
+}
+function handleMaxPadding(chartArea) {
+  const maxPadding = chartArea.maxPadding;
+  function updatePos(pos) {
+    const change = Math.max(maxPadding[pos] - chartArea[pos], 0);
+    chartArea[pos] += change;
+    return change;
+  }
+  chartArea.y += updatePos('top');
+  chartArea.x += updatePos('left');
+  updatePos('right');
+  updatePos('bottom');
+}
+function getMargins(horizontal, chartArea) {
+  const maxPadding = chartArea.maxPadding;
+  function marginForPositions(positions) {
+    const margin = {left: 0, top: 0, right: 0, bottom: 0};
+    positions.forEach((pos) => {
+      margin[pos] = Math.max(chartArea[pos], maxPadding[pos]);
+    });
+    return margin;
+  }
+  return horizontal
+    ? marginForPositions(['left', 'right'])
+    : marginForPositions(['top', 'bottom']);
+}
+function fitBoxes(boxes, chartArea, params, stacks) {
+  const refitBoxes = [];
+  let i, ilen, layout, box, refit, changed;
+  for (i = 0, ilen = boxes.length, refit = 0; i < ilen; ++i) {
+    layout = boxes[i];
+    box = layout.box;
+    box.update(
+      layout.width || chartArea.w,
+      layout.height || chartArea.h,
+      getMargins(layout.horizontal, chartArea)
+    );
+    const {same, other} = updateDims(chartArea, params, layout, stacks);
+    refit |= same && refitBoxes.length;
+    changed = changed || other;
+    if (!box.fullSize) {
+      refitBoxes.push(layout);
+    }
+  }
+  return refit && fitBoxes(refitBoxes, chartArea, params, stacks) || changed;
+}
+function setBoxDims(box, left, top, width, height) {
+  box.top = top;
+  box.left = left;
+  box.right = left + width;
+  box.bottom = top + height;
+  box.width = width;
+  box.height = height;
+}
+function placeBoxes(boxes, chartArea, params, stacks) {
+  const userPadding = params.padding;
+  let {x, y} = chartArea;
+  for (const layout of boxes) {
+    const box = layout.box;
+    const stack = stacks[layout.stack] || {count: 1, placed: 0, weight: 1};
+    const weight = (layout.stackWeight / stack.weight) || 1;
+    if (layout.horizontal) {
+      const width = chartArea.w * weight;
+      const height = stack.size || box.height;
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.j)(stack.start)) {
+        y = stack.start;
+      }
+      if (box.fullSize) {
+        setBoxDims(box, userPadding.left, y, params.outerWidth - userPadding.right - userPadding.left, height);
+      } else {
+        setBoxDims(box, chartArea.left + stack.placed, y, width, height);
+      }
+      stack.start = y;
+      stack.placed += width;
+      y = box.bottom;
+    } else {
+      const height = chartArea.h * weight;
+      const width = stack.size || box.width;
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.j)(stack.start)) {
+        x = stack.start;
+      }
+      if (box.fullSize) {
+        setBoxDims(box, x, userPadding.top, width, params.outerHeight - userPadding.bottom - userPadding.top);
+      } else {
+        setBoxDims(box, x, chartArea.top + stack.placed, width, height);
+      }
+      stack.start = x;
+      stack.placed += height;
+      x = box.right;
+    }
+  }
+  chartArea.x = x;
+  chartArea.y = y;
+}
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set('layout', {
+  autoPadding: true,
+  padding: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  }
+});
+var layouts = {
+  addBox(chart, item) {
+    if (!chart.boxes) {
+      chart.boxes = [];
+    }
+    item.fullSize = item.fullSize || false;
+    item.position = item.position || 'top';
+    item.weight = item.weight || 0;
+    item._layers = item._layers || function() {
+      return [{
+        z: 0,
+        draw(chartArea) {
+          item.draw(chartArea);
+        }
+      }];
+    };
+    chart.boxes.push(item);
+  },
+  removeBox(chart, layoutItem) {
+    const index = chart.boxes ? chart.boxes.indexOf(layoutItem) : -1;
+    if (index !== -1) {
+      chart.boxes.splice(index, 1);
+    }
+  },
+  configure(chart, item, options) {
+    item.fullSize = options.fullSize;
+    item.position = options.position;
+    item.weight = options.weight;
+  },
+  update(chart, width, height, minPadding) {
+    if (!chart) {
+      return;
+    }
+    const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(chart.options.layout.padding);
+    const availableWidth = Math.max(width - padding.width, 0);
+    const availableHeight = Math.max(height - padding.height, 0);
+    const boxes = buildLayoutBoxes(chart.boxes);
+    const verticalBoxes = boxes.vertical;
+    const horizontalBoxes = boxes.horizontal;
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(chart.boxes, box => {
+      if (typeof box.beforeLayout === 'function') {
+        box.beforeLayout();
+      }
+    });
+    const visibleVerticalBoxCount = verticalBoxes.reduce((total, wrap) =>
+      wrap.box.options && wrap.box.options.display === false ? total : total + 1, 0) || 1;
+    const params = Object.freeze({
+      outerWidth: width,
+      outerHeight: height,
+      padding,
+      availableWidth,
+      availableHeight,
+      vBoxMaxWidth: availableWidth / 2 / visibleVerticalBoxCount,
+      hBoxMaxHeight: availableHeight / 2
+    });
+    const maxPadding = Object.assign({}, padding);
+    updateMaxPadding(maxPadding, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(minPadding));
+    const chartArea = Object.assign({
+      maxPadding,
+      w: availableWidth,
+      h: availableHeight,
+      x: padding.left,
+      y: padding.top
+    }, padding);
+    const stacks = setLayoutDims(verticalBoxes.concat(horizontalBoxes), params);
+    fitBoxes(boxes.fullSize, chartArea, params, stacks);
+    fitBoxes(verticalBoxes, chartArea, params, stacks);
+    if (fitBoxes(horizontalBoxes, chartArea, params, stacks)) {
+      fitBoxes(verticalBoxes, chartArea, params, stacks);
+    }
+    handleMaxPadding(chartArea);
+    placeBoxes(boxes.leftAndTop, chartArea, params, stacks);
+    chartArea.x += chartArea.w;
+    chartArea.y += chartArea.h;
+    placeBoxes(boxes.rightAndBottom, chartArea, params, stacks);
+    chart.chartArea = {
+      left: chartArea.left,
+      top: chartArea.top,
+      right: chartArea.left + chartArea.w,
+      bottom: chartArea.top + chartArea.h,
+      height: chartArea.h,
+      width: chartArea.w,
+    };
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(boxes.chartArea, (layout) => {
+      const box = layout.box;
+      Object.assign(box, chart.chartArea);
+      box.update(chartArea.w, chartArea.h, {left: 0, top: 0, right: 0, bottom: 0});
+    });
+  }
+};
+
+class BasePlatform {
+  acquireContext(canvas, aspectRatio) {}
+  releaseContext(context) {
+    return false;
+  }
+  addEventListener(chart, type, listener) {}
+  removeEventListener(chart, type, listener) {}
+  getDevicePixelRatio() {
+    return 1;
+  }
+  getMaximumSize(element, width, height, aspectRatio) {
+    width = Math.max(0, width || element.width);
+    height = height || element.height;
+    return {
+      width,
+      height: Math.max(0, aspectRatio ? Math.floor(width / aspectRatio) : height)
+    };
+  }
+  isAttached(canvas) {
+    return true;
+  }
+  updateConfig(config) {
+  }
+}
+
+class BasicPlatform extends BasePlatform {
+  acquireContext(item) {
+    return item && item.getContext && item.getContext('2d') || null;
+  }
+  updateConfig(config) {
+    config.options.animation = false;
+  }
+}
+
+const EXPANDO_KEY = '$chartjs';
+const EVENT_TYPES = {
+  touchstart: 'mousedown',
+  touchmove: 'mousemove',
+  touchend: 'mouseup',
+  pointerenter: 'mouseenter',
+  pointerdown: 'mousedown',
+  pointermove: 'mousemove',
+  pointerup: 'mouseup',
+  pointerleave: 'mouseout',
+  pointerout: 'mouseout'
+};
+const isNullOrEmpty = value => value === null || value === '';
+function initCanvas(canvas, aspectRatio) {
+  const style = canvas.style;
+  const renderHeight = canvas.getAttribute('height');
+  const renderWidth = canvas.getAttribute('width');
+  canvas[EXPANDO_KEY] = {
+    initial: {
+      height: renderHeight,
+      width: renderWidth,
+      style: {
+        display: style.display,
+        height: style.height,
+        width: style.width
+      }
+    }
+  };
+  style.display = style.display || 'block';
+  style.boxSizing = style.boxSizing || 'border-box';
+  if (isNullOrEmpty(renderWidth)) {
+    const displayWidth = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.I)(canvas, 'width');
+    if (displayWidth !== undefined) {
+      canvas.width = displayWidth;
+    }
+  }
+  if (isNullOrEmpty(renderHeight)) {
+    if (canvas.style.height === '') {
+      canvas.height = canvas.width / (aspectRatio || 2);
+    } else {
+      const displayHeight = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.I)(canvas, 'height');
+      if (displayHeight !== undefined) {
+        canvas.height = displayHeight;
+      }
+    }
+  }
+  return canvas;
+}
+const eventListenerOptions = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.K ? {passive: true} : false;
+function addListener(node, type, listener) {
+  node.addEventListener(type, listener, eventListenerOptions);
+}
+function removeListener(chart, type, listener) {
+  chart.canvas.removeEventListener(type, listener, eventListenerOptions);
+}
+function fromNativeEvent(event, chart) {
+  const type = EVENT_TYPES[event.type] || event.type;
+  const {x, y} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.z)(event, chart);
+  return {
+    type,
+    chart,
+    native: event,
+    x: x !== undefined ? x : null,
+    y: y !== undefined ? y : null,
+  };
+}
+function nodeListContains(nodeList, canvas) {
+  for (const node of nodeList) {
+    if (node === canvas || node.contains(canvas)) {
+      return true;
+    }
+  }
+}
+function createAttachObserver(chart, type, listener) {
+  const canvas = chart.canvas;
+  const observer = new MutationObserver(entries => {
+    let trigger = false;
+    for (const entry of entries) {
+      trigger = trigger || nodeListContains(entry.addedNodes, canvas);
+      trigger = trigger && !nodeListContains(entry.removedNodes, canvas);
+    }
+    if (trigger) {
+      listener();
+    }
+  });
+  observer.observe(document, {childList: true, subtree: true});
+  return observer;
+}
+function createDetachObserver(chart, type, listener) {
+  const canvas = chart.canvas;
+  const observer = new MutationObserver(entries => {
+    let trigger = false;
+    for (const entry of entries) {
+      trigger = trigger || nodeListContains(entry.removedNodes, canvas);
+      trigger = trigger && !nodeListContains(entry.addedNodes, canvas);
+    }
+    if (trigger) {
+      listener();
+    }
+  });
+  observer.observe(document, {childList: true, subtree: true});
+  return observer;
+}
+const drpListeningCharts = new Map();
+let oldDevicePixelRatio = 0;
+function onWindowResize() {
+  const dpr = window.devicePixelRatio;
+  if (dpr === oldDevicePixelRatio) {
+    return;
+  }
+  oldDevicePixelRatio = dpr;
+  drpListeningCharts.forEach((resize, chart) => {
+    if (chart.currentDevicePixelRatio !== dpr) {
+      resize();
+    }
+  });
+}
+function listenDevicePixelRatioChanges(chart, resize) {
+  if (!drpListeningCharts.size) {
+    window.addEventListener('resize', onWindowResize);
+  }
+  drpListeningCharts.set(chart, resize);
+}
+function unlistenDevicePixelRatioChanges(chart) {
+  drpListeningCharts.delete(chart);
+  if (!drpListeningCharts.size) {
+    window.removeEventListener('resize', onWindowResize);
+  }
+}
+function createResizeObserver(chart, type, listener) {
+  const canvas = chart.canvas;
+  const container = canvas && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.G)(canvas);
+  if (!container) {
+    return;
+  }
+  const resize = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.J)((width, height) => {
+    const w = container.clientWidth;
+    listener(width, height);
+    if (w < container.clientWidth) {
+      listener();
+    }
+  }, window);
+  const observer = new ResizeObserver(entries => {
+    const entry = entries[0];
+    const width = entry.contentRect.width;
+    const height = entry.contentRect.height;
+    if (width === 0 && height === 0) {
+      return;
+    }
+    resize(width, height);
+  });
+  observer.observe(container);
+  listenDevicePixelRatioChanges(chart, resize);
+  return observer;
+}
+function releaseObserver(chart, type, observer) {
+  if (observer) {
+    observer.disconnect();
+  }
+  if (type === 'resize') {
+    unlistenDevicePixelRatioChanges(chart);
+  }
+}
+function createProxyAndListen(chart, type, listener) {
+  const canvas = chart.canvas;
+  const proxy = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.J)((event) => {
+    if (chart.ctx !== null) {
+      listener(fromNativeEvent(event, chart));
+    }
+  }, chart, (args) => {
+    const event = args[0];
+    return [event, event.offsetX, event.offsetY];
+  });
+  addListener(canvas, type, proxy);
+  return proxy;
+}
+class DomPlatform extends BasePlatform {
+  acquireContext(canvas, aspectRatio) {
+    const context = canvas && canvas.getContext && canvas.getContext('2d');
+    if (context && context.canvas === canvas) {
+      initCanvas(canvas, aspectRatio);
+      return context;
+    }
+    return null;
+  }
+  releaseContext(context) {
+    const canvas = context.canvas;
+    if (!canvas[EXPANDO_KEY]) {
+      return false;
+    }
+    const initial = canvas[EXPANDO_KEY].initial;
+    ['height', 'width'].forEach((prop) => {
+      const value = initial[prop];
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(value)) {
+        canvas.removeAttribute(prop);
+      } else {
+        canvas.setAttribute(prop, value);
+      }
+    });
+    const style = initial.style || {};
+    Object.keys(style).forEach((key) => {
+      canvas.style[key] = style[key];
+    });
+    canvas.width = canvas.width;
+    delete canvas[EXPANDO_KEY];
+    return true;
+  }
+  addEventListener(chart, type, listener) {
+    this.removeEventListener(chart, type);
+    const proxies = chart.$proxies || (chart.$proxies = {});
+    const handlers = {
+      attach: createAttachObserver,
+      detach: createDetachObserver,
+      resize: createResizeObserver
+    };
+    const handler = handlers[type] || createProxyAndListen;
+    proxies[type] = handler(chart, type, listener);
+  }
+  removeEventListener(chart, type) {
+    const proxies = chart.$proxies || (chart.$proxies = {});
+    const proxy = proxies[type];
+    if (!proxy) {
+      return;
+    }
+    const handlers = {
+      attach: releaseObserver,
+      detach: releaseObserver,
+      resize: releaseObserver
+    };
+    const handler = handlers[type] || removeListener;
+    handler(chart, type, proxy);
+    proxies[type] = undefined;
+  }
+  getDevicePixelRatio() {
+    return window.devicePixelRatio;
+  }
+  getMaximumSize(canvas, width, height, aspectRatio) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.F)(canvas, width, height, aspectRatio);
+  }
+  isAttached(canvas) {
+    const container = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.G)(canvas);
+    return !!(container && container.isConnected);
+  }
+}
+
+function _detectPlatform(canvas) {
+  if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.L)() || (typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas)) {
+    return BasicPlatform;
+  }
+  return DomPlatform;
+}
+
+class Element {
+  constructor() {
+    this.x = undefined;
+    this.y = undefined;
+    this.active = false;
+    this.options = undefined;
+    this.$animations = undefined;
+  }
+  tooltipPosition(useFinalPosition) {
+    const {x, y} = this.getProps(['x', 'y'], useFinalPosition);
+    return {x, y};
+  }
+  hasValue() {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.q)(this.x) && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.q)(this.y);
+  }
+  getProps(props, final) {
+    const anims = this.$animations;
+    if (!final || !anims) {
+      return this;
+    }
+    const ret = {};
+    props.forEach(prop => {
+      ret[prop] = anims[prop] && anims[prop].active() ? anims[prop]._to : this[prop];
+    });
+    return ret;
+  }
+}
+Element.defaults = {};
+Element.defaultRoutes = undefined;
+
+const formatters = {
+  values(value) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(value) ? value : '' + value;
+  },
+  numeric(tickValue, index, ticks) {
+    if (tickValue === 0) {
+      return '0';
+    }
+    const locale = this.chart.options.locale;
+    let notation;
+    let delta = tickValue;
+    if (ticks.length > 1) {
+      const maxTick = Math.max(Math.abs(ticks[0].value), Math.abs(ticks[ticks.length - 1].value));
+      if (maxTick < 1e-4 || maxTick > 1e+15) {
+        notation = 'scientific';
+      }
+      delta = calculateDelta(tickValue, ticks);
+    }
+    const logDelta = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(Math.abs(delta));
+    const numDecimal = Math.max(Math.min(-1 * Math.floor(logDelta), 20), 0);
+    const options = {notation, minimumFractionDigits: numDecimal, maximumFractionDigits: numDecimal};
+    Object.assign(options, this.options.ticks.format);
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.o)(tickValue, locale, options);
+  },
+  logarithmic(tickValue, index, ticks) {
+    if (tickValue === 0) {
+      return '0';
+    }
+    const remain = tickValue / (Math.pow(10, Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(tickValue))));
+    if (remain === 1 || remain === 2 || remain === 5) {
+      return formatters.numeric.call(this, tickValue, index, ticks);
+    }
+    return '';
+  }
+};
+function calculateDelta(tickValue, ticks) {
+  let delta = ticks.length > 3 ? ticks[2].value - ticks[1].value : ticks[1].value - ticks[0].value;
+  if (Math.abs(delta) >= 1 && tickValue !== Math.floor(tickValue)) {
+    delta = tickValue - Math.floor(tickValue);
+  }
+  return delta;
+}
+var Ticks = {formatters};
+
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set('scale', {
+  display: true,
+  offset: false,
+  reverse: false,
+  beginAtZero: false,
+  bounds: 'ticks',
+  grace: 0,
+  grid: {
+    display: true,
+    lineWidth: 1,
+    drawBorder: true,
+    drawOnChartArea: true,
+    drawTicks: true,
+    tickLength: 8,
+    tickWidth: (_ctx, options) => options.lineWidth,
+    tickColor: (_ctx, options) => options.color,
+    offset: false,
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 1
+  },
+  title: {
+    display: false,
+    text: '',
+    padding: {
+      top: 4,
+      bottom: 4
+    }
+  },
+  ticks: {
+    minRotation: 0,
+    maxRotation: 50,
+    mirror: false,
+    textStrokeWidth: 0,
+    textStrokeColor: '',
+    padding: 3,
+    display: true,
+    autoSkip: true,
+    autoSkipPadding: 3,
+    labelOffset: 0,
+    callback: Ticks.formatters.values,
+    minor: {},
+    major: {},
+    align: 'center',
+    crossAlign: 'near',
+    showLabelBackdrop: false,
+    backdropColor: 'rgba(255, 255, 255, 0.75)',
+    backdropPadding: 2,
+  }
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.route('scale.ticks', 'color', '', 'color');
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.route('scale.grid', 'color', '', 'borderColor');
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.route('scale.grid', 'borderColor', '', 'borderColor');
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.route('scale.title', 'color', '', 'color');
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe('scale', {
+  _fallback: false,
+  _scriptable: (name) => !name.startsWith('before') && !name.startsWith('after') && name !== 'callback' && name !== 'parser',
+  _indexable: (name) => name !== 'borderDash' && name !== 'tickBorderDash',
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe('scales', {
+  _fallback: 'scale',
+});
+_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe('scale.ticks', {
+  _scriptable: (name) => name !== 'backdropPadding' && name !== 'callback',
+  _indexable: (name) => name !== 'backdropPadding',
+});
+
+function autoSkip(scale, ticks) {
+  const tickOpts = scale.options.ticks;
+  const ticksLimit = tickOpts.maxTicksLimit || determineMaxTicks(scale);
+  const majorIndices = tickOpts.major.enabled ? getMajorIndices(ticks) : [];
+  const numMajorIndices = majorIndices.length;
+  const first = majorIndices[0];
+  const last = majorIndices[numMajorIndices - 1];
+  const newTicks = [];
+  if (numMajorIndices > ticksLimit) {
+    skipMajors(ticks, newTicks, majorIndices, numMajorIndices / ticksLimit);
+    return newTicks;
+  }
+  const spacing = calculateSpacing(majorIndices, ticks, ticksLimit);
+  if (numMajorIndices > 0) {
+    let i, ilen;
+    const avgMajorSpacing = numMajorIndices > 1 ? Math.round((last - first) / (numMajorIndices - 1)) : null;
+    skip(ticks, newTicks, spacing, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(avgMajorSpacing) ? 0 : first - avgMajorSpacing, first);
+    for (i = 0, ilen = numMajorIndices - 1; i < ilen; i++) {
+      skip(ticks, newTicks, spacing, majorIndices[i], majorIndices[i + 1]);
+    }
+    skip(ticks, newTicks, spacing, last, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(avgMajorSpacing) ? ticks.length : last + avgMajorSpacing);
+    return newTicks;
+  }
+  skip(ticks, newTicks, spacing);
+  return newTicks;
+}
+function determineMaxTicks(scale) {
+  const offset = scale.options.offset;
+  const tickLength = scale._tickSize();
+  const maxScale = scale._length / tickLength + (offset ? 0 : 1);
+  const maxChart = scale._maxLength / tickLength;
+  return Math.floor(Math.min(maxScale, maxChart));
+}
+function calculateSpacing(majorIndices, ticks, ticksLimit) {
+  const evenMajorSpacing = getEvenSpacing(majorIndices);
+  const spacing = ticks.length / ticksLimit;
+  if (!evenMajorSpacing) {
+    return Math.max(spacing, 1);
+  }
+  const factors = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.N)(evenMajorSpacing);
+  for (let i = 0, ilen = factors.length - 1; i < ilen; i++) {
+    const factor = factors[i];
+    if (factor > spacing) {
+      return factor;
+    }
+  }
+  return Math.max(spacing, 1);
+}
+function getMajorIndices(ticks) {
+  const result = [];
+  let i, ilen;
+  for (i = 0, ilen = ticks.length; i < ilen; i++) {
+    if (ticks[i].major) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+function skipMajors(ticks, newTicks, majorIndices, spacing) {
+  let count = 0;
+  let next = majorIndices[0];
+  let i;
+  spacing = Math.ceil(spacing);
+  for (i = 0; i < ticks.length; i++) {
+    if (i === next) {
+      newTicks.push(ticks[i]);
+      count++;
+      next = majorIndices[count * spacing];
+    }
+  }
+}
+function skip(ticks, newTicks, spacing, majorStart, majorEnd) {
+  const start = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(majorStart, 0);
+  const end = Math.min((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(majorEnd, ticks.length), ticks.length);
+  let count = 0;
+  let length, i, next;
+  spacing = Math.ceil(spacing);
+  if (majorEnd) {
+    length = majorEnd - majorStart;
+    spacing = length / Math.floor(length / spacing);
+  }
+  next = start;
+  while (next < 0) {
+    count++;
+    next = Math.round(start + count * spacing);
+  }
+  for (i = Math.max(start, 0); i < end; i++) {
+    if (i === next) {
+      newTicks.push(ticks[i]);
+      count++;
+      next = Math.round(start + count * spacing);
+    }
+  }
+}
+function getEvenSpacing(arr) {
+  const len = arr.length;
+  let i, diff;
+  if (len < 2) {
+    return false;
+  }
+  for (diff = arr[0], i = 1; i < len; ++i) {
+    if (arr[i] - arr[i - 1] !== diff) {
+      return false;
+    }
+  }
+  return diff;
+}
+
+const reverseAlign = (align) => align === 'left' ? 'right' : align === 'right' ? 'left' : align;
+const offsetFromEdge = (scale, edge, offset) => edge === 'top' || edge === 'left' ? scale[edge] + offset : scale[edge] - offset;
+function sample(arr, numItems) {
+  const result = [];
+  const increment = arr.length / numItems;
+  const len = arr.length;
+  let i = 0;
+  for (; i < len; i += increment) {
+    result.push(arr[Math.floor(i)]);
+  }
+  return result;
+}
+function getPixelForGridLine(scale, index, offsetGridLines) {
+  const length = scale.ticks.length;
+  const validIndex = Math.min(index, length - 1);
+  const start = scale._startPixel;
+  const end = scale._endPixel;
+  const epsilon = 1e-6;
+  let lineValue = scale.getPixelForTick(validIndex);
+  let offset;
+  if (offsetGridLines) {
+    if (length === 1) {
+      offset = Math.max(lineValue - start, end - lineValue);
+    } else if (index === 0) {
+      offset = (scale.getPixelForTick(1) - lineValue) / 2;
+    } else {
+      offset = (lineValue - scale.getPixelForTick(validIndex - 1)) / 2;
+    }
+    lineValue += validIndex < index ? offset : -offset;
+    if (lineValue < start - epsilon || lineValue > end + epsilon) {
+      return;
+    }
+  }
+  return lineValue;
+}
+function garbageCollect(caches, length) {
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(caches, (cache) => {
+    const gc = cache.gc;
+    const gcLen = gc.length / 2;
+    let i;
+    if (gcLen > length) {
+      for (i = 0; i < gcLen; ++i) {
+        delete cache.data[gc[i]];
+      }
+      gc.splice(0, gcLen);
+    }
+  });
+}
+function getTickMarkLength(options) {
+  return options.drawTicks ? options.tickLength : 0;
+}
+function getTitleHeight(options, fallback) {
+  if (!options.display) {
+    return 0;
+  }
+  const font = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.font, fallback);
+  const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(options.padding);
+  const lines = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(options.text) ? options.text.length : 1;
+  return (lines * font.lineHeight) + padding.height;
+}
+function createScaleContext(parent, scale) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent, {
+    scale,
+    type: 'scale'
+  });
+}
+function createTickContext(parent, index, tick) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent, {
+    tick,
+    index,
+    type: 'tick'
+  });
+}
+function titleAlign(align, position, reverse) {
+  let ret = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a0)(align);
+  if ((reverse && position !== 'right') || (!reverse && position === 'right')) {
+    ret = reverseAlign(ret);
+  }
+  return ret;
+}
+function titleArgs(scale, offset, position, align) {
+  const {top, left, bottom, right, chart} = scale;
+  const {chartArea, scales} = chart;
+  let rotation = 0;
+  let maxWidth, titleX, titleY;
+  const height = bottom - top;
+  const width = right - left;
+  if (scale.isHorizontal()) {
+    titleX = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, left, right);
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+      const positionAxisID = Object.keys(position)[0];
+      const value = position[positionAxisID];
+      titleY = scales[positionAxisID].getPixelForValue(value) + height - offset;
+    } else if (position === 'center') {
+      titleY = (chartArea.bottom + chartArea.top) / 2 + height - offset;
+    } else {
+      titleY = offsetFromEdge(scale, position, offset);
+    }
+    maxWidth = right - left;
+  } else {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+      const positionAxisID = Object.keys(position)[0];
+      const value = position[positionAxisID];
+      titleX = scales[positionAxisID].getPixelForValue(value) - width + offset;
+    } else if (position === 'center') {
+      titleX = (chartArea.left + chartArea.right) / 2 - width + offset;
+    } else {
+      titleX = offsetFromEdge(scale, position, offset);
+    }
+    titleY = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, bottom, top);
+    rotation = position === 'left' ? -_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H : _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H;
+  }
+  return {titleX, titleY, maxWidth, rotation};
+}
+class Scale extends Element {
+  constructor(cfg) {
+    super();
+    this.id = cfg.id;
+    this.type = cfg.type;
+    this.options = undefined;
+    this.ctx = cfg.ctx;
+    this.chart = cfg.chart;
+    this.top = undefined;
+    this.bottom = undefined;
+    this.left = undefined;
+    this.right = undefined;
+    this.width = undefined;
+    this.height = undefined;
+    this._margins = {
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0
+    };
+    this.maxWidth = undefined;
+    this.maxHeight = undefined;
+    this.paddingTop = undefined;
+    this.paddingBottom = undefined;
+    this.paddingLeft = undefined;
+    this.paddingRight = undefined;
+    this.axis = undefined;
+    this.labelRotation = undefined;
+    this.min = undefined;
+    this.max = undefined;
+    this._range = undefined;
+    this.ticks = [];
+    this._gridLineItems = null;
+    this._labelItems = null;
+    this._labelSizes = null;
+    this._length = 0;
+    this._maxLength = 0;
+    this._longestTextCache = {};
+    this._startPixel = undefined;
+    this._endPixel = undefined;
+    this._reversePixels = false;
+    this._userMax = undefined;
+    this._userMin = undefined;
+    this._suggestedMax = undefined;
+    this._suggestedMin = undefined;
+    this._ticksLength = 0;
+    this._borderValue = 0;
+    this._cache = {};
+    this._dataLimitsCached = false;
+    this.$context = undefined;
+  }
+  init(options) {
+    this.options = options.setContext(this.getContext());
+    this.axis = options.axis;
+    this._userMin = this.parse(options.min);
+    this._userMax = this.parse(options.max);
+    this._suggestedMin = this.parse(options.suggestedMin);
+    this._suggestedMax = this.parse(options.suggestedMax);
+  }
+  parse(raw, index) {
+    return raw;
+  }
+  getUserBounds() {
+    let {_userMin, _userMax, _suggestedMin, _suggestedMax} = this;
+    _userMin = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_userMin, Number.POSITIVE_INFINITY);
+    _userMax = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_userMax, Number.NEGATIVE_INFINITY);
+    _suggestedMin = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_suggestedMin, Number.POSITIVE_INFINITY);
+    _suggestedMax = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_suggestedMax, Number.NEGATIVE_INFINITY);
+    return {
+      min: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_userMin, _suggestedMin),
+      max: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(_userMax, _suggestedMax),
+      minDefined: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(_userMin),
+      maxDefined: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(_userMax)
+    };
+  }
+  getMinMax(canStack) {
+    let {min, max, minDefined, maxDefined} = this.getUserBounds();
+    let range;
+    if (minDefined && maxDefined) {
+      return {min, max};
+    }
+    const metas = this.getMatchingVisibleMetas();
+    for (let i = 0, ilen = metas.length; i < ilen; ++i) {
+      range = metas[i].controller.getMinMax(this, canStack);
+      if (!minDefined) {
+        min = Math.min(min, range.min);
+      }
+      if (!maxDefined) {
+        max = Math.max(max, range.max);
+      }
+    }
+    min = maxDefined && min > max ? max : min;
+    max = minDefined && min > max ? min : max;
+    return {
+      min: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(min, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(max, min)),
+      max: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(max, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(min, max))
+    };
+  }
+  getPadding() {
+    return {
+      left: this.paddingLeft || 0,
+      top: this.paddingTop || 0,
+      right: this.paddingRight || 0,
+      bottom: this.paddingBottom || 0
+    };
+  }
+  getTicks() {
+    return this.ticks;
+  }
+  getLabels() {
+    const data = this.chart.data;
+    return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+  }
+  beforeLayout() {
+    this._cache = {};
+    this._dataLimitsCached = false;
+  }
+  beforeUpdate() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.beforeUpdate, [this]);
+  }
+  update(maxWidth, maxHeight, margins) {
+    const {beginAtZero, grace, ticks: tickOpts} = this.options;
+    const sampleSize = tickOpts.sampleSize;
+    this.beforeUpdate();
+    this.maxWidth = maxWidth;
+    this.maxHeight = maxHeight;
+    this._margins = margins = Object.assign({
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0
+    }, margins);
+    this.ticks = null;
+    this._labelSizes = null;
+    this._gridLineItems = null;
+    this._labelItems = null;
+    this.beforeSetDimensions();
+    this.setDimensions();
+    this.afterSetDimensions();
+    this._maxLength = this.isHorizontal()
+      ? this.width + margins.left + margins.right
+      : this.height + margins.top + margins.bottom;
+    if (!this._dataLimitsCached) {
+      this.beforeDataLimits();
+      this.determineDataLimits();
+      this.afterDataLimits();
+      this._range = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.R)(this, grace, beginAtZero);
+      this._dataLimitsCached = true;
+    }
+    this.beforeBuildTicks();
+    this.ticks = this.buildTicks() || [];
+    this.afterBuildTicks();
+    const samplingEnabled = sampleSize < this.ticks.length;
+    this._convertTicksToLabels(samplingEnabled ? sample(this.ticks, sampleSize) : this.ticks);
+    this.configure();
+    this.beforeCalculateLabelRotation();
+    this.calculateLabelRotation();
+    this.afterCalculateLabelRotation();
+    if (tickOpts.display && (tickOpts.autoSkip || tickOpts.source === 'auto')) {
+      this.ticks = autoSkip(this, this.ticks);
+      this._labelSizes = null;
+      this.afterAutoSkip();
+    }
+    if (samplingEnabled) {
+      this._convertTicksToLabels(this.ticks);
+    }
+    this.beforeFit();
+    this.fit();
+    this.afterFit();
+    this.afterUpdate();
+  }
+  configure() {
+    let reversePixels = this.options.reverse;
+    let startPixel, endPixel;
+    if (this.isHorizontal()) {
+      startPixel = this.left;
+      endPixel = this.right;
+    } else {
+      startPixel = this.top;
+      endPixel = this.bottom;
+      reversePixels = !reversePixels;
+    }
+    this._startPixel = startPixel;
+    this._endPixel = endPixel;
+    this._reversePixels = reversePixels;
+    this._length = endPixel - startPixel;
+    this._alignToPixels = this.options.alignToPixels;
+  }
+  afterUpdate() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.afterUpdate, [this]);
+  }
+  beforeSetDimensions() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.beforeSetDimensions, [this]);
+  }
+  setDimensions() {
+    if (this.isHorizontal()) {
+      this.width = this.maxWidth;
+      this.left = 0;
+      this.right = this.width;
+    } else {
+      this.height = this.maxHeight;
+      this.top = 0;
+      this.bottom = this.height;
+    }
+    this.paddingLeft = 0;
+    this.paddingTop = 0;
+    this.paddingRight = 0;
+    this.paddingBottom = 0;
+  }
+  afterSetDimensions() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.afterSetDimensions, [this]);
+  }
+  _callHooks(name) {
+    this.chart.notifyPlugins(name, this.getContext());
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options[name], [this]);
+  }
+  beforeDataLimits() {
+    this._callHooks('beforeDataLimits');
+  }
+  determineDataLimits() {}
+  afterDataLimits() {
+    this._callHooks('afterDataLimits');
+  }
+  beforeBuildTicks() {
+    this._callHooks('beforeBuildTicks');
+  }
+  buildTicks() {
+    return [];
+  }
+  afterBuildTicks() {
+    this._callHooks('afterBuildTicks');
+  }
+  beforeTickToLabelConversion() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.beforeTickToLabelConversion, [this]);
+  }
+  generateTickLabels(ticks) {
+    const tickOpts = this.options.ticks;
+    let i, ilen, tick;
+    for (i = 0, ilen = ticks.length; i < ilen; i++) {
+      tick = ticks[i];
+      tick.label = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(tickOpts.callback, [tick.value, i, ticks], this);
+    }
+  }
+  afterTickToLabelConversion() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.afterTickToLabelConversion, [this]);
+  }
+  beforeCalculateLabelRotation() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.beforeCalculateLabelRotation, [this]);
+  }
+  calculateLabelRotation() {
+    const options = this.options;
+    const tickOpts = options.ticks;
+    const numTicks = this.ticks.length;
+    const minRotation = tickOpts.minRotation || 0;
+    const maxRotation = tickOpts.maxRotation;
+    let labelRotation = minRotation;
+    let tickWidth, maxHeight, maxLabelDiagonal;
+    if (!this._isVisible() || !tickOpts.display || minRotation >= maxRotation || numTicks <= 1 || !this.isHorizontal()) {
+      this.labelRotation = minRotation;
+      return;
+    }
+    const labelSizes = this._getLabelSizes();
+    const maxLabelWidth = labelSizes.widest.width;
+    const maxLabelHeight = labelSizes.highest.height;
+    const maxWidth = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(this.chart.width - maxLabelWidth, 0, this.maxWidth);
+    tickWidth = options.offset ? this.maxWidth / numTicks : maxWidth / (numTicks - 1);
+    if (maxLabelWidth + 6 > tickWidth) {
+      tickWidth = maxWidth / (numTicks - (options.offset ? 0.5 : 1));
+      maxHeight = this.maxHeight - getTickMarkLength(options.grid)
+				- tickOpts.padding - getTitleHeight(options.title, this.chart.options.font);
+      maxLabelDiagonal = Math.sqrt(maxLabelWidth * maxLabelWidth + maxLabelHeight * maxLabelHeight);
+      labelRotation = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.S)(Math.min(
+        Math.asin((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)((labelSizes.highest.height + 6) / tickWidth, -1, 1)),
+        Math.asin((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(maxHeight / maxLabelDiagonal, -1, 1)) - Math.asin((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(maxLabelHeight / maxLabelDiagonal, -1, 1))
+      ));
+      labelRotation = Math.max(minRotation, Math.min(maxRotation, labelRotation));
+    }
+    this.labelRotation = labelRotation;
+  }
+  afterCalculateLabelRotation() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.afterCalculateLabelRotation, [this]);
+  }
+  afterAutoSkip() {}
+  beforeFit() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.beforeFit, [this]);
+  }
+  fit() {
+    const minSize = {
+      width: 0,
+      height: 0
+    };
+    const {chart, options: {ticks: tickOpts, title: titleOpts, grid: gridOpts}} = this;
+    const display = this._isVisible();
+    const isHorizontal = this.isHorizontal();
+    if (display) {
+      const titleHeight = getTitleHeight(titleOpts, chart.options.font);
+      if (isHorizontal) {
+        minSize.width = this.maxWidth;
+        minSize.height = getTickMarkLength(gridOpts) + titleHeight;
+      } else {
+        minSize.height = this.maxHeight;
+        minSize.width = getTickMarkLength(gridOpts) + titleHeight;
+      }
+      if (tickOpts.display && this.ticks.length) {
+        const {first, last, widest, highest} = this._getLabelSizes();
+        const tickPadding = tickOpts.padding * 2;
+        const angleRadians = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.labelRotation);
+        const cos = Math.cos(angleRadians);
+        const sin = Math.sin(angleRadians);
+        if (isHorizontal) {
+          const labelHeight = tickOpts.mirror ? 0 : sin * widest.width + cos * highest.height;
+          minSize.height = Math.min(this.maxHeight, minSize.height + labelHeight + tickPadding);
+        } else {
+          const labelWidth = tickOpts.mirror ? 0 : cos * widest.width + sin * highest.height;
+          minSize.width = Math.min(this.maxWidth, minSize.width + labelWidth + tickPadding);
+        }
+        this._calculatePadding(first, last, sin, cos);
+      }
+    }
+    this._handleMargins();
+    if (isHorizontal) {
+      this.width = this._length = chart.width - this._margins.left - this._margins.right;
+      this.height = minSize.height;
+    } else {
+      this.width = minSize.width;
+      this.height = this._length = chart.height - this._margins.top - this._margins.bottom;
+    }
+  }
+  _calculatePadding(first, last, sin, cos) {
+    const {ticks: {align, padding}, position} = this.options;
+    const isRotated = this.labelRotation !== 0;
+    const labelsBelowTicks = position !== 'top' && this.axis === 'x';
+    if (this.isHorizontal()) {
+      const offsetLeft = this.getPixelForTick(0) - this.left;
+      const offsetRight = this.right - this.getPixelForTick(this.ticks.length - 1);
+      let paddingLeft = 0;
+      let paddingRight = 0;
+      if (isRotated) {
+        if (labelsBelowTicks) {
+          paddingLeft = cos * first.width;
+          paddingRight = sin * last.height;
+        } else {
+          paddingLeft = sin * first.height;
+          paddingRight = cos * last.width;
+        }
+      } else if (align === 'start') {
+        paddingRight = last.width;
+      } else if (align === 'end') {
+        paddingLeft = first.width;
+      } else if (align !== 'inner') {
+        paddingLeft = first.width / 2;
+        paddingRight = last.width / 2;
+      }
+      this.paddingLeft = Math.max((paddingLeft - offsetLeft + padding) * this.width / (this.width - offsetLeft), 0);
+      this.paddingRight = Math.max((paddingRight - offsetRight + padding) * this.width / (this.width - offsetRight), 0);
+    } else {
+      let paddingTop = last.height / 2;
+      let paddingBottom = first.height / 2;
+      if (align === 'start') {
+        paddingTop = 0;
+        paddingBottom = first.height;
+      } else if (align === 'end') {
+        paddingTop = last.height;
+        paddingBottom = 0;
+      }
+      this.paddingTop = paddingTop + padding;
+      this.paddingBottom = paddingBottom + padding;
+    }
+  }
+  _handleMargins() {
+    if (this._margins) {
+      this._margins.left = Math.max(this.paddingLeft, this._margins.left);
+      this._margins.top = Math.max(this.paddingTop, this._margins.top);
+      this._margins.right = Math.max(this.paddingRight, this._margins.right);
+      this._margins.bottom = Math.max(this.paddingBottom, this._margins.bottom);
+    }
+  }
+  afterFit() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.afterFit, [this]);
+  }
+  isHorizontal() {
+    const {axis, position} = this.options;
+    return position === 'top' || position === 'bottom' || axis === 'x';
+  }
+  isFullSize() {
+    return this.options.fullSize;
+  }
+  _convertTicksToLabels(ticks) {
+    this.beforeTickToLabelConversion();
+    this.generateTickLabels(ticks);
+    let i, ilen;
+    for (i = 0, ilen = ticks.length; i < ilen; i++) {
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(ticks[i].label)) {
+        ticks.splice(i, 1);
+        ilen--;
+        i--;
+      }
+    }
+    this.afterTickToLabelConversion();
+  }
+  _getLabelSizes() {
+    let labelSizes = this._labelSizes;
+    if (!labelSizes) {
+      const sampleSize = this.options.ticks.sampleSize;
+      let ticks = this.ticks;
+      if (sampleSize < ticks.length) {
+        ticks = sample(ticks, sampleSize);
+      }
+      this._labelSizes = labelSizes = this._computeLabelSizes(ticks, ticks.length);
+    }
+    return labelSizes;
+  }
+  _computeLabelSizes(ticks, length) {
+    const {ctx, _longestTextCache: caches} = this;
+    const widths = [];
+    const heights = [];
+    let widestLabelSize = 0;
+    let highestLabelSize = 0;
+    let i, j, jlen, label, tickFont, fontString, cache, lineHeight, width, height, nestedLabel;
+    for (i = 0; i < length; ++i) {
+      label = ticks[i].label;
+      tickFont = this._resolveTickFontOptions(i);
+      ctx.font = fontString = tickFont.string;
+      cache = caches[fontString] = caches[fontString] || {data: {}, gc: []};
+      lineHeight = tickFont.lineHeight;
+      width = height = 0;
+      if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(label) && !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(label)) {
+        width = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.U)(ctx, cache.data, cache.gc, width, label);
+        height = lineHeight;
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(label)) {
+        for (j = 0, jlen = label.length; j < jlen; ++j) {
+          nestedLabel = label[j];
+          if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(nestedLabel) && !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(nestedLabel)) {
+            width = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.U)(ctx, cache.data, cache.gc, width, nestedLabel);
+            height += lineHeight;
+          }
+        }
+      }
+      widths.push(width);
+      heights.push(height);
+      widestLabelSize = Math.max(width, widestLabelSize);
+      highestLabelSize = Math.max(height, highestLabelSize);
+    }
+    garbageCollect(caches, length);
+    const widest = widths.indexOf(widestLabelSize);
+    const highest = heights.indexOf(highestLabelSize);
+    const valueAt = (idx) => ({width: widths[idx] || 0, height: heights[idx] || 0});
+    return {
+      first: valueAt(0),
+      last: valueAt(length - 1),
+      widest: valueAt(widest),
+      highest: valueAt(highest),
+      widths,
+      heights,
+    };
+  }
+  getLabelForValue(value) {
+    return value;
+  }
+  getPixelForValue(value, index) {
+    return NaN;
+  }
+  getValueForPixel(pixel) {}
+  getPixelForTick(index) {
+    const ticks = this.ticks;
+    if (index < 0 || index > ticks.length - 1) {
+      return null;
+    }
+    return this.getPixelForValue(ticks[index].value);
+  }
+  getPixelForDecimal(decimal) {
+    if (this._reversePixels) {
+      decimal = 1 - decimal;
+    }
+    const pixel = this._startPixel + decimal * this._length;
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.V)(this._alignToPixels ? (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(this.chart, pixel, 0) : pixel);
+  }
+  getDecimalForPixel(pixel) {
+    const decimal = (pixel - this._startPixel) / this._length;
+    return this._reversePixels ? 1 - decimal : decimal;
+  }
+  getBasePixel() {
+    return this.getPixelForValue(this.getBaseValue());
+  }
+  getBaseValue() {
+    const {min, max} = this;
+    return min < 0 && max < 0 ? max :
+      min > 0 && max > 0 ? min :
+      0;
+  }
+  getContext(index) {
+    const ticks = this.ticks || [];
+    if (index >= 0 && index < ticks.length) {
+      const tick = ticks[index];
+      return tick.$context ||
+				(tick.$context = createTickContext(this.getContext(), index, tick));
+    }
+    return this.$context ||
+			(this.$context = createScaleContext(this.chart.getContext(), this));
+  }
+  _tickSize() {
+    const optionTicks = this.options.ticks;
+    const rot = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.labelRotation);
+    const cos = Math.abs(Math.cos(rot));
+    const sin = Math.abs(Math.sin(rot));
+    const labelSizes = this._getLabelSizes();
+    const padding = optionTicks.autoSkipPadding || 0;
+    const w = labelSizes ? labelSizes.widest.width + padding : 0;
+    const h = labelSizes ? labelSizes.highest.height + padding : 0;
+    return this.isHorizontal()
+      ? h * cos > w * sin ? w / cos : h / sin
+      : h * sin < w * cos ? h / cos : w / sin;
+  }
+  _isVisible() {
+    const display = this.options.display;
+    if (display !== 'auto') {
+      return !!display;
+    }
+    return this.getMatchingVisibleMetas().length > 0;
+  }
+  _computeGridLineItems(chartArea) {
+    const axis = this.axis;
+    const chart = this.chart;
+    const options = this.options;
+    const {grid, position} = options;
+    const offset = grid.offset;
+    const isHorizontal = this.isHorizontal();
+    const ticks = this.ticks;
+    const ticksLength = ticks.length + (offset ? 1 : 0);
+    const tl = getTickMarkLength(grid);
+    const items = [];
+    const borderOpts = grid.setContext(this.getContext());
+    const axisWidth = borderOpts.drawBorder ? borderOpts.borderWidth : 0;
+    const axisHalfWidth = axisWidth / 2;
+    const alignBorderValue = function(pixel) {
+      return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, pixel, axisWidth);
+    };
+    let borderValue, i, lineValue, alignedLineValue;
+    let tx1, ty1, tx2, ty2, x1, y1, x2, y2;
+    if (position === 'top') {
+      borderValue = alignBorderValue(this.bottom);
+      ty1 = this.bottom - tl;
+      ty2 = borderValue - axisHalfWidth;
+      y1 = alignBorderValue(chartArea.top) + axisHalfWidth;
+      y2 = chartArea.bottom;
+    } else if (position === 'bottom') {
+      borderValue = alignBorderValue(this.top);
+      y1 = chartArea.top;
+      y2 = alignBorderValue(chartArea.bottom) - axisHalfWidth;
+      ty1 = borderValue + axisHalfWidth;
+      ty2 = this.top + tl;
+    } else if (position === 'left') {
+      borderValue = alignBorderValue(this.right);
+      tx1 = this.right - tl;
+      tx2 = borderValue - axisHalfWidth;
+      x1 = alignBorderValue(chartArea.left) + axisHalfWidth;
+      x2 = chartArea.right;
+    } else if (position === 'right') {
+      borderValue = alignBorderValue(this.left);
+      x1 = chartArea.left;
+      x2 = alignBorderValue(chartArea.right) - axisHalfWidth;
+      tx1 = borderValue + axisHalfWidth;
+      tx2 = this.left + tl;
+    } else if (axis === 'x') {
+      if (position === 'center') {
+        borderValue = alignBorderValue((chartArea.top + chartArea.bottom) / 2 + 0.5);
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
+      }
+      y1 = chartArea.top;
+      y2 = chartArea.bottom;
+      ty1 = borderValue + axisHalfWidth;
+      ty2 = ty1 + tl;
+    } else if (axis === 'y') {
+      if (position === 'center') {
+        borderValue = alignBorderValue((chartArea.left + chartArea.right) / 2);
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        borderValue = alignBorderValue(this.chart.scales[positionAxisID].getPixelForValue(value));
+      }
+      tx1 = borderValue - axisHalfWidth;
+      tx2 = tx1 - tl;
+      x1 = chartArea.left;
+      x2 = chartArea.right;
+    }
+    const limit = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(options.ticks.maxTicksLimit, ticksLength);
+    const step = Math.max(1, Math.ceil(ticksLength / limit));
+    for (i = 0; i < ticksLength; i += step) {
+      const optsAtIndex = grid.setContext(this.getContext(i));
+      const lineWidth = optsAtIndex.lineWidth;
+      const lineColor = optsAtIndex.color;
+      const borderDash = grid.borderDash || [];
+      const borderDashOffset = optsAtIndex.borderDashOffset;
+      const tickWidth = optsAtIndex.tickWidth;
+      const tickColor = optsAtIndex.tickColor;
+      const tickBorderDash = optsAtIndex.tickBorderDash || [];
+      const tickBorderDashOffset = optsAtIndex.tickBorderDashOffset;
+      lineValue = getPixelForGridLine(this, i, offset);
+      if (lineValue === undefined) {
+        continue;
+      }
+      alignedLineValue = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, lineValue, lineWidth);
+      if (isHorizontal) {
+        tx1 = tx2 = x1 = x2 = alignedLineValue;
+      } else {
+        ty1 = ty2 = y1 = y2 = alignedLineValue;
+      }
+      items.push({
+        tx1,
+        ty1,
+        tx2,
+        ty2,
+        x1,
+        y1,
+        x2,
+        y2,
+        width: lineWidth,
+        color: lineColor,
+        borderDash,
+        borderDashOffset,
+        tickWidth,
+        tickColor,
+        tickBorderDash,
+        tickBorderDashOffset,
+      });
+    }
+    this._ticksLength = ticksLength;
+    this._borderValue = borderValue;
+    return items;
+  }
+  _computeLabelItems(chartArea) {
+    const axis = this.axis;
+    const options = this.options;
+    const {position, ticks: optionTicks} = options;
+    const isHorizontal = this.isHorizontal();
+    const ticks = this.ticks;
+    const {align, crossAlign, padding, mirror} = optionTicks;
+    const tl = getTickMarkLength(options.grid);
+    const tickAndPadding = tl + padding;
+    const hTickAndPadding = mirror ? -padding : tickAndPadding;
+    const rotation = -(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.labelRotation);
+    const items = [];
+    let i, ilen, tick, label, x, y, textAlign, pixel, font, lineHeight, lineCount, textOffset;
+    let textBaseline = 'middle';
+    if (position === 'top') {
+      y = this.bottom - hTickAndPadding;
+      textAlign = this._getXAxisLabelAlignment();
+    } else if (position === 'bottom') {
+      y = this.top + hTickAndPadding;
+      textAlign = this._getXAxisLabelAlignment();
+    } else if (position === 'left') {
+      const ret = this._getYAxisLabelAlignment(tl);
+      textAlign = ret.textAlign;
+      x = ret.x;
+    } else if (position === 'right') {
+      const ret = this._getYAxisLabelAlignment(tl);
+      textAlign = ret.textAlign;
+      x = ret.x;
+    } else if (axis === 'x') {
+      if (position === 'center') {
+        y = ((chartArea.top + chartArea.bottom) / 2) + tickAndPadding;
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        y = this.chart.scales[positionAxisID].getPixelForValue(value) + tickAndPadding;
+      }
+      textAlign = this._getXAxisLabelAlignment();
+    } else if (axis === 'y') {
+      if (position === 'center') {
+        x = ((chartArea.left + chartArea.right) / 2) - tickAndPadding;
+      } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+        const positionAxisID = Object.keys(position)[0];
+        const value = position[positionAxisID];
+        x = this.chart.scales[positionAxisID].getPixelForValue(value);
+      }
+      textAlign = this._getYAxisLabelAlignment(tl).textAlign;
+    }
+    if (axis === 'y') {
+      if (align === 'start') {
+        textBaseline = 'top';
+      } else if (align === 'end') {
+        textBaseline = 'bottom';
+      }
+    }
+    const labelSizes = this._getLabelSizes();
+    for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+      tick = ticks[i];
+      label = tick.label;
+      const optsAtIndex = optionTicks.setContext(this.getContext(i));
+      pixel = this.getPixelForTick(i) + optionTicks.labelOffset;
+      font = this._resolveTickFontOptions(i);
+      lineHeight = font.lineHeight;
+      lineCount = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(label) ? label.length : 1;
+      const halfCount = lineCount / 2;
+      const color = optsAtIndex.color;
+      const strokeColor = optsAtIndex.textStrokeColor;
+      const strokeWidth = optsAtIndex.textStrokeWidth;
+      let tickTextAlign = textAlign;
+      if (isHorizontal) {
+        x = pixel;
+        if (textAlign === 'inner') {
+          if (i === ilen - 1) {
+            tickTextAlign = !this.options.reverse ? 'right' : 'left';
+          } else if (i === 0) {
+            tickTextAlign = !this.options.reverse ? 'left' : 'right';
+          } else {
+            tickTextAlign = 'center';
+          }
+        }
+        if (position === 'top') {
+          if (crossAlign === 'near' || rotation !== 0) {
+            textOffset = -lineCount * lineHeight + lineHeight / 2;
+          } else if (crossAlign === 'center') {
+            textOffset = -labelSizes.highest.height / 2 - halfCount * lineHeight + lineHeight;
+          } else {
+            textOffset = -labelSizes.highest.height + lineHeight / 2;
+          }
+        } else {
+          if (crossAlign === 'near' || rotation !== 0) {
+            textOffset = lineHeight / 2;
+          } else if (crossAlign === 'center') {
+            textOffset = labelSizes.highest.height / 2 - halfCount * lineHeight;
+          } else {
+            textOffset = labelSizes.highest.height - lineCount * lineHeight;
+          }
+        }
+        if (mirror) {
+          textOffset *= -1;
+        }
+      } else {
+        y = pixel;
+        textOffset = (1 - lineCount) * lineHeight / 2;
+      }
+      let backdrop;
+      if (optsAtIndex.showLabelBackdrop) {
+        const labelPadding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(optsAtIndex.backdropPadding);
+        const height = labelSizes.heights[i];
+        const width = labelSizes.widths[i];
+        let top = y + textOffset - labelPadding.top;
+        let left = x - labelPadding.left;
+        switch (textBaseline) {
+        case 'middle':
+          top -= height / 2;
+          break;
+        case 'bottom':
+          top -= height;
+          break;
+        }
+        switch (textAlign) {
+        case 'center':
+          left -= width / 2;
+          break;
+        case 'right':
+          left -= width;
+          break;
+        }
+        backdrop = {
+          left,
+          top,
+          width: width + labelPadding.width,
+          height: height + labelPadding.height,
+          color: optsAtIndex.backdropColor,
+        };
+      }
+      items.push({
+        rotation,
+        label,
+        font,
+        color,
+        strokeColor,
+        strokeWidth,
+        textOffset,
+        textAlign: tickTextAlign,
+        textBaseline,
+        translation: [x, y],
+        backdrop,
+      });
+    }
+    return items;
+  }
+  _getXAxisLabelAlignment() {
+    const {position, ticks} = this.options;
+    const rotation = -(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.labelRotation);
+    if (rotation) {
+      return position === 'top' ? 'left' : 'right';
+    }
+    let align = 'center';
+    if (ticks.align === 'start') {
+      align = 'left';
+    } else if (ticks.align === 'end') {
+      align = 'right';
+    } else if (ticks.align === 'inner') {
+      align = 'inner';
+    }
+    return align;
+  }
+  _getYAxisLabelAlignment(tl) {
+    const {position, ticks: {crossAlign, mirror, padding}} = this.options;
+    const labelSizes = this._getLabelSizes();
+    const tickAndPadding = tl + padding;
+    const widest = labelSizes.widest.width;
+    let textAlign;
+    let x;
+    if (position === 'left') {
+      if (mirror) {
+        x = this.right + padding;
+        if (crossAlign === 'near') {
+          textAlign = 'left';
+        } else if (crossAlign === 'center') {
+          textAlign = 'center';
+          x += (widest / 2);
+        } else {
+          textAlign = 'right';
+          x += widest;
+        }
+      } else {
+        x = this.right - tickAndPadding;
+        if (crossAlign === 'near') {
+          textAlign = 'right';
+        } else if (crossAlign === 'center') {
+          textAlign = 'center';
+          x -= (widest / 2);
+        } else {
+          textAlign = 'left';
+          x = this.left;
+        }
+      }
+    } else if (position === 'right') {
+      if (mirror) {
+        x = this.left + padding;
+        if (crossAlign === 'near') {
+          textAlign = 'right';
+        } else if (crossAlign === 'center') {
+          textAlign = 'center';
+          x -= (widest / 2);
+        } else {
+          textAlign = 'left';
+          x -= widest;
+        }
+      } else {
+        x = this.left + tickAndPadding;
+        if (crossAlign === 'near') {
+          textAlign = 'left';
+        } else if (crossAlign === 'center') {
+          textAlign = 'center';
+          x += widest / 2;
+        } else {
+          textAlign = 'right';
+          x = this.right;
+        }
+      }
+    } else {
+      textAlign = 'right';
+    }
+    return {textAlign, x};
+  }
+  _computeLabelArea() {
+    if (this.options.ticks.mirror) {
+      return;
+    }
+    const chart = this.chart;
+    const position = this.options.position;
+    if (position === 'left' || position === 'right') {
+      return {top: 0, left: this.left, bottom: chart.height, right: this.right};
+    } if (position === 'top' || position === 'bottom') {
+      return {top: this.top, left: 0, bottom: this.bottom, right: chart.width};
+    }
+  }
+  drawBackground() {
+    const {ctx, options: {backgroundColor}, left, top, width, height} = this;
+    if (backgroundColor) {
+      ctx.save();
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(left, top, width, height);
+      ctx.restore();
+    }
+  }
+  getLineWidthForValue(value) {
+    const grid = this.options.grid;
+    if (!this._isVisible() || !grid.display) {
+      return 0;
+    }
+    const ticks = this.ticks;
+    const index = ticks.findIndex(t => t.value === value);
+    if (index >= 0) {
+      const opts = grid.setContext(this.getContext(index));
+      return opts.lineWidth;
+    }
+    return 0;
+  }
+  drawGrid(chartArea) {
+    const grid = this.options.grid;
+    const ctx = this.ctx;
+    const items = this._gridLineItems || (this._gridLineItems = this._computeGridLineItems(chartArea));
+    let i, ilen;
+    const drawLine = (p1, p2, style) => {
+      if (!style.width || !style.color) {
+        return;
+      }
+      ctx.save();
+      ctx.lineWidth = style.width;
+      ctx.strokeStyle = style.color;
+      ctx.setLineDash(style.borderDash || []);
+      ctx.lineDashOffset = style.borderDashOffset;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    };
+    if (grid.display) {
+      for (i = 0, ilen = items.length; i < ilen; ++i) {
+        const item = items[i];
+        if (grid.drawOnChartArea) {
+          drawLine(
+            {x: item.x1, y: item.y1},
+            {x: item.x2, y: item.y2},
+            item
+          );
+        }
+        if (grid.drawTicks) {
+          drawLine(
+            {x: item.tx1, y: item.ty1},
+            {x: item.tx2, y: item.ty2},
+            {
+              color: item.tickColor,
+              width: item.tickWidth,
+              borderDash: item.tickBorderDash,
+              borderDashOffset: item.tickBorderDashOffset
+            }
+          );
+        }
+      }
+    }
+  }
+  drawBorder() {
+    const {chart, ctx, options: {grid}} = this;
+    const borderOpts = grid.setContext(this.getContext());
+    const axisWidth = grid.drawBorder ? borderOpts.borderWidth : 0;
+    if (!axisWidth) {
+      return;
+    }
+    const lastLineWidth = grid.setContext(this.getContext(0)).lineWidth;
+    const borderValue = this._borderValue;
+    let x1, x2, y1, y2;
+    if (this.isHorizontal()) {
+      x1 = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, this.left, axisWidth) - axisWidth / 2;
+      x2 = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, this.right, lastLineWidth) + lastLineWidth / 2;
+      y1 = y2 = borderValue;
+    } else {
+      y1 = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, this.top, axisWidth) - axisWidth / 2;
+      y2 = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.W)(chart, this.bottom, lastLineWidth) + lastLineWidth / 2;
+      x1 = x2 = borderValue;
+    }
+    ctx.save();
+    ctx.lineWidth = borderOpts.borderWidth;
+    ctx.strokeStyle = borderOpts.borderColor;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    ctx.restore();
+  }
+  drawLabels(chartArea) {
+    const optionTicks = this.options.ticks;
+    if (!optionTicks.display) {
+      return;
+    }
+    const ctx = this.ctx;
+    const area = this._computeLabelArea();
+    if (area) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.X)(ctx, area);
+    }
+    const items = this._labelItems || (this._labelItems = this._computeLabelItems(chartArea));
+    let i, ilen;
+    for (i = 0, ilen = items.length; i < ilen; ++i) {
+      const item = items[i];
+      const tickFont = item.font;
+      const label = item.label;
+      if (item.backdrop) {
+        ctx.fillStyle = item.backdrop.color;
+        ctx.fillRect(item.backdrop.left, item.backdrop.top, item.backdrop.width, item.backdrop.height);
+      }
+      let y = item.textOffset;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, label, 0, y, tickFont, item);
+    }
+    if (area) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Z)(ctx);
+    }
+  }
+  drawTitle() {
+    const {ctx, options: {position, title, reverse}} = this;
+    if (!title.display) {
+      return;
+    }
+    const font = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(title.font);
+    const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(title.padding);
+    const align = title.align;
+    let offset = font.lineHeight / 2;
+    if (position === 'bottom' || position === 'center' || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(position)) {
+      offset += padding.bottom;
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(title.text)) {
+        offset += font.lineHeight * (title.text.length - 1);
+      }
+    } else {
+      offset += padding.top;
+    }
+    const {titleX, titleY, maxWidth, rotation} = titleArgs(this, offset, position, align);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, title.text, 0, 0, font, {
+      color: title.color,
+      maxWidth,
+      rotation,
+      textAlign: titleAlign(align, position, reverse),
+      textBaseline: 'middle',
+      translation: [titleX, titleY],
+    });
+  }
+  draw(chartArea) {
+    if (!this._isVisible()) {
+      return;
+    }
+    this.drawBackground();
+    this.drawGrid(chartArea);
+    this.drawBorder();
+    this.drawTitle();
+    this.drawLabels(chartArea);
+  }
+  _layers() {
+    const opts = this.options;
+    const tz = opts.ticks && opts.ticks.z || 0;
+    const gz = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(opts.grid && opts.grid.z, -1);
+    if (!this._isVisible() || this.draw !== Scale.prototype.draw) {
+      return [{
+        z: tz,
+        draw: (chartArea) => {
+          this.draw(chartArea);
+        }
+      }];
+    }
+    return [{
+      z: gz,
+      draw: (chartArea) => {
+        this.drawBackground();
+        this.drawGrid(chartArea);
+        this.drawTitle();
+      }
+    }, {
+      z: gz + 1,
+      draw: () => {
+        this.drawBorder();
+      }
+    }, {
+      z: tz,
+      draw: (chartArea) => {
+        this.drawLabels(chartArea);
+      }
+    }];
+  }
+  getMatchingVisibleMetas(type) {
+    const metas = this.chart.getSortedVisibleDatasetMetas();
+    const axisID = this.axis + 'AxisID';
+    const result = [];
+    let i, ilen;
+    for (i = 0, ilen = metas.length; i < ilen; ++i) {
+      const meta = metas[i];
+      if (meta[axisID] === this.id && (!type || meta.type === type)) {
+        result.push(meta);
+      }
+    }
+    return result;
+  }
+  _resolveTickFontOptions(index) {
+    const opts = this.options.ticks.setContext(this.getContext(index));
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(opts.font);
+  }
+  _maxDigits() {
+    const fontSize = this._resolveTickFontOptions(0).lineHeight;
+    return (this.isHorizontal() ? this.width : this.height) / fontSize;
+  }
+}
+
+class TypedRegistry {
+  constructor(type, scope, override) {
+    this.type = type;
+    this.scope = scope;
+    this.override = override;
+    this.items = Object.create(null);
+  }
+  isForType(type) {
+    return Object.prototype.isPrototypeOf.call(this.type.prototype, type.prototype);
+  }
+  register(item) {
+    const proto = Object.getPrototypeOf(item);
+    let parentScope;
+    if (isIChartComponent(proto)) {
+      parentScope = this.register(proto);
+    }
+    const items = this.items;
+    const id = item.id;
+    const scope = this.scope + '.' + id;
+    if (!id) {
+      throw new Error('class does not have id: ' + item);
+    }
+    if (id in items) {
+      return scope;
+    }
+    items[id] = item;
+    registerDefaults(item, scope, parentScope);
+    if (this.override) {
+      _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.override(item.id, item.overrides);
+    }
+    return scope;
+  }
+  get(id) {
+    return this.items[id];
+  }
+  unregister(item) {
+    const items = this.items;
+    const id = item.id;
+    const scope = this.scope;
+    if (id in items) {
+      delete items[id];
+    }
+    if (scope && id in _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d[scope]) {
+      delete _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d[scope][id];
+      if (this.override) {
+        delete _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2[id];
+      }
+    }
+  }
+}
+function registerDefaults(item, scope, parentScope) {
+  const itemDefaults = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a3)(Object.create(null), [
+    parentScope ? _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.get(parentScope) : {},
+    _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.get(scope),
+    item.defaults
+  ]);
+  _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.set(scope, itemDefaults);
+  if (item.defaultRoutes) {
+    routeDefaults(scope, item.defaultRoutes);
+  }
+  if (item.descriptors) {
+    _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.describe(scope, item.descriptors);
+  }
+}
+function routeDefaults(scope, routes) {
+  Object.keys(routes).forEach(property => {
+    const propertyParts = property.split('.');
+    const sourceName = propertyParts.pop();
+    const sourceScope = [scope].concat(propertyParts).join('.');
+    const parts = routes[property].split('.');
+    const targetName = parts.pop();
+    const targetScope = parts.join('.');
+    _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.route(sourceScope, sourceName, targetScope, targetName);
+  });
+}
+function isIChartComponent(proto) {
+  return 'id' in proto && 'defaults' in proto;
+}
+
+class Registry {
+  constructor() {
+    this.controllers = new TypedRegistry(DatasetController, 'datasets', true);
+    this.elements = new TypedRegistry(Element, 'elements');
+    this.plugins = new TypedRegistry(Object, 'plugins');
+    this.scales = new TypedRegistry(Scale, 'scales');
+    this._typedRegistries = [this.controllers, this.scales, this.elements];
+  }
+  add(...args) {
+    this._each('register', args);
+  }
+  remove(...args) {
+    this._each('unregister', args);
+  }
+  addControllers(...args) {
+    this._each('register', args, this.controllers);
+  }
+  addElements(...args) {
+    this._each('register', args, this.elements);
+  }
+  addPlugins(...args) {
+    this._each('register', args, this.plugins);
+  }
+  addScales(...args) {
+    this._each('register', args, this.scales);
+  }
+  getController(id) {
+    return this._get(id, this.controllers, 'controller');
+  }
+  getElement(id) {
+    return this._get(id, this.elements, 'element');
+  }
+  getPlugin(id) {
+    return this._get(id, this.plugins, 'plugin');
+  }
+  getScale(id) {
+    return this._get(id, this.scales, 'scale');
+  }
+  removeControllers(...args) {
+    this._each('unregister', args, this.controllers);
+  }
+  removeElements(...args) {
+    this._each('unregister', args, this.elements);
+  }
+  removePlugins(...args) {
+    this._each('unregister', args, this.plugins);
+  }
+  removeScales(...args) {
+    this._each('unregister', args, this.scales);
+  }
+  _each(method, args, typedRegistry) {
+    [...args].forEach(arg => {
+      const reg = typedRegistry || this._getRegistryForType(arg);
+      if (typedRegistry || reg.isForType(arg) || (reg === this.plugins && arg.id)) {
+        this._exec(method, reg, arg);
+      } else {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(arg, item => {
+          const itemReg = typedRegistry || this._getRegistryForType(item);
+          this._exec(method, itemReg, item);
+        });
+      }
+    });
+  }
+  _exec(method, registry, component) {
+    const camelMethod = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a4)(method);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(component['before' + camelMethod], [], component);
+    registry[method](component);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(component['after' + camelMethod], [], component);
+  }
+  _getRegistryForType(type) {
+    for (let i = 0; i < this._typedRegistries.length; i++) {
+      const reg = this._typedRegistries[i];
+      if (reg.isForType(type)) {
+        return reg;
+      }
+    }
+    return this.plugins;
+  }
+  _get(id, typedRegistry, type) {
+    const item = typedRegistry.get(id);
+    if (item === undefined) {
+      throw new Error('"' + id + '" is not a registered ' + type + '.');
+    }
+    return item;
+  }
+}
+var registry = new Registry();
+
+class PluginService {
+  constructor() {
+    this._init = [];
+  }
+  notify(chart, hook, args, filter) {
+    if (hook === 'beforeInit') {
+      this._init = this._createDescriptors(chart, true);
+      this._notify(this._init, chart, 'install');
+    }
+    const descriptors = filter ? this._descriptors(chart).filter(filter) : this._descriptors(chart);
+    const result = this._notify(descriptors, chart, hook, args);
+    if (hook === 'afterDestroy') {
+      this._notify(descriptors, chart, 'stop');
+      this._notify(this._init, chart, 'uninstall');
+    }
+    return result;
+  }
+  _notify(descriptors, chart, hook, args) {
+    args = args || {};
+    for (const descriptor of descriptors) {
+      const plugin = descriptor.plugin;
+      const method = plugin[hook];
+      const params = [chart, args, descriptor.options];
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(method, params, plugin) === false && args.cancelable) {
+        return false;
+      }
+    }
+    return true;
+  }
+  invalidate() {
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(this._cache)) {
+      this._oldCache = this._cache;
+      this._cache = undefined;
+    }
+  }
+  _descriptors(chart) {
+    if (this._cache) {
+      return this._cache;
+    }
+    const descriptors = this._cache = this._createDescriptors(chart);
+    this._notifyStateChanges(chart);
+    return descriptors;
+  }
+  _createDescriptors(chart, all) {
+    const config = chart && chart.config;
+    const options = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(config.options && config.options.plugins, {});
+    const plugins = allPlugins(config);
+    return options === false && !all ? [] : createDescriptors(chart, plugins, options, all);
+  }
+  _notifyStateChanges(chart) {
+    const previousDescriptors = this._oldCache || [];
+    const descriptors = this._cache;
+    const diff = (a, b) => a.filter(x => !b.some(y => x.plugin.id === y.plugin.id));
+    this._notify(diff(previousDescriptors, descriptors), chart, 'stop');
+    this._notify(diff(descriptors, previousDescriptors), chart, 'start');
+  }
+}
+function allPlugins(config) {
+  const plugins = [];
+  const keys = Object.keys(registry.plugins.items);
+  for (let i = 0; i < keys.length; i++) {
+    plugins.push(registry.getPlugin(keys[i]));
+  }
+  const local = config.plugins || [];
+  for (let i = 0; i < local.length; i++) {
+    const plugin = local[i];
+    if (plugins.indexOf(plugin) === -1) {
+      plugins.push(plugin);
+    }
+  }
+  return plugins;
+}
+function getOpts(options, all) {
+  if (!all && options === false) {
+    return null;
+  }
+  if (options === true) {
+    return {};
+  }
+  return options;
+}
+function createDescriptors(chart, plugins, options, all) {
+  const result = [];
+  const context = chart.getContext();
+  for (let i = 0; i < plugins.length; i++) {
+    const plugin = plugins[i];
+    const id = plugin.id;
+    const opts = getOpts(options[id], all);
+    if (opts === null) {
+      continue;
+    }
+    result.push({
+      plugin,
+      options: pluginOpts(chart.config, plugin, opts, context)
+    });
+  }
+  return result;
+}
+function pluginOpts(config, plugin, opts, context) {
+  const keys = config.pluginScopeKeys(plugin);
+  const scopes = config.getOptionScopes(opts, keys);
+  return config.createResolver(scopes, context, [''], {scriptable: false, indexable: false, allKeys: true});
+}
+
+function getIndexAxis(type, options) {
+  const datasetDefaults = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.datasets[type] || {};
+  const datasetOptions = (options.datasets || {})[type] || {};
+  return datasetOptions.indexAxis || options.indexAxis || datasetDefaults.indexAxis || 'x';
+}
+function getAxisFromDefaultScaleID(id, indexAxis) {
+  let axis = id;
+  if (id === '_index_') {
+    axis = indexAxis;
+  } else if (id === '_value_') {
+    axis = indexAxis === 'x' ? 'y' : 'x';
+  }
+  return axis;
+}
+function getDefaultScaleIDFromAxis(axis, indexAxis) {
+  return axis === indexAxis ? '_index_' : '_value_';
+}
+function axisFromPosition(position) {
+  if (position === 'top' || position === 'bottom') {
+    return 'x';
+  }
+  if (position === 'left' || position === 'right') {
+    return 'y';
+  }
+}
+function determineAxis(id, scaleOptions) {
+  if (id === 'x' || id === 'y') {
+    return id;
+  }
+  return scaleOptions.axis || axisFromPosition(scaleOptions.position) || id.charAt(0).toLowerCase();
+}
+function mergeScaleConfig(config, options) {
+  const chartDefaults = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2[config.type] || {scales: {}};
+  const configScales = options.scales || {};
+  const chartIndexAxis = getIndexAxis(config.type, options);
+  const firstIDs = Object.create(null);
+  const scales = Object.create(null);
+  Object.keys(configScales).forEach(id => {
+    const scaleConf = configScales[id];
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(scaleConf)) {
+      return console.error(`Invalid scale configuration for scale: ${id}`);
+    }
+    if (scaleConf._proxy) {
+      return console.warn(`Ignoring resolver passed as options for scale: ${id}`);
+    }
+    const axis = determineAxis(id, scaleConf);
+    const defaultId = getDefaultScaleIDFromAxis(axis, chartIndexAxis);
+    const defaultScaleOptions = chartDefaults.scales || {};
+    firstIDs[axis] = firstIDs[axis] || id;
+    scales[id] = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aa)(Object.create(null), [{axis}, scaleConf, defaultScaleOptions[axis], defaultScaleOptions[defaultId]]);
+  });
+  config.data.datasets.forEach(dataset => {
+    const type = dataset.type || config.type;
+    const indexAxis = dataset.indexAxis || getIndexAxis(type, options);
+    const datasetDefaults = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2[type] || {};
+    const defaultScaleOptions = datasetDefaults.scales || {};
+    Object.keys(defaultScaleOptions).forEach(defaultID => {
+      const axis = getAxisFromDefaultScaleID(defaultID, indexAxis);
+      const id = dataset[axis + 'AxisID'] || firstIDs[axis] || axis;
+      scales[id] = scales[id] || Object.create(null);
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aa)(scales[id], [{axis}, configScales[id], defaultScaleOptions[defaultID]]);
+    });
+  });
+  Object.keys(scales).forEach(key => {
+    const scale = scales[key];
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aa)(scale, [_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.scales[scale.type], _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.scale]);
+  });
+  return scales;
+}
+function initOptions(config) {
+  const options = config.options || (config.options = {});
+  options.plugins = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(options.plugins, {});
+  options.scales = mergeScaleConfig(config, options);
+}
+function initData(data) {
+  data = data || {};
+  data.datasets = data.datasets || [];
+  data.labels = data.labels || [];
+  return data;
+}
+function initConfig(config) {
+  config = config || {};
+  config.data = initData(config.data);
+  initOptions(config);
+  return config;
+}
+const keyCache = new Map();
+const keysCached = new Set();
+function cachedKeys(cacheKey, generate) {
+  let keys = keyCache.get(cacheKey);
+  if (!keys) {
+    keys = generate();
+    keyCache.set(cacheKey, keys);
+    keysCached.add(keys);
+  }
+  return keys;
+}
+const addIfFound = (set, obj, key) => {
+  const opts = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.f)(obj, key);
+  if (opts !== undefined) {
+    set.add(opts);
+  }
+};
+class Config {
+  constructor(config) {
+    this._config = initConfig(config);
+    this._scopeCache = new Map();
+    this._resolverCache = new Map();
+  }
+  get platform() {
+    return this._config.platform;
+  }
+  get type() {
+    return this._config.type;
+  }
+  set type(type) {
+    this._config.type = type;
+  }
+  get data() {
+    return this._config.data;
+  }
+  set data(data) {
+    this._config.data = initData(data);
+  }
+  get options() {
+    return this._config.options;
+  }
+  set options(options) {
+    this._config.options = options;
+  }
+  get plugins() {
+    return this._config.plugins;
+  }
+  update() {
+    const config = this._config;
+    this.clearCache();
+    initOptions(config);
+  }
+  clearCache() {
+    this._scopeCache.clear();
+    this._resolverCache.clear();
+  }
+  datasetScopeKeys(datasetType) {
+    return cachedKeys(datasetType,
+      () => [[
+        `datasets.${datasetType}`,
+        ''
+      ]]);
+  }
+  datasetAnimationScopeKeys(datasetType, transition) {
+    return cachedKeys(`${datasetType}.transition.${transition}`,
+      () => [
+        [
+          `datasets.${datasetType}.transitions.${transition}`,
+          `transitions.${transition}`,
+        ],
+        [
+          `datasets.${datasetType}`,
+          ''
+        ]
+      ]);
+  }
+  datasetElementScopeKeys(datasetType, elementType) {
+    return cachedKeys(`${datasetType}-${elementType}`,
+      () => [[
+        `datasets.${datasetType}.elements.${elementType}`,
+        `datasets.${datasetType}`,
+        `elements.${elementType}`,
+        ''
+      ]]);
+  }
+  pluginScopeKeys(plugin) {
+    const id = plugin.id;
+    const type = this.type;
+    return cachedKeys(`${type}-plugin-${id}`,
+      () => [[
+        `plugins.${id}`,
+        ...plugin.additionalOptionScopes || [],
+      ]]);
+  }
+  _cachedScopes(mainScope, resetCache) {
+    const _scopeCache = this._scopeCache;
+    let cache = _scopeCache.get(mainScope);
+    if (!cache || resetCache) {
+      cache = new Map();
+      _scopeCache.set(mainScope, cache);
+    }
+    return cache;
+  }
+  getOptionScopes(mainScope, keyLists, resetCache) {
+    const {options, type} = this;
+    const cache = this._cachedScopes(mainScope, resetCache);
+    const cached = cache.get(keyLists);
+    if (cached) {
+      return cached;
+    }
+    const scopes = new Set();
+    keyLists.forEach(keys => {
+      if (mainScope) {
+        scopes.add(mainScope);
+        keys.forEach(key => addIfFound(scopes, mainScope, key));
+      }
+      keys.forEach(key => addIfFound(scopes, options, key));
+      keys.forEach(key => addIfFound(scopes, _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2[type] || {}, key));
+      keys.forEach(key => addIfFound(scopes, _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d, key));
+      keys.forEach(key => addIfFound(scopes, _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a5, key));
+    });
+    const array = Array.from(scopes);
+    if (array.length === 0) {
+      array.push(Object.create(null));
+    }
+    if (keysCached.has(keyLists)) {
+      cache.set(keyLists, array);
+    }
+    return array;
+  }
+  chartOptionScopes() {
+    const {options, type} = this;
+    return [
+      options,
+      _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2[type] || {},
+      _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.datasets[type] || {},
+      {type},
+      _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d,
+      _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a5
+    ];
+  }
+  resolveNamedOptions(scopes, names, context, prefixes = ['']) {
+    const result = {$shared: true};
+    const {resolver, subPrefixes} = getResolver(this._resolverCache, scopes, prefixes);
+    let options = resolver;
+    if (needContext(resolver, names)) {
+      result.$shared = false;
+      context = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a6)(context) ? context() : context;
+      const subResolver = this.createResolver(scopes, context, subPrefixes);
+      options = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a7)(resolver, context, subResolver);
+    }
+    for (const prop of names) {
+      result[prop] = options[prop];
+    }
+    return result;
+  }
+  createResolver(scopes, context, prefixes = [''], descriptorDefaults) {
+    const {resolver} = getResolver(this._resolverCache, scopes, prefixes);
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(context)
+      ? (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a7)(resolver, context, undefined, descriptorDefaults)
+      : resolver;
+  }
+}
+function getResolver(resolverCache, scopes, prefixes) {
+  let cache = resolverCache.get(scopes);
+  if (!cache) {
+    cache = new Map();
+    resolverCache.set(scopes, cache);
+  }
+  const cacheKey = prefixes.join();
+  let cached = cache.get(cacheKey);
+  if (!cached) {
+    const resolver = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a8)(scopes, prefixes);
+    cached = {
+      resolver,
+      subPrefixes: prefixes.filter(p => !p.toLowerCase().includes('hover'))
+    };
+    cache.set(cacheKey, cached);
+  }
+  return cached;
+}
+const hasFunction = value => (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(value)
+  && Object.getOwnPropertyNames(value).reduce((acc, key) => acc || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a6)(value[key]), false);
+function needContext(proxy, names) {
+  const {isScriptable, isIndexable} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a9)(proxy);
+  for (const prop of names) {
+    const scriptable = isScriptable(prop);
+    const indexable = isIndexable(prop);
+    const value = (indexable || scriptable) && proxy[prop];
+    if ((scriptable && ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a6)(value) || hasFunction(value)))
+      || (indexable && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(value))) {
+      return true;
+    }
+  }
+  return false;
+}
+
+var version = "3.8.0";
+
+const KNOWN_POSITIONS = ['top', 'bottom', 'left', 'right', 'chartArea'];
+function positionIsHorizontal(position, axis) {
+  return position === 'top' || position === 'bottom' || (KNOWN_POSITIONS.indexOf(position) === -1 && axis === 'x');
+}
+function compare2Level(l1, l2) {
+  return function(a, b) {
+    return a[l1] === b[l1]
+      ? a[l2] - b[l2]
+      : a[l1] - b[l1];
+  };
+}
+function onAnimationsComplete(context) {
+  const chart = context.chart;
+  const animationOptions = chart.options.animation;
+  chart.notifyPlugins('afterRender');
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(animationOptions && animationOptions.onComplete, [context], chart);
+}
+function onAnimationProgress(context) {
+  const chart = context.chart;
+  const animationOptions = chart.options.animation;
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(animationOptions && animationOptions.onProgress, [context], chart);
+}
+function getCanvas(item) {
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.L)() && typeof item === 'string') {
+    item = document.getElementById(item);
+  } else if (item && item.length) {
+    item = item[0];
+  }
+  if (item && item.canvas) {
+    item = item.canvas;
+  }
+  return item;
+}
+const instances = {};
+const getChart = (key) => {
+  const canvas = getCanvas(key);
+  return Object.values(instances).filter((c) => c.canvas === canvas).pop();
+};
+function moveNumericKeys(obj, start, move) {
+  const keys = Object.keys(obj);
+  for (const key of keys) {
+    const intKey = +key;
+    if (intKey >= start) {
+      const value = obj[key];
+      delete obj[key];
+      if (move > 0 || intKey > start) {
+        obj[intKey + move] = value;
+      }
+    }
+  }
+}
+function determineLastEvent(e, lastEvent, inChartArea, isClick) {
+  if (!inChartArea || e.type === 'mouseout') {
+    return null;
+  }
+  if (isClick) {
+    return lastEvent;
+  }
+  return e;
+}
+class Chart {
+  constructor(item, userConfig) {
+    const config = this.config = new Config(userConfig);
+    const initialCanvas = getCanvas(item);
+    const existingChart = getChart(initialCanvas);
+    if (existingChart) {
+      throw new Error(
+        'Canvas is already in use. Chart with ID \'' + existingChart.id + '\'' +
+				' must be destroyed before the canvas can be reused.'
+      );
+    }
+    const options = config.createResolver(config.chartOptionScopes(), this.getContext());
+    this.platform = new (config.platform || _detectPlatform(initialCanvas))();
+    this.platform.updateConfig(config);
+    const context = this.platform.acquireContext(initialCanvas, options.aspectRatio);
+    const canvas = context && context.canvas;
+    const height = canvas && canvas.height;
+    const width = canvas && canvas.width;
+    this.id = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ab)();
+    this.ctx = context;
+    this.canvas = canvas;
+    this.width = width;
+    this.height = height;
+    this._options = options;
+    this._aspectRatio = this.aspectRatio;
+    this._layers = [];
+    this._metasets = [];
+    this._stacks = undefined;
+    this.boxes = [];
+    this.currentDevicePixelRatio = undefined;
+    this.chartArea = undefined;
+    this._active = [];
+    this._lastEvent = undefined;
+    this._listeners = {};
+    this._responsiveListeners = undefined;
+    this._sortedMetasets = [];
+    this.scales = {};
+    this._plugins = new PluginService();
+    this.$proxies = {};
+    this._hiddenIndices = {};
+    this.attached = false;
+    this._animationsDisabled = undefined;
+    this.$context = undefined;
+    this._doResize = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ac)(mode => this.update(mode), options.resizeDelay || 0);
+    this._dataChanges = [];
+    instances[this.id] = this;
+    if (!context || !canvas) {
+      console.error("Failed to create chart: can't acquire context from the given item");
+      return;
+    }
+    animator.listen(this, 'complete', onAnimationsComplete);
+    animator.listen(this, 'progress', onAnimationProgress);
+    this._initialize();
+    if (this.attached) {
+      this.update();
+    }
+  }
+  get aspectRatio() {
+    const {options: {aspectRatio, maintainAspectRatio}, width, height, _aspectRatio} = this;
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(aspectRatio)) {
+      return aspectRatio;
+    }
+    if (maintainAspectRatio && _aspectRatio) {
+      return _aspectRatio;
+    }
+    return height ? width / height : null;
+  }
+  get data() {
+    return this.config.data;
+  }
+  set data(data) {
+    this.config.data = data;
+  }
+  get options() {
+    return this._options;
+  }
+  set options(options) {
+    this.config.options = options;
+  }
+  _initialize() {
+    this.notifyPlugins('beforeInit');
+    if (this.options.responsive) {
+      this.resize();
+    } else {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ad)(this, this.options.devicePixelRatio);
+    }
+    this.bindEvents();
+    this.notifyPlugins('afterInit');
+    return this;
+  }
+  clear() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ae)(this.canvas, this.ctx);
+    return this;
+  }
+  stop() {
+    animator.stop(this);
+    return this;
+  }
+  resize(width, height) {
+    if (!animator.running(this)) {
+      this._resize(width, height);
+    } else {
+      this._resizeBeforeDraw = {width, height};
+    }
+  }
+  _resize(width, height) {
+    const options = this.options;
+    const canvas = this.canvas;
+    const aspectRatio = options.maintainAspectRatio && this.aspectRatio;
+    const newSize = this.platform.getMaximumSize(canvas, width, height, aspectRatio);
+    const newRatio = options.devicePixelRatio || this.platform.getDevicePixelRatio();
+    const mode = this.width ? 'resize' : 'attach';
+    this.width = newSize.width;
+    this.height = newSize.height;
+    this._aspectRatio = this.aspectRatio;
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ad)(this, newRatio, true)) {
+      return;
+    }
+    this.notifyPlugins('resize', {size: newSize});
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(options.onResize, [this, newSize], this);
+    if (this.attached) {
+      if (this._doResize(mode)) {
+        this.render();
+      }
+    }
+  }
+  ensureScalesHaveIDs() {
+    const options = this.options;
+    const scalesOptions = options.scales || {};
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(scalesOptions, (axisOptions, axisID) => {
+      axisOptions.id = axisID;
+    });
+  }
+  buildOrUpdateScales() {
+    const options = this.options;
+    const scaleOpts = options.scales;
+    const scales = this.scales;
+    const updated = Object.keys(scales).reduce((obj, id) => {
+      obj[id] = false;
+      return obj;
+    }, {});
+    let items = [];
+    if (scaleOpts) {
+      items = items.concat(
+        Object.keys(scaleOpts).map((id) => {
+          const scaleOptions = scaleOpts[id];
+          const axis = determineAxis(id, scaleOptions);
+          const isRadial = axis === 'r';
+          const isHorizontal = axis === 'x';
+          return {
+            options: scaleOptions,
+            dposition: isRadial ? 'chartArea' : isHorizontal ? 'bottom' : 'left',
+            dtype: isRadial ? 'radialLinear' : isHorizontal ? 'category' : 'linear'
+          };
+        })
+      );
+    }
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(items, (item) => {
+      const scaleOptions = item.options;
+      const id = scaleOptions.id;
+      const axis = determineAxis(id, scaleOptions);
+      const scaleType = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(scaleOptions.type, item.dtype);
+      if (scaleOptions.position === undefined || positionIsHorizontal(scaleOptions.position, axis) !== positionIsHorizontal(item.dposition)) {
+        scaleOptions.position = item.dposition;
+      }
+      updated[id] = true;
+      let scale = null;
+      if (id in scales && scales[id].type === scaleType) {
+        scale = scales[id];
+      } else {
+        const scaleClass = registry.getScale(scaleType);
+        scale = new scaleClass({
+          id,
+          type: scaleType,
+          ctx: this.ctx,
+          chart: this
+        });
+        scales[scale.id] = scale;
+      }
+      scale.init(scaleOptions, options);
+    });
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(updated, (hasUpdated, id) => {
+      if (!hasUpdated) {
+        delete scales[id];
+      }
+    });
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(scales, (scale) => {
+      layouts.configure(this, scale, scale.options);
+      layouts.addBox(this, scale);
+    });
+  }
+  _updateMetasets() {
+    const metasets = this._metasets;
+    const numData = this.data.datasets.length;
+    const numMeta = metasets.length;
+    metasets.sort((a, b) => a.index - b.index);
+    if (numMeta > numData) {
+      for (let i = numData; i < numMeta; ++i) {
+        this._destroyDatasetMeta(i);
+      }
+      metasets.splice(numData, numMeta - numData);
+    }
+    this._sortedMetasets = metasets.slice(0).sort(compare2Level('order', 'index'));
+  }
+  _removeUnreferencedMetasets() {
+    const {_metasets: metasets, data: {datasets}} = this;
+    if (metasets.length > datasets.length) {
+      delete this._stacks;
+    }
+    metasets.forEach((meta, index) => {
+      if (datasets.filter(x => x === meta._dataset).length === 0) {
+        this._destroyDatasetMeta(index);
+      }
+    });
+  }
+  buildOrUpdateControllers() {
+    const newControllers = [];
+    const datasets = this.data.datasets;
+    let i, ilen;
+    this._removeUnreferencedMetasets();
+    for (i = 0, ilen = datasets.length; i < ilen; i++) {
+      const dataset = datasets[i];
+      let meta = this.getDatasetMeta(i);
+      const type = dataset.type || this.config.type;
+      if (meta.type && meta.type !== type) {
+        this._destroyDatasetMeta(i);
+        meta = this.getDatasetMeta(i);
+      }
+      meta.type = type;
+      meta.indexAxis = dataset.indexAxis || getIndexAxis(type, this.options);
+      meta.order = dataset.order || 0;
+      meta.index = i;
+      meta.label = '' + dataset.label;
+      meta.visible = this.isDatasetVisible(i);
+      if (meta.controller) {
+        meta.controller.updateIndex(i);
+        meta.controller.linkScales();
+      } else {
+        const ControllerClass = registry.getController(type);
+        const {datasetElementType, dataElementType} = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.datasets[type];
+        Object.assign(ControllerClass.prototype, {
+          dataElementType: registry.getElement(dataElementType),
+          datasetElementType: datasetElementType && registry.getElement(datasetElementType)
+        });
+        meta.controller = new ControllerClass(this, i);
+        newControllers.push(meta.controller);
+      }
+    }
+    this._updateMetasets();
+    return newControllers;
+  }
+  _resetElements() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.data.datasets, (dataset, datasetIndex) => {
+      this.getDatasetMeta(datasetIndex).controller.reset();
+    }, this);
+  }
+  reset() {
+    this._resetElements();
+    this.notifyPlugins('reset');
+  }
+  update(mode) {
+    const config = this.config;
+    config.update();
+    const options = this._options = config.createResolver(config.chartOptionScopes(), this.getContext());
+    const animsDisabled = this._animationsDisabled = !options.animation;
+    this._updateScales();
+    this._checkEventBindings();
+    this._updateHiddenIndices();
+    this._plugins.invalidate();
+    if (this.notifyPlugins('beforeUpdate', {mode, cancelable: true}) === false) {
+      return;
+    }
+    const newControllers = this.buildOrUpdateControllers();
+    this.notifyPlugins('beforeElementsUpdate');
+    let minPadding = 0;
+    for (let i = 0, ilen = this.data.datasets.length; i < ilen; i++) {
+      const {controller} = this.getDatasetMeta(i);
+      const reset = !animsDisabled && newControllers.indexOf(controller) === -1;
+      controller.buildOrUpdateElements(reset);
+      minPadding = Math.max(+controller.getMaxOverflow(), minPadding);
+    }
+    minPadding = this._minPadding = options.layout.autoPadding ? minPadding : 0;
+    this._updateLayout(minPadding);
+    if (!animsDisabled) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(newControllers, (controller) => {
+        controller.reset();
+      });
+    }
+    this._updateDatasets(mode);
+    this.notifyPlugins('afterUpdate', {mode});
+    this._layers.sort(compare2Level('z', '_idx'));
+    const {_active, _lastEvent} = this;
+    if (_lastEvent) {
+      this._eventHandler(_lastEvent, true);
+    } else if (_active.length) {
+      this._updateHoverStyles(_active, _active, true);
+    }
+    this.render();
+  }
+  _updateScales() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.scales, (scale) => {
+      layouts.removeBox(this, scale);
+    });
+    this.ensureScalesHaveIDs();
+    this.buildOrUpdateScales();
+  }
+  _checkEventBindings() {
+    const options = this.options;
+    const existingEvents = new Set(Object.keys(this._listeners));
+    const newEvents = new Set(options.events);
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.af)(existingEvents, newEvents) || !!this._responsiveListeners !== options.responsive) {
+      this.unbindEvents();
+      this.bindEvents();
+    }
+  }
+  _updateHiddenIndices() {
+    const {_hiddenIndices} = this;
+    const changes = this._getUniformDataChanges() || [];
+    for (const {method, start, count} of changes) {
+      const move = method === '_removeElements' ? -count : count;
+      moveNumericKeys(_hiddenIndices, start, move);
+    }
+  }
+  _getUniformDataChanges() {
+    const _dataChanges = this._dataChanges;
+    if (!_dataChanges || !_dataChanges.length) {
+      return;
+    }
+    this._dataChanges = [];
+    const datasetCount = this.data.datasets.length;
+    const makeSet = (idx) => new Set(
+      _dataChanges
+        .filter(c => c[0] === idx)
+        .map((c, i) => i + ',' + c.splice(1).join(','))
+    );
+    const changeSet = makeSet(0);
+    for (let i = 1; i < datasetCount; i++) {
+      if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.af)(changeSet, makeSet(i))) {
+        return;
+      }
+    }
+    return Array.from(changeSet)
+      .map(c => c.split(','))
+      .map(a => ({method: a[1], start: +a[2], count: +a[3]}));
+  }
+  _updateLayout(minPadding) {
+    if (this.notifyPlugins('beforeLayout', {cancelable: true}) === false) {
+      return;
+    }
+    layouts.update(this, this.width, this.height, minPadding);
+    const area = this.chartArea;
+    const noArea = area.width <= 0 || area.height <= 0;
+    this._layers = [];
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.boxes, (box) => {
+      if (noArea && box.position === 'chartArea') {
+        return;
+      }
+      if (box.configure) {
+        box.configure();
+      }
+      this._layers.push(...box._layers());
+    }, this);
+    this._layers.forEach((item, index) => {
+      item._idx = index;
+    });
+    this.notifyPlugins('afterLayout');
+  }
+  _updateDatasets(mode) {
+    if (this.notifyPlugins('beforeDatasetsUpdate', {mode, cancelable: true}) === false) {
+      return;
+    }
+    for (let i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
+      this.getDatasetMeta(i).controller.configure();
+    }
+    for (let i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
+      this._updateDataset(i, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a6)(mode) ? mode({datasetIndex: i}) : mode);
+    }
+    this.notifyPlugins('afterDatasetsUpdate', {mode});
+  }
+  _updateDataset(index, mode) {
+    const meta = this.getDatasetMeta(index);
+    const args = {meta, index, mode, cancelable: true};
+    if (this.notifyPlugins('beforeDatasetUpdate', args) === false) {
+      return;
+    }
+    meta.controller._update(mode);
+    args.cancelable = false;
+    this.notifyPlugins('afterDatasetUpdate', args);
+  }
+  render() {
+    if (this.notifyPlugins('beforeRender', {cancelable: true}) === false) {
+      return;
+    }
+    if (animator.has(this)) {
+      if (this.attached && !animator.running(this)) {
+        animator.start(this);
+      }
+    } else {
+      this.draw();
+      onAnimationsComplete({chart: this});
+    }
+  }
+  draw() {
+    let i;
+    if (this._resizeBeforeDraw) {
+      const {width, height} = this._resizeBeforeDraw;
+      this._resize(width, height);
+      this._resizeBeforeDraw = null;
+    }
+    this.clear();
+    if (this.width <= 0 || this.height <= 0) {
+      return;
+    }
+    if (this.notifyPlugins('beforeDraw', {cancelable: true}) === false) {
+      return;
+    }
+    const layers = this._layers;
+    for (i = 0; i < layers.length && layers[i].z <= 0; ++i) {
+      layers[i].draw(this.chartArea);
+    }
+    this._drawDatasets();
+    for (; i < layers.length; ++i) {
+      layers[i].draw(this.chartArea);
+    }
+    this.notifyPlugins('afterDraw');
+  }
+  _getSortedDatasetMetas(filterVisible) {
+    const metasets = this._sortedMetasets;
+    const result = [];
+    let i, ilen;
+    for (i = 0, ilen = metasets.length; i < ilen; ++i) {
+      const meta = metasets[i];
+      if (!filterVisible || meta.visible) {
+        result.push(meta);
+      }
+    }
+    return result;
+  }
+  getSortedVisibleDatasetMetas() {
+    return this._getSortedDatasetMetas(true);
+  }
+  _drawDatasets() {
+    if (this.notifyPlugins('beforeDatasetsDraw', {cancelable: true}) === false) {
+      return;
+    }
+    const metasets = this.getSortedVisibleDatasetMetas();
+    for (let i = metasets.length - 1; i >= 0; --i) {
+      this._drawDataset(metasets[i]);
+    }
+    this.notifyPlugins('afterDatasetsDraw');
+  }
+  _drawDataset(meta) {
+    const ctx = this.ctx;
+    const clip = meta._clip;
+    const useClip = !clip.disabled;
+    const area = this.chartArea;
+    const args = {
+      meta,
+      index: meta.index,
+      cancelable: true
+    };
+    if (this.notifyPlugins('beforeDatasetDraw', args) === false) {
+      return;
+    }
+    if (useClip) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.X)(ctx, {
+        left: clip.left === false ? 0 : area.left - clip.left,
+        right: clip.right === false ? this.width : area.right + clip.right,
+        top: clip.top === false ? 0 : area.top - clip.top,
+        bottom: clip.bottom === false ? this.height : area.bottom + clip.bottom
+      });
+    }
+    meta.controller.draw();
+    if (useClip) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Z)(ctx);
+    }
+    args.cancelable = false;
+    this.notifyPlugins('afterDatasetDraw', args);
+  }
+  isPointInArea(point) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.B)(point, this.chartArea, this._minPadding);
+  }
+  getElementsAtEventForMode(e, mode, options, useFinalPosition) {
+    const method = Interaction.modes[mode];
+    if (typeof method === 'function') {
+      return method(this, e, options, useFinalPosition);
+    }
+    return [];
+  }
+  getDatasetMeta(datasetIndex) {
+    const dataset = this.data.datasets[datasetIndex];
+    const metasets = this._metasets;
+    let meta = metasets.filter(x => x && x._dataset === dataset).pop();
+    if (!meta) {
+      meta = {
+        type: null,
+        data: [],
+        dataset: null,
+        controller: null,
+        hidden: null,
+        xAxisID: null,
+        yAxisID: null,
+        order: dataset && dataset.order || 0,
+        index: datasetIndex,
+        _dataset: dataset,
+        _parsed: [],
+        _sorted: false
+      };
+      metasets.push(meta);
+    }
+    return meta;
+  }
+  getContext() {
+    return this.$context || (this.$context = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(null, {chart: this, type: 'chart'}));
+  }
+  getVisibleDatasetCount() {
+    return this.getSortedVisibleDatasetMetas().length;
+  }
+  isDatasetVisible(datasetIndex) {
+    const dataset = this.data.datasets[datasetIndex];
+    if (!dataset) {
+      return false;
+    }
+    const meta = this.getDatasetMeta(datasetIndex);
+    return typeof meta.hidden === 'boolean' ? !meta.hidden : !dataset.hidden;
+  }
+  setDatasetVisibility(datasetIndex, visible) {
+    const meta = this.getDatasetMeta(datasetIndex);
+    meta.hidden = !visible;
+  }
+  toggleDataVisibility(index) {
+    this._hiddenIndices[index] = !this._hiddenIndices[index];
+  }
+  getDataVisibility(index) {
+    return !this._hiddenIndices[index];
+  }
+  _updateVisibility(datasetIndex, dataIndex, visible) {
+    const mode = visible ? 'show' : 'hide';
+    const meta = this.getDatasetMeta(datasetIndex);
+    const anims = meta.controller._resolveAnimations(undefined, mode);
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.j)(dataIndex)) {
+      meta.data[dataIndex].hidden = !visible;
+      this.update();
+    } else {
+      this.setDatasetVisibility(datasetIndex, visible);
+      anims.update(meta, {visible});
+      this.update((ctx) => ctx.datasetIndex === datasetIndex ? mode : undefined);
+    }
+  }
+  hide(datasetIndex, dataIndex) {
+    this._updateVisibility(datasetIndex, dataIndex, false);
+  }
+  show(datasetIndex, dataIndex) {
+    this._updateVisibility(datasetIndex, dataIndex, true);
+  }
+  _destroyDatasetMeta(datasetIndex) {
+    const meta = this._metasets[datasetIndex];
+    if (meta && meta.controller) {
+      meta.controller._destroy();
+    }
+    delete this._metasets[datasetIndex];
+  }
+  _stop() {
+    let i, ilen;
+    this.stop();
+    animator.remove(this);
+    for (i = 0, ilen = this.data.datasets.length; i < ilen; ++i) {
+      this._destroyDatasetMeta(i);
+    }
+  }
+  destroy() {
+    this.notifyPlugins('beforeDestroy');
+    const {canvas, ctx} = this;
+    this._stop();
+    this.config.clearCache();
+    if (canvas) {
+      this.unbindEvents();
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ae)(canvas, ctx);
+      this.platform.releaseContext(ctx);
+      this.canvas = null;
+      this.ctx = null;
+    }
+    this.notifyPlugins('destroy');
+    delete instances[this.id];
+    this.notifyPlugins('afterDestroy');
+  }
+  toBase64Image(...args) {
+    return this.canvas.toDataURL(...args);
+  }
+  bindEvents() {
+    this.bindUserEvents();
+    if (this.options.responsive) {
+      this.bindResponsiveEvents();
+    } else {
+      this.attached = true;
+    }
+  }
+  bindUserEvents() {
+    const listeners = this._listeners;
+    const platform = this.platform;
+    const _add = (type, listener) => {
+      platform.addEventListener(this, type, listener);
+      listeners[type] = listener;
+    };
+    const listener = (e, x, y) => {
+      e.offsetX = x;
+      e.offsetY = y;
+      this._eventHandler(e);
+    };
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.options.events, (type) => _add(type, listener));
+  }
+  bindResponsiveEvents() {
+    if (!this._responsiveListeners) {
+      this._responsiveListeners = {};
+    }
+    const listeners = this._responsiveListeners;
+    const platform = this.platform;
+    const _add = (type, listener) => {
+      platform.addEventListener(this, type, listener);
+      listeners[type] = listener;
+    };
+    const _remove = (type, listener) => {
+      if (listeners[type]) {
+        platform.removeEventListener(this, type, listener);
+        delete listeners[type];
+      }
+    };
+    const listener = (width, height) => {
+      if (this.canvas) {
+        this.resize(width, height);
+      }
+    };
+    let detached;
+    const attached = () => {
+      _remove('attach', attached);
+      this.attached = true;
+      this.resize();
+      _add('resize', listener);
+      _add('detach', detached);
+    };
+    detached = () => {
+      this.attached = false;
+      _remove('resize', listener);
+      this._stop();
+      this._resize(0, 0);
+      _add('attach', attached);
+    };
+    if (platform.isAttached(this.canvas)) {
+      attached();
+    } else {
+      detached();
+    }
+  }
+  unbindEvents() {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this._listeners, (listener, type) => {
+      this.platform.removeEventListener(this, type, listener);
+    });
+    this._listeners = {};
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this._responsiveListeners, (listener, type) => {
+      this.platform.removeEventListener(this, type, listener);
+    });
+    this._responsiveListeners = undefined;
+  }
+  updateHoverStyle(items, mode, enabled) {
+    const prefix = enabled ? 'set' : 'remove';
+    let meta, item, i, ilen;
+    if (mode === 'dataset') {
+      meta = this.getDatasetMeta(items[0].datasetIndex);
+      meta.controller['_' + prefix + 'DatasetHoverStyle']();
+    }
+    for (i = 0, ilen = items.length; i < ilen; ++i) {
+      item = items[i];
+      const controller = item && this.getDatasetMeta(item.datasetIndex).controller;
+      if (controller) {
+        controller[prefix + 'HoverStyle'](item.element, item.datasetIndex, item.index);
+      }
+    }
+  }
+  getActiveElements() {
+    return this._active || [];
+  }
+  setActiveElements(activeElements) {
+    const lastActive = this._active || [];
+    const active = activeElements.map(({datasetIndex, index}) => {
+      const meta = this.getDatasetMeta(datasetIndex);
+      if (!meta) {
+        throw new Error('No dataset found at index ' + datasetIndex);
+      }
+      return {
+        datasetIndex,
+        element: meta.data[index],
+        index,
+      };
+    });
+    const changed = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ag)(active, lastActive);
+    if (changed) {
+      this._active = active;
+      this._lastEvent = null;
+      this._updateHoverStyles(active, lastActive);
+    }
+  }
+  notifyPlugins(hook, args, filter) {
+    return this._plugins.notify(this, hook, args, filter);
+  }
+  _updateHoverStyles(active, lastActive, replay) {
+    const hoverOptions = this.options.hover;
+    const diff = (a, b) => a.filter(x => !b.some(y => x.datasetIndex === y.datasetIndex && x.index === y.index));
+    const deactivated = diff(lastActive, active);
+    const activated = replay ? active : diff(active, lastActive);
+    if (deactivated.length) {
+      this.updateHoverStyle(deactivated, hoverOptions.mode, false);
+    }
+    if (activated.length && hoverOptions.mode) {
+      this.updateHoverStyle(activated, hoverOptions.mode, true);
+    }
+  }
+  _eventHandler(e, replay) {
+    const args = {
+      event: e,
+      replay,
+      cancelable: true,
+      inChartArea: this.isPointInArea(e)
+    };
+    const eventFilter = (plugin) => (plugin.options.events || this.options.events).includes(e.native.type);
+    if (this.notifyPlugins('beforeEvent', args, eventFilter) === false) {
+      return;
+    }
+    const changed = this._handleEvent(e, replay, args.inChartArea);
+    args.cancelable = false;
+    this.notifyPlugins('afterEvent', args, eventFilter);
+    if (changed || args.changed) {
+      this.render();
+    }
+    return this;
+  }
+  _handleEvent(e, replay, inChartArea) {
+    const {_active: lastActive = [], options} = this;
+    const useFinalPosition = replay;
+    const active = this._getActiveElements(e, lastActive, inChartArea, useFinalPosition);
+    const isClick = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ah)(e);
+    const lastEvent = determineLastEvent(e, this._lastEvent, inChartArea, isClick);
+    if (inChartArea) {
+      this._lastEvent = null;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(options.onHover, [e, active, this], this);
+      if (isClick) {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(options.onClick, [e, active, this], this);
+      }
+    }
+    const changed = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ag)(active, lastActive);
+    if (changed || replay) {
+      this._active = active;
+      this._updateHoverStyles(active, lastActive, replay);
+    }
+    this._lastEvent = lastEvent;
+    return changed;
+  }
+  _getActiveElements(e, lastActive, inChartArea, useFinalPosition) {
+    if (e.type === 'mouseout') {
+      return [];
+    }
+    if (!inChartArea) {
+      return lastActive;
+    }
+    const hoverOptions = this.options.hover;
+    return this.getElementsAtEventForMode(e, hoverOptions.mode, hoverOptions, useFinalPosition);
+  }
+}
+const invalidatePlugins = () => (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(Chart.instances, (chart) => chart._plugins.invalidate());
+const enumerable = true;
+Object.defineProperties(Chart, {
+  defaults: {
+    enumerable,
+    value: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d
+  },
+  instances: {
+    enumerable,
+    value: instances
+  },
+  overrides: {
+    enumerable,
+    value: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a2
+  },
+  registry: {
+    enumerable,
+    value: registry
+  },
+  version: {
+    enumerable,
+    value: version
+  },
+  getChart: {
+    enumerable,
+    value: getChart
+  },
+  register: {
+    enumerable,
+    value: (...items) => {
+      registry.add(...items);
+      invalidatePlugins();
+    }
+  },
+  unregister: {
+    enumerable,
+    value: (...items) => {
+      registry.remove(...items);
+      invalidatePlugins();
+    }
+  }
+});
+
+function clipArc(ctx, element, endAngle) {
+  const {startAngle, pixelMargin, x, y, outerRadius, innerRadius} = element;
+  let angleMargin = pixelMargin / outerRadius;
+  ctx.beginPath();
+  ctx.arc(x, y, outerRadius, startAngle - angleMargin, endAngle + angleMargin);
+  if (innerRadius > pixelMargin) {
+    angleMargin = pixelMargin / innerRadius;
+    ctx.arc(x, y, innerRadius, endAngle + angleMargin, startAngle - angleMargin, true);
+  } else {
+    ctx.arc(x, y, pixelMargin, endAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H, startAngle - _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H);
+  }
+  ctx.closePath();
+  ctx.clip();
+}
+function toRadiusCorners(value) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aj)(value, ['outerStart', 'outerEnd', 'innerStart', 'innerEnd']);
+}
+function parseBorderRadius$1(arc, innerRadius, outerRadius, angleDelta) {
+  const o = toRadiusCorners(arc.options.borderRadius);
+  const halfThickness = (outerRadius - innerRadius) / 2;
+  const innerLimit = Math.min(halfThickness, angleDelta * innerRadius / 2);
+  const computeOuterLimit = (val) => {
+    const outerArcLimit = (outerRadius - Math.min(halfThickness, val)) * angleDelta / 2;
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(val, 0, Math.min(halfThickness, outerArcLimit));
+  };
+  return {
+    outerStart: computeOuterLimit(o.outerStart),
+    outerEnd: computeOuterLimit(o.outerEnd),
+    innerStart: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(o.innerStart, 0, innerLimit),
+    innerEnd: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(o.innerEnd, 0, innerLimit),
+  };
+}
+function rThetaToXY(r, theta, x, y) {
+  return {
+    x: x + r * Math.cos(theta),
+    y: y + r * Math.sin(theta),
+  };
+}
+function pathArc(ctx, element, offset, spacing, end) {
+  const {x, y, startAngle: start, pixelMargin, innerRadius: innerR} = element;
+  const outerRadius = Math.max(element.outerRadius + spacing + offset - pixelMargin, 0);
+  const innerRadius = innerR > 0 ? innerR + spacing + offset + pixelMargin : 0;
+  let spacingOffset = 0;
+  const alpha = end - start;
+  if (spacing) {
+    const noSpacingInnerRadius = innerR > 0 ? innerR - spacing : 0;
+    const noSpacingOuterRadius = outerRadius > 0 ? outerRadius - spacing : 0;
+    const avNogSpacingRadius = (noSpacingInnerRadius + noSpacingOuterRadius) / 2;
+    const adjustedAngle = avNogSpacingRadius !== 0 ? (alpha * avNogSpacingRadius) / (avNogSpacingRadius + spacing) : alpha;
+    spacingOffset = (alpha - adjustedAngle) / 2;
+  }
+  const beta = Math.max(0.001, alpha * outerRadius - offset / _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P) / outerRadius;
+  const angleOffset = (alpha - beta) / 2;
+  const startAngle = start + angleOffset + spacingOffset;
+  const endAngle = end - angleOffset - spacingOffset;
+  const {outerStart, outerEnd, innerStart, innerEnd} = parseBorderRadius$1(element, innerRadius, outerRadius, endAngle - startAngle);
+  const outerStartAdjustedRadius = outerRadius - outerStart;
+  const outerEndAdjustedRadius = outerRadius - outerEnd;
+  const outerStartAdjustedAngle = startAngle + outerStart / outerStartAdjustedRadius;
+  const outerEndAdjustedAngle = endAngle - outerEnd / outerEndAdjustedRadius;
+  const innerStartAdjustedRadius = innerRadius + innerStart;
+  const innerEndAdjustedRadius = innerRadius + innerEnd;
+  const innerStartAdjustedAngle = startAngle + innerStart / innerStartAdjustedRadius;
+  const innerEndAdjustedAngle = endAngle - innerEnd / innerEndAdjustedRadius;
+  ctx.beginPath();
+  ctx.arc(x, y, outerRadius, outerStartAdjustedAngle, outerEndAdjustedAngle);
+  if (outerEnd > 0) {
+    const pCenter = rThetaToXY(outerEndAdjustedRadius, outerEndAdjustedAngle, x, y);
+    ctx.arc(pCenter.x, pCenter.y, outerEnd, outerEndAdjustedAngle, endAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H);
+  }
+  const p4 = rThetaToXY(innerEndAdjustedRadius, endAngle, x, y);
+  ctx.lineTo(p4.x, p4.y);
+  if (innerEnd > 0) {
+    const pCenter = rThetaToXY(innerEndAdjustedRadius, innerEndAdjustedAngle, x, y);
+    ctx.arc(pCenter.x, pCenter.y, innerEnd, endAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H, innerEndAdjustedAngle + Math.PI);
+  }
+  ctx.arc(x, y, innerRadius, endAngle - (innerEnd / innerRadius), startAngle + (innerStart / innerRadius), true);
+  if (innerStart > 0) {
+    const pCenter = rThetaToXY(innerStartAdjustedRadius, innerStartAdjustedAngle, x, y);
+    ctx.arc(pCenter.x, pCenter.y, innerStart, innerStartAdjustedAngle + Math.PI, startAngle - _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H);
+  }
+  const p8 = rThetaToXY(outerStartAdjustedRadius, startAngle, x, y);
+  ctx.lineTo(p8.x, p8.y);
+  if (outerStart > 0) {
+    const pCenter = rThetaToXY(outerStartAdjustedRadius, outerStartAdjustedAngle, x, y);
+    ctx.arc(pCenter.x, pCenter.y, outerStart, startAngle - _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H, outerStartAdjustedAngle);
+  }
+  ctx.closePath();
+}
+function drawArc(ctx, element, offset, spacing) {
+  const {fullCircles, startAngle, circumference} = element;
+  let endAngle = element.endAngle;
+  if (fullCircles) {
+    pathArc(ctx, element, offset, spacing, startAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T);
+    for (let i = 0; i < fullCircles; ++i) {
+      ctx.fill();
+    }
+    if (!isNaN(circumference)) {
+      endAngle = startAngle + circumference % _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T;
+      if (circumference % _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T === 0) {
+        endAngle += _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T;
+      }
+    }
+  }
+  pathArc(ctx, element, offset, spacing, endAngle);
+  ctx.fill();
+  return endAngle;
+}
+function drawFullCircleBorders(ctx, element, inner) {
+  const {x, y, startAngle, pixelMargin, fullCircles} = element;
+  const outerRadius = Math.max(element.outerRadius - pixelMargin, 0);
+  const innerRadius = element.innerRadius + pixelMargin;
+  let i;
+  if (inner) {
+    clipArc(ctx, element, startAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T);
+  }
+  ctx.beginPath();
+  ctx.arc(x, y, innerRadius, startAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T, startAngle, true);
+  for (i = 0; i < fullCircles; ++i) {
+    ctx.stroke();
+  }
+  ctx.beginPath();
+  ctx.arc(x, y, outerRadius, startAngle, startAngle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T);
+  for (i = 0; i < fullCircles; ++i) {
+    ctx.stroke();
+  }
+}
+function drawBorder(ctx, element, offset, spacing, endAngle) {
+  const {options} = element;
+  const {borderWidth, borderJoinStyle} = options;
+  const inner = options.borderAlign === 'inner';
+  if (!borderWidth) {
+    return;
+  }
+  if (inner) {
+    ctx.lineWidth = borderWidth * 2;
+    ctx.lineJoin = borderJoinStyle || 'round';
+  } else {
+    ctx.lineWidth = borderWidth;
+    ctx.lineJoin = borderJoinStyle || 'bevel';
+  }
+  if (element.fullCircles) {
+    drawFullCircleBorders(ctx, element, inner);
+  }
+  if (inner) {
+    clipArc(ctx, element, endAngle);
+  }
+  pathArc(ctx, element, offset, spacing, endAngle);
+  ctx.stroke();
+}
+class ArcElement extends Element {
+  constructor(cfg) {
+    super();
+    this.options = undefined;
+    this.circumference = undefined;
+    this.startAngle = undefined;
+    this.endAngle = undefined;
+    this.innerRadius = undefined;
+    this.outerRadius = undefined;
+    this.pixelMargin = 0;
+    this.fullCircles = 0;
+    if (cfg) {
+      Object.assign(this, cfg);
+    }
+  }
+  inRange(chartX, chartY, useFinalPosition) {
+    const point = this.getProps(['x', 'y'], useFinalPosition);
+    const {angle, distance} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.C)(point, {x: chartX, y: chartY});
+    const {startAngle, endAngle, innerRadius, outerRadius, circumference} = this.getProps([
+      'startAngle',
+      'endAngle',
+      'innerRadius',
+      'outerRadius',
+      'circumference'
+    ], useFinalPosition);
+    const rAdjust = this.options.spacing / 2;
+    const _circumference = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(circumference, endAngle - startAngle);
+    const betweenAngles = _circumference >= _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.p)(angle, startAngle, endAngle);
+    const withinRadius = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(distance, innerRadius + rAdjust, outerRadius + rAdjust);
+    return (betweenAngles && withinRadius);
+  }
+  getCenterPoint(useFinalPosition) {
+    const {x, y, startAngle, endAngle, innerRadius, outerRadius} = this.getProps([
+      'x',
+      'y',
+      'startAngle',
+      'endAngle',
+      'innerRadius',
+      'outerRadius',
+      'circumference',
+    ], useFinalPosition);
+    const {offset, spacing} = this.options;
+    const halfAngle = (startAngle + endAngle) / 2;
+    const halfRadius = (innerRadius + outerRadius + spacing + offset) / 2;
+    return {
+      x: x + Math.cos(halfAngle) * halfRadius,
+      y: y + Math.sin(halfAngle) * halfRadius
+    };
+  }
+  tooltipPosition(useFinalPosition) {
+    return this.getCenterPoint(useFinalPosition);
+  }
+  draw(ctx) {
+    const {options, circumference} = this;
+    const offset = (options.offset || 0) / 2;
+    const spacing = (options.spacing || 0) / 2;
+    this.pixelMargin = (options.borderAlign === 'inner') ? 0.33 : 0;
+    this.fullCircles = circumference > _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T ? Math.floor(circumference / _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T) : 0;
+    if (circumference === 0 || this.innerRadius < 0 || this.outerRadius < 0) {
+      return;
+    }
+    ctx.save();
+    let radiusOffset = 0;
+    if (offset) {
+      radiusOffset = offset / 2;
+      const halfAngle = (this.startAngle + this.endAngle) / 2;
+      ctx.translate(Math.cos(halfAngle) * radiusOffset, Math.sin(halfAngle) * radiusOffset);
+      if (this.circumference >= _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P) {
+        radiusOffset = offset;
+      }
+    }
+    ctx.fillStyle = options.backgroundColor;
+    ctx.strokeStyle = options.borderColor;
+    const endAngle = drawArc(ctx, this, radiusOffset, spacing);
+    drawBorder(ctx, this, radiusOffset, spacing, endAngle);
+    ctx.restore();
+  }
+}
+ArcElement.id = 'arc';
+ArcElement.defaults = {
+  borderAlign: 'center',
+  borderColor: '#fff',
+  borderJoinStyle: undefined,
+  borderRadius: 0,
+  borderWidth: 2,
+  offset: 0,
+  spacing: 0,
+  angle: undefined,
+};
+ArcElement.defaultRoutes = {
+  backgroundColor: 'backgroundColor'
+};
+
+function setStyle(ctx, options, style = options) {
+  ctx.lineCap = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderCapStyle, options.borderCapStyle);
+  ctx.setLineDash((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderDash, options.borderDash));
+  ctx.lineDashOffset = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderDashOffset, options.borderDashOffset);
+  ctx.lineJoin = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderJoinStyle, options.borderJoinStyle);
+  ctx.lineWidth = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderWidth, options.borderWidth);
+  ctx.strokeStyle = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(style.borderColor, options.borderColor);
+}
+function lineTo(ctx, previous, target) {
+  ctx.lineTo(target.x, target.y);
+}
+function getLineMethod(options) {
+  if (options.stepped) {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aq;
+  }
+  if (options.tension || options.cubicInterpolationMode === 'monotone') {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ar;
+  }
+  return lineTo;
+}
+function pathVars(points, segment, params = {}) {
+  const count = points.length;
+  const {start: paramsStart = 0, end: paramsEnd = count - 1} = params;
+  const {start: segmentStart, end: segmentEnd} = segment;
+  const start = Math.max(paramsStart, segmentStart);
+  const end = Math.min(paramsEnd, segmentEnd);
+  const outside = paramsStart < segmentStart && paramsEnd < segmentStart || paramsStart > segmentEnd && paramsEnd > segmentEnd;
+  return {
+    count,
+    start,
+    loop: segment.loop,
+    ilen: end < start && !outside ? count + end - start : end - start
+  };
+}
+function pathSegment(ctx, line, segment, params) {
+  const {points, options} = line;
+  const {count, start, loop, ilen} = pathVars(points, segment, params);
+  const lineMethod = getLineMethod(options);
+  let {move = true, reverse} = params || {};
+  let i, point, prev;
+  for (i = 0; i <= ilen; ++i) {
+    point = points[(start + (reverse ? ilen - i : i)) % count];
+    if (point.skip) {
+      continue;
+    } else if (move) {
+      ctx.moveTo(point.x, point.y);
+      move = false;
+    } else {
+      lineMethod(ctx, prev, point, reverse, options.stepped);
+    }
+    prev = point;
+  }
+  if (loop) {
+    point = points[(start + (reverse ? ilen : 0)) % count];
+    lineMethod(ctx, prev, point, reverse, options.stepped);
+  }
+  return !!loop;
+}
+function fastPathSegment(ctx, line, segment, params) {
+  const points = line.points;
+  const {count, start, ilen} = pathVars(points, segment, params);
+  const {move = true, reverse} = params || {};
+  let avgX = 0;
+  let countX = 0;
+  let i, point, prevX, minY, maxY, lastY;
+  const pointIndex = (index) => (start + (reverse ? ilen - index : index)) % count;
+  const drawX = () => {
+    if (minY !== maxY) {
+      ctx.lineTo(avgX, maxY);
+      ctx.lineTo(avgX, minY);
+      ctx.lineTo(avgX, lastY);
+    }
+  };
+  if (move) {
+    point = points[pointIndex(0)];
+    ctx.moveTo(point.x, point.y);
+  }
+  for (i = 0; i <= ilen; ++i) {
+    point = points[pointIndex(i)];
+    if (point.skip) {
+      continue;
+    }
+    const x = point.x;
+    const y = point.y;
+    const truncX = x | 0;
+    if (truncX === prevX) {
+      if (y < minY) {
+        minY = y;
+      } else if (y > maxY) {
+        maxY = y;
+      }
+      avgX = (countX * avgX + x) / ++countX;
+    } else {
+      drawX();
+      ctx.lineTo(x, y);
+      prevX = truncX;
+      countX = 0;
+      minY = maxY = y;
+    }
+    lastY = y;
+  }
+  drawX();
+}
+function _getSegmentMethod(line) {
+  const opts = line.options;
+  const borderDash = opts.borderDash && opts.borderDash.length;
+  const useFastPath = !line._decimated && !line._loop && !opts.tension && opts.cubicInterpolationMode !== 'monotone' && !opts.stepped && !borderDash;
+  return useFastPath ? fastPathSegment : pathSegment;
+}
+function _getInterpolationMethod(options) {
+  if (options.stepped) {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.an;
+  }
+  if (options.tension || options.cubicInterpolationMode === 'monotone') {
+    return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ao;
+  }
+  return _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ap;
+}
+function strokePathWithCache(ctx, line, start, count) {
+  let path = line._path;
+  if (!path) {
+    path = line._path = new Path2D();
+    if (line.path(path, start, count)) {
+      path.closePath();
+    }
+  }
+  setStyle(ctx, line.options);
+  ctx.stroke(path);
+}
+function strokePathDirect(ctx, line, start, count) {
+  const {segments, options} = line;
+  const segmentMethod = _getSegmentMethod(line);
+  for (const segment of segments) {
+    setStyle(ctx, options, segment.style);
+    ctx.beginPath();
+    if (segmentMethod(ctx, line, segment, {start, end: start + count - 1})) {
+      ctx.closePath();
+    }
+    ctx.stroke();
+  }
+}
+const usePath2D = typeof Path2D === 'function';
+function draw(ctx, line, start, count) {
+  if (usePath2D && !line.options.segment) {
+    strokePathWithCache(ctx, line, start, count);
+  } else {
+    strokePathDirect(ctx, line, start, count);
+  }
+}
+class LineElement extends Element {
+  constructor(cfg) {
+    super();
+    this.animated = true;
+    this.options = undefined;
+    this._chart = undefined;
+    this._loop = undefined;
+    this._fullLoop = undefined;
+    this._path = undefined;
+    this._points = undefined;
+    this._segments = undefined;
+    this._decimated = false;
+    this._pointsUpdated = false;
+    this._datasetIndex = undefined;
+    if (cfg) {
+      Object.assign(this, cfg);
+    }
+  }
+  updateControlPoints(chartArea, indexAxis) {
+    const options = this.options;
+    if ((options.tension || options.cubicInterpolationMode === 'monotone') && !options.stepped && !this._pointsUpdated) {
+      const loop = options.spanGaps ? this._loop : this._fullLoop;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ak)(this._points, options, chartArea, loop, indexAxis);
+      this._pointsUpdated = true;
+    }
+  }
+  set points(points) {
+    this._points = points;
+    delete this._segments;
+    delete this._path;
+    this._pointsUpdated = false;
+  }
+  get points() {
+    return this._points;
+  }
+  get segments() {
+    return this._segments || (this._segments = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.al)(this, this.options.segment));
+  }
+  first() {
+    const segments = this.segments;
+    const points = this.points;
+    return segments.length && points[segments[0].start];
+  }
+  last() {
+    const segments = this.segments;
+    const points = this.points;
+    const count = segments.length;
+    return count && points[segments[count - 1].end];
+  }
+  interpolate(point, property) {
+    const options = this.options;
+    const value = point[property];
+    const points = this.points;
+    const segments = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.am)(this, {property, start: value, end: value});
+    if (!segments.length) {
+      return;
+    }
+    const result = [];
+    const _interpolate = _getInterpolationMethod(options);
+    let i, ilen;
+    for (i = 0, ilen = segments.length; i < ilen; ++i) {
+      const {start, end} = segments[i];
+      const p1 = points[start];
+      const p2 = points[end];
+      if (p1 === p2) {
+        result.push(p1);
+        continue;
+      }
+      const t = Math.abs((value - p1[property]) / (p2[property] - p1[property]));
+      const interpolated = _interpolate(p1, p2, t, options.stepped);
+      interpolated[property] = point[property];
+      result.push(interpolated);
+    }
+    return result.length === 1 ? result[0] : result;
+  }
+  pathSegment(ctx, segment, params) {
+    const segmentMethod = _getSegmentMethod(this);
+    return segmentMethod(ctx, this, segment, params);
+  }
+  path(ctx, start, count) {
+    const segments = this.segments;
+    const segmentMethod = _getSegmentMethod(this);
+    let loop = this._loop;
+    start = start || 0;
+    count = count || (this.points.length - start);
+    for (const segment of segments) {
+      loop &= segmentMethod(ctx, this, segment, {start, end: start + count - 1});
+    }
+    return !!loop;
+  }
+  draw(ctx, chartArea, start, count) {
+    const options = this.options || {};
+    const points = this.points || [];
+    if (points.length && options.borderWidth) {
+      ctx.save();
+      draw(ctx, this, start, count);
+      ctx.restore();
+    }
+    if (this.animated) {
+      this._pointsUpdated = false;
+      this._path = undefined;
+    }
+  }
+}
+LineElement.id = 'line';
+LineElement.defaults = {
+  borderCapStyle: 'butt',
+  borderDash: [],
+  borderDashOffset: 0,
+  borderJoinStyle: 'miter',
+  borderWidth: 3,
+  capBezierPoints: true,
+  cubicInterpolationMode: 'default',
+  fill: false,
+  spanGaps: false,
+  stepped: false,
+  tension: 0,
+};
+LineElement.defaultRoutes = {
+  backgroundColor: 'backgroundColor',
+  borderColor: 'borderColor'
+};
+LineElement.descriptors = {
+  _scriptable: true,
+  _indexable: (name) => name !== 'borderDash' && name !== 'fill',
+};
+
+function inRange$1(el, pos, axis, useFinalPosition) {
+  const options = el.options;
+  const {[axis]: value} = el.getProps([axis], useFinalPosition);
+  return (Math.abs(pos - value) < options.radius + options.hitRadius);
+}
+class PointElement extends Element {
+  constructor(cfg) {
+    super();
+    this.options = undefined;
+    this.parsed = undefined;
+    this.skip = undefined;
+    this.stop = undefined;
+    if (cfg) {
+      Object.assign(this, cfg);
+    }
+  }
+  inRange(mouseX, mouseY, useFinalPosition) {
+    const options = this.options;
+    const {x, y} = this.getProps(['x', 'y'], useFinalPosition);
+    return ((Math.pow(mouseX - x, 2) + Math.pow(mouseY - y, 2)) < Math.pow(options.hitRadius + options.radius, 2));
+  }
+  inXRange(mouseX, useFinalPosition) {
+    return inRange$1(this, mouseX, 'x', useFinalPosition);
+  }
+  inYRange(mouseY, useFinalPosition) {
+    return inRange$1(this, mouseY, 'y', useFinalPosition);
+  }
+  getCenterPoint(useFinalPosition) {
+    const {x, y} = this.getProps(['x', 'y'], useFinalPosition);
+    return {x, y};
+  }
+  size(options) {
+    options = options || this.options || {};
+    let radius = options.radius || 0;
+    radius = Math.max(radius, radius && options.hoverRadius || 0);
+    const borderWidth = radius && options.borderWidth || 0;
+    return (radius + borderWidth) * 2;
+  }
+  draw(ctx, area) {
+    const options = this.options;
+    if (this.skip || options.radius < 0.1 || !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.B)(this, area, this.size(options) / 2)) {
+      return;
+    }
+    ctx.strokeStyle = options.borderColor;
+    ctx.lineWidth = options.borderWidth;
+    ctx.fillStyle = options.backgroundColor;
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.as)(ctx, options, this.x, this.y);
+  }
+  getRange() {
+    const options = this.options || {};
+    return options.radius + options.hitRadius;
+  }
+}
+PointElement.id = 'point';
+PointElement.defaults = {
+  borderWidth: 1,
+  hitRadius: 1,
+  hoverBorderWidth: 1,
+  hoverRadius: 4,
+  pointStyle: 'circle',
+  radius: 3,
+  rotation: 0
+};
+PointElement.defaultRoutes = {
+  backgroundColor: 'backgroundColor',
+  borderColor: 'borderColor'
+};
+
+function getBarBounds(bar, useFinalPosition) {
+  const {x, y, base, width, height} = bar.getProps(['x', 'y', 'base', 'width', 'height'], useFinalPosition);
+  let left, right, top, bottom, half;
+  if (bar.horizontal) {
+    half = height / 2;
+    left = Math.min(x, base);
+    right = Math.max(x, base);
+    top = y - half;
+    bottom = y + half;
+  } else {
+    half = width / 2;
+    left = x - half;
+    right = x + half;
+    top = Math.min(y, base);
+    bottom = Math.max(y, base);
+  }
+  return {left, top, right, bottom};
+}
+function skipOrLimit(skip, value, min, max) {
+  return skip ? 0 : (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(value, min, max);
+}
+function parseBorderWidth(bar, maxW, maxH) {
+  const value = bar.options.borderWidth;
+  const skip = bar.borderSkipped;
+  const o = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.au)(value);
+  return {
+    t: skipOrLimit(skip.top, o.top, 0, maxH),
+    r: skipOrLimit(skip.right, o.right, 0, maxW),
+    b: skipOrLimit(skip.bottom, o.bottom, 0, maxH),
+    l: skipOrLimit(skip.left, o.left, 0, maxW)
+  };
+}
+function parseBorderRadius(bar, maxW, maxH) {
+  const {enableBorderRadius} = bar.getProps(['enableBorderRadius']);
+  const value = bar.options.borderRadius;
+  const o = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(value);
+  const maxR = Math.min(maxW, maxH);
+  const skip = bar.borderSkipped;
+  const enableBorder = enableBorderRadius || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(value);
+  return {
+    topLeft: skipOrLimit(!enableBorder || skip.top || skip.left, o.topLeft, 0, maxR),
+    topRight: skipOrLimit(!enableBorder || skip.top || skip.right, o.topRight, 0, maxR),
+    bottomLeft: skipOrLimit(!enableBorder || skip.bottom || skip.left, o.bottomLeft, 0, maxR),
+    bottomRight: skipOrLimit(!enableBorder || skip.bottom || skip.right, o.bottomRight, 0, maxR)
+  };
+}
+function boundingRects(bar) {
+  const bounds = getBarBounds(bar);
+  const width = bounds.right - bounds.left;
+  const height = bounds.bottom - bounds.top;
+  const border = parseBorderWidth(bar, width / 2, height / 2);
+  const radius = parseBorderRadius(bar, width / 2, height / 2);
+  return {
+    outer: {
+      x: bounds.left,
+      y: bounds.top,
+      w: width,
+      h: height,
+      radius
+    },
+    inner: {
+      x: bounds.left + border.l,
+      y: bounds.top + border.t,
+      w: width - border.l - border.r,
+      h: height - border.t - border.b,
+      radius: {
+        topLeft: Math.max(0, radius.topLeft - Math.max(border.t, border.l)),
+        topRight: Math.max(0, radius.topRight - Math.max(border.t, border.r)),
+        bottomLeft: Math.max(0, radius.bottomLeft - Math.max(border.b, border.l)),
+        bottomRight: Math.max(0, radius.bottomRight - Math.max(border.b, border.r)),
+      }
+    }
+  };
+}
+function inRange(bar, x, y, useFinalPosition) {
+  const skipX = x === null;
+  const skipY = y === null;
+  const skipBoth = skipX && skipY;
+  const bounds = bar && !skipBoth && getBarBounds(bar, useFinalPosition);
+  return bounds
+		&& (skipX || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(x, bounds.left, bounds.right))
+		&& (skipY || (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(y, bounds.top, bounds.bottom));
+}
+function hasRadius(radius) {
+  return radius.topLeft || radius.topRight || radius.bottomLeft || radius.bottomRight;
+}
+function addNormalRectPath(ctx, rect) {
+  ctx.rect(rect.x, rect.y, rect.w, rect.h);
+}
+function inflateRect(rect, amount, refRect = {}) {
+  const x = rect.x !== refRect.x ? -amount : 0;
+  const y = rect.y !== refRect.y ? -amount : 0;
+  const w = (rect.x + rect.w !== refRect.x + refRect.w ? amount : 0) - x;
+  const h = (rect.y + rect.h !== refRect.y + refRect.h ? amount : 0) - y;
+  return {
+    x: rect.x + x,
+    y: rect.y + y,
+    w: rect.w + w,
+    h: rect.h + h,
+    radius: rect.radius
+  };
+}
+class BarElement extends Element {
+  constructor(cfg) {
+    super();
+    this.options = undefined;
+    this.horizontal = undefined;
+    this.base = undefined;
+    this.width = undefined;
+    this.height = undefined;
+    this.inflateAmount = undefined;
+    if (cfg) {
+      Object.assign(this, cfg);
+    }
+  }
+  draw(ctx) {
+    const {inflateAmount, options: {borderColor, backgroundColor}} = this;
+    const {inner, outer} = boundingRects(this);
+    const addRectPath = hasRadius(outer.radius) ? _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.at : addNormalRectPath;
+    ctx.save();
+    if (outer.w !== inner.w || outer.h !== inner.h) {
+      ctx.beginPath();
+      addRectPath(ctx, inflateRect(outer, inflateAmount, inner));
+      ctx.clip();
+      addRectPath(ctx, inflateRect(inner, -inflateAmount, outer));
+      ctx.fillStyle = borderColor;
+      ctx.fill('evenodd');
+    }
+    ctx.beginPath();
+    addRectPath(ctx, inflateRect(inner, inflateAmount));
+    ctx.fillStyle = backgroundColor;
+    ctx.fill();
+    ctx.restore();
+  }
+  inRange(mouseX, mouseY, useFinalPosition) {
+    return inRange(this, mouseX, mouseY, useFinalPosition);
+  }
+  inXRange(mouseX, useFinalPosition) {
+    return inRange(this, mouseX, null, useFinalPosition);
+  }
+  inYRange(mouseY, useFinalPosition) {
+    return inRange(this, null, mouseY, useFinalPosition);
+  }
+  getCenterPoint(useFinalPosition) {
+    const {x, y, base, horizontal} = this.getProps(['x', 'y', 'base', 'horizontal'], useFinalPosition);
+    return {
+      x: horizontal ? (x + base) / 2 : x,
+      y: horizontal ? y : (y + base) / 2
+    };
+  }
+  getRange(axis) {
+    return axis === 'x' ? this.width / 2 : this.height / 2;
+  }
+}
+BarElement.id = 'bar';
+BarElement.defaults = {
+  borderSkipped: 'start',
+  borderWidth: 0,
+  borderRadius: 0,
+  inflateAmount: 'auto',
+  pointStyle: undefined
+};
+BarElement.defaultRoutes = {
+  backgroundColor: 'backgroundColor',
+  borderColor: 'borderColor'
+};
+
+var elements = /*#__PURE__*/Object.freeze({
+__proto__: null,
+ArcElement: ArcElement,
+LineElement: LineElement,
+PointElement: PointElement,
+BarElement: BarElement
+});
+
+function lttbDecimation(data, start, count, availableWidth, options) {
+  const samples = options.samples || availableWidth;
+  if (samples >= count) {
+    return data.slice(start, start + count);
+  }
+  const decimated = [];
+  const bucketWidth = (count - 2) / (samples - 2);
+  let sampledIndex = 0;
+  const endIndex = start + count - 1;
+  let a = start;
+  let i, maxAreaPoint, maxArea, area, nextA;
+  decimated[sampledIndex++] = data[a];
+  for (i = 0; i < samples - 2; i++) {
+    let avgX = 0;
+    let avgY = 0;
+    let j;
+    const avgRangeStart = Math.floor((i + 1) * bucketWidth) + 1 + start;
+    const avgRangeEnd = Math.min(Math.floor((i + 2) * bucketWidth) + 1, count) + start;
+    const avgRangeLength = avgRangeEnd - avgRangeStart;
+    for (j = avgRangeStart; j < avgRangeEnd; j++) {
+      avgX += data[j].x;
+      avgY += data[j].y;
+    }
+    avgX /= avgRangeLength;
+    avgY /= avgRangeLength;
+    const rangeOffs = Math.floor(i * bucketWidth) + 1 + start;
+    const rangeTo = Math.min(Math.floor((i + 1) * bucketWidth) + 1, count) + start;
+    const {x: pointAx, y: pointAy} = data[a];
+    maxArea = area = -1;
+    for (j = rangeOffs; j < rangeTo; j++) {
+      area = 0.5 * Math.abs(
+        (pointAx - avgX) * (data[j].y - pointAy) -
+        (pointAx - data[j].x) * (avgY - pointAy)
+      );
+      if (area > maxArea) {
+        maxArea = area;
+        maxAreaPoint = data[j];
+        nextA = j;
+      }
+    }
+    decimated[sampledIndex++] = maxAreaPoint;
+    a = nextA;
+  }
+  decimated[sampledIndex++] = data[endIndex];
+  return decimated;
+}
+function minMaxDecimation(data, start, count, availableWidth) {
+  let avgX = 0;
+  let countX = 0;
+  let i, point, x, y, prevX, minIndex, maxIndex, startIndex, minY, maxY;
+  const decimated = [];
+  const endIndex = start + count - 1;
+  const xMin = data[start].x;
+  const xMax = data[endIndex].x;
+  const dx = xMax - xMin;
+  for (i = start; i < start + count; ++i) {
+    point = data[i];
+    x = (point.x - xMin) / dx * availableWidth;
+    y = point.y;
+    const truncX = x | 0;
+    if (truncX === prevX) {
+      if (y < minY) {
+        minY = y;
+        minIndex = i;
+      } else if (y > maxY) {
+        maxY = y;
+        maxIndex = i;
+      }
+      avgX = (countX * avgX + point.x) / ++countX;
+    } else {
+      const lastIndex = i - 1;
+      if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(minIndex) && !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(maxIndex)) {
+        const intermediateIndex1 = Math.min(minIndex, maxIndex);
+        const intermediateIndex2 = Math.max(minIndex, maxIndex);
+        if (intermediateIndex1 !== startIndex && intermediateIndex1 !== lastIndex) {
+          decimated.push({
+            ...data[intermediateIndex1],
+            x: avgX,
+          });
+        }
+        if (intermediateIndex2 !== startIndex && intermediateIndex2 !== lastIndex) {
+          decimated.push({
+            ...data[intermediateIndex2],
+            x: avgX
+          });
+        }
+      }
+      if (i > 0 && lastIndex !== startIndex) {
+        decimated.push(data[lastIndex]);
+      }
+      decimated.push(point);
+      prevX = truncX;
+      countX = 0;
+      minY = maxY = y;
+      minIndex = maxIndex = startIndex = i;
+    }
+  }
+  return decimated;
+}
+function cleanDecimatedDataset(dataset) {
+  if (dataset._decimated) {
+    const data = dataset._data;
+    delete dataset._decimated;
+    delete dataset._data;
+    Object.defineProperty(dataset, 'data', {value: data});
+  }
+}
+function cleanDecimatedData(chart) {
+  chart.data.datasets.forEach((dataset) => {
+    cleanDecimatedDataset(dataset);
+  });
+}
+function getStartAndCountOfVisiblePointsSimplified(meta, points) {
+  const pointCount = points.length;
+  let start = 0;
+  let count;
+  const {iScale} = meta;
+  const {min, max, minDefined, maxDefined} = iScale.getUserBounds();
+  if (minDefined) {
+    start = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(points, iScale.axis, min).lo, 0, pointCount - 1);
+  }
+  if (maxDefined) {
+    count = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(points, iScale.axis, max).hi + 1, start, pointCount) - start;
+  } else {
+    count = pointCount - start;
+  }
+  return {start, count};
+}
+var plugin_decimation = {
+  id: 'decimation',
+  defaults: {
+    algorithm: 'min-max',
+    enabled: false,
+  },
+  beforeElementsUpdate: (chart, args, options) => {
+    if (!options.enabled) {
+      cleanDecimatedData(chart);
+      return;
+    }
+    const availableWidth = chart.width;
+    chart.data.datasets.forEach((dataset, datasetIndex) => {
+      const {_data, indexAxis} = dataset;
+      const meta = chart.getDatasetMeta(datasetIndex);
+      const data = _data || dataset.data;
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a)([indexAxis, chart.options.indexAxis]) === 'y') {
+        return;
+      }
+      if (!meta.controller.supportsDecimation) {
+        return;
+      }
+      const xAxis = chart.scales[meta.xAxisID];
+      if (xAxis.type !== 'linear' && xAxis.type !== 'time') {
+        return;
+      }
+      if (chart.options.parsing) {
+        return;
+      }
+      let {start, count} = getStartAndCountOfVisiblePointsSimplified(meta, data);
+      const threshold = options.threshold || 4 * availableWidth;
+      if (count <= threshold) {
+        cleanDecimatedDataset(dataset);
+        return;
+      }
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(_data)) {
+        dataset._data = data;
+        delete dataset.data;
+        Object.defineProperty(dataset, 'data', {
+          configurable: true,
+          enumerable: true,
+          get: function() {
+            return this._decimated;
+          },
+          set: function(d) {
+            this._data = d;
+          }
+        });
+      }
+      let decimated;
+      switch (options.algorithm) {
+      case 'lttb':
+        decimated = lttbDecimation(data, start, count, availableWidth, options);
+        break;
+      case 'min-max':
+        decimated = minMaxDecimation(data, start, count, availableWidth);
+        break;
+      default:
+        throw new Error(`Unsupported decimation algorithm '${options.algorithm}'`);
+      }
+      dataset._decimated = decimated;
+    });
+  },
+  destroy(chart) {
+    cleanDecimatedData(chart);
+  }
+};
+
+function _segments(line, target, property) {
+  const segments = line.segments;
+  const points = line.points;
+  const tpoints = target.points;
+  const parts = [];
+  for (const segment of segments) {
+    let {start, end} = segment;
+    end = _findSegmentEnd(start, end, points);
+    const bounds = _getBounds(property, points[start], points[end], segment.loop);
+    if (!target.segments) {
+      parts.push({
+        source: segment,
+        target: bounds,
+        start: points[start],
+        end: points[end]
+      });
+      continue;
+    }
+    const targetSegments = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.am)(target, bounds);
+    for (const tgt of targetSegments) {
+      const subBounds = _getBounds(property, tpoints[tgt.start], tpoints[tgt.end], tgt.loop);
+      const fillSources = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aw)(segment, points, subBounds);
+      for (const fillSource of fillSources) {
+        parts.push({
+          source: fillSource,
+          target: tgt,
+          start: {
+            [property]: _getEdge(bounds, subBounds, 'start', Math.max)
+          },
+          end: {
+            [property]: _getEdge(bounds, subBounds, 'end', Math.min)
+          }
+        });
+      }
+    }
+  }
+  return parts;
+}
+function _getBounds(property, first, last, loop) {
+  if (loop) {
+    return;
+  }
+  let start = first[property];
+  let end = last[property];
+  if (property === 'angle') {
+    start = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ax)(start);
+    end = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ax)(end);
+  }
+  return {property, start, end};
+}
+function _pointsFromSegments(boundary, line) {
+  const {x = null, y = null} = boundary || {};
+  const linePoints = line.points;
+  const points = [];
+  line.segments.forEach(({start, end}) => {
+    end = _findSegmentEnd(start, end, linePoints);
+    const first = linePoints[start];
+    const last = linePoints[end];
+    if (y !== null) {
+      points.push({x: first.x, y});
+      points.push({x: last.x, y});
+    } else if (x !== null) {
+      points.push({x, y: first.y});
+      points.push({x, y: last.y});
+    }
+  });
+  return points;
+}
+function _findSegmentEnd(start, end, points) {
+  for (;end > start; end--) {
+    const point = points[end];
+    if (!isNaN(point.x) && !isNaN(point.y)) {
+      break;
+    }
+  }
+  return end;
+}
+function _getEdge(a, b, prop, fn) {
+  if (a && b) {
+    return fn(a[prop], b[prop]);
+  }
+  return a ? a[prop] : b ? b[prop] : 0;
+}
+
+function _createBoundaryLine(boundary, line) {
+  let points = [];
+  let _loop = false;
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(boundary)) {
+    _loop = true;
+    points = boundary;
+  } else {
+    points = _pointsFromSegments(boundary, line);
+  }
+  return points.length ? new LineElement({
+    points,
+    options: {tension: 0},
+    _loop,
+    _fullLoop: _loop
+  }) : null;
+}
+
+function _resolveTarget(sources, index, propagate) {
+  const source = sources[index];
+  let fill = source.fill;
+  const visited = [index];
+  let target;
+  if (!propagate) {
+    return fill;
+  }
+  while (fill !== false && visited.indexOf(fill) === -1) {
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(fill)) {
+      return fill;
+    }
+    target = sources[fill];
+    if (!target) {
+      return false;
+    }
+    if (target.visible) {
+      return fill;
+    }
+    visited.push(fill);
+    fill = target.fill;
+  }
+  return false;
+}
+function _decodeFill(line, index, count) {
+  const fill = parseFillOption(line);
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(fill)) {
+    return isNaN(fill.value) ? false : fill;
+  }
+  let target = parseFloat(fill);
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(target) && Math.floor(target) === target) {
+    return decodeTargetIndex(fill[0], index, target, count);
+  }
+  return ['origin', 'start', 'end', 'stack', 'shape'].indexOf(fill) >= 0 && fill;
+}
+function decodeTargetIndex(firstCh, index, target, count) {
+  if (firstCh === '-' || firstCh === '+') {
+    target = index + target;
+  }
+  if (target === index || target < 0 || target >= count) {
+    return false;
+  }
+  return target;
+}
+function _getTargetPixel(fill, scale) {
+  let pixel = null;
+  if (fill === 'start') {
+    pixel = scale.bottom;
+  } else if (fill === 'end') {
+    pixel = scale.top;
+  } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(fill)) {
+    pixel = scale.getPixelForValue(fill.value);
+  } else if (scale.getBasePixel) {
+    pixel = scale.getBasePixel();
+  }
+  return pixel;
+}
+function _getTargetValue(fill, scale, startValue) {
+  let value;
+  if (fill === 'start') {
+    value = startValue;
+  } else if (fill === 'end') {
+    value = scale.options.reverse ? scale.min : scale.max;
+  } else if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.i)(fill)) {
+    value = fill.value;
+  } else {
+    value = scale.getBaseValue();
+  }
+  return value;
+}
+function parseFillOption(line) {
+  const options = line.options;
+  const fillOption = options.fill;
+  let fill = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(fillOption && fillOption.target, fillOption);
+  if (fill === undefined) {
+    fill = !!options.backgroundColor;
+  }
+  if (fill === false || fill === null) {
+    return false;
+  }
+  if (fill === true) {
+    return 'origin';
+  }
+  return fill;
+}
+
+function _buildStackLine(source) {
+  const {scale, index, line} = source;
+  const points = [];
+  const segments = line.segments;
+  const sourcePoints = line.points;
+  const linesBelow = getLinesBelow(scale, index);
+  linesBelow.push(_createBoundaryLine({x: null, y: scale.bottom}, line));
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+    for (let j = segment.start; j <= segment.end; j++) {
+      addPointsBelow(points, sourcePoints[j], linesBelow);
+    }
+  }
+  return new LineElement({points, options: {}});
+}
+function getLinesBelow(scale, index) {
+  const below = [];
+  const metas = scale.getMatchingVisibleMetas('line');
+  for (let i = 0; i < metas.length; i++) {
+    const meta = metas[i];
+    if (meta.index === index) {
+      break;
+    }
+    if (!meta.hidden) {
+      below.unshift(meta.dataset);
+    }
+  }
+  return below;
+}
+function addPointsBelow(points, sourcePoint, linesBelow) {
+  const postponed = [];
+  for (let j = 0; j < linesBelow.length; j++) {
+    const line = linesBelow[j];
+    const {first, last, point} = findPoint(line, sourcePoint, 'x');
+    if (!point || (first && last)) {
+      continue;
+    }
+    if (first) {
+      postponed.unshift(point);
+    } else {
+      points.push(point);
+      if (!last) {
+        break;
+      }
+    }
+  }
+  points.push(...postponed);
+}
+function findPoint(line, sourcePoint, property) {
+  const point = line.interpolate(sourcePoint, property);
+  if (!point) {
+    return {};
+  }
+  const pointValue = point[property];
+  const segments = line.segments;
+  const linePoints = line.points;
+  let first = false;
+  let last = false;
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+    const firstValue = linePoints[segment.start][property];
+    const lastValue = linePoints[segment.end][property];
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(pointValue, firstValue, lastValue)) {
+      first = pointValue === firstValue;
+      last = pointValue === lastValue;
+      break;
+    }
+  }
+  return {first, last, point};
+}
+
+class simpleArc {
+  constructor(opts) {
+    this.x = opts.x;
+    this.y = opts.y;
+    this.radius = opts.radius;
+  }
+  pathSegment(ctx, bounds, opts) {
+    const {x, y, radius} = this;
+    bounds = bounds || {start: 0, end: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T};
+    ctx.arc(x, y, radius, bounds.end, bounds.start, true);
+    return !opts.bounds;
+  }
+  interpolate(point) {
+    const {x, y, radius} = this;
+    const angle = point.angle;
+    return {
+      x: x + Math.cos(angle) * radius,
+      y: y + Math.sin(angle) * radius,
+      angle
+    };
+  }
+}
+
+function _getTarget(source) {
+  const {chart, fill, line} = source;
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(fill)) {
+    return getLineByIndex(chart, fill);
+  }
+  if (fill === 'stack') {
+    return _buildStackLine(source);
+  }
+  if (fill === 'shape') {
+    return true;
+  }
+  const boundary = computeBoundary(source);
+  if (boundary instanceof simpleArc) {
+    return boundary;
+  }
+  return _createBoundaryLine(boundary, line);
+}
+function getLineByIndex(chart, index) {
+  const meta = chart.getDatasetMeta(index);
+  const visible = meta && chart.isDatasetVisible(index);
+  return visible ? meta.dataset : null;
+}
+function computeBoundary(source) {
+  const scale = source.scale || {};
+  if (scale.getPointPositionForValue) {
+    return computeCircularBoundary(source);
+  }
+  return computeLinearBoundary(source);
+}
+function computeLinearBoundary(source) {
+  const {scale = {}, fill} = source;
+  const pixel = _getTargetPixel(fill, scale);
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(pixel)) {
+    const horizontal = scale.isHorizontal();
+    return {
+      x: horizontal ? pixel : null,
+      y: horizontal ? null : pixel
+    };
+  }
+  return null;
+}
+function computeCircularBoundary(source) {
+  const {scale, fill} = source;
+  const options = scale.options;
+  const length = scale.getLabels().length;
+  const start = options.reverse ? scale.max : scale.min;
+  const value = _getTargetValue(fill, scale, start);
+  const target = [];
+  if (options.grid.circular) {
+    const center = scale.getPointPositionForValue(0, start);
+    return new simpleArc({
+      x: center.x,
+      y: center.y,
+      radius: scale.getDistanceFromCenterForValue(value)
+    });
+  }
+  for (let i = 0; i < length; ++i) {
+    target.push(scale.getPointPositionForValue(i, value));
+  }
+  return target;
+}
+
+function _drawfill(ctx, source, area) {
+  const target = _getTarget(source);
+  const {line, scale, axis} = source;
+  const lineOpts = line.options;
+  const fillOption = lineOpts.fill;
+  const color = lineOpts.backgroundColor;
+  const {above = color, below = color} = fillOption || {};
+  if (target && line.points.length) {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.X)(ctx, area);
+    doFill(ctx, {line, target, above, below, area, scale, axis});
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Z)(ctx);
+  }
+}
+function doFill(ctx, cfg) {
+  const {line, target, above, below, area, scale} = cfg;
+  const property = line._loop ? 'angle' : cfg.axis;
+  ctx.save();
+  if (property === 'x' && below !== above) {
+    clipVertical(ctx, target, area.top);
+    fill(ctx, {line, target, color: above, scale, property});
+    ctx.restore();
+    ctx.save();
+    clipVertical(ctx, target, area.bottom);
+  }
+  fill(ctx, {line, target, color: below, scale, property});
+  ctx.restore();
+}
+function clipVertical(ctx, target, clipY) {
+  const {segments, points} = target;
+  let first = true;
+  let lineLoop = false;
+  ctx.beginPath();
+  for (const segment of segments) {
+    const {start, end} = segment;
+    const firstPoint = points[start];
+    const lastPoint = points[_findSegmentEnd(start, end, points)];
+    if (first) {
+      ctx.moveTo(firstPoint.x, firstPoint.y);
+      first = false;
+    } else {
+      ctx.lineTo(firstPoint.x, clipY);
+      ctx.lineTo(firstPoint.x, firstPoint.y);
+    }
+    lineLoop = !!target.pathSegment(ctx, segment, {move: lineLoop});
+    if (lineLoop) {
+      ctx.closePath();
+    } else {
+      ctx.lineTo(lastPoint.x, clipY);
+    }
+  }
+  ctx.lineTo(target.first().x, clipY);
+  ctx.closePath();
+  ctx.clip();
+}
+function fill(ctx, cfg) {
+  const {line, target, property, color, scale} = cfg;
+  const segments = _segments(line, target, property);
+  for (const {source: src, target: tgt, start, end} of segments) {
+    const {style: {backgroundColor = color} = {}} = src;
+    const notShape = target !== true;
+    ctx.save();
+    ctx.fillStyle = backgroundColor;
+    clipBounds(ctx, scale, notShape && _getBounds(property, start, end));
+    ctx.beginPath();
+    const lineLoop = !!line.pathSegment(ctx, src);
+    let loop;
+    if (notShape) {
+      if (lineLoop) {
+        ctx.closePath();
+      } else {
+        interpolatedLineTo(ctx, target, end, property);
+      }
+      const targetLoop = !!target.pathSegment(ctx, tgt, {move: lineLoop, reverse: true});
+      loop = lineLoop && targetLoop;
+      if (!loop) {
+        interpolatedLineTo(ctx, target, start, property);
+      }
+    }
+    ctx.closePath();
+    ctx.fill(loop ? 'evenodd' : 'nonzero');
+    ctx.restore();
+  }
+}
+function clipBounds(ctx, scale, bounds) {
+  const {top, bottom} = scale.chart.chartArea;
+  const {property, start, end} = bounds || {};
+  if (property === 'x') {
+    ctx.beginPath();
+    ctx.rect(start, top, end - start, bottom - top);
+    ctx.clip();
+  }
+}
+function interpolatedLineTo(ctx, target, point, property) {
+  const interpolatedPoint = target.interpolate(point, property);
+  if (interpolatedPoint) {
+    ctx.lineTo(interpolatedPoint.x, interpolatedPoint.y);
+  }
+}
+
+var index = {
+  id: 'filler',
+  afterDatasetsUpdate(chart, _args, options) {
+    const count = (chart.data.datasets || []).length;
+    const sources = [];
+    let meta, i, line, source;
+    for (i = 0; i < count; ++i) {
+      meta = chart.getDatasetMeta(i);
+      line = meta.dataset;
+      source = null;
+      if (line && line.options && line instanceof LineElement) {
+        source = {
+          visible: chart.isDatasetVisible(i),
+          index: i,
+          fill: _decodeFill(line, i, count),
+          chart,
+          axis: meta.controller.options.indexAxis,
+          scale: meta.vScale,
+          line,
+        };
+      }
+      meta.$filler = source;
+      sources.push(source);
+    }
+    for (i = 0; i < count; ++i) {
+      source = sources[i];
+      if (!source || source.fill === false) {
+        continue;
+      }
+      source.fill = _resolveTarget(sources, i, options.propagate);
+    }
+  },
+  beforeDraw(chart, _args, options) {
+    const draw = options.drawTime === 'beforeDraw';
+    const metasets = chart.getSortedVisibleDatasetMetas();
+    const area = chart.chartArea;
+    for (let i = metasets.length - 1; i >= 0; --i) {
+      const source = metasets[i].$filler;
+      if (!source) {
+        continue;
+      }
+      source.line.updateControlPoints(area, source.axis);
+      if (draw) {
+        _drawfill(chart.ctx, source, area);
+      }
+    }
+  },
+  beforeDatasetsDraw(chart, _args, options) {
+    if (options.drawTime !== 'beforeDatasetsDraw') {
+      return;
+    }
+    const metasets = chart.getSortedVisibleDatasetMetas();
+    for (let i = metasets.length - 1; i >= 0; --i) {
+      const source = metasets[i].$filler;
+      if (source) {
+        _drawfill(chart.ctx, source, chart.chartArea);
+      }
+    }
+  },
+  beforeDatasetDraw(chart, args, options) {
+    const source = args.meta.$filler;
+    if (!source || source.fill === false || options.drawTime !== 'beforeDatasetDraw') {
+      return;
+    }
+    _drawfill(chart.ctx, source, chart.chartArea);
+  },
+  defaults: {
+    propagate: true,
+    drawTime: 'beforeDatasetDraw'
+  }
+};
+
+const getBoxSize = (labelOpts, fontSize) => {
+  let {boxHeight = fontSize, boxWidth = fontSize} = labelOpts;
+  if (labelOpts.usePointStyle) {
+    boxHeight = Math.min(boxHeight, fontSize);
+    boxWidth = Math.min(boxWidth, fontSize);
+  }
+  return {
+    boxWidth,
+    boxHeight,
+    itemHeight: Math.max(fontSize, boxHeight)
+  };
+};
+const itemsEqual = (a, b) => a !== null && b !== null && a.datasetIndex === b.datasetIndex && a.index === b.index;
+class Legend extends Element {
+  constructor(config) {
+    super();
+    this._added = false;
+    this.legendHitBoxes = [];
+    this._hoveredItem = null;
+    this.doughnutMode = false;
+    this.chart = config.chart;
+    this.options = config.options;
+    this.ctx = config.ctx;
+    this.legendItems = undefined;
+    this.columnSizes = undefined;
+    this.lineWidths = undefined;
+    this.maxHeight = undefined;
+    this.maxWidth = undefined;
+    this.top = undefined;
+    this.bottom = undefined;
+    this.left = undefined;
+    this.right = undefined;
+    this.height = undefined;
+    this.width = undefined;
+    this._margins = undefined;
+    this.position = undefined;
+    this.weight = undefined;
+    this.fullSize = undefined;
+  }
+  update(maxWidth, maxHeight, margins) {
+    this.maxWidth = maxWidth;
+    this.maxHeight = maxHeight;
+    this._margins = margins;
+    this.setDimensions();
+    this.buildLabels();
+    this.fit();
+  }
+  setDimensions() {
+    if (this.isHorizontal()) {
+      this.width = this.maxWidth;
+      this.left = this._margins.left;
+      this.right = this.width;
+    } else {
+      this.height = this.maxHeight;
+      this.top = this._margins.top;
+      this.bottom = this.height;
+    }
+  }
+  buildLabels() {
+    const labelOpts = this.options.labels || {};
+    let legendItems = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(labelOpts.generateLabels, [this.chart], this) || [];
+    if (labelOpts.filter) {
+      legendItems = legendItems.filter((item) => labelOpts.filter(item, this.chart.data));
+    }
+    if (labelOpts.sort) {
+      legendItems = legendItems.sort((a, b) => labelOpts.sort(a, b, this.chart.data));
+    }
+    if (this.options.reverse) {
+      legendItems.reverse();
+    }
+    this.legendItems = legendItems;
+  }
+  fit() {
+    const {options, ctx} = this;
+    if (!options.display) {
+      this.width = this.height = 0;
+      return;
+    }
+    const labelOpts = options.labels;
+    const labelFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(labelOpts.font);
+    const fontSize = labelFont.size;
+    const titleHeight = this._computeTitleHeight();
+    const {boxWidth, itemHeight} = getBoxSize(labelOpts, fontSize);
+    let width, height;
+    ctx.font = labelFont.string;
+    if (this.isHorizontal()) {
+      width = this.maxWidth;
+      height = this._fitRows(titleHeight, fontSize, boxWidth, itemHeight) + 10;
+    } else {
+      height = this.maxHeight;
+      width = this._fitCols(titleHeight, fontSize, boxWidth, itemHeight) + 10;
+    }
+    this.width = Math.min(width, options.maxWidth || this.maxWidth);
+    this.height = Math.min(height, options.maxHeight || this.maxHeight);
+  }
+  _fitRows(titleHeight, fontSize, boxWidth, itemHeight) {
+    const {ctx, maxWidth, options: {labels: {padding}}} = this;
+    const hitboxes = this.legendHitBoxes = [];
+    const lineWidths = this.lineWidths = [0];
+    const lineHeight = itemHeight + padding;
+    let totalHeight = titleHeight;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    let row = -1;
+    let top = -lineHeight;
+    this.legendItems.forEach((legendItem, i) => {
+      const itemWidth = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
+      if (i === 0 || lineWidths[lineWidths.length - 1] + itemWidth + 2 * padding > maxWidth) {
+        totalHeight += lineHeight;
+        lineWidths[lineWidths.length - (i > 0 ? 0 : 1)] = 0;
+        top += lineHeight;
+        row++;
+      }
+      hitboxes[i] = {left: 0, top, row, width: itemWidth, height: itemHeight};
+      lineWidths[lineWidths.length - 1] += itemWidth + padding;
+    });
+    return totalHeight;
+  }
+  _fitCols(titleHeight, fontSize, boxWidth, itemHeight) {
+    const {ctx, maxHeight, options: {labels: {padding}}} = this;
+    const hitboxes = this.legendHitBoxes = [];
+    const columnSizes = this.columnSizes = [];
+    const heightLimit = maxHeight - titleHeight;
+    let totalWidth = padding;
+    let currentColWidth = 0;
+    let currentColHeight = 0;
+    let left = 0;
+    let col = 0;
+    this.legendItems.forEach((legendItem, i) => {
+      const itemWidth = boxWidth + (fontSize / 2) + ctx.measureText(legendItem.text).width;
+      if (i > 0 && currentColHeight + itemHeight + 2 * padding > heightLimit) {
+        totalWidth += currentColWidth + padding;
+        columnSizes.push({width: currentColWidth, height: currentColHeight});
+        left += currentColWidth + padding;
+        col++;
+        currentColWidth = currentColHeight = 0;
+      }
+      hitboxes[i] = {left, top: currentColHeight, col, width: itemWidth, height: itemHeight};
+      currentColWidth = Math.max(currentColWidth, itemWidth);
+      currentColHeight += itemHeight + padding;
+    });
+    totalWidth += currentColWidth;
+    columnSizes.push({width: currentColWidth, height: currentColHeight});
+    return totalWidth;
+  }
+  adjustHitBoxes() {
+    if (!this.options.display) {
+      return;
+    }
+    const titleHeight = this._computeTitleHeight();
+    const {legendHitBoxes: hitboxes, options: {align, labels: {padding}, rtl}} = this;
+    const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(rtl, this.left, this.width);
+    if (this.isHorizontal()) {
+      let row = 0;
+      let left = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.left + padding, this.right - this.lineWidths[row]);
+      for (const hitbox of hitboxes) {
+        if (row !== hitbox.row) {
+          row = hitbox.row;
+          left = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.left + padding, this.right - this.lineWidths[row]);
+        }
+        hitbox.top += this.top + titleHeight + padding;
+        hitbox.left = rtlHelper.leftForLtr(rtlHelper.x(left), hitbox.width);
+        left += hitbox.width + padding;
+      }
+    } else {
+      let col = 0;
+      let top = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
+      for (const hitbox of hitboxes) {
+        if (hitbox.col !== col) {
+          col = hitbox.col;
+          top = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.top + titleHeight + padding, this.bottom - this.columnSizes[col].height);
+        }
+        hitbox.top = top;
+        hitbox.left += this.left + padding;
+        hitbox.left = rtlHelper.leftForLtr(rtlHelper.x(hitbox.left), hitbox.width);
+        top += hitbox.height + padding;
+      }
+    }
+  }
+  isHorizontal() {
+    return this.options.position === 'top' || this.options.position === 'bottom';
+  }
+  draw() {
+    if (this.options.display) {
+      const ctx = this.ctx;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.X)(ctx, this);
+      this._draw();
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Z)(ctx);
+    }
+  }
+  _draw() {
+    const {options: opts, columnSizes, lineWidths, ctx} = this;
+    const {align, labels: labelOpts} = opts;
+    const defaultColor = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.color;
+    const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(opts.rtl, this.left, this.width);
+    const labelFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(labelOpts.font);
+    const {color: fontColor, padding} = labelOpts;
+    const fontSize = labelFont.size;
+    const halfFontSize = fontSize / 2;
+    let cursor;
+    this.drawTitle();
+    ctx.textAlign = rtlHelper.textAlign('left');
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = 0.5;
+    ctx.font = labelFont.string;
+    const {boxWidth, boxHeight, itemHeight} = getBoxSize(labelOpts, fontSize);
+    const drawLegendBox = function(x, y, legendItem) {
+      if (isNaN(boxWidth) || boxWidth <= 0 || isNaN(boxHeight) || boxHeight < 0) {
+        return;
+      }
+      ctx.save();
+      const lineWidth = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.lineWidth, 1);
+      ctx.fillStyle = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.fillStyle, defaultColor);
+      ctx.lineCap = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.lineCap, 'butt');
+      ctx.lineDashOffset = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.lineDashOffset, 0);
+      ctx.lineJoin = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.lineJoin, 'miter');
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.strokeStyle, defaultColor);
+      ctx.setLineDash((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(legendItem.lineDash, []));
+      if (labelOpts.usePointStyle) {
+        const drawOptions = {
+          radius: boxWidth * Math.SQRT2 / 2,
+          pointStyle: legendItem.pointStyle,
+          rotation: legendItem.rotation,
+          borderWidth: lineWidth
+        };
+        const centerX = rtlHelper.xPlus(x, boxWidth / 2);
+        const centerY = y + halfFontSize;
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.as)(ctx, drawOptions, centerX, centerY);
+      } else {
+        const yBoxTop = y + Math.max((fontSize - boxHeight) / 2, 0);
+        const xBoxLeft = rtlHelper.leftForLtr(x, boxWidth);
+        const borderRadius = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(legendItem.borderRadius);
+        ctx.beginPath();
+        if (Object.values(borderRadius).some(v => v !== 0)) {
+          (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.at)(ctx, {
+            x: xBoxLeft,
+            y: yBoxTop,
+            w: boxWidth,
+            h: boxHeight,
+            radius: borderRadius,
+          });
+        } else {
+          ctx.rect(xBoxLeft, yBoxTop, boxWidth, boxHeight);
+        }
+        ctx.fill();
+        if (lineWidth !== 0) {
+          ctx.stroke();
+        }
+      }
+      ctx.restore();
+    };
+    const fillText = function(x, y, legendItem) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, legendItem.text, x, y + (itemHeight / 2), labelFont, {
+        strikethrough: legendItem.hidden,
+        textAlign: rtlHelper.textAlign(legendItem.textAlign)
+      });
+    };
+    const isHorizontal = this.isHorizontal();
+    const titleHeight = this._computeTitleHeight();
+    if (isHorizontal) {
+      cursor = {
+        x: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.left + padding, this.right - lineWidths[0]),
+        y: this.top + padding + titleHeight,
+        line: 0
+      };
+    } else {
+      cursor = {
+        x: this.left + padding,
+        y: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.top + titleHeight + padding, this.bottom - columnSizes[0].height),
+        line: 0
+      };
+    }
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.az)(this.ctx, opts.textDirection);
+    const lineHeight = itemHeight + padding;
+    this.legendItems.forEach((legendItem, i) => {
+      ctx.strokeStyle = legendItem.fontColor || fontColor;
+      ctx.fillStyle = legendItem.fontColor || fontColor;
+      const textWidth = ctx.measureText(legendItem.text).width;
+      const textAlign = rtlHelper.textAlign(legendItem.textAlign || (legendItem.textAlign = labelOpts.textAlign));
+      const width = boxWidth + halfFontSize + textWidth;
+      let x = cursor.x;
+      let y = cursor.y;
+      rtlHelper.setWidth(this.width);
+      if (isHorizontal) {
+        if (i > 0 && x + width + padding > this.right) {
+          y = cursor.y += lineHeight;
+          cursor.line++;
+          x = cursor.x = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.left + padding, this.right - lineWidths[cursor.line]);
+        }
+      } else if (i > 0 && y + lineHeight > this.bottom) {
+        x = cursor.x = x + columnSizes[cursor.line].width + padding;
+        cursor.line++;
+        y = cursor.y = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, this.top + titleHeight + padding, this.bottom - columnSizes[cursor.line].height);
+      }
+      const realX = rtlHelper.x(x);
+      drawLegendBox(realX, y, legendItem);
+      x = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aA)(textAlign, x + boxWidth + halfFontSize, isHorizontal ? x + width : this.right, opts.rtl);
+      fillText(rtlHelper.x(x), y, legendItem);
+      if (isHorizontal) {
+        cursor.x += width + padding;
+      } else {
+        cursor.y += lineHeight;
+      }
+    });
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aB)(this.ctx, opts.textDirection);
+  }
+  drawTitle() {
+    const opts = this.options;
+    const titleOpts = opts.title;
+    const titleFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(titleOpts.font);
+    const titlePadding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(titleOpts.padding);
+    if (!titleOpts.display) {
+      return;
+    }
+    const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(opts.rtl, this.left, this.width);
+    const ctx = this.ctx;
+    const position = titleOpts.position;
+    const halfFontSize = titleFont.size / 2;
+    const topPaddingPlusHalfFontSize = titlePadding.top + halfFontSize;
+    let y;
+    let left = this.left;
+    let maxWidth = this.width;
+    if (this.isHorizontal()) {
+      maxWidth = Math.max(...this.lineWidths);
+      y = this.top + topPaddingPlusHalfFontSize;
+      left = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(opts.align, left, this.right - maxWidth);
+    } else {
+      const maxHeight = this.columnSizes.reduce((acc, size) => Math.max(acc, size.height), 0);
+      y = topPaddingPlusHalfFontSize + (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(opts.align, this.top, this.bottom - maxHeight - opts.labels.padding - this._computeTitleHeight());
+    }
+    const x = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(position, left, left + maxWidth);
+    ctx.textAlign = rtlHelper.textAlign((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a0)(position));
+    ctx.textBaseline = 'middle';
+    ctx.strokeStyle = titleOpts.color;
+    ctx.fillStyle = titleOpts.color;
+    ctx.font = titleFont.string;
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, titleOpts.text, x, y, titleFont);
+  }
+  _computeTitleHeight() {
+    const titleOpts = this.options.title;
+    const titleFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(titleOpts.font);
+    const titlePadding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(titleOpts.padding);
+    return titleOpts.display ? titleFont.lineHeight + titlePadding.height : 0;
+  }
+  _getLegendItemAt(x, y) {
+    let i, hitBox, lh;
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(x, this.left, this.right)
+      && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(y, this.top, this.bottom)) {
+      lh = this.legendHitBoxes;
+      for (i = 0; i < lh.length; ++i) {
+        hitBox = lh[i];
+        if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(x, hitBox.left, hitBox.left + hitBox.width)
+          && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ai)(y, hitBox.top, hitBox.top + hitBox.height)) {
+          return this.legendItems[i];
+        }
+      }
+    }
+    return null;
+  }
+  handleEvent(e) {
+    const opts = this.options;
+    if (!isListened(e.type, opts)) {
+      return;
+    }
+    const hoveredItem = this._getLegendItemAt(e.x, e.y);
+    if (e.type === 'mousemove' || e.type === 'mouseout') {
+      const previous = this._hoveredItem;
+      const sameItem = itemsEqual(previous, hoveredItem);
+      if (previous && !sameItem) {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(opts.onLeave, [e, previous, this], this);
+      }
+      this._hoveredItem = hoveredItem;
+      if (hoveredItem && !sameItem) {
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(opts.onHover, [e, hoveredItem, this], this);
+      }
+    } else if (hoveredItem) {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(opts.onClick, [e, hoveredItem, this], this);
+    }
+  }
+}
+function isListened(type, opts) {
+  if ((type === 'mousemove' || type === 'mouseout') && (opts.onHover || opts.onLeave)) {
+    return true;
+  }
+  if (opts.onClick && (type === 'click' || type === 'mouseup')) {
+    return true;
+  }
+  return false;
+}
+var plugin_legend = {
+  id: 'legend',
+  _element: Legend,
+  start(chart, _args, options) {
+    const legend = chart.legend = new Legend({ctx: chart.ctx, options, chart});
+    layouts.configure(chart, legend, options);
+    layouts.addBox(chart, legend);
+  },
+  stop(chart) {
+    layouts.removeBox(chart, chart.legend);
+    delete chart.legend;
+  },
+  beforeUpdate(chart, _args, options) {
+    const legend = chart.legend;
+    layouts.configure(chart, legend, options);
+    legend.options = options;
+  },
+  afterUpdate(chart) {
+    const legend = chart.legend;
+    legend.buildLabels();
+    legend.adjustHitBoxes();
+  },
+  afterEvent(chart, args) {
+    if (!args.replay) {
+      chart.legend.handleEvent(args.event);
+    }
+  },
+  defaults: {
+    display: true,
+    position: 'top',
+    align: 'center',
+    fullSize: true,
+    reverse: false,
+    weight: 1000,
+    onClick(e, legendItem, legend) {
+      const index = legendItem.datasetIndex;
+      const ci = legend.chart;
+      if (ci.isDatasetVisible(index)) {
+        ci.hide(index);
+        legendItem.hidden = true;
+      } else {
+        ci.show(index);
+        legendItem.hidden = false;
+      }
+    },
+    onHover: null,
+    onLeave: null,
+    labels: {
+      color: (ctx) => ctx.chart.options.color,
+      boxWidth: 40,
+      padding: 10,
+      generateLabels(chart) {
+        const datasets = chart.data.datasets;
+        const {labels: {usePointStyle, pointStyle, textAlign, color}} = chart.legend.options;
+        return chart._getSortedDatasetMetas().map((meta) => {
+          const style = meta.controller.getStyle(usePointStyle ? 0 : undefined);
+          const borderWidth = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(style.borderWidth);
+          return {
+            text: datasets[meta.index].label,
+            fillStyle: style.backgroundColor,
+            fontColor: color,
+            hidden: !meta.visible,
+            lineCap: style.borderCapStyle,
+            lineDash: style.borderDash,
+            lineDashOffset: style.borderDashOffset,
+            lineJoin: style.borderJoinStyle,
+            lineWidth: (borderWidth.width + borderWidth.height) / 4,
+            strokeStyle: style.borderColor,
+            pointStyle: pointStyle || style.pointStyle,
+            rotation: style.rotation,
+            textAlign: textAlign || style.textAlign,
+            borderRadius: 0,
+            datasetIndex: meta.index
+          };
+        }, this);
+      }
+    },
+    title: {
+      color: (ctx) => ctx.chart.options.color,
+      display: false,
+      position: 'center',
+      text: '',
+    }
+  },
+  descriptors: {
+    _scriptable: (name) => !name.startsWith('on'),
+    labels: {
+      _scriptable: (name) => !['generateLabels', 'filter', 'sort'].includes(name),
+    }
+  },
+};
+
+class Title extends Element {
+  constructor(config) {
+    super();
+    this.chart = config.chart;
+    this.options = config.options;
+    this.ctx = config.ctx;
+    this._padding = undefined;
+    this.top = undefined;
+    this.bottom = undefined;
+    this.left = undefined;
+    this.right = undefined;
+    this.width = undefined;
+    this.height = undefined;
+    this.position = undefined;
+    this.weight = undefined;
+    this.fullSize = undefined;
+  }
+  update(maxWidth, maxHeight) {
+    const opts = this.options;
+    this.left = 0;
+    this.top = 0;
+    if (!opts.display) {
+      this.width = this.height = this.right = this.bottom = 0;
+      return;
+    }
+    this.width = this.right = maxWidth;
+    this.height = this.bottom = maxHeight;
+    const lineCount = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(opts.text) ? opts.text.length : 1;
+    this._padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(opts.padding);
+    const textSize = lineCount * (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(opts.font).lineHeight + this._padding.height;
+    if (this.isHorizontal()) {
+      this.height = textSize;
+    } else {
+      this.width = textSize;
+    }
+  }
+  isHorizontal() {
+    const pos = this.options.position;
+    return pos === 'top' || pos === 'bottom';
+  }
+  _drawArgs(offset) {
+    const {top, left, bottom, right, options} = this;
+    const align = options.align;
+    let rotation = 0;
+    let maxWidth, titleX, titleY;
+    if (this.isHorizontal()) {
+      titleX = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, left, right);
+      titleY = top + offset;
+      maxWidth = right - left;
+    } else {
+      if (options.position === 'left') {
+        titleX = left + offset;
+        titleY = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, bottom, top);
+        rotation = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P * -0.5;
+      } else {
+        titleX = right - offset;
+        titleY = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a1)(align, top, bottom);
+        rotation = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P * 0.5;
+      }
+      maxWidth = bottom - top;
+    }
+    return {titleX, titleY, maxWidth, rotation};
+  }
+  draw() {
+    const ctx = this.ctx;
+    const opts = this.options;
+    if (!opts.display) {
+      return;
+    }
+    const fontOpts = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(opts.font);
+    const lineHeight = fontOpts.lineHeight;
+    const offset = lineHeight / 2 + this._padding.top;
+    const {titleX, titleY, maxWidth, rotation} = this._drawArgs(offset);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, opts.text, 0, 0, fontOpts, {
+      color: opts.color,
+      maxWidth,
+      rotation,
+      textAlign: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.a0)(opts.align),
+      textBaseline: 'middle',
+      translation: [titleX, titleY],
+    });
+  }
+}
+function createTitle(chart, titleOpts) {
+  const title = new Title({
+    ctx: chart.ctx,
+    options: titleOpts,
+    chart
+  });
+  layouts.configure(chart, title, titleOpts);
+  layouts.addBox(chart, title);
+  chart.titleBlock = title;
+}
+var plugin_title = {
+  id: 'title',
+  _element: Title,
+  start(chart, _args, options) {
+    createTitle(chart, options);
+  },
+  stop(chart) {
+    const titleBlock = chart.titleBlock;
+    layouts.removeBox(chart, titleBlock);
+    delete chart.titleBlock;
+  },
+  beforeUpdate(chart, _args, options) {
+    const title = chart.titleBlock;
+    layouts.configure(chart, title, options);
+    title.options = options;
+  },
+  defaults: {
+    align: 'center',
+    display: false,
+    font: {
+      weight: 'bold',
+    },
+    fullSize: true,
+    padding: 10,
+    position: 'top',
+    text: '',
+    weight: 2000
+  },
+  defaultRoutes: {
+    color: 'color'
+  },
+  descriptors: {
+    _scriptable: true,
+    _indexable: false,
+  },
+};
+
+const map = new WeakMap();
+var plugin_subtitle = {
+  id: 'subtitle',
+  start(chart, _args, options) {
+    const title = new Title({
+      ctx: chart.ctx,
+      options,
+      chart
+    });
+    layouts.configure(chart, title, options);
+    layouts.addBox(chart, title);
+    map.set(chart, title);
+  },
+  stop(chart) {
+    layouts.removeBox(chart, map.get(chart));
+    map.delete(chart);
+  },
+  beforeUpdate(chart, _args, options) {
+    const title = map.get(chart);
+    layouts.configure(chart, title, options);
+    title.options = options;
+  },
+  defaults: {
+    align: 'center',
+    display: false,
+    font: {
+      weight: 'normal',
+    },
+    fullSize: true,
+    padding: 0,
+    position: 'top',
+    text: '',
+    weight: 1500
+  },
+  defaultRoutes: {
+    color: 'color'
+  },
+  descriptors: {
+    _scriptable: true,
+    _indexable: false,
+  },
+};
+
+const positioners = {
+  average(items) {
+    if (!items.length) {
+      return false;
+    }
+    let i, len;
+    let x = 0;
+    let y = 0;
+    let count = 0;
+    for (i = 0, len = items.length; i < len; ++i) {
+      const el = items[i].element;
+      if (el && el.hasValue()) {
+        const pos = el.tooltipPosition();
+        x += pos.x;
+        y += pos.y;
+        ++count;
+      }
+    }
+    return {
+      x: x / count,
+      y: y / count
+    };
+  },
+  nearest(items, eventPosition) {
+    if (!items.length) {
+      return false;
+    }
+    let x = eventPosition.x;
+    let y = eventPosition.y;
+    let minDistance = Number.POSITIVE_INFINITY;
+    let i, len, nearestElement;
+    for (i = 0, len = items.length; i < len; ++i) {
+      const el = items[i].element;
+      if (el && el.hasValue()) {
+        const center = el.getCenterPoint();
+        const d = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aD)(eventPosition, center);
+        if (d < minDistance) {
+          minDistance = d;
+          nearestElement = el;
+        }
+      }
+    }
+    if (nearestElement) {
+      const tp = nearestElement.tooltipPosition();
+      x = tp.x;
+      y = tp.y;
+    }
+    return {
+      x,
+      y
+    };
+  }
+};
+function pushOrConcat(base, toPush) {
+  if (toPush) {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(toPush)) {
+      Array.prototype.push.apply(base, toPush);
+    } else {
+      base.push(toPush);
+    }
+  }
+  return base;
+}
+function splitNewlines(str) {
+  if ((typeof str === 'string' || str instanceof String) && str.indexOf('\n') > -1) {
+    return str.split('\n');
+  }
+  return str;
+}
+function createTooltipItem(chart, item) {
+  const {element, datasetIndex, index} = item;
+  const controller = chart.getDatasetMeta(datasetIndex).controller;
+  const {label, value} = controller.getLabelAndValue(index);
+  return {
+    chart,
+    label,
+    parsed: controller.getParsed(index),
+    raw: chart.data.datasets[datasetIndex].data[index],
+    formattedValue: value,
+    dataset: controller.getDataset(),
+    dataIndex: index,
+    datasetIndex,
+    element
+  };
+}
+function getTooltipSize(tooltip, options) {
+  const ctx = tooltip.chart.ctx;
+  const {body, footer, title} = tooltip;
+  const {boxWidth, boxHeight} = options;
+  const bodyFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.bodyFont);
+  const titleFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.titleFont);
+  const footerFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.footerFont);
+  const titleLineCount = title.length;
+  const footerLineCount = footer.length;
+  const bodyLineItemCount = body.length;
+  const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(options.padding);
+  let height = padding.height;
+  let width = 0;
+  let combinedBodyLength = body.reduce((count, bodyItem) => count + bodyItem.before.length + bodyItem.lines.length + bodyItem.after.length, 0);
+  combinedBodyLength += tooltip.beforeBody.length + tooltip.afterBody.length;
+  if (titleLineCount) {
+    height += titleLineCount * titleFont.lineHeight
+			+ (titleLineCount - 1) * options.titleSpacing
+			+ options.titleMarginBottom;
+  }
+  if (combinedBodyLength) {
+    const bodyLineHeight = options.displayColors ? Math.max(boxHeight, bodyFont.lineHeight) : bodyFont.lineHeight;
+    height += bodyLineItemCount * bodyLineHeight
+			+ (combinedBodyLength - bodyLineItemCount) * bodyFont.lineHeight
+			+ (combinedBodyLength - 1) * options.bodySpacing;
+  }
+  if (footerLineCount) {
+    height += options.footerMarginTop
+			+ footerLineCount * footerFont.lineHeight
+			+ (footerLineCount - 1) * options.footerSpacing;
+  }
+  let widthPadding = 0;
+  const maxLineWidth = function(line) {
+    width = Math.max(width, ctx.measureText(line).width + widthPadding);
+  };
+  ctx.save();
+  ctx.font = titleFont.string;
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(tooltip.title, maxLineWidth);
+  ctx.font = bodyFont.string;
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(tooltip.beforeBody.concat(tooltip.afterBody), maxLineWidth);
+  widthPadding = options.displayColors ? (boxWidth + 2 + options.boxPadding) : 0;
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(body, (bodyItem) => {
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(bodyItem.before, maxLineWidth);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(bodyItem.lines, maxLineWidth);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(bodyItem.after, maxLineWidth);
+  });
+  widthPadding = 0;
+  ctx.font = footerFont.string;
+  (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(tooltip.footer, maxLineWidth);
+  ctx.restore();
+  width += padding.width;
+  return {width, height};
+}
+function determineYAlign(chart, size) {
+  const {y, height} = size;
+  if (y < height / 2) {
+    return 'top';
+  } else if (y > (chart.height - height / 2)) {
+    return 'bottom';
+  }
+  return 'center';
+}
+function doesNotFitWithAlign(xAlign, chart, options, size) {
+  const {x, width} = size;
+  const caret = options.caretSize + options.caretPadding;
+  if (xAlign === 'left' && x + width + caret > chart.width) {
+    return true;
+  }
+  if (xAlign === 'right' && x - width - caret < 0) {
+    return true;
+  }
+}
+function determineXAlign(chart, options, size, yAlign) {
+  const {x, width} = size;
+  const {width: chartWidth, chartArea: {left, right}} = chart;
+  let xAlign = 'center';
+  if (yAlign === 'center') {
+    xAlign = x <= (left + right) / 2 ? 'left' : 'right';
+  } else if (x <= width / 2) {
+    xAlign = 'left';
+  } else if (x >= chartWidth - width / 2) {
+    xAlign = 'right';
+  }
+  if (doesNotFitWithAlign(xAlign, chart, options, size)) {
+    xAlign = 'center';
+  }
+  return xAlign;
+}
+function determineAlignment(chart, options, size) {
+  const yAlign = size.yAlign || options.yAlign || determineYAlign(chart, size);
+  return {
+    xAlign: size.xAlign || options.xAlign || determineXAlign(chart, options, size, yAlign),
+    yAlign
+  };
+}
+function alignX(size, xAlign) {
+  let {x, width} = size;
+  if (xAlign === 'right') {
+    x -= width;
+  } else if (xAlign === 'center') {
+    x -= (width / 2);
+  }
+  return x;
+}
+function alignY(size, yAlign, paddingAndSize) {
+  let {y, height} = size;
+  if (yAlign === 'top') {
+    y += paddingAndSize;
+  } else if (yAlign === 'bottom') {
+    y -= height + paddingAndSize;
+  } else {
+    y -= (height / 2);
+  }
+  return y;
+}
+function getBackgroundPoint(options, size, alignment, chart) {
+  const {caretSize, caretPadding, cornerRadius} = options;
+  const {xAlign, yAlign} = alignment;
+  const paddingAndSize = caretSize + caretPadding;
+  const {topLeft, topRight, bottomLeft, bottomRight} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(cornerRadius);
+  let x = alignX(size, xAlign);
+  const y = alignY(size, yAlign, paddingAndSize);
+  if (yAlign === 'center') {
+    if (xAlign === 'left') {
+      x += paddingAndSize;
+    } else if (xAlign === 'right') {
+      x -= paddingAndSize;
+    }
+  } else if (xAlign === 'left') {
+    x -= Math.max(topLeft, bottomLeft) + caretSize;
+  } else if (xAlign === 'right') {
+    x += Math.max(topRight, bottomRight) + caretSize;
+  }
+  return {
+    x: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(x, 0, chart.width - size.width),
+    y: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(y, 0, chart.height - size.height)
+  };
+}
+function getAlignedX(tooltip, align, options) {
+  const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(options.padding);
+  return align === 'center'
+    ? tooltip.x + tooltip.width / 2
+    : align === 'right'
+      ? tooltip.x + tooltip.width - padding.right
+      : tooltip.x + padding.left;
+}
+function getBeforeAfterBodyLines(callback) {
+  return pushOrConcat([], splitNewlines(callback));
+}
+function createTooltipContext(parent, tooltip, tooltipItems) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent, {
+    tooltip,
+    tooltipItems,
+    type: 'tooltip'
+  });
+}
+function overrideCallbacks(callbacks, context) {
+  const override = context && context.dataset && context.dataset.tooltip && context.dataset.tooltip.callbacks;
+  return override ? callbacks.override(override) : callbacks;
+}
+class Tooltip extends Element {
+  constructor(config) {
+    super();
+    this.opacity = 0;
+    this._active = [];
+    this._eventPosition = undefined;
+    this._size = undefined;
+    this._cachedAnimations = undefined;
+    this._tooltipItems = [];
+    this.$animations = undefined;
+    this.$context = undefined;
+    this.chart = config.chart || config._chart;
+    this._chart = this.chart;
+    this.options = config.options;
+    this.dataPoints = undefined;
+    this.title = undefined;
+    this.beforeBody = undefined;
+    this.body = undefined;
+    this.afterBody = undefined;
+    this.footer = undefined;
+    this.xAlign = undefined;
+    this.yAlign = undefined;
+    this.x = undefined;
+    this.y = undefined;
+    this.height = undefined;
+    this.width = undefined;
+    this.caretX = undefined;
+    this.caretY = undefined;
+    this.labelColors = undefined;
+    this.labelPointStyles = undefined;
+    this.labelTextColors = undefined;
+  }
+  initialize(options) {
+    this.options = options;
+    this._cachedAnimations = undefined;
+    this.$context = undefined;
+  }
+  _resolveAnimations() {
+    const cached = this._cachedAnimations;
+    if (cached) {
+      return cached;
+    }
+    const chart = this.chart;
+    const options = this.options.setContext(this.getContext());
+    const opts = options.enabled && chart.options.animation && options.animations;
+    const animations = new Animations(this.chart, opts);
+    if (opts._cacheable) {
+      this._cachedAnimations = Object.freeze(animations);
+    }
+    return animations;
+  }
+  getContext() {
+    return this.$context ||
+			(this.$context = createTooltipContext(this.chart.getContext(), this, this._tooltipItems));
+  }
+  getTitle(context, options) {
+    const {callbacks} = options;
+    const beforeTitle = callbacks.beforeTitle.apply(this, [context]);
+    const title = callbacks.title.apply(this, [context]);
+    const afterTitle = callbacks.afterTitle.apply(this, [context]);
+    let lines = [];
+    lines = pushOrConcat(lines, splitNewlines(beforeTitle));
+    lines = pushOrConcat(lines, splitNewlines(title));
+    lines = pushOrConcat(lines, splitNewlines(afterTitle));
+    return lines;
+  }
+  getBeforeBody(tooltipItems, options) {
+    return getBeforeAfterBodyLines(options.callbacks.beforeBody.apply(this, [tooltipItems]));
+  }
+  getBody(tooltipItems, options) {
+    const {callbacks} = options;
+    const bodyItems = [];
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(tooltipItems, (context) => {
+      const bodyItem = {
+        before: [],
+        lines: [],
+        after: []
+      };
+      const scoped = overrideCallbacks(callbacks, context);
+      pushOrConcat(bodyItem.before, splitNewlines(scoped.beforeLabel.call(this, context)));
+      pushOrConcat(bodyItem.lines, scoped.label.call(this, context));
+      pushOrConcat(bodyItem.after, splitNewlines(scoped.afterLabel.call(this, context)));
+      bodyItems.push(bodyItem);
+    });
+    return bodyItems;
+  }
+  getAfterBody(tooltipItems, options) {
+    return getBeforeAfterBodyLines(options.callbacks.afterBody.apply(this, [tooltipItems]));
+  }
+  getFooter(tooltipItems, options) {
+    const {callbacks} = options;
+    const beforeFooter = callbacks.beforeFooter.apply(this, [tooltipItems]);
+    const footer = callbacks.footer.apply(this, [tooltipItems]);
+    const afterFooter = callbacks.afterFooter.apply(this, [tooltipItems]);
+    let lines = [];
+    lines = pushOrConcat(lines, splitNewlines(beforeFooter));
+    lines = pushOrConcat(lines, splitNewlines(footer));
+    lines = pushOrConcat(lines, splitNewlines(afterFooter));
+    return lines;
+  }
+  _createItems(options) {
+    const active = this._active;
+    const data = this.chart.data;
+    const labelColors = [];
+    const labelPointStyles = [];
+    const labelTextColors = [];
+    let tooltipItems = [];
+    let i, len;
+    for (i = 0, len = active.length; i < len; ++i) {
+      tooltipItems.push(createTooltipItem(this.chart, active[i]));
+    }
+    if (options.filter) {
+      tooltipItems = tooltipItems.filter((element, index, array) => options.filter(element, index, array, data));
+    }
+    if (options.itemSort) {
+      tooltipItems = tooltipItems.sort((a, b) => options.itemSort(a, b, data));
+    }
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(tooltipItems, (context) => {
+      const scoped = overrideCallbacks(options.callbacks, context);
+      labelColors.push(scoped.labelColor.call(this, context));
+      labelPointStyles.push(scoped.labelPointStyle.call(this, context));
+      labelTextColors.push(scoped.labelTextColor.call(this, context));
+    });
+    this.labelColors = labelColors;
+    this.labelPointStyles = labelPointStyles;
+    this.labelTextColors = labelTextColors;
+    this.dataPoints = tooltipItems;
+    return tooltipItems;
+  }
+  update(changed, replay) {
+    const options = this.options.setContext(this.getContext());
+    const active = this._active;
+    let properties;
+    let tooltipItems = [];
+    if (!active.length) {
+      if (this.opacity !== 0) {
+        properties = {
+          opacity: 0
+        };
+      }
+    } else {
+      const position = positioners[options.position].call(this, active, this._eventPosition);
+      tooltipItems = this._createItems(options);
+      this.title = this.getTitle(tooltipItems, options);
+      this.beforeBody = this.getBeforeBody(tooltipItems, options);
+      this.body = this.getBody(tooltipItems, options);
+      this.afterBody = this.getAfterBody(tooltipItems, options);
+      this.footer = this.getFooter(tooltipItems, options);
+      const size = this._size = getTooltipSize(this, options);
+      const positionAndSize = Object.assign({}, position, size);
+      const alignment = determineAlignment(this.chart, options, positionAndSize);
+      const backgroundPoint = getBackgroundPoint(options, positionAndSize, alignment, this.chart);
+      this.xAlign = alignment.xAlign;
+      this.yAlign = alignment.yAlign;
+      properties = {
+        opacity: 1,
+        x: backgroundPoint.x,
+        y: backgroundPoint.y,
+        width: size.width,
+        height: size.height,
+        caretX: position.x,
+        caretY: position.y
+      };
+    }
+    this._tooltipItems = tooltipItems;
+    this.$context = undefined;
+    if (properties) {
+      this._resolveAnimations().update(this, properties);
+    }
+    if (changed && options.external) {
+      options.external.call(this, {chart: this.chart, tooltip: this, replay});
+    }
+  }
+  drawCaret(tooltipPoint, ctx, size, options) {
+    const caretPosition = this.getCaretPosition(tooltipPoint, size, options);
+    ctx.lineTo(caretPosition.x1, caretPosition.y1);
+    ctx.lineTo(caretPosition.x2, caretPosition.y2);
+    ctx.lineTo(caretPosition.x3, caretPosition.y3);
+  }
+  getCaretPosition(tooltipPoint, size, options) {
+    const {xAlign, yAlign} = this;
+    const {caretSize, cornerRadius} = options;
+    const {topLeft, topRight, bottomLeft, bottomRight} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(cornerRadius);
+    const {x: ptX, y: ptY} = tooltipPoint;
+    const {width, height} = size;
+    let x1, x2, x3, y1, y2, y3;
+    if (yAlign === 'center') {
+      y2 = ptY + (height / 2);
+      if (xAlign === 'left') {
+        x1 = ptX;
+        x2 = x1 - caretSize;
+        y1 = y2 + caretSize;
+        y3 = y2 - caretSize;
+      } else {
+        x1 = ptX + width;
+        x2 = x1 + caretSize;
+        y1 = y2 - caretSize;
+        y3 = y2 + caretSize;
+      }
+      x3 = x1;
+    } else {
+      if (xAlign === 'left') {
+        x2 = ptX + Math.max(topLeft, bottomLeft) + (caretSize);
+      } else if (xAlign === 'right') {
+        x2 = ptX + width - Math.max(topRight, bottomRight) - caretSize;
+      } else {
+        x2 = this.caretX;
+      }
+      if (yAlign === 'top') {
+        y1 = ptY;
+        y2 = y1 - caretSize;
+        x1 = x2 - caretSize;
+        x3 = x2 + caretSize;
+      } else {
+        y1 = ptY + height;
+        y2 = y1 + caretSize;
+        x1 = x2 + caretSize;
+        x3 = x2 - caretSize;
+      }
+      y3 = y1;
+    }
+    return {x1, x2, x3, y1, y2, y3};
+  }
+  drawTitle(pt, ctx, options) {
+    const title = this.title;
+    const length = title.length;
+    let titleFont, titleSpacing, i;
+    if (length) {
+      const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(options.rtl, this.x, this.width);
+      pt.x = getAlignedX(this, options.titleAlign, options);
+      ctx.textAlign = rtlHelper.textAlign(options.titleAlign);
+      ctx.textBaseline = 'middle';
+      titleFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.titleFont);
+      titleSpacing = options.titleSpacing;
+      ctx.fillStyle = options.titleColor;
+      ctx.font = titleFont.string;
+      for (i = 0; i < length; ++i) {
+        ctx.fillText(title[i], rtlHelper.x(pt.x), pt.y + titleFont.lineHeight / 2);
+        pt.y += titleFont.lineHeight + titleSpacing;
+        if (i + 1 === length) {
+          pt.y += options.titleMarginBottom - titleSpacing;
+        }
+      }
+    }
+  }
+  _drawColorBox(ctx, pt, i, rtlHelper, options) {
+    const labelColors = this.labelColors[i];
+    const labelPointStyle = this.labelPointStyles[i];
+    const {boxHeight, boxWidth, boxPadding} = options;
+    const bodyFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.bodyFont);
+    const colorX = getAlignedX(this, 'left', options);
+    const rtlColorX = rtlHelper.x(colorX);
+    const yOffSet = boxHeight < bodyFont.lineHeight ? (bodyFont.lineHeight - boxHeight) / 2 : 0;
+    const colorY = pt.y + yOffSet;
+    if (options.usePointStyle) {
+      const drawOptions = {
+        radius: Math.min(boxWidth, boxHeight) / 2,
+        pointStyle: labelPointStyle.pointStyle,
+        rotation: labelPointStyle.rotation,
+        borderWidth: 1
+      };
+      const centerX = rtlHelper.leftForLtr(rtlColorX, boxWidth) + boxWidth / 2;
+      const centerY = colorY + boxHeight / 2;
+      ctx.strokeStyle = options.multiKeyBackground;
+      ctx.fillStyle = options.multiKeyBackground;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.as)(ctx, drawOptions, centerX, centerY);
+      ctx.strokeStyle = labelColors.borderColor;
+      ctx.fillStyle = labelColors.backgroundColor;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.as)(ctx, drawOptions, centerX, centerY);
+    } else {
+      ctx.lineWidth = labelColors.borderWidth || 1;
+      ctx.strokeStyle = labelColors.borderColor;
+      ctx.setLineDash(labelColors.borderDash || []);
+      ctx.lineDashOffset = labelColors.borderDashOffset || 0;
+      const outerX = rtlHelper.leftForLtr(rtlColorX, boxWidth - boxPadding);
+      const innerX = rtlHelper.leftForLtr(rtlHelper.xPlus(rtlColorX, 1), boxWidth - boxPadding - 2);
+      const borderRadius = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(labelColors.borderRadius);
+      if (Object.values(borderRadius).some(v => v !== 0)) {
+        ctx.beginPath();
+        ctx.fillStyle = options.multiKeyBackground;
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.at)(ctx, {
+          x: outerX,
+          y: colorY,
+          w: boxWidth,
+          h: boxHeight,
+          radius: borderRadius,
+        });
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = labelColors.backgroundColor;
+        ctx.beginPath();
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.at)(ctx, {
+          x: innerX,
+          y: colorY + 1,
+          w: boxWidth - 2,
+          h: boxHeight - 2,
+          radius: borderRadius,
+        });
+        ctx.fill();
+      } else {
+        ctx.fillStyle = options.multiKeyBackground;
+        ctx.fillRect(outerX, colorY, boxWidth, boxHeight);
+        ctx.strokeRect(outerX, colorY, boxWidth, boxHeight);
+        ctx.fillStyle = labelColors.backgroundColor;
+        ctx.fillRect(innerX, colorY + 1, boxWidth - 2, boxHeight - 2);
+      }
+    }
+    ctx.fillStyle = this.labelTextColors[i];
+  }
+  drawBody(pt, ctx, options) {
+    const {body} = this;
+    const {bodySpacing, bodyAlign, displayColors, boxHeight, boxWidth, boxPadding} = options;
+    const bodyFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.bodyFont);
+    let bodyLineHeight = bodyFont.lineHeight;
+    let xLinePadding = 0;
+    const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(options.rtl, this.x, this.width);
+    const fillLineOfText = function(line) {
+      ctx.fillText(line, rtlHelper.x(pt.x + xLinePadding), pt.y + bodyLineHeight / 2);
+      pt.y += bodyLineHeight + bodySpacing;
+    };
+    const bodyAlignForCalculation = rtlHelper.textAlign(bodyAlign);
+    let bodyItem, textColor, lines, i, j, ilen, jlen;
+    ctx.textAlign = bodyAlign;
+    ctx.textBaseline = 'middle';
+    ctx.font = bodyFont.string;
+    pt.x = getAlignedX(this, bodyAlignForCalculation, options);
+    ctx.fillStyle = options.bodyColor;
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.beforeBody, fillLineOfText);
+    xLinePadding = displayColors && bodyAlignForCalculation !== 'right'
+      ? bodyAlign === 'center' ? (boxWidth / 2 + boxPadding) : (boxWidth + 2 + boxPadding)
+      : 0;
+    for (i = 0, ilen = body.length; i < ilen; ++i) {
+      bodyItem = body[i];
+      textColor = this.labelTextColors[i];
+      ctx.fillStyle = textColor;
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(bodyItem.before, fillLineOfText);
+      lines = bodyItem.lines;
+      if (displayColors && lines.length) {
+        this._drawColorBox(ctx, pt, i, rtlHelper, options);
+        bodyLineHeight = Math.max(bodyFont.lineHeight, boxHeight);
+      }
+      for (j = 0, jlen = lines.length; j < jlen; ++j) {
+        fillLineOfText(lines[j]);
+        bodyLineHeight = bodyFont.lineHeight;
+      }
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(bodyItem.after, fillLineOfText);
+    }
+    xLinePadding = 0;
+    bodyLineHeight = bodyFont.lineHeight;
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.E)(this.afterBody, fillLineOfText);
+    pt.y -= bodySpacing;
+  }
+  drawFooter(pt, ctx, options) {
+    const footer = this.footer;
+    const length = footer.length;
+    let footerFont, i;
+    if (length) {
+      const rtlHelper = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ay)(options.rtl, this.x, this.width);
+      pt.x = getAlignedX(this, options.footerAlign, options);
+      pt.y += options.footerMarginTop;
+      ctx.textAlign = rtlHelper.textAlign(options.footerAlign);
+      ctx.textBaseline = 'middle';
+      footerFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(options.footerFont);
+      ctx.fillStyle = options.footerColor;
+      ctx.font = footerFont.string;
+      for (i = 0; i < length; ++i) {
+        ctx.fillText(footer[i], rtlHelper.x(pt.x), pt.y + footerFont.lineHeight / 2);
+        pt.y += footerFont.lineHeight + options.footerSpacing;
+      }
+    }
+  }
+  drawBackground(pt, ctx, tooltipSize, options) {
+    const {xAlign, yAlign} = this;
+    const {x, y} = pt;
+    const {width, height} = tooltipSize;
+    const {topLeft, topRight, bottomLeft, bottomRight} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(options.cornerRadius);
+    ctx.fillStyle = options.backgroundColor;
+    ctx.strokeStyle = options.borderColor;
+    ctx.lineWidth = options.borderWidth;
+    ctx.beginPath();
+    ctx.moveTo(x + topLeft, y);
+    if (yAlign === 'top') {
+      this.drawCaret(pt, ctx, tooltipSize, options);
+    }
+    ctx.lineTo(x + width - topRight, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + topRight);
+    if (yAlign === 'center' && xAlign === 'right') {
+      this.drawCaret(pt, ctx, tooltipSize, options);
+    }
+    ctx.lineTo(x + width, y + height - bottomRight);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - bottomRight, y + height);
+    if (yAlign === 'bottom') {
+      this.drawCaret(pt, ctx, tooltipSize, options);
+    }
+    ctx.lineTo(x + bottomLeft, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - bottomLeft);
+    if (yAlign === 'center' && xAlign === 'left') {
+      this.drawCaret(pt, ctx, tooltipSize, options);
+    }
+    ctx.lineTo(x, y + topLeft);
+    ctx.quadraticCurveTo(x, y, x + topLeft, y);
+    ctx.closePath();
+    ctx.fill();
+    if (options.borderWidth > 0) {
+      ctx.stroke();
+    }
+  }
+  _updateAnimationTarget(options) {
+    const chart = this.chart;
+    const anims = this.$animations;
+    const animX = anims && anims.x;
+    const animY = anims && anims.y;
+    if (animX || animY) {
+      const position = positioners[options.position].call(this, this._active, this._eventPosition);
+      if (!position) {
+        return;
+      }
+      const size = this._size = getTooltipSize(this, options);
+      const positionAndSize = Object.assign({}, position, this._size);
+      const alignment = determineAlignment(chart, options, positionAndSize);
+      const point = getBackgroundPoint(options, positionAndSize, alignment, chart);
+      if (animX._to !== point.x || animY._to !== point.y) {
+        this.xAlign = alignment.xAlign;
+        this.yAlign = alignment.yAlign;
+        this.width = size.width;
+        this.height = size.height;
+        this.caretX = position.x;
+        this.caretY = position.y;
+        this._resolveAnimations().update(this, point);
+      }
+    }
+  }
+  _willRender() {
+    return !!this.opacity;
+  }
+  draw(ctx) {
+    const options = this.options.setContext(this.getContext());
+    let opacity = this.opacity;
+    if (!opacity) {
+      return;
+    }
+    this._updateAnimationTarget(options);
+    const tooltipSize = {
+      width: this.width,
+      height: this.height
+    };
+    const pt = {
+      x: this.x,
+      y: this.y
+    };
+    opacity = Math.abs(opacity) < 1e-3 ? 0 : opacity;
+    const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(options.padding);
+    const hasTooltipContent = this.title.length || this.beforeBody.length || this.body.length || this.afterBody.length || this.footer.length;
+    if (options.enabled && hasTooltipContent) {
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      this.drawBackground(pt, ctx, tooltipSize, options);
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.az)(ctx, options.textDirection);
+      pt.y += padding.top;
+      this.drawTitle(pt, ctx, options);
+      this.drawBody(pt, ctx, options);
+      this.drawFooter(pt, ctx, options);
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aB)(ctx, options.textDirection);
+      ctx.restore();
+    }
+  }
+  getActiveElements() {
+    return this._active || [];
+  }
+  setActiveElements(activeElements, eventPosition) {
+    const lastActive = this._active;
+    const active = activeElements.map(({datasetIndex, index}) => {
+      const meta = this.chart.getDatasetMeta(datasetIndex);
+      if (!meta) {
+        throw new Error('Cannot find a dataset at index ' + datasetIndex);
+      }
+      return {
+        datasetIndex,
+        element: meta.data[index],
+        index,
+      };
+    });
+    const changed = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ag)(lastActive, active);
+    const positionChanged = this._positionChanged(active, eventPosition);
+    if (changed || positionChanged) {
+      this._active = active;
+      this._eventPosition = eventPosition;
+      this._ignoreReplayEvents = true;
+      this.update(true);
+    }
+  }
+  handleEvent(e, replay, inChartArea = true) {
+    if (replay && this._ignoreReplayEvents) {
+      return false;
+    }
+    this._ignoreReplayEvents = false;
+    const options = this.options;
+    const lastActive = this._active || [];
+    const active = this._getActiveElements(e, lastActive, replay, inChartArea);
+    const positionChanged = this._positionChanged(active, e);
+    const changed = replay || !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ag)(active, lastActive) || positionChanged;
+    if (changed) {
+      this._active = active;
+      if (options.enabled || options.external) {
+        this._eventPosition = {
+          x: e.x,
+          y: e.y
+        };
+        this.update(true, replay);
+      }
+    }
+    return changed;
+  }
+  _getActiveElements(e, lastActive, replay, inChartArea) {
+    const options = this.options;
+    if (e.type === 'mouseout') {
+      return [];
+    }
+    if (!inChartArea) {
+      return lastActive;
+    }
+    const active = this.chart.getElementsAtEventForMode(e, options.mode, options, replay);
+    if (options.reverse) {
+      active.reverse();
+    }
+    return active;
+  }
+  _positionChanged(active, e) {
+    const {caretX, caretY, options} = this;
+    const position = positioners[options.position].call(this, active, e);
+    return position !== false && (caretX !== position.x || caretY !== position.y);
+  }
+}
+Tooltip.positioners = positioners;
+var plugin_tooltip = {
+  id: 'tooltip',
+  _element: Tooltip,
+  positioners,
+  afterInit(chart, _args, options) {
+    if (options) {
+      chart.tooltip = new Tooltip({chart, options});
+    }
+  },
+  beforeUpdate(chart, _args, options) {
+    if (chart.tooltip) {
+      chart.tooltip.initialize(options);
+    }
+  },
+  reset(chart, _args, options) {
+    if (chart.tooltip) {
+      chart.tooltip.initialize(options);
+    }
+  },
+  afterDraw(chart) {
+    const tooltip = chart.tooltip;
+    if (tooltip && tooltip._willRender()) {
+      const args = {
+        tooltip
+      };
+      if (chart.notifyPlugins('beforeTooltipDraw', args) === false) {
+        return;
+      }
+      tooltip.draw(chart.ctx);
+      chart.notifyPlugins('afterTooltipDraw', args);
+    }
+  },
+  afterEvent(chart, args) {
+    if (chart.tooltip) {
+      const useFinalPosition = args.replay;
+      if (chart.tooltip.handleEvent(args.event, useFinalPosition, args.inChartArea)) {
+        args.changed = true;
+      }
+    }
+  },
+  defaults: {
+    enabled: true,
+    external: null,
+    position: 'average',
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    titleColor: '#fff',
+    titleFont: {
+      weight: 'bold',
+    },
+    titleSpacing: 2,
+    titleMarginBottom: 6,
+    titleAlign: 'left',
+    bodyColor: '#fff',
+    bodySpacing: 2,
+    bodyFont: {
+    },
+    bodyAlign: 'left',
+    footerColor: '#fff',
+    footerSpacing: 2,
+    footerMarginTop: 6,
+    footerFont: {
+      weight: 'bold',
+    },
+    footerAlign: 'left',
+    padding: 6,
+    caretPadding: 2,
+    caretSize: 5,
+    cornerRadius: 6,
+    boxHeight: (ctx, opts) => opts.bodyFont.size,
+    boxWidth: (ctx, opts) => opts.bodyFont.size,
+    multiKeyBackground: '#fff',
+    displayColors: true,
+    boxPadding: 0,
+    borderColor: 'rgba(0,0,0,0)',
+    borderWidth: 0,
+    animation: {
+      duration: 400,
+      easing: 'easeOutQuart',
+    },
+    animations: {
+      numbers: {
+        type: 'number',
+        properties: ['x', 'y', 'width', 'height', 'caretX', 'caretY'],
+      },
+      opacity: {
+        easing: 'linear',
+        duration: 200
+      }
+    },
+    callbacks: {
+      beforeTitle: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      title(tooltipItems) {
+        if (tooltipItems.length > 0) {
+          const item = tooltipItems[0];
+          const labels = item.chart.data.labels;
+          const labelCount = labels ? labels.length : 0;
+          if (this && this.options && this.options.mode === 'dataset') {
+            return item.dataset.label || '';
+          } else if (item.label) {
+            return item.label;
+          } else if (labelCount > 0 && item.dataIndex < labelCount) {
+            return labels[item.dataIndex];
+          }
+        }
+        return '';
+      },
+      afterTitle: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      beforeBody: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      beforeLabel: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      label(tooltipItem) {
+        if (this && this.options && this.options.mode === 'dataset') {
+          return tooltipItem.label + ': ' + tooltipItem.formattedValue || tooltipItem.formattedValue;
+        }
+        let label = tooltipItem.dataset.label || '';
+        if (label) {
+          label += ': ';
+        }
+        const value = tooltipItem.formattedValue;
+        if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(value)) {
+          label += value;
+        }
+        return label;
+      },
+      labelColor(tooltipItem) {
+        const meta = tooltipItem.chart.getDatasetMeta(tooltipItem.datasetIndex);
+        const options = meta.controller.getStyle(tooltipItem.dataIndex);
+        return {
+          borderColor: options.borderColor,
+          backgroundColor: options.backgroundColor,
+          borderWidth: options.borderWidth,
+          borderDash: options.borderDash,
+          borderDashOffset: options.borderDashOffset,
+          borderRadius: 0,
+        };
+      },
+      labelTextColor() {
+        return this.options.bodyColor;
+      },
+      labelPointStyle(tooltipItem) {
+        const meta = tooltipItem.chart.getDatasetMeta(tooltipItem.datasetIndex);
+        const options = meta.controller.getStyle(tooltipItem.dataIndex);
+        return {
+          pointStyle: options.pointStyle,
+          rotation: options.rotation,
+        };
+      },
+      afterLabel: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      afterBody: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      beforeFooter: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      footer: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC,
+      afterFooter: _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aC
+    }
+  },
+  defaultRoutes: {
+    bodyFont: 'font',
+    footerFont: 'font',
+    titleFont: 'font'
+  },
+  descriptors: {
+    _scriptable: (name) => name !== 'filter' && name !== 'itemSort' && name !== 'external',
+    _indexable: false,
+    callbacks: {
+      _scriptable: false,
+      _indexable: false,
+    },
+    animation: {
+      _fallback: false
+    },
+    animations: {
+      _fallback: 'animation'
+    }
+  },
+  additionalOptionScopes: ['interaction']
+};
+
+var plugins = /*#__PURE__*/Object.freeze({
+__proto__: null,
+Decimation: plugin_decimation,
+Filler: index,
+Legend: plugin_legend,
+SubTitle: plugin_subtitle,
+Title: plugin_title,
+Tooltip: plugin_tooltip
+});
+
+const addIfString = (labels, raw, index, addedLabels) => {
+  if (typeof raw === 'string') {
+    index = labels.push(raw) - 1;
+    addedLabels.unshift({index, label: raw});
+  } else if (isNaN(raw)) {
+    index = null;
+  }
+  return index;
+};
+function findOrAddLabel(labels, raw, index, addedLabels) {
+  const first = labels.indexOf(raw);
+  if (first === -1) {
+    return addIfString(labels, raw, index, addedLabels);
+  }
+  const last = labels.lastIndexOf(raw);
+  return first !== last ? index : first;
+}
+const validIndex = (index, max) => index === null ? null : (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(Math.round(index), 0, max);
+class CategoryScale extends Scale {
+  constructor(cfg) {
+    super(cfg);
+    this._startValue = undefined;
+    this._valueRange = 0;
+    this._addedLabels = [];
+  }
+  init(scaleOptions) {
+    const added = this._addedLabels;
+    if (added.length) {
+      const labels = this.getLabels();
+      for (const {index, label} of added) {
+        if (labels[index] === label) {
+          labels.splice(index, 1);
+        }
+      }
+      this._addedLabels = [];
+    }
+    super.init(scaleOptions);
+  }
+  parse(raw, index) {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(raw)) {
+      return null;
+    }
+    const labels = this.getLabels();
+    index = isFinite(index) && labels[index] === raw ? index
+      : findOrAddLabel(labels, raw, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(index, raw), this._addedLabels);
+    return validIndex(index, labels.length - 1);
+  }
+  determineDataLimits() {
+    const {minDefined, maxDefined} = this.getUserBounds();
+    let {min, max} = this.getMinMax(true);
+    if (this.options.bounds === 'ticks') {
+      if (!minDefined) {
+        min = 0;
+      }
+      if (!maxDefined) {
+        max = this.getLabels().length - 1;
+      }
+    }
+    this.min = min;
+    this.max = max;
+  }
+  buildTicks() {
+    const min = this.min;
+    const max = this.max;
+    const offset = this.options.offset;
+    const ticks = [];
+    let labels = this.getLabels();
+    labels = (min === 0 && max === labels.length - 1) ? labels : labels.slice(min, max + 1);
+    this._valueRange = Math.max(labels.length - (offset ? 0 : 1), 1);
+    this._startValue = this.min - (offset ? 0.5 : 0);
+    for (let value = min; value <= max; value++) {
+      ticks.push({value});
+    }
+    return ticks;
+  }
+  getLabelForValue(value) {
+    const labels = this.getLabels();
+    if (value >= 0 && value < labels.length) {
+      return labels[value];
+    }
+    return value;
+  }
+  configure() {
+    super.configure();
+    if (!this.isHorizontal()) {
+      this._reversePixels = !this._reversePixels;
+    }
+  }
+  getPixelForValue(value) {
+    if (typeof value !== 'number') {
+      value = this.parse(value);
+    }
+    return value === null ? NaN : this.getPixelForDecimal((value - this._startValue) / this._valueRange);
+  }
+  getPixelForTick(index) {
+    const ticks = this.ticks;
+    if (index < 0 || index > ticks.length - 1) {
+      return null;
+    }
+    return this.getPixelForValue(ticks[index].value);
+  }
+  getValueForPixel(pixel) {
+    return Math.round(this._startValue + this.getDecimalForPixel(pixel) * this._valueRange);
+  }
+  getBasePixel() {
+    return this.bottom;
+  }
+}
+CategoryScale.id = 'category';
+CategoryScale.defaults = {
+  ticks: {
+    callback: CategoryScale.prototype.getLabelForValue
+  }
+};
+
+function generateTicks$1(generationOptions, dataRange) {
+  const ticks = [];
+  const MIN_SPACING = 1e-14;
+  const {bounds, step, min, max, precision, count, maxTicks, maxDigits, includeBounds} = generationOptions;
+  const unit = step || 1;
+  const maxSpaces = maxTicks - 1;
+  const {min: rmin, max: rmax} = dataRange;
+  const minDefined = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(min);
+  const maxDefined = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(max);
+  const countDefined = !(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(count);
+  const minSpacing = (rmax - rmin) / (maxDigits + 1);
+  let spacing = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aF)((rmax - rmin) / maxSpaces / unit) * unit;
+  let factor, niceMin, niceMax, numSpaces;
+  if (spacing < MIN_SPACING && !minDefined && !maxDefined) {
+    return [{value: rmin}, {value: rmax}];
+  }
+  numSpaces = Math.ceil(rmax / spacing) - Math.floor(rmin / spacing);
+  if (numSpaces > maxSpaces) {
+    spacing = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aF)(numSpaces * spacing / maxSpaces / unit) * unit;
+  }
+  if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(precision)) {
+    factor = Math.pow(10, precision);
+    spacing = Math.ceil(spacing * factor) / factor;
+  }
+  if (bounds === 'ticks') {
+    niceMin = Math.floor(rmin / spacing) * spacing;
+    niceMax = Math.ceil(rmax / spacing) * spacing;
+  } else {
+    niceMin = rmin;
+    niceMax = rmax;
+  }
+  if (minDefined && maxDefined && step && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aG)((max - min) / step, spacing / 1000)) {
+    numSpaces = Math.round(Math.min((max - min) / spacing, maxTicks));
+    spacing = (max - min) / numSpaces;
+    niceMin = min;
+    niceMax = max;
+  } else if (countDefined) {
+    niceMin = minDefined ? min : niceMin;
+    niceMax = maxDefined ? max : niceMax;
+    numSpaces = count - 1;
+    spacing = (niceMax - niceMin) / numSpaces;
+  } else {
+    numSpaces = (niceMax - niceMin) / spacing;
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aH)(numSpaces, Math.round(numSpaces), spacing / 1000)) {
+      numSpaces = Math.round(numSpaces);
+    } else {
+      numSpaces = Math.ceil(numSpaces);
+    }
+  }
+  const decimalPlaces = Math.max(
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aI)(spacing),
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aI)(niceMin)
+  );
+  factor = Math.pow(10, (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(precision) ? decimalPlaces : precision);
+  niceMin = Math.round(niceMin * factor) / factor;
+  niceMax = Math.round(niceMax * factor) / factor;
+  let j = 0;
+  if (minDefined) {
+    if (includeBounds && niceMin !== min) {
+      ticks.push({value: min});
+      if (niceMin < min) {
+        j++;
+      }
+      if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aH)(Math.round((niceMin + j * spacing) * factor) / factor, min, relativeLabelSize(min, minSpacing, generationOptions))) {
+        j++;
+      }
+    } else if (niceMin < min) {
+      j++;
+    }
+  }
+  for (; j < numSpaces; ++j) {
+    ticks.push({value: Math.round((niceMin + j * spacing) * factor) / factor});
+  }
+  if (maxDefined && includeBounds && niceMax !== max) {
+    if (ticks.length && (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aH)(ticks[ticks.length - 1].value, max, relativeLabelSize(max, minSpacing, generationOptions))) {
+      ticks[ticks.length - 1].value = max;
+    } else {
+      ticks.push({value: max});
+    }
+  } else if (!maxDefined || niceMax === max) {
+    ticks.push({value: niceMax});
+  }
+  return ticks;
+}
+function relativeLabelSize(value, minSpacing, {horizontal, minRotation}) {
+  const rad = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(minRotation);
+  const ratio = (horizontal ? Math.sin(rad) : Math.cos(rad)) || 0.001;
+  const length = 0.75 * minSpacing * ('' + value).length;
+  return Math.min(minSpacing / ratio, length);
+}
+class LinearScaleBase extends Scale {
+  constructor(cfg) {
+    super(cfg);
+    this.start = undefined;
+    this.end = undefined;
+    this._startValue = undefined;
+    this._endValue = undefined;
+    this._valueRange = 0;
+  }
+  parse(raw, index) {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(raw)) {
+      return null;
+    }
+    if ((typeof raw === 'number' || raw instanceof Number) && !isFinite(+raw)) {
+      return null;
+    }
+    return +raw;
+  }
+  handleTickRangeOptions() {
+    const {beginAtZero} = this.options;
+    const {minDefined, maxDefined} = this.getUserBounds();
+    let {min, max} = this;
+    const setMin = v => (min = minDefined ? min : v);
+    const setMax = v => (max = maxDefined ? max : v);
+    if (beginAtZero) {
+      const minSign = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(min);
+      const maxSign = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.s)(max);
+      if (minSign < 0 && maxSign < 0) {
+        setMax(0);
+      } else if (minSign > 0 && maxSign > 0) {
+        setMin(0);
+      }
+    }
+    if (min === max) {
+      let offset = 1;
+      if (max >= Number.MAX_SAFE_INTEGER || min <= Number.MIN_SAFE_INTEGER) {
+        offset = Math.abs(max * 0.05);
+      }
+      setMax(max + offset);
+      if (!beginAtZero) {
+        setMin(min - offset);
+      }
+    }
+    this.min = min;
+    this.max = max;
+  }
+  getTickLimit() {
+    const tickOpts = this.options.ticks;
+    let {maxTicksLimit, stepSize} = tickOpts;
+    let maxTicks;
+    if (stepSize) {
+      maxTicks = Math.ceil(this.max / stepSize) - Math.floor(this.min / stepSize) + 1;
+      if (maxTicks > 1000) {
+        console.warn(`scales.${this.id}.ticks.stepSize: ${stepSize} would result generating up to ${maxTicks} ticks. Limiting to 1000.`);
+        maxTicks = 1000;
+      }
+    } else {
+      maxTicks = this.computeTickLimit();
+      maxTicksLimit = maxTicksLimit || 11;
+    }
+    if (maxTicksLimit) {
+      maxTicks = Math.min(maxTicksLimit, maxTicks);
+    }
+    return maxTicks;
+  }
+  computeTickLimit() {
+    return Number.POSITIVE_INFINITY;
+  }
+  buildTicks() {
+    const opts = this.options;
+    const tickOpts = opts.ticks;
+    let maxTicks = this.getTickLimit();
+    maxTicks = Math.max(2, maxTicks);
+    const numericGeneratorOptions = {
+      maxTicks,
+      bounds: opts.bounds,
+      min: opts.min,
+      max: opts.max,
+      precision: tickOpts.precision,
+      step: tickOpts.stepSize,
+      count: tickOpts.count,
+      maxDigits: this._maxDigits(),
+      horizontal: this.isHorizontal(),
+      minRotation: tickOpts.minRotation || 0,
+      includeBounds: tickOpts.includeBounds !== false
+    };
+    const dataRange = this._range || this;
+    const ticks = generateTicks$1(numericGeneratorOptions, dataRange);
+    if (opts.bounds === 'ticks') {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aE)(ticks, this, 'value');
+    }
+    if (opts.reverse) {
+      ticks.reverse();
+      this.start = this.max;
+      this.end = this.min;
+    } else {
+      this.start = this.min;
+      this.end = this.max;
+    }
+    return ticks;
+  }
+  configure() {
+    const ticks = this.ticks;
+    let start = this.min;
+    let end = this.max;
+    super.configure();
+    if (this.options.offset && ticks.length) {
+      const offset = (end - start) / Math.max(ticks.length - 1, 1) / 2;
+      start -= offset;
+      end += offset;
+    }
+    this._startValue = start;
+    this._endValue = end;
+    this._valueRange = end - start;
+  }
+  getLabelForValue(value) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.o)(value, this.chart.options.locale, this.options.ticks.format);
+  }
+}
+
+class LinearScale extends LinearScaleBase {
+  determineDataLimits() {
+    const {min, max} = this.getMinMax(true);
+    this.min = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(min) ? min : 0;
+    this.max = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(max) ? max : 1;
+    this.handleTickRangeOptions();
+  }
+  computeTickLimit() {
+    const horizontal = this.isHorizontal();
+    const length = horizontal ? this.width : this.height;
+    const minRotation = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.options.ticks.minRotation);
+    const ratio = (horizontal ? Math.sin(minRotation) : Math.cos(minRotation)) || 0.001;
+    const tickFont = this._resolveTickFontOptions(0);
+    return Math.ceil(length / Math.min(40, tickFont.lineHeight / ratio));
+  }
+  getPixelForValue(value) {
+    return value === null ? NaN : this.getPixelForDecimal((value - this._startValue) / this._valueRange);
+  }
+  getValueForPixel(pixel) {
+    return this._startValue + this.getDecimalForPixel(pixel) * this._valueRange;
+  }
+}
+LinearScale.id = 'linear';
+LinearScale.defaults = {
+  ticks: {
+    callback: Ticks.formatters.numeric
+  }
+};
+
+function isMajor(tickVal) {
+  const remain = tickVal / (Math.pow(10, Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(tickVal))));
+  return remain === 1;
+}
+function generateTicks(generationOptions, dataRange) {
+  const endExp = Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(dataRange.max));
+  const endSignificand = Math.ceil(dataRange.max / Math.pow(10, endExp));
+  const ticks = [];
+  let tickVal = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(generationOptions.min, Math.pow(10, Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(dataRange.min))));
+  let exp = Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(tickVal));
+  let significand = Math.floor(tickVal / Math.pow(10, exp));
+  let precision = exp < 0 ? Math.pow(10, Math.abs(exp)) : 1;
+  do {
+    ticks.push({value: tickVal, major: isMajor(tickVal)});
+    ++significand;
+    if (significand === 10) {
+      significand = 1;
+      ++exp;
+      precision = exp >= 0 ? 1 : precision;
+    }
+    tickVal = Math.round(significand * Math.pow(10, exp) * precision) / precision;
+  } while (exp < endExp || (exp === endExp && significand < endSignificand));
+  const lastTick = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.O)(generationOptions.max, tickVal);
+  ticks.push({value: lastTick, major: isMajor(tickVal)});
+  return ticks;
+}
+class LogarithmicScale extends Scale {
+  constructor(cfg) {
+    super(cfg);
+    this.start = undefined;
+    this.end = undefined;
+    this._startValue = undefined;
+    this._valueRange = 0;
+  }
+  parse(raw, index) {
+    const value = LinearScaleBase.prototype.parse.apply(this, [raw, index]);
+    if (value === 0) {
+      this._zero = true;
+      return undefined;
+    }
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(value) && value > 0 ? value : null;
+  }
+  determineDataLimits() {
+    const {min, max} = this.getMinMax(true);
+    this.min = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(min) ? Math.max(0, min) : null;
+    this.max = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(max) ? Math.max(0, max) : null;
+    if (this.options.beginAtZero) {
+      this._zero = true;
+    }
+    this.handleTickRangeOptions();
+  }
+  handleTickRangeOptions() {
+    const {minDefined, maxDefined} = this.getUserBounds();
+    let min = this.min;
+    let max = this.max;
+    const setMin = v => (min = minDefined ? min : v);
+    const setMax = v => (max = maxDefined ? max : v);
+    const exp = (v, m) => Math.pow(10, Math.floor((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(v)) + m);
+    if (min === max) {
+      if (min <= 0) {
+        setMin(1);
+        setMax(10);
+      } else {
+        setMin(exp(min, -1));
+        setMax(exp(max, +1));
+      }
+    }
+    if (min <= 0) {
+      setMin(exp(max, -1));
+    }
+    if (max <= 0) {
+      setMax(exp(min, +1));
+    }
+    if (this._zero && this.min !== this._suggestedMin && min === exp(this.min, 0)) {
+      setMin(exp(min, -1));
+    }
+    this.min = min;
+    this.max = max;
+  }
+  buildTicks() {
+    const opts = this.options;
+    const generationOptions = {
+      min: this._userMin,
+      max: this._userMax
+    };
+    const ticks = generateTicks(generationOptions, this);
+    if (opts.bounds === 'ticks') {
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aE)(ticks, this, 'value');
+    }
+    if (opts.reverse) {
+      ticks.reverse();
+      this.start = this.max;
+      this.end = this.min;
+    } else {
+      this.start = this.min;
+      this.end = this.max;
+    }
+    return ticks;
+  }
+  getLabelForValue(value) {
+    return value === undefined
+      ? '0'
+      : (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.o)(value, this.chart.options.locale, this.options.ticks.format);
+  }
+  configure() {
+    const start = this.min;
+    super.configure();
+    this._startValue = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(start);
+    this._valueRange = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(this.max) - (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(start);
+  }
+  getPixelForValue(value) {
+    if (value === undefined || value === 0) {
+      value = this.min;
+    }
+    if (value === null || isNaN(value)) {
+      return NaN;
+    }
+    return this.getPixelForDecimal(value === this.min
+      ? 0
+      : ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.M)(value) - this._startValue) / this._valueRange);
+  }
+  getValueForPixel(pixel) {
+    const decimal = this.getDecimalForPixel(pixel);
+    return Math.pow(10, this._startValue + decimal * this._valueRange);
+  }
+}
+LogarithmicScale.id = 'logarithmic';
+LogarithmicScale.defaults = {
+  ticks: {
+    callback: Ticks.formatters.logarithmic,
+    major: {
+      enabled: true
+    }
+  }
+};
+
+function getTickBackdropHeight(opts) {
+  const tickOpts = opts.ticks;
+  if (tickOpts.display && opts.display) {
+    const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(tickOpts.backdropPadding);
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(tickOpts.font && tickOpts.font.size, _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d.font.size) + padding.height;
+  }
+  return 0;
+}
+function measureLabelSize(ctx, font, label) {
+  label = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.b)(label) ? label : [label];
+  return {
+    w: (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aJ)(ctx, font.string, label),
+    h: label.length * font.lineHeight
+  };
+}
+function determineLimits(angle, pos, size, min, max) {
+  if (angle === min || angle === max) {
+    return {
+      start: pos - (size / 2),
+      end: pos + (size / 2)
+    };
+  } else if (angle < min || angle > max) {
+    return {
+      start: pos - size,
+      end: pos
+    };
+  }
+  return {
+    start: pos,
+    end: pos + size
+  };
+}
+function fitWithPointLabels(scale) {
+  const orig = {
+    l: scale.left + scale._padding.left,
+    r: scale.right - scale._padding.right,
+    t: scale.top + scale._padding.top,
+    b: scale.bottom - scale._padding.bottom
+  };
+  const limits = Object.assign({}, orig);
+  const labelSizes = [];
+  const padding = [];
+  const valueCount = scale._pointLabels.length;
+  const pointLabelOpts = scale.options.pointLabels;
+  const additionalAngle = pointLabelOpts.centerPointLabels ? _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P / valueCount : 0;
+  for (let i = 0; i < valueCount; i++) {
+    const opts = pointLabelOpts.setContext(scale.getPointLabelContext(i));
+    padding[i] = opts.padding;
+    const pointPosition = scale.getPointPosition(i, scale.drawingArea + padding[i], additionalAngle);
+    const plFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(opts.font);
+    const textSize = measureLabelSize(scale.ctx, plFont, scale._pointLabels[i]);
+    labelSizes[i] = textSize;
+    const angleRadians = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ax)(scale.getIndexAngle(i) + additionalAngle);
+    const angle = Math.round((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.S)(angleRadians));
+    const hLimits = determineLimits(angle, pointPosition.x, textSize.w, 0, 180);
+    const vLimits = determineLimits(angle, pointPosition.y, textSize.h, 90, 270);
+    updateLimits(limits, orig, angleRadians, hLimits, vLimits);
+  }
+  scale.setCenterPoint(
+    orig.l - limits.l,
+    limits.r - orig.r,
+    orig.t - limits.t,
+    limits.b - orig.b
+  );
+  scale._pointLabelItems = buildPointLabelItems(scale, labelSizes, padding);
+}
+function updateLimits(limits, orig, angle, hLimits, vLimits) {
+  const sin = Math.abs(Math.sin(angle));
+  const cos = Math.abs(Math.cos(angle));
+  let x = 0;
+  let y = 0;
+  if (hLimits.start < orig.l) {
+    x = (orig.l - hLimits.start) / sin;
+    limits.l = Math.min(limits.l, orig.l - x);
+  } else if (hLimits.end > orig.r) {
+    x = (hLimits.end - orig.r) / sin;
+    limits.r = Math.max(limits.r, orig.r + x);
+  }
+  if (vLimits.start < orig.t) {
+    y = (orig.t - vLimits.start) / cos;
+    limits.t = Math.min(limits.t, orig.t - y);
+  } else if (vLimits.end > orig.b) {
+    y = (vLimits.end - orig.b) / cos;
+    limits.b = Math.max(limits.b, orig.b + y);
+  }
+}
+function buildPointLabelItems(scale, labelSizes, padding) {
+  const items = [];
+  const valueCount = scale._pointLabels.length;
+  const opts = scale.options;
+  const extra = getTickBackdropHeight(opts) / 2;
+  const outerDistance = scale.drawingArea;
+  const additionalAngle = opts.pointLabels.centerPointLabels ? _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.P / valueCount : 0;
+  for (let i = 0; i < valueCount; i++) {
+    const pointLabelPosition = scale.getPointPosition(i, outerDistance + extra + padding[i], additionalAngle);
+    const angle = Math.round((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.S)((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ax)(pointLabelPosition.angle + _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H)));
+    const size = labelSizes[i];
+    const y = yForAngle(pointLabelPosition.y, size.h, angle);
+    const textAlign = getTextAlignForAngle(angle);
+    const left = leftForTextAlign(pointLabelPosition.x, size.w, textAlign);
+    items.push({
+      x: pointLabelPosition.x,
+      y,
+      textAlign,
+      left,
+      top: y,
+      right: left + size.w,
+      bottom: y + size.h
+    });
+  }
+  return items;
+}
+function getTextAlignForAngle(angle) {
+  if (angle === 0 || angle === 180) {
+    return 'center';
+  } else if (angle < 180) {
+    return 'left';
+  }
+  return 'right';
+}
+function leftForTextAlign(x, w, align) {
+  if (align === 'right') {
+    x -= w;
+  } else if (align === 'center') {
+    x -= (w / 2);
+  }
+  return x;
+}
+function yForAngle(y, h, angle) {
+  if (angle === 90 || angle === 270) {
+    y -= (h / 2);
+  } else if (angle > 270 || angle < 90) {
+    y -= h;
+  }
+  return y;
+}
+function drawPointLabels(scale, labelCount) {
+  const {ctx, options: {pointLabels}} = scale;
+  for (let i = labelCount - 1; i >= 0; i--) {
+    const optsAtIndex = pointLabels.setContext(scale.getPointLabelContext(i));
+    const plFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(optsAtIndex.font);
+    const {x, y, textAlign, left, top, right, bottom} = scale._pointLabelItems[i];
+    const {backdropColor} = optsAtIndex;
+    if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(backdropColor)) {
+      const borderRadius = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.av)(optsAtIndex.borderRadius);
+      const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(optsAtIndex.backdropPadding);
+      ctx.fillStyle = backdropColor;
+      const backdropLeft = left - padding.left;
+      const backdropTop = top - padding.top;
+      const backdropWidth = right - left + padding.width;
+      const backdropHeight = bottom - top + padding.height;
+      if (Object.values(borderRadius).some(v => v !== 0)) {
+        ctx.beginPath();
+        (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.at)(ctx, {
+          x: backdropLeft,
+          y: backdropTop,
+          w: backdropWidth,
+          h: backdropHeight,
+          radius: borderRadius,
+        });
+        ctx.fill();
+      } else {
+        ctx.fillRect(backdropLeft, backdropTop, backdropWidth, backdropHeight);
+      }
+    }
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(
+      ctx,
+      scale._pointLabels[i],
+      x,
+      y + (plFont.lineHeight / 2),
+      plFont,
+      {
+        color: optsAtIndex.color,
+        textAlign: textAlign,
+        textBaseline: 'middle'
+      }
+    );
+  }
+}
+function pathRadiusLine(scale, radius, circular, labelCount) {
+  const {ctx} = scale;
+  if (circular) {
+    ctx.arc(scale.xCenter, scale.yCenter, radius, 0, _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T);
+  } else {
+    let pointPosition = scale.getPointPosition(0, radius);
+    ctx.moveTo(pointPosition.x, pointPosition.y);
+    for (let i = 1; i < labelCount; i++) {
+      pointPosition = scale.getPointPosition(i, radius);
+      ctx.lineTo(pointPosition.x, pointPosition.y);
+    }
+  }
+}
+function drawRadiusLine(scale, gridLineOpts, radius, labelCount) {
+  const ctx = scale.ctx;
+  const circular = gridLineOpts.circular;
+  const {color, lineWidth} = gridLineOpts;
+  if ((!circular && !labelCount) || !color || !lineWidth || radius < 0) {
+    return;
+  }
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = lineWidth;
+  ctx.setLineDash(gridLineOpts.borderDash);
+  ctx.lineDashOffset = gridLineOpts.borderDashOffset;
+  ctx.beginPath();
+  pathRadiusLine(scale, radius, circular, labelCount);
+  ctx.closePath();
+  ctx.stroke();
+  ctx.restore();
+}
+function createPointLabelContext(parent, index, label) {
+  return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.h)(parent, {
+    label,
+    index,
+    type: 'pointLabel'
+  });
+}
+class RadialLinearScale extends LinearScaleBase {
+  constructor(cfg) {
+    super(cfg);
+    this.xCenter = undefined;
+    this.yCenter = undefined;
+    this.drawingArea = undefined;
+    this._pointLabels = [];
+    this._pointLabelItems = [];
+  }
+  setDimensions() {
+    const padding = this._padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(getTickBackdropHeight(this.options) / 2);
+    const w = this.width = this.maxWidth - padding.width;
+    const h = this.height = this.maxHeight - padding.height;
+    this.xCenter = Math.floor(this.left + w / 2 + padding.left);
+    this.yCenter = Math.floor(this.top + h / 2 + padding.top);
+    this.drawingArea = Math.floor(Math.min(w, h) / 2);
+  }
+  determineDataLimits() {
+    const {min, max} = this.getMinMax(false);
+    this.min = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(min) && !isNaN(min) ? min : 0;
+    this.max = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(max) && !isNaN(max) ? max : 0;
+    this.handleTickRangeOptions();
+  }
+  computeTickLimit() {
+    return Math.ceil(this.drawingArea / getTickBackdropHeight(this.options));
+  }
+  generateTickLabels(ticks) {
+    LinearScaleBase.prototype.generateTickLabels.call(this, ticks);
+    this._pointLabels = this.getLabels()
+      .map((value, index) => {
+        const label = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(this.options.pointLabels.callback, [value, index], this);
+        return label || label === 0 ? label : '';
+      })
+      .filter((v, i) => this.chart.getDataVisibility(i));
+  }
+  fit() {
+    const opts = this.options;
+    if (opts.display && opts.pointLabels.display) {
+      fitWithPointLabels(this);
+    } else {
+      this.setCenterPoint(0, 0, 0, 0);
+    }
+  }
+  setCenterPoint(leftMovement, rightMovement, topMovement, bottomMovement) {
+    this.xCenter += Math.floor((leftMovement - rightMovement) / 2);
+    this.yCenter += Math.floor((topMovement - bottomMovement) / 2);
+    this.drawingArea -= Math.min(this.drawingArea / 2, Math.max(leftMovement, rightMovement, topMovement, bottomMovement));
+  }
+  getIndexAngle(index) {
+    const angleMultiplier = _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.T / (this._pointLabels.length || 1);
+    const startAngle = this.options.startAngle || 0;
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.ax)(index * angleMultiplier + (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(startAngle));
+  }
+  getDistanceFromCenterForValue(value) {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(value)) {
+      return NaN;
+    }
+    const scalingFactor = this.drawingArea / (this.max - this.min);
+    if (this.options.reverse) {
+      return (this.max - value) * scalingFactor;
+    }
+    return (value - this.min) * scalingFactor;
+  }
+  getValueForDistanceFromCenter(distance) {
+    if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(distance)) {
+      return NaN;
+    }
+    const scaledDistance = distance / (this.drawingArea / (this.max - this.min));
+    return this.options.reverse ? this.max - scaledDistance : this.min + scaledDistance;
+  }
+  getPointLabelContext(index) {
+    const pointLabels = this._pointLabels || [];
+    if (index >= 0 && index < pointLabels.length) {
+      const pointLabel = pointLabels[index];
+      return createPointLabelContext(this.getContext(), index, pointLabel);
+    }
+  }
+  getPointPosition(index, distanceFromCenter, additionalAngle = 0) {
+    const angle = this.getIndexAngle(index) - _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.H + additionalAngle;
+    return {
+      x: Math.cos(angle) * distanceFromCenter + this.xCenter,
+      y: Math.sin(angle) * distanceFromCenter + this.yCenter,
+      angle
+    };
+  }
+  getPointPositionForValue(index, value) {
+    return this.getPointPosition(index, this.getDistanceFromCenterForValue(value));
+  }
+  getBasePosition(index) {
+    return this.getPointPositionForValue(index || 0, this.getBaseValue());
+  }
+  getPointLabelPosition(index) {
+    const {left, top, right, bottom} = this._pointLabelItems[index];
+    return {
+      left,
+      top,
+      right,
+      bottom,
+    };
+  }
+  drawBackground() {
+    const {backgroundColor, grid: {circular}} = this.options;
+    if (backgroundColor) {
+      const ctx = this.ctx;
+      ctx.save();
+      ctx.beginPath();
+      pathRadiusLine(this, this.getDistanceFromCenterForValue(this._endValue), circular, this._pointLabels.length);
+      ctx.closePath();
+      ctx.fillStyle = backgroundColor;
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+  drawGrid() {
+    const ctx = this.ctx;
+    const opts = this.options;
+    const {angleLines, grid} = opts;
+    const labelCount = this._pointLabels.length;
+    let i, offset, position;
+    if (opts.pointLabels.display) {
+      drawPointLabels(this, labelCount);
+    }
+    if (grid.display) {
+      this.ticks.forEach((tick, index) => {
+        if (index !== 0) {
+          offset = this.getDistanceFromCenterForValue(tick.value);
+          const optsAtIndex = grid.setContext(this.getContext(index - 1));
+          drawRadiusLine(this, optsAtIndex, offset, labelCount);
+        }
+      });
+    }
+    if (angleLines.display) {
+      ctx.save();
+      for (i = labelCount - 1; i >= 0; i--) {
+        const optsAtIndex = angleLines.setContext(this.getPointLabelContext(i));
+        const {color, lineWidth} = optsAtIndex;
+        if (!lineWidth || !color) {
+          continue;
+        }
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = color;
+        ctx.setLineDash(optsAtIndex.borderDash);
+        ctx.lineDashOffset = optsAtIndex.borderDashOffset;
+        offset = this.getDistanceFromCenterForValue(opts.ticks.reverse ? this.min : this.max);
+        position = this.getPointPosition(i, offset);
+        ctx.beginPath();
+        ctx.moveTo(this.xCenter, this.yCenter);
+        ctx.lineTo(position.x, position.y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+  }
+  drawBorder() {}
+  drawLabels() {
+    const ctx = this.ctx;
+    const opts = this.options;
+    const tickOpts = opts.ticks;
+    if (!tickOpts.display) {
+      return;
+    }
+    const startAngle = this.getIndexAngle(0);
+    let offset, width;
+    ctx.save();
+    ctx.translate(this.xCenter, this.yCenter);
+    ctx.rotate(startAngle);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    this.ticks.forEach((tick, index) => {
+      if (index === 0 && !opts.reverse) {
+        return;
+      }
+      const optsAtIndex = tickOpts.setContext(this.getContext(index));
+      const tickFont = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.$)(optsAtIndex.font);
+      offset = this.getDistanceFromCenterForValue(this.ticks[index].value);
+      if (optsAtIndex.showLabelBackdrop) {
+        ctx.font = tickFont.string;
+        width = ctx.measureText(tick.label).width;
+        ctx.fillStyle = optsAtIndex.backdropColor;
+        const padding = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.D)(optsAtIndex.backdropPadding);
+        ctx.fillRect(
+          -width / 2 - padding.left,
+          -offset - tickFont.size / 2 - padding.top,
+          width + padding.width,
+          tickFont.size + padding.height
+        );
+      }
+      (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Y)(ctx, tick.label, 0, -offset, tickFont, {
+        color: optsAtIndex.color,
+      });
+    });
+    ctx.restore();
+  }
+  drawTitle() {}
+}
+RadialLinearScale.id = 'radialLinear';
+RadialLinearScale.defaults = {
+  display: true,
+  animate: true,
+  position: 'chartArea',
+  angleLines: {
+    display: true,
+    lineWidth: 1,
+    borderDash: [],
+    borderDashOffset: 0.0
+  },
+  grid: {
+    circular: false
+  },
+  startAngle: 0,
+  ticks: {
+    showLabelBackdrop: true,
+    callback: Ticks.formatters.numeric
+  },
+  pointLabels: {
+    backdropColor: undefined,
+    backdropPadding: 2,
+    display: true,
+    font: {
+      size: 10
+    },
+    callback(label) {
+      return label;
+    },
+    padding: 5,
+    centerPointLabels: false
+  }
+};
+RadialLinearScale.defaultRoutes = {
+  'angleLines.color': 'borderColor',
+  'pointLabels.color': 'color',
+  'ticks.color': 'color'
+};
+RadialLinearScale.descriptors = {
+  angleLines: {
+    _fallback: 'grid'
+  }
+};
+
+const INTERVALS = {
+  millisecond: {common: true, size: 1, steps: 1000},
+  second: {common: true, size: 1000, steps: 60},
+  minute: {common: true, size: 60000, steps: 60},
+  hour: {common: true, size: 3600000, steps: 24},
+  day: {common: true, size: 86400000, steps: 30},
+  week: {common: false, size: 604800000, steps: 4},
+  month: {common: true, size: 2.628e9, steps: 12},
+  quarter: {common: false, size: 7.884e9, steps: 4},
+  year: {common: true, size: 3.154e10}
+};
+const UNITS = (Object.keys(INTERVALS));
+function sorter(a, b) {
+  return a - b;
+}
+function parse(scale, input) {
+  if ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.k)(input)) {
+    return null;
+  }
+  const adapter = scale._adapter;
+  const {parser, round, isoWeekday} = scale._parseOpts;
+  let value = input;
+  if (typeof parser === 'function') {
+    value = parser(value);
+  }
+  if (!(0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(value)) {
+    value = typeof parser === 'string'
+      ? adapter.parse(value, parser)
+      : adapter.parse(value);
+  }
+  if (value === null) {
+    return null;
+  }
+  if (round) {
+    value = round === 'week' && ((0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.q)(isoWeekday) || isoWeekday === true)
+      ? adapter.startOf(value, 'isoWeek', isoWeekday)
+      : adapter.startOf(value, round);
+  }
+  return +value;
+}
+function determineUnitForAutoTicks(minUnit, min, max, capacity) {
+  const ilen = UNITS.length;
+  for (let i = UNITS.indexOf(minUnit); i < ilen - 1; ++i) {
+    const interval = INTERVALS[UNITS[i]];
+    const factor = interval.steps ? interval.steps : Number.MAX_SAFE_INTEGER;
+    if (interval.common && Math.ceil((max - min) / (factor * interval.size)) <= capacity) {
+      return UNITS[i];
+    }
+  }
+  return UNITS[ilen - 1];
+}
+function determineUnitForFormatting(scale, numTicks, minUnit, min, max) {
+  for (let i = UNITS.length - 1; i >= UNITS.indexOf(minUnit); i--) {
+    const unit = UNITS[i];
+    if (INTERVALS[unit].common && scale._adapter.diff(max, min, unit) >= numTicks - 1) {
+      return unit;
+    }
+  }
+  return UNITS[minUnit ? UNITS.indexOf(minUnit) : 0];
+}
+function determineMajorUnit(unit) {
+  for (let i = UNITS.indexOf(unit) + 1, ilen = UNITS.length; i < ilen; ++i) {
+    if (INTERVALS[UNITS[i]].common) {
+      return UNITS[i];
+    }
+  }
+}
+function addTick(ticks, time, timestamps) {
+  if (!timestamps) {
+    ticks[time] = true;
+  } else if (timestamps.length) {
+    const {lo, hi} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aL)(timestamps, time);
+    const timestamp = timestamps[lo] >= time ? timestamps[lo] : timestamps[hi];
+    ticks[timestamp] = true;
+  }
+}
+function setMajorTicks(scale, ticks, map, majorUnit) {
+  const adapter = scale._adapter;
+  const first = +adapter.startOf(ticks[0].value, majorUnit);
+  const last = ticks[ticks.length - 1].value;
+  let major, index;
+  for (major = first; major <= last; major = +adapter.add(major, 1, majorUnit)) {
+    index = map[major];
+    if (index >= 0) {
+      ticks[index].major = true;
+    }
+  }
+  return ticks;
+}
+function ticksFromTimestamps(scale, values, majorUnit) {
+  const ticks = [];
+  const map = {};
+  const ilen = values.length;
+  let i, value;
+  for (i = 0; i < ilen; ++i) {
+    value = values[i];
+    map[value] = i;
+    ticks.push({
+      value,
+      major: false
+    });
+  }
+  return (ilen === 0 || !majorUnit) ? ticks : setMajorTicks(scale, ticks, map, majorUnit);
+}
+class TimeScale extends Scale {
+  constructor(props) {
+    super(props);
+    this._cache = {
+      data: [],
+      labels: [],
+      all: []
+    };
+    this._unit = 'day';
+    this._majorUnit = undefined;
+    this._offsets = {};
+    this._normalized = false;
+    this._parseOpts = undefined;
+  }
+  init(scaleOpts, opts) {
+    const time = scaleOpts.time || (scaleOpts.time = {});
+    const adapter = this._adapter = new adapters._date(scaleOpts.adapters.date);
+    (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aa)(time.displayFormats, adapter.formats());
+    this._parseOpts = {
+      parser: time.parser,
+      round: time.round,
+      isoWeekday: time.isoWeekday
+    };
+    super.init(scaleOpts);
+    this._normalized = opts.normalized;
+  }
+  parse(raw, index) {
+    if (raw === undefined) {
+      return null;
+    }
+    return parse(this, raw);
+  }
+  beforeLayout() {
+    super.beforeLayout();
+    this._cache = {
+      data: [],
+      labels: [],
+      all: []
+    };
+  }
+  determineDataLimits() {
+    const options = this.options;
+    const adapter = this._adapter;
+    const unit = options.time.unit || 'day';
+    let {min, max, minDefined, maxDefined} = this.getUserBounds();
+    function _applyBounds(bounds) {
+      if (!minDefined && !isNaN(bounds.min)) {
+        min = Math.min(min, bounds.min);
+      }
+      if (!maxDefined && !isNaN(bounds.max)) {
+        max = Math.max(max, bounds.max);
+      }
+    }
+    if (!minDefined || !maxDefined) {
+      _applyBounds(this._getLabelBounds());
+      if (options.bounds !== 'ticks' || options.ticks.source !== 'labels') {
+        _applyBounds(this.getMinMax(false));
+      }
+    }
+    min = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(min) && !isNaN(min) ? min : +adapter.startOf(Date.now(), unit);
+    max = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.g)(max) && !isNaN(max) ? max : +adapter.endOf(Date.now(), unit) + 1;
+    this.min = Math.min(min, max - 1);
+    this.max = Math.max(min + 1, max);
+  }
+  _getLabelBounds() {
+    const arr = this.getLabelTimestamps();
+    let min = Number.POSITIVE_INFINITY;
+    let max = Number.NEGATIVE_INFINITY;
+    if (arr.length) {
+      min = arr[0];
+      max = arr[arr.length - 1];
+    }
+    return {min, max};
+  }
+  buildTicks() {
+    const options = this.options;
+    const timeOpts = options.time;
+    const tickOpts = options.ticks;
+    const timestamps = tickOpts.source === 'labels' ? this.getLabelTimestamps() : this._generate();
+    if (options.bounds === 'ticks' && timestamps.length) {
+      this.min = this._userMin || timestamps[0];
+      this.max = this._userMax || timestamps[timestamps.length - 1];
+    }
+    const min = this.min;
+    const max = this.max;
+    const ticks = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aK)(timestamps, min, max);
+    this._unit = timeOpts.unit || (tickOpts.autoSkip
+      ? determineUnitForAutoTicks(timeOpts.minUnit, this.min, this.max, this._getLabelCapacity(min))
+      : determineUnitForFormatting(this, ticks.length, timeOpts.minUnit, this.min, this.max));
+    this._majorUnit = !tickOpts.major.enabled || this._unit === 'year' ? undefined
+      : determineMajorUnit(this._unit);
+    this.initOffsets(timestamps);
+    if (options.reverse) {
+      ticks.reverse();
+    }
+    return ticksFromTimestamps(this, ticks, this._majorUnit);
+  }
+  afterAutoSkip() {
+    if (this.options.offsetAfterAutoskip) {
+      this.initOffsets(this.ticks.map(tick => +tick.value));
+    }
+  }
+  initOffsets(timestamps) {
+    let start = 0;
+    let end = 0;
+    let first, last;
+    if (this.options.offset && timestamps.length) {
+      first = this.getDecimalForValue(timestamps[0]);
+      if (timestamps.length === 1) {
+        start = 1 - first;
+      } else {
+        start = (this.getDecimalForValue(timestamps[1]) - first) / 2;
+      }
+      last = this.getDecimalForValue(timestamps[timestamps.length - 1]);
+      if (timestamps.length === 1) {
+        end = last;
+      } else {
+        end = (last - this.getDecimalForValue(timestamps[timestamps.length - 2])) / 2;
+      }
+    }
+    const limit = timestamps.length < 3 ? 0.5 : 0.25;
+    start = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(start, 0, limit);
+    end = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.w)(end, 0, limit);
+    this._offsets = {start, end, factor: 1 / (start + 1 + end)};
+  }
+  _generate() {
+    const adapter = this._adapter;
+    const min = this.min;
+    const max = this.max;
+    const options = this.options;
+    const timeOpts = options.time;
+    const minor = timeOpts.unit || determineUnitForAutoTicks(timeOpts.minUnit, min, max, this._getLabelCapacity(min));
+    const stepSize = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.v)(timeOpts.stepSize, 1);
+    const weekday = minor === 'week' ? timeOpts.isoWeekday : false;
+    const hasWeekday = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.q)(weekday) || weekday === true;
+    const ticks = {};
+    let first = min;
+    let time, count;
+    if (hasWeekday) {
+      first = +adapter.startOf(first, 'isoWeek', weekday);
+    }
+    first = +adapter.startOf(first, hasWeekday ? 'day' : minor);
+    if (adapter.diff(max, min, minor) > 100000 * stepSize) {
+      throw new Error(min + ' and ' + max + ' are too far apart with stepSize of ' + stepSize + ' ' + minor);
+    }
+    const timestamps = options.ticks.source === 'data' && this.getDataTimestamps();
+    for (time = first, count = 0; time < max; time = +adapter.add(time, stepSize, minor), count++) {
+      addTick(ticks, time, timestamps);
+    }
+    if (time === max || options.bounds === 'ticks' || count === 1) {
+      addTick(ticks, time, timestamps);
+    }
+    return Object.keys(ticks).sort((a, b) => a - b).map(x => +x);
+  }
+  getLabelForValue(value) {
+    const adapter = this._adapter;
+    const timeOpts = this.options.time;
+    if (timeOpts.tooltipFormat) {
+      return adapter.format(value, timeOpts.tooltipFormat);
+    }
+    return adapter.format(value, timeOpts.displayFormats.datetime);
+  }
+  _tickFormatFunction(time, index, ticks, format) {
+    const options = this.options;
+    const formats = options.time.displayFormats;
+    const unit = this._unit;
+    const majorUnit = this._majorUnit;
+    const minorFormat = unit && formats[unit];
+    const majorFormat = majorUnit && formats[majorUnit];
+    const tick = ticks[index];
+    const major = majorUnit && majorFormat && tick && tick.major;
+    const label = this._adapter.format(time, format || (major ? majorFormat : minorFormat));
+    const formatter = options.ticks.callback;
+    return formatter ? (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.Q)(formatter, [label, index, ticks], this) : label;
+  }
+  generateTickLabels(ticks) {
+    let i, ilen, tick;
+    for (i = 0, ilen = ticks.length; i < ilen; ++i) {
+      tick = ticks[i];
+      tick.label = this._tickFormatFunction(tick.value, i, ticks);
+    }
+  }
+  getDecimalForValue(value) {
+    return value === null ? NaN : (value - this.min) / (this.max - this.min);
+  }
+  getPixelForValue(value) {
+    const offsets = this._offsets;
+    const pos = this.getDecimalForValue(value);
+    return this.getPixelForDecimal((offsets.start + pos) * offsets.factor);
+  }
+  getValueForPixel(pixel) {
+    const offsets = this._offsets;
+    const pos = this.getDecimalForPixel(pixel) / offsets.factor - offsets.end;
+    return this.min + pos * (this.max - this.min);
+  }
+  _getLabelSize(label) {
+    const ticksOpts = this.options.ticks;
+    const tickLabelWidth = this.ctx.measureText(label).width;
+    const angle = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.t)(this.isHorizontal() ? ticksOpts.maxRotation : ticksOpts.minRotation);
+    const cosRotation = Math.cos(angle);
+    const sinRotation = Math.sin(angle);
+    const tickFontSize = this._resolveTickFontOptions(0).size;
+    return {
+      w: (tickLabelWidth * cosRotation) + (tickFontSize * sinRotation),
+      h: (tickLabelWidth * sinRotation) + (tickFontSize * cosRotation)
+    };
+  }
+  _getLabelCapacity(exampleTime) {
+    const timeOpts = this.options.time;
+    const displayFormats = timeOpts.displayFormats;
+    const format = displayFormats[timeOpts.unit] || displayFormats.millisecond;
+    const exampleLabel = this._tickFormatFunction(exampleTime, 0, ticksFromTimestamps(this, [exampleTime], this._majorUnit), format);
+    const size = this._getLabelSize(exampleLabel);
+    const capacity = Math.floor(this.isHorizontal() ? this.width / size.w : this.height / size.h) - 1;
+    return capacity > 0 ? capacity : 1;
+  }
+  getDataTimestamps() {
+    let timestamps = this._cache.data || [];
+    let i, ilen;
+    if (timestamps.length) {
+      return timestamps;
+    }
+    const metas = this.getMatchingVisibleMetas();
+    if (this._normalized && metas.length) {
+      return (this._cache.data = metas[0].controller.getAllParsedValues(this));
+    }
+    for (i = 0, ilen = metas.length; i < ilen; ++i) {
+      timestamps = timestamps.concat(metas[i].controller.getAllParsedValues(this));
+    }
+    return (this._cache.data = this.normalize(timestamps));
+  }
+  getLabelTimestamps() {
+    const timestamps = this._cache.labels || [];
+    let i, ilen;
+    if (timestamps.length) {
+      return timestamps;
+    }
+    const labels = this.getLabels();
+    for (i = 0, ilen = labels.length; i < ilen; ++i) {
+      timestamps.push(parse(this, labels[i]));
+    }
+    return (this._cache.labels = this._normalized ? timestamps : this.normalize(timestamps));
+  }
+  normalize(values) {
+    return (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__._)(values.sort(sorter));
+  }
+}
+TimeScale.id = 'time';
+TimeScale.defaults = {
+  bounds: 'data',
+  adapters: {},
+  time: {
+    parser: false,
+    unit: false,
+    round: false,
+    isoWeekday: false,
+    minUnit: 'millisecond',
+    displayFormats: {}
+  },
+  ticks: {
+    source: 'auto',
+    major: {
+      enabled: false
+    }
+  }
+};
+
+function interpolate(table, val, reverse) {
+  let lo = 0;
+  let hi = table.length - 1;
+  let prevSource, nextSource, prevTarget, nextTarget;
+  if (reverse) {
+    if (val >= table[lo].pos && val <= table[hi].pos) {
+      ({lo, hi} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(table, 'pos', val));
+    }
+    ({pos: prevSource, time: prevTarget} = table[lo]);
+    ({pos: nextSource, time: nextTarget} = table[hi]);
+  } else {
+    if (val >= table[lo].time && val <= table[hi].time) {
+      ({lo, hi} = (0,_chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.x)(table, 'time', val));
+    }
+    ({time: prevSource, pos: prevTarget} = table[lo]);
+    ({time: nextSource, pos: nextTarget} = table[hi]);
+  }
+  const span = nextSource - prevSource;
+  return span ? prevTarget + (nextTarget - prevTarget) * (val - prevSource) / span : prevTarget;
+}
+class TimeSeriesScale extends TimeScale {
+  constructor(props) {
+    super(props);
+    this._table = [];
+    this._minPos = undefined;
+    this._tableRange = undefined;
+  }
+  initOffsets() {
+    const timestamps = this._getTimestampsForTable();
+    const table = this._table = this.buildLookupTable(timestamps);
+    this._minPos = interpolate(table, this.min);
+    this._tableRange = interpolate(table, this.max) - this._minPos;
+    super.initOffsets(timestamps);
+  }
+  buildLookupTable(timestamps) {
+    const {min, max} = this;
+    const items = [];
+    const table = [];
+    let i, ilen, prev, curr, next;
+    for (i = 0, ilen = timestamps.length; i < ilen; ++i) {
+      curr = timestamps[i];
+      if (curr >= min && curr <= max) {
+        items.push(curr);
+      }
+    }
+    if (items.length < 2) {
+      return [
+        {time: min, pos: 0},
+        {time: max, pos: 1}
+      ];
+    }
+    for (i = 0, ilen = items.length; i < ilen; ++i) {
+      next = items[i + 1];
+      prev = items[i - 1];
+      curr = items[i];
+      if (Math.round((next + prev) / 2) !== curr) {
+        table.push({time: curr, pos: i / (ilen - 1)});
+      }
+    }
+    return table;
+  }
+  _getTimestampsForTable() {
+    let timestamps = this._cache.all || [];
+    if (timestamps.length) {
+      return timestamps;
+    }
+    const data = this.getDataTimestamps();
+    const label = this.getLabelTimestamps();
+    if (data.length && label.length) {
+      timestamps = this.normalize(data.concat(label));
+    } else {
+      timestamps = data.length ? data : label;
+    }
+    timestamps = this._cache.all = timestamps;
+    return timestamps;
+  }
+  getDecimalForValue(value) {
+    return (interpolate(this._table, value) - this._minPos) / this._tableRange;
+  }
+  getValueForPixel(pixel) {
+    const offsets = this._offsets;
+    const decimal = this.getDecimalForPixel(pixel) / offsets.factor - offsets.end;
+    return interpolate(this._table, decimal * this._tableRange + this._minPos, true);
+  }
+}
+TimeSeriesScale.id = 'timeseries';
+TimeSeriesScale.defaults = TimeScale.defaults;
+
+var scales = /*#__PURE__*/Object.freeze({
+__proto__: null,
+CategoryScale: CategoryScale,
+LinearScale: LinearScale,
+LogarithmicScale: LogarithmicScale,
+RadialLinearScale: RadialLinearScale,
+TimeScale: TimeScale,
+TimeSeriesScale: TimeSeriesScale
+});
+
+const registerables = [
+  controllers,
+  elements,
+  plugins,
+  scales,
+];
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/chart.js/dist/chunks/helpers.segment.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/chart.js/dist/chunks/helpers.segment.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$": () => (/* binding */ toFont),
+/* harmony export */   "A": () => (/* binding */ _rlookupByKey),
+/* harmony export */   "B": () => (/* binding */ _isPointInArea),
+/* harmony export */   "C": () => (/* binding */ getAngleFromPoint),
+/* harmony export */   "D": () => (/* binding */ toPadding),
+/* harmony export */   "E": () => (/* binding */ each),
+/* harmony export */   "F": () => (/* binding */ getMaximumSize),
+/* harmony export */   "G": () => (/* binding */ _getParentNode),
+/* harmony export */   "H": () => (/* binding */ HALF_PI),
+/* harmony export */   "I": () => (/* binding */ readUsedSize),
+/* harmony export */   "J": () => (/* binding */ throttled),
+/* harmony export */   "K": () => (/* binding */ supportsEventListenerOptions),
+/* harmony export */   "L": () => (/* binding */ _isDomSupported),
+/* harmony export */   "M": () => (/* binding */ log10),
+/* harmony export */   "N": () => (/* binding */ _factorize),
+/* harmony export */   "O": () => (/* binding */ finiteOrDefault),
+/* harmony export */   "P": () => (/* binding */ PI),
+/* harmony export */   "Q": () => (/* binding */ callback),
+/* harmony export */   "R": () => (/* binding */ _addGrace),
+/* harmony export */   "S": () => (/* binding */ toDegrees),
+/* harmony export */   "T": () => (/* binding */ TAU),
+/* harmony export */   "U": () => (/* binding */ _measureText),
+/* harmony export */   "V": () => (/* binding */ _int16Range),
+/* harmony export */   "W": () => (/* binding */ _alignPixel),
+/* harmony export */   "X": () => (/* binding */ clipArea),
+/* harmony export */   "Y": () => (/* binding */ renderText),
+/* harmony export */   "Z": () => (/* binding */ unclipArea),
+/* harmony export */   "_": () => (/* binding */ _arrayUnique),
+/* harmony export */   "a": () => (/* binding */ resolve),
+/* harmony export */   "a$": () => (/* binding */ QUARTER_PI),
+/* harmony export */   "a0": () => (/* binding */ _toLeftRightCenter),
+/* harmony export */   "a1": () => (/* binding */ _alignStartEnd),
+/* harmony export */   "a2": () => (/* binding */ overrides),
+/* harmony export */   "a3": () => (/* binding */ merge),
+/* harmony export */   "a4": () => (/* binding */ _capitalize),
+/* harmony export */   "a5": () => (/* binding */ descriptors),
+/* harmony export */   "a6": () => (/* binding */ isFunction),
+/* harmony export */   "a7": () => (/* binding */ _attachContext),
+/* harmony export */   "a8": () => (/* binding */ _createResolver),
+/* harmony export */   "a9": () => (/* binding */ _descriptors),
+/* harmony export */   "aA": () => (/* binding */ _textX),
+/* harmony export */   "aB": () => (/* binding */ restoreTextDirection),
+/* harmony export */   "aC": () => (/* binding */ noop),
+/* harmony export */   "aD": () => (/* binding */ distanceBetweenPoints),
+/* harmony export */   "aE": () => (/* binding */ _setMinAndMaxByKey),
+/* harmony export */   "aF": () => (/* binding */ niceNum),
+/* harmony export */   "aG": () => (/* binding */ almostWhole),
+/* harmony export */   "aH": () => (/* binding */ almostEquals),
+/* harmony export */   "aI": () => (/* binding */ _decimalPlaces),
+/* harmony export */   "aJ": () => (/* binding */ _longestText),
+/* harmony export */   "aK": () => (/* binding */ _filterBetween),
+/* harmony export */   "aL": () => (/* binding */ _lookup),
+/* harmony export */   "aM": () => (/* binding */ isPatternOrGradient),
+/* harmony export */   "aN": () => (/* binding */ getHoverColor),
+/* harmony export */   "aO": () => (/* binding */ clone$1),
+/* harmony export */   "aP": () => (/* binding */ _merger),
+/* harmony export */   "aQ": () => (/* binding */ _mergerIf),
+/* harmony export */   "aR": () => (/* binding */ _deprecated),
+/* harmony export */   "aS": () => (/* binding */ toFontString),
+/* harmony export */   "aT": () => (/* binding */ splineCurve),
+/* harmony export */   "aU": () => (/* binding */ splineCurveMonotone),
+/* harmony export */   "aV": () => (/* binding */ getStyle),
+/* harmony export */   "aW": () => (/* binding */ fontString),
+/* harmony export */   "aX": () => (/* binding */ toLineHeight),
+/* harmony export */   "aY": () => (/* binding */ PITAU),
+/* harmony export */   "aZ": () => (/* binding */ INFINITY),
+/* harmony export */   "a_": () => (/* binding */ RAD_PER_DEG),
+/* harmony export */   "aa": () => (/* binding */ mergeIf),
+/* harmony export */   "ab": () => (/* binding */ uid),
+/* harmony export */   "ac": () => (/* binding */ debounce),
+/* harmony export */   "ad": () => (/* binding */ retinaScale),
+/* harmony export */   "ae": () => (/* binding */ clearCanvas),
+/* harmony export */   "af": () => (/* binding */ setsEqual),
+/* harmony export */   "ag": () => (/* binding */ _elementsEqual),
+/* harmony export */   "ah": () => (/* binding */ _isClickEvent),
+/* harmony export */   "ai": () => (/* binding */ _isBetween),
+/* harmony export */   "aj": () => (/* binding */ _readValueToProps),
+/* harmony export */   "ak": () => (/* binding */ _updateBezierControlPoints),
+/* harmony export */   "al": () => (/* binding */ _computeSegments),
+/* harmony export */   "am": () => (/* binding */ _boundSegments),
+/* harmony export */   "an": () => (/* binding */ _steppedInterpolation),
+/* harmony export */   "ao": () => (/* binding */ _bezierInterpolation),
+/* harmony export */   "ap": () => (/* binding */ _pointInLine),
+/* harmony export */   "aq": () => (/* binding */ _steppedLineTo),
+/* harmony export */   "ar": () => (/* binding */ _bezierCurveTo),
+/* harmony export */   "as": () => (/* binding */ drawPoint),
+/* harmony export */   "at": () => (/* binding */ addRoundedRectPath),
+/* harmony export */   "au": () => (/* binding */ toTRBL),
+/* harmony export */   "av": () => (/* binding */ toTRBLCorners),
+/* harmony export */   "aw": () => (/* binding */ _boundSegment),
+/* harmony export */   "ax": () => (/* binding */ _normalizeAngle),
+/* harmony export */   "ay": () => (/* binding */ getRtlAdapter),
+/* harmony export */   "az": () => (/* binding */ overrideTextDirection),
+/* harmony export */   "b": () => (/* binding */ isArray),
+/* harmony export */   "b0": () => (/* binding */ TWO_THIRDS_PI),
+/* harmony export */   "b1": () => (/* binding */ _angleDiff),
+/* harmony export */   "c": () => (/* binding */ color),
+/* harmony export */   "d": () => (/* binding */ defaults),
+/* harmony export */   "e": () => (/* binding */ effects),
+/* harmony export */   "f": () => (/* binding */ resolveObjectKey),
+/* harmony export */   "g": () => (/* binding */ isNumberFinite),
+/* harmony export */   "h": () => (/* binding */ createContext),
+/* harmony export */   "i": () => (/* binding */ isObject),
+/* harmony export */   "j": () => (/* binding */ defined),
+/* harmony export */   "k": () => (/* binding */ isNullOrUndef),
+/* harmony export */   "l": () => (/* binding */ listenArrayEvents),
+/* harmony export */   "m": () => (/* binding */ toPercentage),
+/* harmony export */   "n": () => (/* binding */ toDimension),
+/* harmony export */   "o": () => (/* binding */ formatNumber),
+/* harmony export */   "p": () => (/* binding */ _angleBetween),
+/* harmony export */   "q": () => (/* binding */ isNumber),
+/* harmony export */   "r": () => (/* binding */ requestAnimFrame),
+/* harmony export */   "s": () => (/* binding */ sign),
+/* harmony export */   "t": () => (/* binding */ toRadians),
+/* harmony export */   "u": () => (/* binding */ unlistenArrayEvents),
+/* harmony export */   "v": () => (/* binding */ valueOrDefault),
+/* harmony export */   "w": () => (/* binding */ _limitValue),
+/* harmony export */   "x": () => (/* binding */ _lookupByKey),
+/* harmony export */   "y": () => (/* binding */ _parseObjectDataRadialScale),
+/* harmony export */   "z": () => (/* binding */ getRelativePosition)
+/* harmony export */ });
+/*!
+ * Chart.js v3.8.0
+ * https://www.chartjs.org
+ * (c) 2022 Chart.js Contributors
+ * Released under the MIT License
+ */
+function fontString(pixelSize, fontStyle, fontFamily) {
+  return fontStyle + ' ' + pixelSize + 'px ' + fontFamily;
+}
+const requestAnimFrame = (function() {
+  if (typeof window === 'undefined') {
+    return function(callback) {
+      return callback();
+    };
+  }
+  return window.requestAnimationFrame;
+}());
+function throttled(fn, thisArg, updateFn) {
+  const updateArgs = updateFn || ((args) => Array.prototype.slice.call(args));
+  let ticking = false;
+  let args = [];
+  return function(...rest) {
+    args = updateArgs(rest);
+    if (!ticking) {
+      ticking = true;
+      requestAnimFrame.call(window, () => {
+        ticking = false;
+        fn.apply(thisArg, args);
+      });
+    }
+  };
+}
+function debounce(fn, delay) {
+  let timeout;
+  return function(...args) {
+    if (delay) {
+      clearTimeout(timeout);
+      timeout = setTimeout(fn, delay, args);
+    } else {
+      fn.apply(this, args);
+    }
+    return delay;
+  };
+}
+const _toLeftRightCenter = (align) => align === 'start' ? 'left' : align === 'end' ? 'right' : 'center';
+const _alignStartEnd = (align, start, end) => align === 'start' ? start : align === 'end' ? end : (start + end) / 2;
+const _textX = (align, left, right, rtl) => {
+  const check = rtl ? 'left' : 'right';
+  return align === check ? right : align === 'center' ? (left + right) / 2 : left;
+};
+
+function noop() {}
+const uid = (function() {
+  let id = 0;
+  return function() {
+    return id++;
+  };
+}());
+function isNullOrUndef(value) {
+  return value === null || typeof value === 'undefined';
+}
+function isArray(value) {
+  if (Array.isArray && Array.isArray(value)) {
+    return true;
+  }
+  const type = Object.prototype.toString.call(value);
+  if (type.slice(0, 7) === '[object' && type.slice(-6) === 'Array]') {
+    return true;
+  }
+  return false;
+}
+function isObject(value) {
+  return value !== null && Object.prototype.toString.call(value) === '[object Object]';
+}
+const isNumberFinite = (value) => (typeof value === 'number' || value instanceof Number) && isFinite(+value);
+function finiteOrDefault(value, defaultValue) {
+  return isNumberFinite(value) ? value : defaultValue;
+}
+function valueOrDefault(value, defaultValue) {
+  return typeof value === 'undefined' ? defaultValue : value;
+}
+const toPercentage = (value, dimension) =>
+  typeof value === 'string' && value.endsWith('%') ?
+    parseFloat(value) / 100
+    : value / dimension;
+const toDimension = (value, dimension) =>
+  typeof value === 'string' && value.endsWith('%') ?
+    parseFloat(value) / 100 * dimension
+    : +value;
+function callback(fn, args, thisArg) {
+  if (fn && typeof fn.call === 'function') {
+    return fn.apply(thisArg, args);
+  }
+}
+function each(loopable, fn, thisArg, reverse) {
+  let i, len, keys;
+  if (isArray(loopable)) {
+    len = loopable.length;
+    if (reverse) {
+      for (i = len - 1; i >= 0; i--) {
+        fn.call(thisArg, loopable[i], i);
+      }
+    } else {
+      for (i = 0; i < len; i++) {
+        fn.call(thisArg, loopable[i], i);
+      }
+    }
+  } else if (isObject(loopable)) {
+    keys = Object.keys(loopable);
+    len = keys.length;
+    for (i = 0; i < len; i++) {
+      fn.call(thisArg, loopable[keys[i]], keys[i]);
+    }
+  }
+}
+function _elementsEqual(a0, a1) {
+  let i, ilen, v0, v1;
+  if (!a0 || !a1 || a0.length !== a1.length) {
+    return false;
+  }
+  for (i = 0, ilen = a0.length; i < ilen; ++i) {
+    v0 = a0[i];
+    v1 = a1[i];
+    if (v0.datasetIndex !== v1.datasetIndex || v0.index !== v1.index) {
+      return false;
+    }
+  }
+  return true;
+}
+function clone$1(source) {
+  if (isArray(source)) {
+    return source.map(clone$1);
+  }
+  if (isObject(source)) {
+    const target = Object.create(null);
+    const keys = Object.keys(source);
+    const klen = keys.length;
+    let k = 0;
+    for (; k < klen; ++k) {
+      target[keys[k]] = clone$1(source[keys[k]]);
+    }
+    return target;
+  }
+  return source;
+}
+function isValidKey(key) {
+  return ['__proto__', 'prototype', 'constructor'].indexOf(key) === -1;
+}
+function _merger(key, target, source, options) {
+  if (!isValidKey(key)) {
+    return;
+  }
+  const tval = target[key];
+  const sval = source[key];
+  if (isObject(tval) && isObject(sval)) {
+    merge(tval, sval, options);
+  } else {
+    target[key] = clone$1(sval);
+  }
+}
+function merge(target, source, options) {
+  const sources = isArray(source) ? source : [source];
+  const ilen = sources.length;
+  if (!isObject(target)) {
+    return target;
+  }
+  options = options || {};
+  const merger = options.merger || _merger;
+  for (let i = 0; i < ilen; ++i) {
+    source = sources[i];
+    if (!isObject(source)) {
+      continue;
+    }
+    const keys = Object.keys(source);
+    for (let k = 0, klen = keys.length; k < klen; ++k) {
+      merger(keys[k], target, source, options);
+    }
+  }
+  return target;
+}
+function mergeIf(target, source) {
+  return merge(target, source, {merger: _mergerIf});
+}
+function _mergerIf(key, target, source) {
+  if (!isValidKey(key)) {
+    return;
+  }
+  const tval = target[key];
+  const sval = source[key];
+  if (isObject(tval) && isObject(sval)) {
+    mergeIf(tval, sval);
+  } else if (!Object.prototype.hasOwnProperty.call(target, key)) {
+    target[key] = clone$1(sval);
+  }
+}
+function _deprecated(scope, value, previous, current) {
+  if (value !== undefined) {
+    console.warn(scope + ': "' + previous +
+			'" is deprecated. Please use "' + current + '" instead');
+  }
+}
+const emptyString = '';
+const dot = '.';
+function indexOfDotOrLength(key, start) {
+  const idx = key.indexOf(dot, start);
+  return idx === -1 ? key.length : idx;
+}
+function resolveObjectKey(obj, key) {
+  if (key === emptyString) {
+    return obj;
+  }
+  let pos = 0;
+  let idx = indexOfDotOrLength(key, pos);
+  while (obj && idx > pos) {
+    obj = obj[key.slice(pos, idx)];
+    pos = idx + 1;
+    idx = indexOfDotOrLength(key, pos);
+  }
+  return obj;
+}
+function _capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+const defined = (value) => typeof value !== 'undefined';
+const isFunction = (value) => typeof value === 'function';
+const setsEqual = (a, b) => {
+  if (a.size !== b.size) {
+    return false;
+  }
+  for (const item of a) {
+    if (!b.has(item)) {
+      return false;
+    }
+  }
+  return true;
+};
+function _isClickEvent(e) {
+  return e.type === 'mouseup' || e.type === 'click' || e.type === 'contextmenu';
+}
+
+const PI = Math.PI;
+const TAU = 2 * PI;
+const PITAU = TAU + PI;
+const INFINITY = Number.POSITIVE_INFINITY;
+const RAD_PER_DEG = PI / 180;
+const HALF_PI = PI / 2;
+const QUARTER_PI = PI / 4;
+const TWO_THIRDS_PI = PI * 2 / 3;
+const log10 = Math.log10;
+const sign = Math.sign;
+function niceNum(range) {
+  const roundedRange = Math.round(range);
+  range = almostEquals(range, roundedRange, range / 1000) ? roundedRange : range;
+  const niceRange = Math.pow(10, Math.floor(log10(range)));
+  const fraction = range / niceRange;
+  const niceFraction = fraction <= 1 ? 1 : fraction <= 2 ? 2 : fraction <= 5 ? 5 : 10;
+  return niceFraction * niceRange;
+}
+function _factorize(value) {
+  const result = [];
+  const sqrt = Math.sqrt(value);
+  let i;
+  for (i = 1; i < sqrt; i++) {
+    if (value % i === 0) {
+      result.push(i);
+      result.push(value / i);
+    }
+  }
+  if (sqrt === (sqrt | 0)) {
+    result.push(sqrt);
+  }
+  result.sort((a, b) => a - b).pop();
+  return result;
+}
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function almostEquals(x, y, epsilon) {
+  return Math.abs(x - y) < epsilon;
+}
+function almostWhole(x, epsilon) {
+  const rounded = Math.round(x);
+  return ((rounded - epsilon) <= x) && ((rounded + epsilon) >= x);
+}
+function _setMinAndMaxByKey(array, target, property) {
+  let i, ilen, value;
+  for (i = 0, ilen = array.length; i < ilen; i++) {
+    value = array[i][property];
+    if (!isNaN(value)) {
+      target.min = Math.min(target.min, value);
+      target.max = Math.max(target.max, value);
+    }
+  }
+}
+function toRadians(degrees) {
+  return degrees * (PI / 180);
+}
+function toDegrees(radians) {
+  return radians * (180 / PI);
+}
+function _decimalPlaces(x) {
+  if (!isNumberFinite(x)) {
+    return;
+  }
+  let e = 1;
+  let p = 0;
+  while (Math.round(x * e) / e !== x) {
+    e *= 10;
+    p++;
+  }
+  return p;
+}
+function getAngleFromPoint(centrePoint, anglePoint) {
+  const distanceFromXCenter = anglePoint.x - centrePoint.x;
+  const distanceFromYCenter = anglePoint.y - centrePoint.y;
+  const radialDistanceFromCenter = Math.sqrt(distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+  let angle = Math.atan2(distanceFromYCenter, distanceFromXCenter);
+  if (angle < (-0.5 * PI)) {
+    angle += TAU;
+  }
+  return {
+    angle,
+    distance: radialDistanceFromCenter
+  };
+}
+function distanceBetweenPoints(pt1, pt2) {
+  return Math.sqrt(Math.pow(pt2.x - pt1.x, 2) + Math.pow(pt2.y - pt1.y, 2));
+}
+function _angleDiff(a, b) {
+  return (a - b + PITAU) % TAU - PI;
+}
+function _normalizeAngle(a) {
+  return (a % TAU + TAU) % TAU;
+}
+function _angleBetween(angle, start, end, sameAngleIsFullCircle) {
+  const a = _normalizeAngle(angle);
+  const s = _normalizeAngle(start);
+  const e = _normalizeAngle(end);
+  const angleToStart = _normalizeAngle(s - a);
+  const angleToEnd = _normalizeAngle(e - a);
+  const startToAngle = _normalizeAngle(a - s);
+  const endToAngle = _normalizeAngle(a - e);
+  return a === s || a === e || (sameAngleIsFullCircle && s === e)
+    || (angleToStart > angleToEnd && startToAngle < endToAngle);
+}
+function _limitValue(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+function _int16Range(value) {
+  return _limitValue(value, -32768, 32767);
+}
+function _isBetween(value, start, end, epsilon = 1e-6) {
+  return value >= Math.min(start, end) - epsilon && value <= Math.max(start, end) + epsilon;
+}
+
+const atEdge = (t) => t === 0 || t === 1;
+const elasticIn = (t, s, p) => -(Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * TAU / p));
+const elasticOut = (t, s, p) => Math.pow(2, -10 * t) * Math.sin((t - s) * TAU / p) + 1;
+const effects = {
+  linear: t => t,
+  easeInQuad: t => t * t,
+  easeOutQuad: t => -t * (t - 2),
+  easeInOutQuad: t => ((t /= 0.5) < 1)
+    ? 0.5 * t * t
+    : -0.5 * ((--t) * (t - 2) - 1),
+  easeInCubic: t => t * t * t,
+  easeOutCubic: t => (t -= 1) * t * t + 1,
+  easeInOutCubic: t => ((t /= 0.5) < 1)
+    ? 0.5 * t * t * t
+    : 0.5 * ((t -= 2) * t * t + 2),
+  easeInQuart: t => t * t * t * t,
+  easeOutQuart: t => -((t -= 1) * t * t * t - 1),
+  easeInOutQuart: t => ((t /= 0.5) < 1)
+    ? 0.5 * t * t * t * t
+    : -0.5 * ((t -= 2) * t * t * t - 2),
+  easeInQuint: t => t * t * t * t * t,
+  easeOutQuint: t => (t -= 1) * t * t * t * t + 1,
+  easeInOutQuint: t => ((t /= 0.5) < 1)
+    ? 0.5 * t * t * t * t * t
+    : 0.5 * ((t -= 2) * t * t * t * t + 2),
+  easeInSine: t => -Math.cos(t * HALF_PI) + 1,
+  easeOutSine: t => Math.sin(t * HALF_PI),
+  easeInOutSine: t => -0.5 * (Math.cos(PI * t) - 1),
+  easeInExpo: t => (t === 0) ? 0 : Math.pow(2, 10 * (t - 1)),
+  easeOutExpo: t => (t === 1) ? 1 : -Math.pow(2, -10 * t) + 1,
+  easeInOutExpo: t => atEdge(t) ? t : t < 0.5
+    ? 0.5 * Math.pow(2, 10 * (t * 2 - 1))
+    : 0.5 * (-Math.pow(2, -10 * (t * 2 - 1)) + 2),
+  easeInCirc: t => (t >= 1) ? t : -(Math.sqrt(1 - t * t) - 1),
+  easeOutCirc: t => Math.sqrt(1 - (t -= 1) * t),
+  easeInOutCirc: t => ((t /= 0.5) < 1)
+    ? -0.5 * (Math.sqrt(1 - t * t) - 1)
+    : 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1),
+  easeInElastic: t => atEdge(t) ? t : elasticIn(t, 0.075, 0.3),
+  easeOutElastic: t => atEdge(t) ? t : elasticOut(t, 0.075, 0.3),
+  easeInOutElastic(t) {
+    const s = 0.1125;
+    const p = 0.45;
+    return atEdge(t) ? t :
+      t < 0.5
+        ? 0.5 * elasticIn(t * 2, s, p)
+        : 0.5 + 0.5 * elasticOut(t * 2 - 1, s, p);
+  },
+  easeInBack(t) {
+    const s = 1.70158;
+    return t * t * ((s + 1) * t - s);
+  },
+  easeOutBack(t) {
+    const s = 1.70158;
+    return (t -= 1) * t * ((s + 1) * t + s) + 1;
+  },
+  easeInOutBack(t) {
+    let s = 1.70158;
+    if ((t /= 0.5) < 1) {
+      return 0.5 * (t * t * (((s *= (1.525)) + 1) * t - s));
+    }
+    return 0.5 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+  },
+  easeInBounce: t => 1 - effects.easeOutBounce(1 - t),
+  easeOutBounce(t) {
+    const m = 7.5625;
+    const d = 2.75;
+    if (t < (1 / d)) {
+      return m * t * t;
+    }
+    if (t < (2 / d)) {
+      return m * (t -= (1.5 / d)) * t + 0.75;
+    }
+    if (t < (2.5 / d)) {
+      return m * (t -= (2.25 / d)) * t + 0.9375;
+    }
+    return m * (t -= (2.625 / d)) * t + 0.984375;
+  },
+  easeInOutBounce: t => (t < 0.5)
+    ? effects.easeInBounce(t * 2) * 0.5
+    : effects.easeOutBounce(t * 2 - 1) * 0.5 + 0.5,
+};
+
+/*!
+ * @kurkle/color v0.2.1
+ * https://github.com/kurkle/color#readme
+ * (c) 2022 Jukka Kurkela
+ * Released under the MIT License
+ */
+function round(v) {
+  return v + 0.5 | 0;
+}
+const lim = (v, l, h) => Math.max(Math.min(v, h), l);
+function p2b(v) {
+  return lim(round(v * 2.55), 0, 255);
+}
+function n2b(v) {
+  return lim(round(v * 255), 0, 255);
+}
+function b2n(v) {
+  return lim(round(v / 2.55) / 100, 0, 1);
+}
+function n2p(v) {
+  return lim(round(v * 100), 0, 100);
+}
+const map$1 = {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, A: 10, B: 11, C: 12, D: 13, E: 14, F: 15, a: 10, b: 11, c: 12, d: 13, e: 14, f: 15};
+const hex = [...'0123456789ABCDEF'];
+const h1 = b => hex[b & 0xF];
+const h2 = b => hex[(b & 0xF0) >> 4] + hex[b & 0xF];
+const eq = b => ((b & 0xF0) >> 4) === (b & 0xF);
+const isShort = v => eq(v.r) && eq(v.g) && eq(v.b) && eq(v.a);
+function hexParse(str) {
+  var len = str.length;
+  var ret;
+  if (str[0] === '#') {
+    if (len === 4 || len === 5) {
+      ret = {
+        r: 255 & map$1[str[1]] * 17,
+        g: 255 & map$1[str[2]] * 17,
+        b: 255 & map$1[str[3]] * 17,
+        a: len === 5 ? map$1[str[4]] * 17 : 255
+      };
+    } else if (len === 7 || len === 9) {
+      ret = {
+        r: map$1[str[1]] << 4 | map$1[str[2]],
+        g: map$1[str[3]] << 4 | map$1[str[4]],
+        b: map$1[str[5]] << 4 | map$1[str[6]],
+        a: len === 9 ? (map$1[str[7]] << 4 | map$1[str[8]]) : 255
+      };
+    }
+  }
+  return ret;
+}
+const alpha = (a, f) => a < 255 ? f(a) : '';
+function hexString(v) {
+  var f = isShort(v) ? h1 : h2;
+  return v
+    ? '#' + f(v.r) + f(v.g) + f(v.b) + alpha(v.a, f)
+    : undefined;
+}
+const HUE_RE = /^(hsla?|hwb|hsv)\(\s*([-+.e\d]+)(?:deg)?[\s,]+([-+.e\d]+)%[\s,]+([-+.e\d]+)%(?:[\s,]+([-+.e\d]+)(%)?)?\s*\)$/;
+function hsl2rgbn(h, s, l) {
+  const a = s * Math.min(l, 1 - l);
+  const f = (n, k = (n + h / 30) % 12) => l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+  return [f(0), f(8), f(4)];
+}
+function hsv2rgbn(h, s, v) {
+  const f = (n, k = (n + h / 60) % 6) => v - v * s * Math.max(Math.min(k, 4 - k, 1), 0);
+  return [f(5), f(3), f(1)];
+}
+function hwb2rgbn(h, w, b) {
+  const rgb = hsl2rgbn(h, 1, 0.5);
+  let i;
+  if (w + b > 1) {
+    i = 1 / (w + b);
+    w *= i;
+    b *= i;
+  }
+  for (i = 0; i < 3; i++) {
+    rgb[i] *= 1 - w - b;
+    rgb[i] += w;
+  }
+  return rgb;
+}
+function hueValue(r, g, b, d, max) {
+  if (r === max) {
+    return ((g - b) / d) + (g < b ? 6 : 0);
+  }
+  if (g === max) {
+    return (b - r) / d + 2;
+  }
+  return (r - g) / d + 4;
+}
+function rgb2hsl(v) {
+  const range = 255;
+  const r = v.r / range;
+  const g = v.g / range;
+  const b = v.b / range;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const l = (max + min) / 2;
+  let h, s, d;
+  if (max !== min) {
+    d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    h = hueValue(r, g, b, d, max);
+    h = h * 60 + 0.5;
+  }
+  return [h | 0, s || 0, l];
+}
+function calln(f, a, b, c) {
+  return (
+    Array.isArray(a)
+      ? f(a[0], a[1], a[2])
+      : f(a, b, c)
+  ).map(n2b);
+}
+function hsl2rgb(h, s, l) {
+  return calln(hsl2rgbn, h, s, l);
+}
+function hwb2rgb(h, w, b) {
+  return calln(hwb2rgbn, h, w, b);
+}
+function hsv2rgb(h, s, v) {
+  return calln(hsv2rgbn, h, s, v);
+}
+function hue(h) {
+  return (h % 360 + 360) % 360;
+}
+function hueParse(str) {
+  const m = HUE_RE.exec(str);
+  let a = 255;
+  let v;
+  if (!m) {
+    return;
+  }
+  if (m[5] !== v) {
+    a = m[6] ? p2b(+m[5]) : n2b(+m[5]);
+  }
+  const h = hue(+m[2]);
+  const p1 = +m[3] / 100;
+  const p2 = +m[4] / 100;
+  if (m[1] === 'hwb') {
+    v = hwb2rgb(h, p1, p2);
+  } else if (m[1] === 'hsv') {
+    v = hsv2rgb(h, p1, p2);
+  } else {
+    v = hsl2rgb(h, p1, p2);
+  }
+  return {
+    r: v[0],
+    g: v[1],
+    b: v[2],
+    a: a
+  };
+}
+function rotate(v, deg) {
+  var h = rgb2hsl(v);
+  h[0] = hue(h[0] + deg);
+  h = hsl2rgb(h);
+  v.r = h[0];
+  v.g = h[1];
+  v.b = h[2];
+}
+function hslString(v) {
+  if (!v) {
+    return;
+  }
+  const a = rgb2hsl(v);
+  const h = a[0];
+  const s = n2p(a[1]);
+  const l = n2p(a[2]);
+  return v.a < 255
+    ? `hsla(${h}, ${s}%, ${l}%, ${b2n(v.a)})`
+    : `hsl(${h}, ${s}%, ${l}%)`;
+}
+const map = {
+  x: 'dark',
+  Z: 'light',
+  Y: 're',
+  X: 'blu',
+  W: 'gr',
+  V: 'medium',
+  U: 'slate',
+  A: 'ee',
+  T: 'ol',
+  S: 'or',
+  B: 'ra',
+  C: 'lateg',
+  D: 'ights',
+  R: 'in',
+  Q: 'turquois',
+  E: 'hi',
+  P: 'ro',
+  O: 'al',
+  N: 'le',
+  M: 'de',
+  L: 'yello',
+  F: 'en',
+  K: 'ch',
+  G: 'arks',
+  H: 'ea',
+  I: 'ightg',
+  J: 'wh'
+};
+const names$1 = {
+  OiceXe: 'f0f8ff',
+  antiquewEte: 'faebd7',
+  aqua: 'ffff',
+  aquamarRe: '7fffd4',
+  azuY: 'f0ffff',
+  beige: 'f5f5dc',
+  bisque: 'ffe4c4',
+  black: '0',
+  blanKedOmond: 'ffebcd',
+  Xe: 'ff',
+  XeviTet: '8a2be2',
+  bPwn: 'a52a2a',
+  burlywood: 'deb887',
+  caMtXe: '5f9ea0',
+  KartYuse: '7fff00',
+  KocTate: 'd2691e',
+  cSO: 'ff7f50',
+  cSnflowerXe: '6495ed',
+  cSnsilk: 'fff8dc',
+  crimson: 'dc143c',
+  cyan: 'ffff',
+  xXe: '8b',
+  xcyan: '8b8b',
+  xgTMnPd: 'b8860b',
+  xWay: 'a9a9a9',
+  xgYF: '6400',
+  xgYy: 'a9a9a9',
+  xkhaki: 'bdb76b',
+  xmagFta: '8b008b',
+  xTivegYF: '556b2f',
+  xSange: 'ff8c00',
+  xScEd: '9932cc',
+  xYd: '8b0000',
+  xsOmon: 'e9967a',
+  xsHgYF: '8fbc8f',
+  xUXe: '483d8b',
+  xUWay: '2f4f4f',
+  xUgYy: '2f4f4f',
+  xQe: 'ced1',
+  xviTet: '9400d3',
+  dAppRk: 'ff1493',
+  dApskyXe: 'bfff',
+  dimWay: '696969',
+  dimgYy: '696969',
+  dodgerXe: '1e90ff',
+  fiYbrick: 'b22222',
+  flSOwEte: 'fffaf0',
+  foYstWAn: '228b22',
+  fuKsia: 'ff00ff',
+  gaRsbSo: 'dcdcdc',
+  ghostwEte: 'f8f8ff',
+  gTd: 'ffd700',
+  gTMnPd: 'daa520',
+  Way: '808080',
+  gYF: '8000',
+  gYFLw: 'adff2f',
+  gYy: '808080',
+  honeyMw: 'f0fff0',
+  hotpRk: 'ff69b4',
+  RdianYd: 'cd5c5c',
+  Rdigo: '4b0082',
+  ivSy: 'fffff0',
+  khaki: 'f0e68c',
+  lavFMr: 'e6e6fa',
+  lavFMrXsh: 'fff0f5',
+  lawngYF: '7cfc00',
+  NmoncEffon: 'fffacd',
+  ZXe: 'add8e6',
+  ZcSO: 'f08080',
+  Zcyan: 'e0ffff',
+  ZgTMnPdLw: 'fafad2',
+  ZWay: 'd3d3d3',
+  ZgYF: '90ee90',
+  ZgYy: 'd3d3d3',
+  ZpRk: 'ffb6c1',
+  ZsOmon: 'ffa07a',
+  ZsHgYF: '20b2aa',
+  ZskyXe: '87cefa',
+  ZUWay: '778899',
+  ZUgYy: '778899',
+  ZstAlXe: 'b0c4de',
+  ZLw: 'ffffe0',
+  lime: 'ff00',
+  limegYF: '32cd32',
+  lRF: 'faf0e6',
+  magFta: 'ff00ff',
+  maPon: '800000',
+  VaquamarRe: '66cdaa',
+  VXe: 'cd',
+  VScEd: 'ba55d3',
+  VpurpN: '9370db',
+  VsHgYF: '3cb371',
+  VUXe: '7b68ee',
+  VsprRggYF: 'fa9a',
+  VQe: '48d1cc',
+  VviTetYd: 'c71585',
+  midnightXe: '191970',
+  mRtcYam: 'f5fffa',
+  mistyPse: 'ffe4e1',
+  moccasR: 'ffe4b5',
+  navajowEte: 'ffdead',
+  navy: '80',
+  Tdlace: 'fdf5e6',
+  Tive: '808000',
+  TivedBb: '6b8e23',
+  Sange: 'ffa500',
+  SangeYd: 'ff4500',
+  ScEd: 'da70d6',
+  pOegTMnPd: 'eee8aa',
+  pOegYF: '98fb98',
+  pOeQe: 'afeeee',
+  pOeviTetYd: 'db7093',
+  papayawEp: 'ffefd5',
+  pHKpuff: 'ffdab9',
+  peru: 'cd853f',
+  pRk: 'ffc0cb',
+  plum: 'dda0dd',
+  powMrXe: 'b0e0e6',
+  purpN: '800080',
+  YbeccapurpN: '663399',
+  Yd: 'ff0000',
+  Psybrown: 'bc8f8f',
+  PyOXe: '4169e1',
+  saddNbPwn: '8b4513',
+  sOmon: 'fa8072',
+  sandybPwn: 'f4a460',
+  sHgYF: '2e8b57',
+  sHshell: 'fff5ee',
+  siFna: 'a0522d',
+  silver: 'c0c0c0',
+  skyXe: '87ceeb',
+  UXe: '6a5acd',
+  UWay: '708090',
+  UgYy: '708090',
+  snow: 'fffafa',
+  sprRggYF: 'ff7f',
+  stAlXe: '4682b4',
+  tan: 'd2b48c',
+  teO: '8080',
+  tEstN: 'd8bfd8',
+  tomato: 'ff6347',
+  Qe: '40e0d0',
+  viTet: 'ee82ee',
+  JHt: 'f5deb3',
+  wEte: 'ffffff',
+  wEtesmoke: 'f5f5f5',
+  Lw: 'ffff00',
+  LwgYF: '9acd32'
+};
+function unpack() {
+  const unpacked = {};
+  const keys = Object.keys(names$1);
+  const tkeys = Object.keys(map);
+  let i, j, k, ok, nk;
+  for (i = 0; i < keys.length; i++) {
+    ok = nk = keys[i];
+    for (j = 0; j < tkeys.length; j++) {
+      k = tkeys[j];
+      nk = nk.replace(k, map[k]);
+    }
+    k = parseInt(names$1[ok], 16);
+    unpacked[nk] = [k >> 16 & 0xFF, k >> 8 & 0xFF, k & 0xFF];
+  }
+  return unpacked;
+}
+let names;
+function nameParse(str) {
+  if (!names) {
+    names = unpack();
+    names.transparent = [0, 0, 0, 0];
+  }
+  const a = names[str.toLowerCase()];
+  return a && {
+    r: a[0],
+    g: a[1],
+    b: a[2],
+    a: a.length === 4 ? a[3] : 255
+  };
+}
+const RGB_RE = /^rgba?\(\s*([-+.\d]+)(%)?[\s,]+([-+.e\d]+)(%)?[\s,]+([-+.e\d]+)(%)?(?:[\s,/]+([-+.e\d]+)(%)?)?\s*\)$/;
+function rgbParse(str) {
+  const m = RGB_RE.exec(str);
+  let a = 255;
+  let r, g, b;
+  if (!m) {
+    return;
+  }
+  if (m[7] !== r) {
+    const v = +m[7];
+    a = m[8] ? p2b(v) : lim(v * 255, 0, 255);
+  }
+  r = +m[1];
+  g = +m[3];
+  b = +m[5];
+  r = 255 & (m[2] ? p2b(r) : lim(r, 0, 255));
+  g = 255 & (m[4] ? p2b(g) : lim(g, 0, 255));
+  b = 255 & (m[6] ? p2b(b) : lim(b, 0, 255));
+  return {
+    r: r,
+    g: g,
+    b: b,
+    a: a
+  };
+}
+function rgbString(v) {
+  return v && (
+    v.a < 255
+      ? `rgba(${v.r}, ${v.g}, ${v.b}, ${b2n(v.a)})`
+      : `rgb(${v.r}, ${v.g}, ${v.b})`
+  );
+}
+const to = v => v <= 0.0031308 ? v * 12.92 : Math.pow(v, 1.0 / 2.4) * 1.055 - 0.055;
+const from = v => v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+function interpolate(rgb1, rgb2, t) {
+  const r = from(b2n(rgb1.r));
+  const g = from(b2n(rgb1.g));
+  const b = from(b2n(rgb1.b));
+  return {
+    r: n2b(to(r + t * (from(b2n(rgb2.r)) - r))),
+    g: n2b(to(g + t * (from(b2n(rgb2.g)) - g))),
+    b: n2b(to(b + t * (from(b2n(rgb2.b)) - b))),
+    a: rgb1.a + t * (rgb2.a - rgb1.a)
+  };
+}
+function modHSL(v, i, ratio) {
+  if (v) {
+    let tmp = rgb2hsl(v);
+    tmp[i] = Math.max(0, Math.min(tmp[i] + tmp[i] * ratio, i === 0 ? 360 : 1));
+    tmp = hsl2rgb(tmp);
+    v.r = tmp[0];
+    v.g = tmp[1];
+    v.b = tmp[2];
+  }
+}
+function clone(v, proto) {
+  return v ? Object.assign(proto || {}, v) : v;
+}
+function fromObject(input) {
+  var v = {r: 0, g: 0, b: 0, a: 255};
+  if (Array.isArray(input)) {
+    if (input.length >= 3) {
+      v = {r: input[0], g: input[1], b: input[2], a: 255};
+      if (input.length > 3) {
+        v.a = n2b(input[3]);
+      }
+    }
+  } else {
+    v = clone(input, {r: 0, g: 0, b: 0, a: 1});
+    v.a = n2b(v.a);
+  }
+  return v;
+}
+function functionParse(str) {
+  if (str.charAt(0) === 'r') {
+    return rgbParse(str);
+  }
+  return hueParse(str);
+}
+class Color {
+  constructor(input) {
+    if (input instanceof Color) {
+      return input;
+    }
+    const type = typeof input;
+    let v;
+    if (type === 'object') {
+      v = fromObject(input);
+    } else if (type === 'string') {
+      v = hexParse(input) || nameParse(input) || functionParse(input);
+    }
+    this._rgb = v;
+    this._valid = !!v;
+  }
+  get valid() {
+    return this._valid;
+  }
+  get rgb() {
+    var v = clone(this._rgb);
+    if (v) {
+      v.a = b2n(v.a);
+    }
+    return v;
+  }
+  set rgb(obj) {
+    this._rgb = fromObject(obj);
+  }
+  rgbString() {
+    return this._valid ? rgbString(this._rgb) : undefined;
+  }
+  hexString() {
+    return this._valid ? hexString(this._rgb) : undefined;
+  }
+  hslString() {
+    return this._valid ? hslString(this._rgb) : undefined;
+  }
+  mix(color, weight) {
+    if (color) {
+      const c1 = this.rgb;
+      const c2 = color.rgb;
+      let w2;
+      const p = weight === w2 ? 0.5 : weight;
+      const w = 2 * p - 1;
+      const a = c1.a - c2.a;
+      const w1 = ((w * a === -1 ? w : (w + a) / (1 + w * a)) + 1) / 2.0;
+      w2 = 1 - w1;
+      c1.r = 0xFF & w1 * c1.r + w2 * c2.r + 0.5;
+      c1.g = 0xFF & w1 * c1.g + w2 * c2.g + 0.5;
+      c1.b = 0xFF & w1 * c1.b + w2 * c2.b + 0.5;
+      c1.a = p * c1.a + (1 - p) * c2.a;
+      this.rgb = c1;
+    }
+    return this;
+  }
+  interpolate(color, t) {
+    if (color) {
+      this._rgb = interpolate(this._rgb, color._rgb, t);
+    }
+    return this;
+  }
+  clone() {
+    return new Color(this.rgb);
+  }
+  alpha(a) {
+    this._rgb.a = n2b(a);
+    return this;
+  }
+  clearer(ratio) {
+    const rgb = this._rgb;
+    rgb.a *= 1 - ratio;
+    return this;
+  }
+  greyscale() {
+    const rgb = this._rgb;
+    const val = round(rgb.r * 0.3 + rgb.g * 0.59 + rgb.b * 0.11);
+    rgb.r = rgb.g = rgb.b = val;
+    return this;
+  }
+  opaquer(ratio) {
+    const rgb = this._rgb;
+    rgb.a *= 1 + ratio;
+    return this;
+  }
+  negate() {
+    const v = this._rgb;
+    v.r = 255 - v.r;
+    v.g = 255 - v.g;
+    v.b = 255 - v.b;
+    return this;
+  }
+  lighten(ratio) {
+    modHSL(this._rgb, 2, ratio);
+    return this;
+  }
+  darken(ratio) {
+    modHSL(this._rgb, 2, -ratio);
+    return this;
+  }
+  saturate(ratio) {
+    modHSL(this._rgb, 1, ratio);
+    return this;
+  }
+  desaturate(ratio) {
+    modHSL(this._rgb, 1, -ratio);
+    return this;
+  }
+  rotate(deg) {
+    rotate(this._rgb, deg);
+    return this;
+  }
+}
+function index_esm(input) {
+  return new Color(input);
+}
+
+function isPatternOrGradient(value) {
+  if (value && typeof value === 'object') {
+    const type = value.toString();
+    return type === '[object CanvasPattern]' || type === '[object CanvasGradient]';
+  }
+  return false;
+}
+function color(value) {
+  return isPatternOrGradient(value) ? value : index_esm(value);
+}
+function getHoverColor(value) {
+  return isPatternOrGradient(value)
+    ? value
+    : index_esm(value).saturate(0.5).darken(0.1).hexString();
+}
+
+const overrides = Object.create(null);
+const descriptors = Object.create(null);
+function getScope$1(node, key) {
+  if (!key) {
+    return node;
+  }
+  const keys = key.split('.');
+  for (let i = 0, n = keys.length; i < n; ++i) {
+    const k = keys[i];
+    node = node[k] || (node[k] = Object.create(null));
+  }
+  return node;
+}
+function set(root, scope, values) {
+  if (typeof scope === 'string') {
+    return merge(getScope$1(root, scope), values);
+  }
+  return merge(getScope$1(root, ''), scope);
+}
+class Defaults {
+  constructor(_descriptors) {
+    this.animation = undefined;
+    this.backgroundColor = 'rgba(0,0,0,0.1)';
+    this.borderColor = 'rgba(0,0,0,0.1)';
+    this.color = '#666';
+    this.datasets = {};
+    this.devicePixelRatio = (context) => context.chart.platform.getDevicePixelRatio();
+    this.elements = {};
+    this.events = [
+      'mousemove',
+      'mouseout',
+      'click',
+      'touchstart',
+      'touchmove'
+    ];
+    this.font = {
+      family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+      size: 12,
+      style: 'normal',
+      lineHeight: 1.2,
+      weight: null
+    };
+    this.hover = {};
+    this.hoverBackgroundColor = (ctx, options) => getHoverColor(options.backgroundColor);
+    this.hoverBorderColor = (ctx, options) => getHoverColor(options.borderColor);
+    this.hoverColor = (ctx, options) => getHoverColor(options.color);
+    this.indexAxis = 'x';
+    this.interaction = {
+      mode: 'nearest',
+      intersect: true,
+      includeInvisible: false
+    };
+    this.maintainAspectRatio = true;
+    this.onHover = null;
+    this.onClick = null;
+    this.parsing = true;
+    this.plugins = {};
+    this.responsive = true;
+    this.scale = undefined;
+    this.scales = {};
+    this.showLine = true;
+    this.drawActiveElementsOnTop = true;
+    this.describe(_descriptors);
+  }
+  set(scope, values) {
+    return set(this, scope, values);
+  }
+  get(scope) {
+    return getScope$1(this, scope);
+  }
+  describe(scope, values) {
+    return set(descriptors, scope, values);
+  }
+  override(scope, values) {
+    return set(overrides, scope, values);
+  }
+  route(scope, name, targetScope, targetName) {
+    const scopeObject = getScope$1(this, scope);
+    const targetScopeObject = getScope$1(this, targetScope);
+    const privateName = '_' + name;
+    Object.defineProperties(scopeObject, {
+      [privateName]: {
+        value: scopeObject[name],
+        writable: true
+      },
+      [name]: {
+        enumerable: true,
+        get() {
+          const local = this[privateName];
+          const target = targetScopeObject[targetName];
+          if (isObject(local)) {
+            return Object.assign({}, target, local);
+          }
+          return valueOrDefault(local, target);
+        },
+        set(value) {
+          this[privateName] = value;
+        }
+      }
+    });
+  }
+}
+var defaults = new Defaults({
+  _scriptable: (name) => !name.startsWith('on'),
+  _indexable: (name) => name !== 'events',
+  hover: {
+    _fallback: 'interaction'
+  },
+  interaction: {
+    _scriptable: false,
+    _indexable: false,
+  }
+});
+
+function toFontString(font) {
+  if (!font || isNullOrUndef(font.size) || isNullOrUndef(font.family)) {
+    return null;
+  }
+  return (font.style ? font.style + ' ' : '')
+		+ (font.weight ? font.weight + ' ' : '')
+		+ font.size + 'px '
+		+ font.family;
+}
+function _measureText(ctx, data, gc, longest, string) {
+  let textWidth = data[string];
+  if (!textWidth) {
+    textWidth = data[string] = ctx.measureText(string).width;
+    gc.push(string);
+  }
+  if (textWidth > longest) {
+    longest = textWidth;
+  }
+  return longest;
+}
+function _longestText(ctx, font, arrayOfThings, cache) {
+  cache = cache || {};
+  let data = cache.data = cache.data || {};
+  let gc = cache.garbageCollect = cache.garbageCollect || [];
+  if (cache.font !== font) {
+    data = cache.data = {};
+    gc = cache.garbageCollect = [];
+    cache.font = font;
+  }
+  ctx.save();
+  ctx.font = font;
+  let longest = 0;
+  const ilen = arrayOfThings.length;
+  let i, j, jlen, thing, nestedThing;
+  for (i = 0; i < ilen; i++) {
+    thing = arrayOfThings[i];
+    if (thing !== undefined && thing !== null && isArray(thing) !== true) {
+      longest = _measureText(ctx, data, gc, longest, thing);
+    } else if (isArray(thing)) {
+      for (j = 0, jlen = thing.length; j < jlen; j++) {
+        nestedThing = thing[j];
+        if (nestedThing !== undefined && nestedThing !== null && !isArray(nestedThing)) {
+          longest = _measureText(ctx, data, gc, longest, nestedThing);
+        }
+      }
+    }
+  }
+  ctx.restore();
+  const gcLen = gc.length / 2;
+  if (gcLen > arrayOfThings.length) {
+    for (i = 0; i < gcLen; i++) {
+      delete data[gc[i]];
+    }
+    gc.splice(0, gcLen);
+  }
+  return longest;
+}
+function _alignPixel(chart, pixel, width) {
+  const devicePixelRatio = chart.currentDevicePixelRatio;
+  const halfWidth = width !== 0 ? Math.max(width / 2, 0.5) : 0;
+  return Math.round((pixel - halfWidth) * devicePixelRatio) / devicePixelRatio + halfWidth;
+}
+function clearCanvas(canvas, ctx) {
+  ctx = ctx || canvas.getContext('2d');
+  ctx.save();
+  ctx.resetTransform();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
+}
+function drawPoint(ctx, options, x, y) {
+  let type, xOffset, yOffset, size, cornerRadius;
+  const style = options.pointStyle;
+  const rotation = options.rotation;
+  const radius = options.radius;
+  let rad = (rotation || 0) * RAD_PER_DEG;
+  if (style && typeof style === 'object') {
+    type = style.toString();
+    if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rad);
+      ctx.drawImage(style, -style.width / 2, -style.height / 2, style.width, style.height);
+      ctx.restore();
+      return;
+    }
+  }
+  if (isNaN(radius) || radius <= 0) {
+    return;
+  }
+  ctx.beginPath();
+  switch (style) {
+  default:
+    ctx.arc(x, y, radius, 0, TAU);
+    ctx.closePath();
+    break;
+  case 'triangle':
+    ctx.moveTo(x + Math.sin(rad) * radius, y - Math.cos(rad) * radius);
+    rad += TWO_THIRDS_PI;
+    ctx.lineTo(x + Math.sin(rad) * radius, y - Math.cos(rad) * radius);
+    rad += TWO_THIRDS_PI;
+    ctx.lineTo(x + Math.sin(rad) * radius, y - Math.cos(rad) * radius);
+    ctx.closePath();
+    break;
+  case 'rectRounded':
+    cornerRadius = radius * 0.516;
+    size = radius - cornerRadius;
+    xOffset = Math.cos(rad + QUARTER_PI) * size;
+    yOffset = Math.sin(rad + QUARTER_PI) * size;
+    ctx.arc(x - xOffset, y - yOffset, cornerRadius, rad - PI, rad - HALF_PI);
+    ctx.arc(x + yOffset, y - xOffset, cornerRadius, rad - HALF_PI, rad);
+    ctx.arc(x + xOffset, y + yOffset, cornerRadius, rad, rad + HALF_PI);
+    ctx.arc(x - yOffset, y + xOffset, cornerRadius, rad + HALF_PI, rad + PI);
+    ctx.closePath();
+    break;
+  case 'rect':
+    if (!rotation) {
+      size = Math.SQRT1_2 * radius;
+      ctx.rect(x - size, y - size, 2 * size, 2 * size);
+      break;
+    }
+    rad += QUARTER_PI;
+  case 'rectRot':
+    xOffset = Math.cos(rad) * radius;
+    yOffset = Math.sin(rad) * radius;
+    ctx.moveTo(x - xOffset, y - yOffset);
+    ctx.lineTo(x + yOffset, y - xOffset);
+    ctx.lineTo(x + xOffset, y + yOffset);
+    ctx.lineTo(x - yOffset, y + xOffset);
+    ctx.closePath();
+    break;
+  case 'crossRot':
+    rad += QUARTER_PI;
+  case 'cross':
+    xOffset = Math.cos(rad) * radius;
+    yOffset = Math.sin(rad) * radius;
+    ctx.moveTo(x - xOffset, y - yOffset);
+    ctx.lineTo(x + xOffset, y + yOffset);
+    ctx.moveTo(x + yOffset, y - xOffset);
+    ctx.lineTo(x - yOffset, y + xOffset);
+    break;
+  case 'star':
+    xOffset = Math.cos(rad) * radius;
+    yOffset = Math.sin(rad) * radius;
+    ctx.moveTo(x - xOffset, y - yOffset);
+    ctx.lineTo(x + xOffset, y + yOffset);
+    ctx.moveTo(x + yOffset, y - xOffset);
+    ctx.lineTo(x - yOffset, y + xOffset);
+    rad += QUARTER_PI;
+    xOffset = Math.cos(rad) * radius;
+    yOffset = Math.sin(rad) * radius;
+    ctx.moveTo(x - xOffset, y - yOffset);
+    ctx.lineTo(x + xOffset, y + yOffset);
+    ctx.moveTo(x + yOffset, y - xOffset);
+    ctx.lineTo(x - yOffset, y + xOffset);
+    break;
+  case 'line':
+    xOffset = Math.cos(rad) * radius;
+    yOffset = Math.sin(rad) * radius;
+    ctx.moveTo(x - xOffset, y - yOffset);
+    ctx.lineTo(x + xOffset, y + yOffset);
+    break;
+  case 'dash':
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + Math.cos(rad) * radius, y + Math.sin(rad) * radius);
+    break;
+  }
+  ctx.fill();
+  if (options.borderWidth > 0) {
+    ctx.stroke();
+  }
+}
+function _isPointInArea(point, area, margin) {
+  margin = margin || 0.5;
+  return !area || (point && point.x > area.left - margin && point.x < area.right + margin &&
+		point.y > area.top - margin && point.y < area.bottom + margin);
+}
+function clipArea(ctx, area) {
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(area.left, area.top, area.right - area.left, area.bottom - area.top);
+  ctx.clip();
+}
+function unclipArea(ctx) {
+  ctx.restore();
+}
+function _steppedLineTo(ctx, previous, target, flip, mode) {
+  if (!previous) {
+    return ctx.lineTo(target.x, target.y);
+  }
+  if (mode === 'middle') {
+    const midpoint = (previous.x + target.x) / 2.0;
+    ctx.lineTo(midpoint, previous.y);
+    ctx.lineTo(midpoint, target.y);
+  } else if (mode === 'after' !== !!flip) {
+    ctx.lineTo(previous.x, target.y);
+  } else {
+    ctx.lineTo(target.x, previous.y);
+  }
+  ctx.lineTo(target.x, target.y);
+}
+function _bezierCurveTo(ctx, previous, target, flip) {
+  if (!previous) {
+    return ctx.lineTo(target.x, target.y);
+  }
+  ctx.bezierCurveTo(
+    flip ? previous.cp1x : previous.cp2x,
+    flip ? previous.cp1y : previous.cp2y,
+    flip ? target.cp2x : target.cp1x,
+    flip ? target.cp2y : target.cp1y,
+    target.x,
+    target.y);
+}
+function renderText(ctx, text, x, y, font, opts = {}) {
+  const lines = isArray(text) ? text : [text];
+  const stroke = opts.strokeWidth > 0 && opts.strokeColor !== '';
+  let i, line;
+  ctx.save();
+  ctx.font = font.string;
+  setRenderOpts(ctx, opts);
+  for (i = 0; i < lines.length; ++i) {
+    line = lines[i];
+    if (stroke) {
+      if (opts.strokeColor) {
+        ctx.strokeStyle = opts.strokeColor;
+      }
+      if (!isNullOrUndef(opts.strokeWidth)) {
+        ctx.lineWidth = opts.strokeWidth;
+      }
+      ctx.strokeText(line, x, y, opts.maxWidth);
+    }
+    ctx.fillText(line, x, y, opts.maxWidth);
+    decorateText(ctx, x, y, line, opts);
+    y += font.lineHeight;
+  }
+  ctx.restore();
+}
+function setRenderOpts(ctx, opts) {
+  if (opts.translation) {
+    ctx.translate(opts.translation[0], opts.translation[1]);
+  }
+  if (!isNullOrUndef(opts.rotation)) {
+    ctx.rotate(opts.rotation);
+  }
+  if (opts.color) {
+    ctx.fillStyle = opts.color;
+  }
+  if (opts.textAlign) {
+    ctx.textAlign = opts.textAlign;
+  }
+  if (opts.textBaseline) {
+    ctx.textBaseline = opts.textBaseline;
+  }
+}
+function decorateText(ctx, x, y, line, opts) {
+  if (opts.strikethrough || opts.underline) {
+    const metrics = ctx.measureText(line);
+    const left = x - metrics.actualBoundingBoxLeft;
+    const right = x + metrics.actualBoundingBoxRight;
+    const top = y - metrics.actualBoundingBoxAscent;
+    const bottom = y + metrics.actualBoundingBoxDescent;
+    const yDecoration = opts.strikethrough ? (top + bottom) / 2 : bottom;
+    ctx.strokeStyle = ctx.fillStyle;
+    ctx.beginPath();
+    ctx.lineWidth = opts.decorationWidth || 2;
+    ctx.moveTo(left, yDecoration);
+    ctx.lineTo(right, yDecoration);
+    ctx.stroke();
+  }
+}
+function addRoundedRectPath(ctx, rect) {
+  const {x, y, w, h, radius} = rect;
+  ctx.arc(x + radius.topLeft, y + radius.topLeft, radius.topLeft, -HALF_PI, PI, true);
+  ctx.lineTo(x, y + h - radius.bottomLeft);
+  ctx.arc(x + radius.bottomLeft, y + h - radius.bottomLeft, radius.bottomLeft, PI, HALF_PI, true);
+  ctx.lineTo(x + w - radius.bottomRight, y + h);
+  ctx.arc(x + w - radius.bottomRight, y + h - radius.bottomRight, radius.bottomRight, HALF_PI, 0, true);
+  ctx.lineTo(x + w, y + radius.topRight);
+  ctx.arc(x + w - radius.topRight, y + radius.topRight, radius.topRight, 0, -HALF_PI, true);
+  ctx.lineTo(x + radius.topLeft, y);
+}
+
+const LINE_HEIGHT = new RegExp(/^(normal|(\d+(?:\.\d+)?)(px|em|%)?)$/);
+const FONT_STYLE = new RegExp(/^(normal|italic|initial|inherit|unset|(oblique( -?[0-9]?[0-9]deg)?))$/);
+function toLineHeight(value, size) {
+  const matches = ('' + value).match(LINE_HEIGHT);
+  if (!matches || matches[1] === 'normal') {
+    return size * 1.2;
+  }
+  value = +matches[2];
+  switch (matches[3]) {
+  case 'px':
+    return value;
+  case '%':
+    value /= 100;
+    break;
+  }
+  return size * value;
+}
+const numberOrZero = v => +v || 0;
+function _readValueToProps(value, props) {
+  const ret = {};
+  const objProps = isObject(props);
+  const keys = objProps ? Object.keys(props) : props;
+  const read = isObject(value)
+    ? objProps
+      ? prop => valueOrDefault(value[prop], value[props[prop]])
+      : prop => value[prop]
+    : () => value;
+  for (const prop of keys) {
+    ret[prop] = numberOrZero(read(prop));
+  }
+  return ret;
+}
+function toTRBL(value) {
+  return _readValueToProps(value, {top: 'y', right: 'x', bottom: 'y', left: 'x'});
+}
+function toTRBLCorners(value) {
+  return _readValueToProps(value, ['topLeft', 'topRight', 'bottomLeft', 'bottomRight']);
+}
+function toPadding(value) {
+  const obj = toTRBL(value);
+  obj.width = obj.left + obj.right;
+  obj.height = obj.top + obj.bottom;
+  return obj;
+}
+function toFont(options, fallback) {
+  options = options || {};
+  fallback = fallback || defaults.font;
+  let size = valueOrDefault(options.size, fallback.size);
+  if (typeof size === 'string') {
+    size = parseInt(size, 10);
+  }
+  let style = valueOrDefault(options.style, fallback.style);
+  if (style && !('' + style).match(FONT_STYLE)) {
+    console.warn('Invalid font style specified: "' + style + '"');
+    style = '';
+  }
+  const font = {
+    family: valueOrDefault(options.family, fallback.family),
+    lineHeight: toLineHeight(valueOrDefault(options.lineHeight, fallback.lineHeight), size),
+    size,
+    style,
+    weight: valueOrDefault(options.weight, fallback.weight),
+    string: ''
+  };
+  font.string = toFontString(font);
+  return font;
+}
+function resolve(inputs, context, index, info) {
+  let cacheable = true;
+  let i, ilen, value;
+  for (i = 0, ilen = inputs.length; i < ilen; ++i) {
+    value = inputs[i];
+    if (value === undefined) {
+      continue;
+    }
+    if (context !== undefined && typeof value === 'function') {
+      value = value(context);
+      cacheable = false;
+    }
+    if (index !== undefined && isArray(value)) {
+      value = value[index % value.length];
+      cacheable = false;
+    }
+    if (value !== undefined) {
+      if (info && !cacheable) {
+        info.cacheable = false;
+      }
+      return value;
+    }
+  }
+}
+function _addGrace(minmax, grace, beginAtZero) {
+  const {min, max} = minmax;
+  const change = toDimension(grace, (max - min) / 2);
+  const keepZero = (value, add) => beginAtZero && value === 0 ? 0 : value + add;
+  return {
+    min: keepZero(min, -Math.abs(change)),
+    max: keepZero(max, change)
+  };
+}
+function createContext(parentContext, context) {
+  return Object.assign(Object.create(parentContext), context);
+}
+
+function _lookup(table, value, cmp) {
+  cmp = cmp || ((index) => table[index] < value);
+  let hi = table.length - 1;
+  let lo = 0;
+  let mid;
+  while (hi - lo > 1) {
+    mid = (lo + hi) >> 1;
+    if (cmp(mid)) {
+      lo = mid;
+    } else {
+      hi = mid;
+    }
+  }
+  return {lo, hi};
+}
+const _lookupByKey = (table, key, value) =>
+  _lookup(table, value, index => table[index][key] < value);
+const _rlookupByKey = (table, key, value) =>
+  _lookup(table, value, index => table[index][key] >= value);
+function _filterBetween(values, min, max) {
+  let start = 0;
+  let end = values.length;
+  while (start < end && values[start] < min) {
+    start++;
+  }
+  while (end > start && values[end - 1] > max) {
+    end--;
+  }
+  return start > 0 || end < values.length
+    ? values.slice(start, end)
+    : values;
+}
+const arrayEvents = ['push', 'pop', 'shift', 'splice', 'unshift'];
+function listenArrayEvents(array, listener) {
+  if (array._chartjs) {
+    array._chartjs.listeners.push(listener);
+    return;
+  }
+  Object.defineProperty(array, '_chartjs', {
+    configurable: true,
+    enumerable: false,
+    value: {
+      listeners: [listener]
+    }
+  });
+  arrayEvents.forEach((key) => {
+    const method = '_onData' + _capitalize(key);
+    const base = array[key];
+    Object.defineProperty(array, key, {
+      configurable: true,
+      enumerable: false,
+      value(...args) {
+        const res = base.apply(this, args);
+        array._chartjs.listeners.forEach((object) => {
+          if (typeof object[method] === 'function') {
+            object[method](...args);
+          }
+        });
+        return res;
+      }
+    });
+  });
+}
+function unlistenArrayEvents(array, listener) {
+  const stub = array._chartjs;
+  if (!stub) {
+    return;
+  }
+  const listeners = stub.listeners;
+  const index = listeners.indexOf(listener);
+  if (index !== -1) {
+    listeners.splice(index, 1);
+  }
+  if (listeners.length > 0) {
+    return;
+  }
+  arrayEvents.forEach((key) => {
+    delete array[key];
+  });
+  delete array._chartjs;
+}
+function _arrayUnique(items) {
+  const set = new Set();
+  let i, ilen;
+  for (i = 0, ilen = items.length; i < ilen; ++i) {
+    set.add(items[i]);
+  }
+  if (set.size === ilen) {
+    return items;
+  }
+  return Array.from(set);
+}
+
+function _createResolver(scopes, prefixes = [''], rootScopes = scopes, fallback, getTarget = () => scopes[0]) {
+  if (!defined(fallback)) {
+    fallback = _resolve('_fallback', scopes);
+  }
+  const cache = {
+    [Symbol.toStringTag]: 'Object',
+    _cacheable: true,
+    _scopes: scopes,
+    _rootScopes: rootScopes,
+    _fallback: fallback,
+    _getTarget: getTarget,
+    override: (scope) => _createResolver([scope, ...scopes], prefixes, rootScopes, fallback),
+  };
+  return new Proxy(cache, {
+    deleteProperty(target, prop) {
+      delete target[prop];
+      delete target._keys;
+      delete scopes[0][prop];
+      return true;
+    },
+    get(target, prop) {
+      return _cached(target, prop,
+        () => _resolveWithPrefixes(prop, prefixes, scopes, target));
+    },
+    getOwnPropertyDescriptor(target, prop) {
+      return Reflect.getOwnPropertyDescriptor(target._scopes[0], prop);
+    },
+    getPrototypeOf() {
+      return Reflect.getPrototypeOf(scopes[0]);
+    },
+    has(target, prop) {
+      return getKeysFromAllScopes(target).includes(prop);
+    },
+    ownKeys(target) {
+      return getKeysFromAllScopes(target);
+    },
+    set(target, prop, value) {
+      const storage = target._storage || (target._storage = getTarget());
+      target[prop] = storage[prop] = value;
+      delete target._keys;
+      return true;
+    }
+  });
+}
+function _attachContext(proxy, context, subProxy, descriptorDefaults) {
+  const cache = {
+    _cacheable: false,
+    _proxy: proxy,
+    _context: context,
+    _subProxy: subProxy,
+    _stack: new Set(),
+    _descriptors: _descriptors(proxy, descriptorDefaults),
+    setContext: (ctx) => _attachContext(proxy, ctx, subProxy, descriptorDefaults),
+    override: (scope) => _attachContext(proxy.override(scope), context, subProxy, descriptorDefaults)
+  };
+  return new Proxy(cache, {
+    deleteProperty(target, prop) {
+      delete target[prop];
+      delete proxy[prop];
+      return true;
+    },
+    get(target, prop, receiver) {
+      return _cached(target, prop,
+        () => _resolveWithContext(target, prop, receiver));
+    },
+    getOwnPropertyDescriptor(target, prop) {
+      return target._descriptors.allKeys
+        ? Reflect.has(proxy, prop) ? {enumerable: true, configurable: true} : undefined
+        : Reflect.getOwnPropertyDescriptor(proxy, prop);
+    },
+    getPrototypeOf() {
+      return Reflect.getPrototypeOf(proxy);
+    },
+    has(target, prop) {
+      return Reflect.has(proxy, prop);
+    },
+    ownKeys() {
+      return Reflect.ownKeys(proxy);
+    },
+    set(target, prop, value) {
+      proxy[prop] = value;
+      delete target[prop];
+      return true;
+    }
+  });
+}
+function _descriptors(proxy, defaults = {scriptable: true, indexable: true}) {
+  const {_scriptable = defaults.scriptable, _indexable = defaults.indexable, _allKeys = defaults.allKeys} = proxy;
+  return {
+    allKeys: _allKeys,
+    scriptable: _scriptable,
+    indexable: _indexable,
+    isScriptable: isFunction(_scriptable) ? _scriptable : () => _scriptable,
+    isIndexable: isFunction(_indexable) ? _indexable : () => _indexable
+  };
+}
+const readKey = (prefix, name) => prefix ? prefix + _capitalize(name) : name;
+const needsSubResolver = (prop, value) => isObject(value) && prop !== 'adapters' &&
+  (Object.getPrototypeOf(value) === null || value.constructor === Object);
+function _cached(target, prop, resolve) {
+  if (Object.prototype.hasOwnProperty.call(target, prop)) {
+    return target[prop];
+  }
+  const value = resolve();
+  target[prop] = value;
+  return value;
+}
+function _resolveWithContext(target, prop, receiver) {
+  const {_proxy, _context, _subProxy, _descriptors: descriptors} = target;
+  let value = _proxy[prop];
+  if (isFunction(value) && descriptors.isScriptable(prop)) {
+    value = _resolveScriptable(prop, value, target, receiver);
+  }
+  if (isArray(value) && value.length) {
+    value = _resolveArray(prop, value, target, descriptors.isIndexable);
+  }
+  if (needsSubResolver(prop, value)) {
+    value = _attachContext(value, _context, _subProxy && _subProxy[prop], descriptors);
+  }
+  return value;
+}
+function _resolveScriptable(prop, value, target, receiver) {
+  const {_proxy, _context, _subProxy, _stack} = target;
+  if (_stack.has(prop)) {
+    throw new Error('Recursion detected: ' + Array.from(_stack).join('->') + '->' + prop);
+  }
+  _stack.add(prop);
+  value = value(_context, _subProxy || receiver);
+  _stack.delete(prop);
+  if (needsSubResolver(prop, value)) {
+    value = createSubResolver(_proxy._scopes, _proxy, prop, value);
+  }
+  return value;
+}
+function _resolveArray(prop, value, target, isIndexable) {
+  const {_proxy, _context, _subProxy, _descriptors: descriptors} = target;
+  if (defined(_context.index) && isIndexable(prop)) {
+    value = value[_context.index % value.length];
+  } else if (isObject(value[0])) {
+    const arr = value;
+    const scopes = _proxy._scopes.filter(s => s !== arr);
+    value = [];
+    for (const item of arr) {
+      const resolver = createSubResolver(scopes, _proxy, prop, item);
+      value.push(_attachContext(resolver, _context, _subProxy && _subProxy[prop], descriptors));
+    }
+  }
+  return value;
+}
+function resolveFallback(fallback, prop, value) {
+  return isFunction(fallback) ? fallback(prop, value) : fallback;
+}
+const getScope = (key, parent) => key === true ? parent
+  : typeof key === 'string' ? resolveObjectKey(parent, key) : undefined;
+function addScopes(set, parentScopes, key, parentFallback, value) {
+  for (const parent of parentScopes) {
+    const scope = getScope(key, parent);
+    if (scope) {
+      set.add(scope);
+      const fallback = resolveFallback(scope._fallback, key, value);
+      if (defined(fallback) && fallback !== key && fallback !== parentFallback) {
+        return fallback;
+      }
+    } else if (scope === false && defined(parentFallback) && key !== parentFallback) {
+      return null;
+    }
+  }
+  return false;
+}
+function createSubResolver(parentScopes, resolver, prop, value) {
+  const rootScopes = resolver._rootScopes;
+  const fallback = resolveFallback(resolver._fallback, prop, value);
+  const allScopes = [...parentScopes, ...rootScopes];
+  const set = new Set();
+  set.add(value);
+  let key = addScopesFromKey(set, allScopes, prop, fallback || prop, value);
+  if (key === null) {
+    return false;
+  }
+  if (defined(fallback) && fallback !== prop) {
+    key = addScopesFromKey(set, allScopes, fallback, key, value);
+    if (key === null) {
+      return false;
+    }
+  }
+  return _createResolver(Array.from(set), [''], rootScopes, fallback,
+    () => subGetTarget(resolver, prop, value));
+}
+function addScopesFromKey(set, allScopes, key, fallback, item) {
+  while (key) {
+    key = addScopes(set, allScopes, key, fallback, item);
+  }
+  return key;
+}
+function subGetTarget(resolver, prop, value) {
+  const parent = resolver._getTarget();
+  if (!(prop in parent)) {
+    parent[prop] = {};
+  }
+  const target = parent[prop];
+  if (isArray(target) && isObject(value)) {
+    return value;
+  }
+  return target;
+}
+function _resolveWithPrefixes(prop, prefixes, scopes, proxy) {
+  let value;
+  for (const prefix of prefixes) {
+    value = _resolve(readKey(prefix, prop), scopes);
+    if (defined(value)) {
+      return needsSubResolver(prop, value)
+        ? createSubResolver(scopes, proxy, prop, value)
+        : value;
+    }
+  }
+}
+function _resolve(key, scopes) {
+  for (const scope of scopes) {
+    if (!scope) {
+      continue;
+    }
+    const value = scope[key];
+    if (defined(value)) {
+      return value;
+    }
+  }
+}
+function getKeysFromAllScopes(target) {
+  let keys = target._keys;
+  if (!keys) {
+    keys = target._keys = resolveKeysFromAllScopes(target._scopes);
+  }
+  return keys;
+}
+function resolveKeysFromAllScopes(scopes) {
+  const set = new Set();
+  for (const scope of scopes) {
+    for (const key of Object.keys(scope).filter(k => !k.startsWith('_'))) {
+      set.add(key);
+    }
+  }
+  return Array.from(set);
+}
+function _parseObjectDataRadialScale(meta, data, start, count) {
+  const {iScale} = meta;
+  const {key = 'r'} = this._parsing;
+  const parsed = new Array(count);
+  let i, ilen, index, item;
+  for (i = 0, ilen = count; i < ilen; ++i) {
+    index = i + start;
+    item = data[index];
+    parsed[i] = {
+      r: iScale.parse(resolveObjectKey(item, key), index)
+    };
+  }
+  return parsed;
+}
+
+const EPSILON = Number.EPSILON || 1e-14;
+const getPoint = (points, i) => i < points.length && !points[i].skip && points[i];
+const getValueAxis = (indexAxis) => indexAxis === 'x' ? 'y' : 'x';
+function splineCurve(firstPoint, middlePoint, afterPoint, t) {
+  const previous = firstPoint.skip ? middlePoint : firstPoint;
+  const current = middlePoint;
+  const next = afterPoint.skip ? middlePoint : afterPoint;
+  const d01 = distanceBetweenPoints(current, previous);
+  const d12 = distanceBetweenPoints(next, current);
+  let s01 = d01 / (d01 + d12);
+  let s12 = d12 / (d01 + d12);
+  s01 = isNaN(s01) ? 0 : s01;
+  s12 = isNaN(s12) ? 0 : s12;
+  const fa = t * s01;
+  const fb = t * s12;
+  return {
+    previous: {
+      x: current.x - fa * (next.x - previous.x),
+      y: current.y - fa * (next.y - previous.y)
+    },
+    next: {
+      x: current.x + fb * (next.x - previous.x),
+      y: current.y + fb * (next.y - previous.y)
+    }
+  };
+}
+function monotoneAdjust(points, deltaK, mK) {
+  const pointsLen = points.length;
+  let alphaK, betaK, tauK, squaredMagnitude, pointCurrent;
+  let pointAfter = getPoint(points, 0);
+  for (let i = 0; i < pointsLen - 1; ++i) {
+    pointCurrent = pointAfter;
+    pointAfter = getPoint(points, i + 1);
+    if (!pointCurrent || !pointAfter) {
+      continue;
+    }
+    if (almostEquals(deltaK[i], 0, EPSILON)) {
+      mK[i] = mK[i + 1] = 0;
+      continue;
+    }
+    alphaK = mK[i] / deltaK[i];
+    betaK = mK[i + 1] / deltaK[i];
+    squaredMagnitude = Math.pow(alphaK, 2) + Math.pow(betaK, 2);
+    if (squaredMagnitude <= 9) {
+      continue;
+    }
+    tauK = 3 / Math.sqrt(squaredMagnitude);
+    mK[i] = alphaK * tauK * deltaK[i];
+    mK[i + 1] = betaK * tauK * deltaK[i];
+  }
+}
+function monotoneCompute(points, mK, indexAxis = 'x') {
+  const valueAxis = getValueAxis(indexAxis);
+  const pointsLen = points.length;
+  let delta, pointBefore, pointCurrent;
+  let pointAfter = getPoint(points, 0);
+  for (let i = 0; i < pointsLen; ++i) {
+    pointBefore = pointCurrent;
+    pointCurrent = pointAfter;
+    pointAfter = getPoint(points, i + 1);
+    if (!pointCurrent) {
+      continue;
+    }
+    const iPixel = pointCurrent[indexAxis];
+    const vPixel = pointCurrent[valueAxis];
+    if (pointBefore) {
+      delta = (iPixel - pointBefore[indexAxis]) / 3;
+      pointCurrent[`cp1${indexAxis}`] = iPixel - delta;
+      pointCurrent[`cp1${valueAxis}`] = vPixel - delta * mK[i];
+    }
+    if (pointAfter) {
+      delta = (pointAfter[indexAxis] - iPixel) / 3;
+      pointCurrent[`cp2${indexAxis}`] = iPixel + delta;
+      pointCurrent[`cp2${valueAxis}`] = vPixel + delta * mK[i];
+    }
+  }
+}
+function splineCurveMonotone(points, indexAxis = 'x') {
+  const valueAxis = getValueAxis(indexAxis);
+  const pointsLen = points.length;
+  const deltaK = Array(pointsLen).fill(0);
+  const mK = Array(pointsLen);
+  let i, pointBefore, pointCurrent;
+  let pointAfter = getPoint(points, 0);
+  for (i = 0; i < pointsLen; ++i) {
+    pointBefore = pointCurrent;
+    pointCurrent = pointAfter;
+    pointAfter = getPoint(points, i + 1);
+    if (!pointCurrent) {
+      continue;
+    }
+    if (pointAfter) {
+      const slopeDelta = pointAfter[indexAxis] - pointCurrent[indexAxis];
+      deltaK[i] = slopeDelta !== 0 ? (pointAfter[valueAxis] - pointCurrent[valueAxis]) / slopeDelta : 0;
+    }
+    mK[i] = !pointBefore ? deltaK[i]
+      : !pointAfter ? deltaK[i - 1]
+      : (sign(deltaK[i - 1]) !== sign(deltaK[i])) ? 0
+      : (deltaK[i - 1] + deltaK[i]) / 2;
+  }
+  monotoneAdjust(points, deltaK, mK);
+  monotoneCompute(points, mK, indexAxis);
+}
+function capControlPoint(pt, min, max) {
+  return Math.max(Math.min(pt, max), min);
+}
+function capBezierPoints(points, area) {
+  let i, ilen, point, inArea, inAreaPrev;
+  let inAreaNext = _isPointInArea(points[0], area);
+  for (i = 0, ilen = points.length; i < ilen; ++i) {
+    inAreaPrev = inArea;
+    inArea = inAreaNext;
+    inAreaNext = i < ilen - 1 && _isPointInArea(points[i + 1], area);
+    if (!inArea) {
+      continue;
+    }
+    point = points[i];
+    if (inAreaPrev) {
+      point.cp1x = capControlPoint(point.cp1x, area.left, area.right);
+      point.cp1y = capControlPoint(point.cp1y, area.top, area.bottom);
+    }
+    if (inAreaNext) {
+      point.cp2x = capControlPoint(point.cp2x, area.left, area.right);
+      point.cp2y = capControlPoint(point.cp2y, area.top, area.bottom);
+    }
+  }
+}
+function _updateBezierControlPoints(points, options, area, loop, indexAxis) {
+  let i, ilen, point, controlPoints;
+  if (options.spanGaps) {
+    points = points.filter((pt) => !pt.skip);
+  }
+  if (options.cubicInterpolationMode === 'monotone') {
+    splineCurveMonotone(points, indexAxis);
+  } else {
+    let prev = loop ? points[points.length - 1] : points[0];
+    for (i = 0, ilen = points.length; i < ilen; ++i) {
+      point = points[i];
+      controlPoints = splineCurve(
+        prev,
+        point,
+        points[Math.min(i + 1, ilen - (loop ? 0 : 1)) % ilen],
+        options.tension
+      );
+      point.cp1x = controlPoints.previous.x;
+      point.cp1y = controlPoints.previous.y;
+      point.cp2x = controlPoints.next.x;
+      point.cp2y = controlPoints.next.y;
+      prev = point;
+    }
+  }
+  if (options.capBezierPoints) {
+    capBezierPoints(points, area);
+  }
+}
+
+function _isDomSupported() {
+  return typeof window !== 'undefined' && typeof document !== 'undefined';
+}
+function _getParentNode(domNode) {
+  let parent = domNode.parentNode;
+  if (parent && parent.toString() === '[object ShadowRoot]') {
+    parent = parent.host;
+  }
+  return parent;
+}
+function parseMaxStyle(styleValue, node, parentProperty) {
+  let valueInPixels;
+  if (typeof styleValue === 'string') {
+    valueInPixels = parseInt(styleValue, 10);
+    if (styleValue.indexOf('%') !== -1) {
+      valueInPixels = valueInPixels / 100 * node.parentNode[parentProperty];
+    }
+  } else {
+    valueInPixels = styleValue;
+  }
+  return valueInPixels;
+}
+const getComputedStyle = (element) => window.getComputedStyle(element, null);
+function getStyle(el, property) {
+  return getComputedStyle(el).getPropertyValue(property);
+}
+const positions = ['top', 'right', 'bottom', 'left'];
+function getPositionedStyle(styles, style, suffix) {
+  const result = {};
+  suffix = suffix ? '-' + suffix : '';
+  for (let i = 0; i < 4; i++) {
+    const pos = positions[i];
+    result[pos] = parseFloat(styles[style + '-' + pos + suffix]) || 0;
+  }
+  result.width = result.left + result.right;
+  result.height = result.top + result.bottom;
+  return result;
+}
+const useOffsetPos = (x, y, target) => (x > 0 || y > 0) && (!target || !target.shadowRoot);
+function getCanvasPosition(e, canvas) {
+  const touches = e.touches;
+  const source = touches && touches.length ? touches[0] : e;
+  const {offsetX, offsetY} = source;
+  let box = false;
+  let x, y;
+  if (useOffsetPos(offsetX, offsetY, e.target)) {
+    x = offsetX;
+    y = offsetY;
+  } else {
+    const rect = canvas.getBoundingClientRect();
+    x = source.clientX - rect.left;
+    y = source.clientY - rect.top;
+    box = true;
+  }
+  return {x, y, box};
+}
+function getRelativePosition(evt, chart) {
+  if ('native' in evt) {
+    return evt;
+  }
+  const {canvas, currentDevicePixelRatio} = chart;
+  const style = getComputedStyle(canvas);
+  const borderBox = style.boxSizing === 'border-box';
+  const paddings = getPositionedStyle(style, 'padding');
+  const borders = getPositionedStyle(style, 'border', 'width');
+  const {x, y, box} = getCanvasPosition(evt, canvas);
+  const xOffset = paddings.left + (box && borders.left);
+  const yOffset = paddings.top + (box && borders.top);
+  let {width, height} = chart;
+  if (borderBox) {
+    width -= paddings.width + borders.width;
+    height -= paddings.height + borders.height;
+  }
+  return {
+    x: Math.round((x - xOffset) / width * canvas.width / currentDevicePixelRatio),
+    y: Math.round((y - yOffset) / height * canvas.height / currentDevicePixelRatio)
+  };
+}
+function getContainerSize(canvas, width, height) {
+  let maxWidth, maxHeight;
+  if (width === undefined || height === undefined) {
+    const container = _getParentNode(canvas);
+    if (!container) {
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+    } else {
+      const rect = container.getBoundingClientRect();
+      const containerStyle = getComputedStyle(container);
+      const containerBorder = getPositionedStyle(containerStyle, 'border', 'width');
+      const containerPadding = getPositionedStyle(containerStyle, 'padding');
+      width = rect.width - containerPadding.width - containerBorder.width;
+      height = rect.height - containerPadding.height - containerBorder.height;
+      maxWidth = parseMaxStyle(containerStyle.maxWidth, container, 'clientWidth');
+      maxHeight = parseMaxStyle(containerStyle.maxHeight, container, 'clientHeight');
+    }
+  }
+  return {
+    width,
+    height,
+    maxWidth: maxWidth || INFINITY,
+    maxHeight: maxHeight || INFINITY
+  };
+}
+const round1 = v => Math.round(v * 10) / 10;
+function getMaximumSize(canvas, bbWidth, bbHeight, aspectRatio) {
+  const style = getComputedStyle(canvas);
+  const margins = getPositionedStyle(style, 'margin');
+  const maxWidth = parseMaxStyle(style.maxWidth, canvas, 'clientWidth') || INFINITY;
+  const maxHeight = parseMaxStyle(style.maxHeight, canvas, 'clientHeight') || INFINITY;
+  const containerSize = getContainerSize(canvas, bbWidth, bbHeight);
+  let {width, height} = containerSize;
+  if (style.boxSizing === 'content-box') {
+    const borders = getPositionedStyle(style, 'border', 'width');
+    const paddings = getPositionedStyle(style, 'padding');
+    width -= paddings.width + borders.width;
+    height -= paddings.height + borders.height;
+  }
+  width = Math.max(0, width - margins.width);
+  height = Math.max(0, aspectRatio ? Math.floor(width / aspectRatio) : height - margins.height);
+  width = round1(Math.min(width, maxWidth, containerSize.maxWidth));
+  height = round1(Math.min(height, maxHeight, containerSize.maxHeight));
+  if (width && !height) {
+    height = round1(width / 2);
+  }
+  return {
+    width,
+    height
+  };
+}
+function retinaScale(chart, forceRatio, forceStyle) {
+  const pixelRatio = forceRatio || 1;
+  const deviceHeight = Math.floor(chart.height * pixelRatio);
+  const deviceWidth = Math.floor(chart.width * pixelRatio);
+  chart.height = deviceHeight / pixelRatio;
+  chart.width = deviceWidth / pixelRatio;
+  const canvas = chart.canvas;
+  if (canvas.style && (forceStyle || (!canvas.style.height && !canvas.style.width))) {
+    canvas.style.height = `${chart.height}px`;
+    canvas.style.width = `${chart.width}px`;
+  }
+  if (chart.currentDevicePixelRatio !== pixelRatio
+      || canvas.height !== deviceHeight
+      || canvas.width !== deviceWidth) {
+    chart.currentDevicePixelRatio = pixelRatio;
+    canvas.height = deviceHeight;
+    canvas.width = deviceWidth;
+    chart.ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    return true;
+  }
+  return false;
+}
+const supportsEventListenerOptions = (function() {
+  let passiveSupported = false;
+  try {
+    const options = {
+      get passive() {
+        passiveSupported = true;
+        return false;
+      }
+    };
+    window.addEventListener('test', null, options);
+    window.removeEventListener('test', null, options);
+  } catch (e) {
+  }
+  return passiveSupported;
+}());
+function readUsedSize(element, property) {
+  const value = getStyle(element, property);
+  const matches = value && value.match(/^(\d+)(\.\d+)?px$/);
+  return matches ? +matches[1] : undefined;
+}
+
+function _pointInLine(p1, p2, t, mode) {
+  return {
+    x: p1.x + t * (p2.x - p1.x),
+    y: p1.y + t * (p2.y - p1.y)
+  };
+}
+function _steppedInterpolation(p1, p2, t, mode) {
+  return {
+    x: p1.x + t * (p2.x - p1.x),
+    y: mode === 'middle' ? t < 0.5 ? p1.y : p2.y
+    : mode === 'after' ? t < 1 ? p1.y : p2.y
+    : t > 0 ? p2.y : p1.y
+  };
+}
+function _bezierInterpolation(p1, p2, t, mode) {
+  const cp1 = {x: p1.cp2x, y: p1.cp2y};
+  const cp2 = {x: p2.cp1x, y: p2.cp1y};
+  const a = _pointInLine(p1, cp1, t);
+  const b = _pointInLine(cp1, cp2, t);
+  const c = _pointInLine(cp2, p2, t);
+  const d = _pointInLine(a, b, t);
+  const e = _pointInLine(b, c, t);
+  return _pointInLine(d, e, t);
+}
+
+const intlCache = new Map();
+function getNumberFormat(locale, options) {
+  options = options || {};
+  const cacheKey = locale + JSON.stringify(options);
+  let formatter = intlCache.get(cacheKey);
+  if (!formatter) {
+    formatter = new Intl.NumberFormat(locale, options);
+    intlCache.set(cacheKey, formatter);
+  }
+  return formatter;
+}
+function formatNumber(num, locale, options) {
+  return getNumberFormat(locale, options).format(num);
+}
+
+const getRightToLeftAdapter = function(rectX, width) {
+  return {
+    x(x) {
+      return rectX + rectX + width - x;
+    },
+    setWidth(w) {
+      width = w;
+    },
+    textAlign(align) {
+      if (align === 'center') {
+        return align;
+      }
+      return align === 'right' ? 'left' : 'right';
+    },
+    xPlus(x, value) {
+      return x - value;
+    },
+    leftForLtr(x, itemWidth) {
+      return x - itemWidth;
+    },
+  };
+};
+const getLeftToRightAdapter = function() {
+  return {
+    x(x) {
+      return x;
+    },
+    setWidth(w) {
+    },
+    textAlign(align) {
+      return align;
+    },
+    xPlus(x, value) {
+      return x + value;
+    },
+    leftForLtr(x, _itemWidth) {
+      return x;
+    },
+  };
+};
+function getRtlAdapter(rtl, rectX, width) {
+  return rtl ? getRightToLeftAdapter(rectX, width) : getLeftToRightAdapter();
+}
+function overrideTextDirection(ctx, direction) {
+  let style, original;
+  if (direction === 'ltr' || direction === 'rtl') {
+    style = ctx.canvas.style;
+    original = [
+      style.getPropertyValue('direction'),
+      style.getPropertyPriority('direction'),
+    ];
+    style.setProperty('direction', direction, 'important');
+    ctx.prevTextDirection = original;
+  }
+}
+function restoreTextDirection(ctx, original) {
+  if (original !== undefined) {
+    delete ctx.prevTextDirection;
+    ctx.canvas.style.setProperty('direction', original[0], original[1]);
+  }
+}
+
+function propertyFn(property) {
+  if (property === 'angle') {
+    return {
+      between: _angleBetween,
+      compare: _angleDiff,
+      normalize: _normalizeAngle,
+    };
+  }
+  return {
+    between: _isBetween,
+    compare: (a, b) => a - b,
+    normalize: x => x
+  };
+}
+function normalizeSegment({start, end, count, loop, style}) {
+  return {
+    start: start % count,
+    end: end % count,
+    loop: loop && (end - start + 1) % count === 0,
+    style
+  };
+}
+function getSegment(segment, points, bounds) {
+  const {property, start: startBound, end: endBound} = bounds;
+  const {between, normalize} = propertyFn(property);
+  const count = points.length;
+  let {start, end, loop} = segment;
+  let i, ilen;
+  if (loop) {
+    start += count;
+    end += count;
+    for (i = 0, ilen = count; i < ilen; ++i) {
+      if (!between(normalize(points[start % count][property]), startBound, endBound)) {
+        break;
+      }
+      start--;
+      end--;
+    }
+    start %= count;
+    end %= count;
+  }
+  if (end < start) {
+    end += count;
+  }
+  return {start, end, loop, style: segment.style};
+}
+function _boundSegment(segment, points, bounds) {
+  if (!bounds) {
+    return [segment];
+  }
+  const {property, start: startBound, end: endBound} = bounds;
+  const count = points.length;
+  const {compare, between, normalize} = propertyFn(property);
+  const {start, end, loop, style} = getSegment(segment, points, bounds);
+  const result = [];
+  let inside = false;
+  let subStart = null;
+  let value, point, prevValue;
+  const startIsBefore = () => between(startBound, prevValue, value) && compare(startBound, prevValue) !== 0;
+  const endIsBefore = () => compare(endBound, value) === 0 || between(endBound, prevValue, value);
+  const shouldStart = () => inside || startIsBefore();
+  const shouldStop = () => !inside || endIsBefore();
+  for (let i = start, prev = start; i <= end; ++i) {
+    point = points[i % count];
+    if (point.skip) {
+      continue;
+    }
+    value = normalize(point[property]);
+    if (value === prevValue) {
+      continue;
+    }
+    inside = between(value, startBound, endBound);
+    if (subStart === null && shouldStart()) {
+      subStart = compare(value, startBound) === 0 ? i : prev;
+    }
+    if (subStart !== null && shouldStop()) {
+      result.push(normalizeSegment({start: subStart, end: i, loop, count, style}));
+      subStart = null;
+    }
+    prev = i;
+    prevValue = value;
+  }
+  if (subStart !== null) {
+    result.push(normalizeSegment({start: subStart, end, loop, count, style}));
+  }
+  return result;
+}
+function _boundSegments(line, bounds) {
+  const result = [];
+  const segments = line.segments;
+  for (let i = 0; i < segments.length; i++) {
+    const sub = _boundSegment(segments[i], line.points, bounds);
+    if (sub.length) {
+      result.push(...sub);
+    }
+  }
+  return result;
+}
+function findStartAndEnd(points, count, loop, spanGaps) {
+  let start = 0;
+  let end = count - 1;
+  if (loop && !spanGaps) {
+    while (start < count && !points[start].skip) {
+      start++;
+    }
+  }
+  while (start < count && points[start].skip) {
+    start++;
+  }
+  start %= count;
+  if (loop) {
+    end += start;
+  }
+  while (end > start && points[end % count].skip) {
+    end--;
+  }
+  end %= count;
+  return {start, end};
+}
+function solidSegments(points, start, max, loop) {
+  const count = points.length;
+  const result = [];
+  let last = start;
+  let prev = points[start];
+  let end;
+  for (end = start + 1; end <= max; ++end) {
+    const cur = points[end % count];
+    if (cur.skip || cur.stop) {
+      if (!prev.skip) {
+        loop = false;
+        result.push({start: start % count, end: (end - 1) % count, loop});
+        start = last = cur.stop ? end : null;
+      }
+    } else {
+      last = end;
+      if (prev.skip) {
+        start = end;
+      }
+    }
+    prev = cur;
+  }
+  if (last !== null) {
+    result.push({start: start % count, end: last % count, loop});
+  }
+  return result;
+}
+function _computeSegments(line, segmentOptions) {
+  const points = line.points;
+  const spanGaps = line.options.spanGaps;
+  const count = points.length;
+  if (!count) {
+    return [];
+  }
+  const loop = !!line._loop;
+  const {start, end} = findStartAndEnd(points, count, loop, spanGaps);
+  if (spanGaps === true) {
+    return splitByStyles(line, [{start, end, loop}], points, segmentOptions);
+  }
+  const max = end < start ? end + count : end;
+  const completeLoop = !!line._fullLoop && start === 0 && end === count - 1;
+  return splitByStyles(line, solidSegments(points, start, max, completeLoop), points, segmentOptions);
+}
+function splitByStyles(line, segments, points, segmentOptions) {
+  if (!segmentOptions || !segmentOptions.setContext || !points) {
+    return segments;
+  }
+  return doSplitByStyles(line, segments, points, segmentOptions);
+}
+function doSplitByStyles(line, segments, points, segmentOptions) {
+  const chartContext = line._chart.getContext();
+  const baseStyle = readStyle(line.options);
+  const {_datasetIndex: datasetIndex, options: {spanGaps}} = line;
+  const count = points.length;
+  const result = [];
+  let prevStyle = baseStyle;
+  let start = segments[0].start;
+  let i = start;
+  function addStyle(s, e, l, st) {
+    const dir = spanGaps ? -1 : 1;
+    if (s === e) {
+      return;
+    }
+    s += count;
+    while (points[s % count].skip) {
+      s -= dir;
+    }
+    while (points[e % count].skip) {
+      e += dir;
+    }
+    if (s % count !== e % count) {
+      result.push({start: s % count, end: e % count, loop: l, style: st});
+      prevStyle = st;
+      start = e % count;
+    }
+  }
+  for (const segment of segments) {
+    start = spanGaps ? start : segment.start;
+    let prev = points[start % count];
+    let style;
+    for (i = start + 1; i <= segment.end; i++) {
+      const pt = points[i % count];
+      style = readStyle(segmentOptions.setContext(createContext(chartContext, {
+        type: 'segment',
+        p0: prev,
+        p1: pt,
+        p0DataIndex: (i - 1) % count,
+        p1DataIndex: i % count,
+        datasetIndex
+      })));
+      if (styleChanged(style, prevStyle)) {
+        addStyle(start, i - 1, segment.loop, prevStyle);
+      }
+      prev = pt;
+      prevStyle = style;
+    }
+    if (start < i - 1) {
+      addStyle(start, i - 1, segment.loop, prevStyle);
+    }
+  }
+  return result;
+}
+function readStyle(options) {
+  return {
+    backgroundColor: options.backgroundColor,
+    borderCapStyle: options.borderCapStyle,
+    borderDash: options.borderDash,
+    borderDashOffset: options.borderDashOffset,
+    borderJoinStyle: options.borderJoinStyle,
+    borderWidth: options.borderWidth,
+    borderColor: options.borderColor
+  };
+}
+function styleChanged(style, prevStyle) {
+  return prevStyle && JSON.stringify(style) !== JSON.stringify(prevStyle);
+}
+
+
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @splidejs/splide */ "./node_modules/@splidejs/splide/dist/js/splide.esm.js");
+/* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.esm.js");
+
+
+var moreBtn = document.querySelector(".dashboard__btn-more");
+var dashboardHead = document.querySelector(".dashboard__head");
+var sidebar = document.querySelector(".dashboard__aside");
+var analytics = document.getElementById("analyticsChart").getContext("2d");
+var indicatorChart = document.getElementById("indicatorChart").getContext("2d");
+var myChart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__["default"](analytics, {
+  type: "doughnut",
+  data: {
+    datasets: [{
+      data: [5120, 3245, 2472, 3120],
+      backgroundColor: ["#A7E0DA", "#FBEBB8", "#E1F8FF", "#99CCC7"]
+    }]
+  },
+  options: {
+    onHover: function onHover(e) {
+      var points = this.getElementsAtEventForMode(e, "index", {
+        axis: "x",
+        intersect: true
+      }, false);
+      if (points.length) e.native.target.style.cursor = "pointer";else e.native.target.style.cursor = "default";
+    }
+  }
+});
+var myStatsChart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__["default"](indicatorChart, {
+  type: "bar",
+  data: {
+    labels: ["June", "July", "August", "September", "October", "November"],
+    datasets: [{
+      label: "Income",
+      data: [60000, 80000, 50000, 150000, 11000, 50000],
+      backgroundColor: ["rgba(167, 224, 218, 0.4)", "rgba(167, 224, 218, 0.4)", "rgba(167, 224, 218, 0.4)", "#A7E0DA", "rgba(167, 224, 218, 0.4)", "rgba(167, 224, 218, 0.4)"],
+      borderWidth: 0,
+      borderRadius: 8,
+      barThickness: 36,
+      borderSkipped: false
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: "rgba(255, 255, 255, 0.8)",
+          font: {
+            size: 13,
+            weight: 700,
+            family: "Space Grotesk"
+          },
+          callback: function callback(value, index, values) {
+            // return Number((value / 1000).toString()) + "K";
+            var result = value;
+
+            if (value >= 1000) {
+              result = Number(value / 1000) + "K";
+            }
+
+            return result;
+          }
+        }
+      },
+      x: {
+        categoryPercentage: 1.0,
+        barPercentage: 1.0,
+        ticks: {
+          color: "rgba(255, 255, 255, 0.8)",
+          font: {
+            size: 12,
+            family: "Space Grotesk",
+            weight: 700
+          }
+        },
+        time: {
+          unit: "month"
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: "rgba(167, 224, 218, 0.6)",
+        displayColors: false,
+        titleFont: {
+          family: "Space Grotesk"
+        },
+        bodyFont: {
+          family: "Space Grotesk"
+        },
+        callbacks: {}
+      }
+    },
+    onHover: function onHover(e) {
+      var points = this.getElementsAtEventForMode(e, "index", {
+        axis: "x",
+        intersect: true
+      }, false);
+      if (points.length) e.native.target.style.cursor = "pointer";else e.native.target.style.cursor = "default";
+    }
+  }
+});
+
+if (document.querySelector(".dashboard__map")) {
+  var mapBlock = document.querySelector(".dashboard__map");
+  mapBlock.addEventListener("mouseover", function (e) {
+    if (e.target.matches("[data-target]")) {
+      var self = e.target;
+      self.addEventListener("mouseenter", function (e) {
+        var index = self.dataset.target;
+
+        if (index) {
+          mapBlock.querySelector("[data-location=".concat(index, "]")).classList.add("active");
+        }
+      });
+      self.addEventListener("mouseleave", function (e) {
+        var index = self.dataset.target;
+
+        if (index) {
+          mapBlock.querySelector("[data-location=".concat(index, "]")).classList.remove("active");
+        }
+      });
+    }
+  });
+}
+
+dashboardHead.addEventListener("click", function (e) {
+  if (e.target.classList.contains("dashboard__btn-more")) {
+    console.log(1);
+    sidebar.classList.toggle("active");
+    moreBtn.classList.toggle("active");
+  }
+});
+new _splidejs_splide__WEBPACK_IMPORTED_MODULE_0__["default"](".dashboard__indicators-wrapper", {
+  arrows: false,
+  pagination: false,
+  perPage: 3,
+  perMove: 3,
+  type: "loop",
+  breakpoints: {
+    576: {
+      perPage: 2,
+      gap: "10px"
+    }
+  }
+}).mount();
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=main.js.map
