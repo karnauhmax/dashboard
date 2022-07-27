@@ -26,20 +26,18 @@
       background-color: #fff;
       transform: translateX(-150%);
       padding-left: 15px;
+      overflow-y: scroll;
+
     }
 
     &::after {
       content: "";
       width: 1px;
-      height: 95%;
+      height: 100%;
       opacity: 0.3;
       position: absolute;
       right: 0;
       background-color: var(--dark-color);
-
-      @media screen and (max-width: 992px) {
-        height: 100%;
-      }
     }
 
     &.active {
@@ -233,6 +231,7 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%) rotate(-180deg);
+        animation: bounce 1s linear 0s infinite alternate;
       }
     }
 
@@ -828,5 +827,15 @@
     }
 
     @media screen and (max-width: 992px) {}
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(-40%) rotate(180deg);
+  }
+
+  to {
+    transform: translateY(-60%) rotate(180deg);
   }
 }

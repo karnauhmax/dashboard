@@ -1,16 +1,13 @@
-// import Modal from "./functions/modals";
-// import Tab from "./functions/tabs";
-// import { burger } from "./functions/burger";
 import Splide from "@splidejs/splide";
-// import DynamicAdapt from "./functions/dynamicAdapt";
 import Chart from "chart.js/auto";
-// import { mapToStyles } from "@popperjs/core/lib/modifiers/computestyles";
 
 const moreBtn = document.querySelector(".dashboard__btn-more");
 const dashboardHead = document.querySelector(".dashboard__head");
 const sidebar = document.querySelector(".dashboard__aside");
-const analytics = document.getElementById("myChart").getContext("2d");
-const stats = document.getElementById("myStatisticsChart").getContext("2d");
+const analytics = document.getElementById("analyticsChart").getContext("2d");
+const indicatorChart = document
+  .getElementById("indicatorChart")
+  .getContext("2d");
 const myChart = new Chart(analytics, {
   type: "doughnut",
   data: {
@@ -35,10 +32,10 @@ const myChart = new Chart(analytics, {
     },
   },
 });
-const myStatsChart = new Chart(stats, {
+const myStatsChart = new Chart(indicatorChart, {
   type: "bar",
   data: {
-    labels: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+    labels: ["June", "July", "August", "September", "October", "November"],
     datasets: [
       {
         label: "Income",
@@ -70,7 +67,14 @@ const myStatsChart = new Chart(stats, {
             family: "Space Grotesk",
           },
           callback: function (value, index, values) {
-            return Number((value / 1000).toString()) + "K"; //pass tick values as a string into Number function
+            // return Number((value / 1000).toString()) + "K";
+            let result = value;
+
+            if (value >= 1000) {
+              result = Number(value / 1000) + "K";
+            }
+
+            return result;
           },
         },
       },
@@ -86,11 +90,25 @@ const myStatsChart = new Chart(stats, {
             weight: 700,
           },
         },
+        time: {
+          unit: "month",
+        },
       },
     },
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        backgroundColor: "rgba(167, 224, 218, 0.6)",
+        displayColors: false,
+        titleFont: {
+          family: "Space Grotesk",
+        },
+        bodyFont: {
+          family: "Space Grotesk",
+        },
+        callbacks: {},
       },
     },
     onHover: function (e) {
